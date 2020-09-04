@@ -1,10 +1,10 @@
-## Welcome to RabbitHole.help
+## Welcome to rabbithole.help
 
-Alice had to explore on her own, but know you are not alone. Let this site be a guide in the rabbit hole of information and truth.
+# a guide in the rabbit hole of information and truth.
 
-We will update these lists. so make sure to bookmark and check back !
+Alice had to explore on her own, but know you are not alone. Any information you find via this guide is not an endorsment perse. Make up your own mind and question everything !
 
-Any information you find via this guide is not an endorsment perse. Make up your own mind and question everything !
+We will update these lists, so make sure to bookmark and check back !
 
 # websites
 
