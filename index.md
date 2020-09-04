@@ -1,18 +1,18 @@
-## Welcome to rabbithole.help
+# Welcome to rabbithole.help
 
-# a guide in the rabbit hole of information and truth.
+## a guide in the rabbit hole of information and truth.
 
 Alice had to explore on her own, but know you are not alone. Any information you find via this guide is not an endorsment perse. Make up your own mind and question everything !
 
 We will update these lists, so make sure to bookmark and check back !
 
-# websites
+### websites
 
 [viruswaarheid](https://viruswaarheid.nl/)
 
 [wakker2020](http://wakker2020.nl/)
 
-# Youtube channels
+### Youtube channels
 [Blue Tiger Studio](https://www.youtube.com/channel/UCuwWXfh9Dk5OD6sdzSOcYiQ)
 
 [CommonSenseTV](https://www.youtube.com/channel/UCl2_dKgwJ42gomtEbFsdODw)
