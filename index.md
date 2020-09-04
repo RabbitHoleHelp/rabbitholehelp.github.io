@@ -1,37 +1,25 @@
-## Welcome to GitHub Pages
+## Welcome to RabbitHole.help
 
-You can use the [editor on GitHub](https://github.com/RabbitHoleHelp/alice/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+Alice had to explore on her own, but know you are not alone. Let this site be a guide in the rabbit hole of information and truth.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+We will update these lists. so make sure to bookmark and check back !
 
-### Markdown
+Any information you find via this guide is not an endorsment perse. Make up your own mind and question everything !
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+# websites
 
-```markdown
-Syntax highlighted code block
+[viruswaarheid](https://viruswaarheid.nl/)
 
-# Header 1
-## Header 2
-### Header 3
+[wakker2020](http://wakker2020.nl/)
 
-- Bulleted
-- List
+# Youtube channels
+[Blue Tiger Studio](https://www.youtube.com/channel/UCuwWXfh9Dk5OD6sdzSOcYiQ)
 
-1. Numbered
-2. List
+[CommonSenseTV](https://www.youtube.com/channel/UCl2_dKgwJ42gomtEbFsdODw)
 
-**Bold** and _Italic_ and `Code` text
+[Lange Frans](https://www.youtube.com/user/LangeFransTV)
 
-[Link](url) and ![Image](src)
-```
+[Cafe Weltschmerz](https://www.youtube.com/channel/UClK9f1anqhuSaqDN5YE-wfw)
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+[Potkaars podcast](https://www.youtube.com/channel/UCh9dkmMSTldAfVPxgT5THfg)
 
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/RabbitHoleHelp/alice/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
