@@ -12,6 +12,8 @@ We will update these lists, so make sure to bookmark and check back !
 
 [wakker2020](http://wakker2020.nl/)
 
+[burgerfront](https://www.burgerfront.nl/)
+
 ### Youtube channels
 [Blue Tiger Studio](https://www.youtube.com/channel/UCuwWXfh9Dk5OD6sdzSOcYiQ)
 
@@ -23,3 +25,4 @@ We will update these lists, so make sure to bookmark and check back !
 
 [Potkaars podcast](https://www.youtube.com/channel/UCh9dkmMSTldAfVPxgT5THfg)
 
+[burgerfront](https://www.youtube.com/channel/UCag8gVe_cFh0DU3hDlZCldw)
