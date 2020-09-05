@@ -6,6 +6,12 @@ Alice had to explore on her own, but know you are not alone. Any information you
 
 We will update these lists, so make sure to bookmark and check back !
 
+```
+you take the blue pill the story ends. you wake up in your bed and believe whatever you want to believe.
+you take the red pill you stay in Wonderland.
+```
+[💊](https://www.youtube.com/watch?v=Hq_jjNAXoZQ)
+
 ### websites
 
 [viruswaarheid](https://viruswaarheid.nl/)
