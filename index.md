@@ -20,7 +20,9 @@ you take the red pill you stay in Wonderland.
 
 [burgerfront](https://www.burgerfront.nl/)
 
+[commonsensetv](https://commonsensetv.nl/)
 
+[barstmaar](https://www.barstmaar.eu/)
 
 ### Youtube channels
 [Blue Tiger Studio](https://www.youtube.com/channel/UCuwWXfh9Dk5OD6sdzSOcYiQ)
