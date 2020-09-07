@@ -1,17 +1,16 @@
-# Welcome to rabbithole.help
+## your guide in the rabbit hole
 
-## a guide in the rabbit hole of information and truth.
-
-Alice had to explore on her own, but you are not alone, thake this guide with you. 
+Alice had to explore on her own, but you are not alone, take this guide with you. 
 
 Any information you find via this guide is not an endorsment perse. Come to your own conclusions and [question everything ! Trivium and Quadrivium](https://liberalarts.online/trivium-and-quadrivium/)
 
-*We will update these lists, so make sure to bookmark and check back !* [💊](https://www.youtube.com/watch?v=Hq_jjNAXoZQ)
+*These lists will be updated, so make sure to bookmark this page and check back !* [💊](https://www.youtube.com/watch?v=Hq_jjNAXoZQ)
 
 ----
 
 ### Websites
 
+🇳🇱
 - [viruswaarheid](https://viruswaarheid.nl/)
 - [wakker2020](http://wakker2020.nl/)
 - [burgerfront](https://www.burgerfront.nl/)
@@ -21,6 +20,8 @@ Any information you find via this guide is not an endorsment perse. Come to your
 ----
 
 ### Youtube channels
+
+🇳🇱
 - [Blue Tiger Studio](https://www.youtube.com/channel/UCuwWXfh9Dk5OD6sdzSOcYiQ)
 - [CommonSenseTV](https://www.youtube.com/channel/UCl2_dKgwJ42gomtEbFsdODw)
 - [Lange Frans](https://www.youtube.com/user/LangeFransTV)
