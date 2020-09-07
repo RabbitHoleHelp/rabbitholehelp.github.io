@@ -2,15 +2,13 @@
 
 ## a guide in the rabbit hole of information and truth.
 
-Alice had to explore on her own, but know you are not alone. Any information you find via this guide is not an endorsment perse. Make up your own mind and [question everything ! Trivium and Quadrivium](https://liberalarts.online/trivium-and-quadrivium/)
+Alice had to explore on her own, but you are not alone, thake this guide with you. 
 
-We will update these lists, so make sure to bookmark and check back !
+Any information you find via this guide is not an endorsment perse. Come to your own conclusions and [question everything ! Trivium and Quadrivium](https://liberalarts.online/trivium-and-quadrivium/)
 
-```
-you take the blue pill the story ends. you wake up in your bed and believe whatever you want to believe.
-you take the red pill you stay in Wonderland.
-```
-[💊](https://www.youtube.com/watch?v=Hq_jjNAXoZQ)
+*We will update these lists, so make sure to bookmark and check back !* [💊](https://www.youtube.com/watch?v=Hq_jjNAXoZQ)
+
+----
 
 ### websites
 
