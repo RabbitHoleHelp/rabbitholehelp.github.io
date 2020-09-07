@@ -1,10 +1,10 @@
-## your guide in the rabbit hole
+## a guide to question everything...
 
-Alice had to explore on her own, but you are not alone, take this guide with you. 
+Any information you find via this guide is not an endorsment perse. Come to your own conclusions and [question everything !](https://liberalarts.online/trivium-and-quadrivium/)
 
-Any information you find via this guide is not an endorsment perse. Come to your own conclusions and [question everything ! Trivium and Quadrivium](https://liberalarts.online/trivium-and-quadrivium/)
+*These lists will be updated, bookmark this page and check back !* [💊](https://www.youtube.com/watch?v=Hq_jjNAXoZQ)
 
-*These lists will be updated, so make sure to bookmark this page and check back !* [💊](https://www.youtube.com/watch?v=Hq_jjNAXoZQ)
+<img src="img/rabbithole-help.svg" alt="rabbithole.help" class="inline"/>
 
 ----
 
@@ -28,3 +28,6 @@ Any information you find via this guide is not an endorsment perse. Come to your
 - [Cafe Weltschmerz](https://www.youtube.com/channel/UClK9f1anqhuSaqDN5YE-wfw)
 - [Potkaars podcast](https://www.youtube.com/channel/UCh9dkmMSTldAfVPxgT5THfg)
 - [burgerfront](https://www.youtube.com/channel/UCag8gVe_cFh0DU3hDlZCldw)
+
+----
+jump in and take this guide with you.
