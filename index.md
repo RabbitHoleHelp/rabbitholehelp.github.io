@@ -11,11 +11,11 @@ Any information you find via this guide is not an endorsment perse. Come to your
 ### Websites
 
 🇳🇱
-- [viruswaarheid](https://viruswaarheid.nl/)
-- [wakker2020](http://wakker2020.nl/)
-- [burgerfront](https://www.burgerfront.nl/)
-- [commonsensetv](https://commonsensetv.nl/)
-- [barstmaar](https://www.barstmaar.eu/)
+- [Barstmaar](https://www.barstmaar.eu/)
+- [Burgerfront](https://www.burgerfront.nl/)
+- [Commonsensetv](https://commonsensetv.nl/)
+- [Viruswaarheid](https://viruswaarheid.nl/)
+- [Wakker2020](http://wakker2020.nl/)
 
 ----
 
@@ -23,11 +23,11 @@ Any information you find via this guide is not an endorsment perse. Come to your
 
 🇳🇱
 - [Blue Tiger Studio](https://www.youtube.com/channel/UCuwWXfh9Dk5OD6sdzSOcYiQ)
+- [Burgerfront](https://www.youtube.com/channel/UCag8gVe_cFh0DU3hDlZCldw)
+- [Cafe Weltschmerz](https://www.youtube.com/channel/UClK9f1anqhuSaqDN5YE-wfw)
 - [CommonSenseTV](https://www.youtube.com/channel/UCl2_dKgwJ42gomtEbFsdODw)
 - [Lange Frans](https://www.youtube.com/user/LangeFransTV)
-- [Cafe Weltschmerz](https://www.youtube.com/channel/UClK9f1anqhuSaqDN5YE-wfw)
 - [Potkaars podcast](https://www.youtube.com/channel/UCh9dkmMSTldAfVPxgT5THfg)
-- [burgerfront](https://www.youtube.com/channel/UCag8gVe_cFh0DU3hDlZCldw)
 
 ----
 jump in and take this guide with you.
