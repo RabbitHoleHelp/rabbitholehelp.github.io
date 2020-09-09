@@ -2,9 +2,12 @@
 
 Any information you find via this guide is not an endorsment perse. Come to your own conclusions and [question everything !](https://liberalarts.online/trivium-and-quadrivium/)
 
-*These lists will be updated, bookmark this page and check back !* [💊](https://www.youtube.com/watch?v=Hq_jjNAXoZQ)
+*These lists will be updated, bookmark this page and check back !* 
 
 <img src="img/rabbithole-help.svg" alt="rabbithole.help" class="inline"/>
+
+- [Blue 💊](https://www.youtube.com/watch?v=aau8qa3xgFs)
+- [Red 💊](https://www.youtube.com/watch?v=Hq_jjNAXoZQ)
 
 ----
 
