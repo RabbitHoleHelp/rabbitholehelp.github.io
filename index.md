@@ -30,11 +30,8 @@ Any information you find via this guide is not an endorsment perse. Come to your
 - [Potkaars podcast](https://www.youtube.com/channel/UCh9dkmMSTldAfVPxgT5THfg)
 
 ----
-visits: ![Hits](https://hitcounter.pythonanywhere.com/count/tag.svg?url=https%3A%2F%2Frabbithole.help)
-
-jump in and take this guide with you.
-
 
 - [Blue 💊](https://www.youtube.com/watch?v=aau8qa3xgFs)
 - [Red 💊](https://www.youtube.com/watch?v=Hq_jjNAXoZQ)
 
+![Hits](https://hitcounter.pythonanywhere.com/count/tag.svg?url=https%3A%2F%2Frabbithole.help)
