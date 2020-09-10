@@ -7,10 +7,10 @@ Any information you find via this guide is not an endorsment perse. Come to your
 *These lists will be updated, bookmark this page and check back !* 
 
 ----
+🇳🇱
 
 ### Websites
 
-🇳🇱
 - [Barstmaar](https://www.barstmaar.eu/)
 - [Burgerfront](https://www.burgerfront.nl/)
 - [Commonsensetv](https://commonsensetv.nl/)
@@ -21,13 +21,19 @@ Any information you find via this guide is not an endorsment perse. Come to your
 
 ### Youtube channels
 
-🇳🇱
 - [Blue Tiger Studio](https://www.youtube.com/channel/UCuwWXfh9Dk5OD6sdzSOcYiQ)
 - [Burgerfront](https://www.youtube.com/channel/UCag8gVe_cFh0DU3hDlZCldw)
 - [Cafe Weltschmerz](https://www.youtube.com/channel/UClK9f1anqhuSaqDN5YE-wfw)
 - [CommonSenseTV](https://www.youtube.com/channel/UCl2_dKgwJ42gomtEbFsdODw)
 - [Lange Frans](https://www.youtube.com/user/LangeFransTV)
 - [Potkaars podcast](https://www.youtube.com/channel/UCh9dkmMSTldAfVPxgT5THfg)
+
+----
+
+### Downloads
+
+- [DOKTERSVERKLARING-inzake-het-dragen-van-mondkapjes](/downloads/DOKTERSVERKLARING-inzake-het-dragen-van-mondkapjes.pdf)
+- [VERKLARING_VAN_STAATSRECHTGELEERDEN_INZAKE_HET_DRAGEN_VAN_MONDKAPJES](/downloads/VERKLARING_VAN_STAATSRECHTGELEERDEN_INZAKE_HET_DRAGEN_VAN_MONDKAPJES.pdf)
 
 ----
 
