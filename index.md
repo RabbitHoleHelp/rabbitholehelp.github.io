@@ -32,9 +32,9 @@ Any information you find via this guide is not an endorsment perse. Come to your
 
 ### Downloads
 
-- [DOKTERSVERKLARING-inzake-het-dragen-van-mondkapjes](/downloads/DOKTERSVERKLARING-inzake-het-dragen-van-mondkapjes.pdf)
-- [VERKLARING_VAN_STAATSRECHTGELEERDEN_INZAKE_HET_DRAGEN_VAN_MONDKAPJES](/downloads/VERKLARING_VAN_STAATSRECHTGELEERDEN_INZAKE_HET_DRAGEN_VAN_MONDKAPJES.pdf)
-
+- [DOKTERSVERKLARING inzake het dragen van mondkapjes](/downloads/DOKTERSVERKLARING-inzake-het-dragen-van-mondkapjes.pdf)
+- [VERKLARING VAN STAATSRECHTGELEERDEN INZAKE HET DRAGEN VAN MONDKAPJES](/downloads/VERKLARING_VAN_STAATSRECHTGELEERDEN_INZAKE_HET_DRAGEN_VAN_MONDKAPJES.pdf)
+- [Legaal vaccin weigeren](/downloads/Legaal_vaccin_weigeren.pdf)
 ----
 
 - [Blue 💊](https://www.youtube.com/watch?v=aau8qa3xgFs)
