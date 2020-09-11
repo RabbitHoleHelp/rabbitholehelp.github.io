@@ -2,7 +2,7 @@
 
 ## a guide to question everything...
 
-Any information you find via this guide is not an endorsment perse. Come to your own conclusions and [question everything !](https://liberalarts.online/trivium-and-quadrivium/)
+Any information you find via this guide is not an endorsment per se. Draw your own conclusions and [question everything !](https://liberalarts.online/trivium-and-quadrivium/)
 
 *These lists will be updated, bookmark this page and check back !* 
 
