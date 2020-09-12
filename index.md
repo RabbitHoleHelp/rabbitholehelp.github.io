@@ -1,3 +1,9 @@
+---
+layout: page
+title: "Rabbithole.help"
+permalink: http://rabbithole.help
+---
+
 <img src="img/rabbithole-help.svg" alt="rabbithole.help" class="inline" width="100%"/>
 
 ## a guide to question everything...
