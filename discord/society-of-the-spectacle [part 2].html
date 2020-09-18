@@ -1,0 +1,2393 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>rabbithole.help - &#129504;-society-of-the-spectacle</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+
+    <style>
+        /* General */
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-300.woff);
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-400.woff);
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-500.woff);
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-600.woff);
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-700.woff);
+    font-weight: 700;
+}
+
+body {
+    font-family: "Whitney", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 17px;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+img {
+    object-fit: contain;
+}
+
+.markdown {
+    max-width: 100%;
+    white-space: pre-wrap;
+    line-height: 1.3;
+    overflow-wrap: break-word;
+}
+
+.spoiler {
+    width: fit-content;
+}
+
+.spoiler--hidden {
+    cursor: pointer;
+}
+
+.spoiler-text {
+    border-radius: 3px;
+}
+
+.spoiler--hidden .spoiler-text {
+    color: rgba(0, 0, 0, 0);
+}
+
+.spoiler--hidden .spoiler-text::selection {
+    color: rgba(0, 0, 0, 0);
+}
+
+.spoiler-image {
+    position: relative;
+    overflow: hidden;
+    border-radius: 3px;
+}
+
+.spoiler--hidden .spoiler-image {
+    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.spoiler--hidden .spoiler-image img {
+    filter: blur(44px);
+}
+
+.spoiler--hidden .spoiler-image:after {
+    content: "SPOILER";
+    color: #dcddde;
+    background-color: rgba(0, 0, 0, 0.6);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: 600;
+    padding: 0.5em 0.7em;
+    border-radius: 20px;
+    letter-spacing: 0.05em;
+    font-size: 0.9em;
+}
+
+.spoiler--hidden:hover .spoiler-image:after {
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.quote {
+    margin: 0.1em 0;
+    padding-left: 0.6em;
+    border-left: 4px solid;
+    border-radius: 3px;
+}
+
+.pre {
+    font-family: "Consolas", "Courier New", Courier, monospace;
+}
+
+.pre--multiline {
+    margin-top: 0.25em;
+    padding: 0.5em;
+    border: 2px solid;
+    border-radius: 5px;
+}
+
+.pre--inline {
+    padding: 2px;
+    border-radius: 3px;
+    font-size: 0.85em;
+}
+
+.mention {
+    border-radius: 3px;
+    padding: 0 2px;
+    color: #7289da;
+    background: rgba(114, 137, 218, .1);
+    font-weight: 500;
+}
+
+.emoji {
+    width: 1.25em;
+    height: 1.25em;
+    margin: 0 0.06em;
+    vertical-align: -0.4em;
+}
+
+.emoji--small {
+    width: 1em;
+    height: 1em;
+}
+
+.emoji--large {
+    width: 2.8em;
+    height: 2.8em;
+}
+
+/* Preamble */
+
+.preamble {
+    display: grid;
+    margin: 0 0.3em 0.6em 0.3em;
+    max-width: 100%;
+    grid-template-columns: auto 1fr;
+}
+
+.preamble__guild-icon-container {
+    grid-column: 1;
+}
+
+.preamble__guild-icon {
+    max-width: 88px;
+    max-height: 88px;
+}
+
+.preamble__entries-container {
+    grid-column: 2;
+    margin-left: 0.6em;
+}
+
+.preamble__entry {
+    font-size: 1.4em;
+}
+
+.preamble__entry--small {
+    font-size: 1em;
+}
+
+/* Chatlog */
+
+.chatlog {
+    max-width: 100%;
+}
+
+.chatlog__message-group {
+    display: grid;
+    margin: 0 0.6em;
+    padding: 0.9em 0;
+    border-top: 1px solid;
+    grid-template-columns: auto 1fr;
+}
+
+.chatlog__author-avatar-container {
+    grid-column: 1;
+    width: 40px;
+    height: 40px;
+}
+
+.chatlog__author-avatar {
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+}
+
+.chatlog__messages {
+    grid-column: 2;
+    margin-left: 1.2em;
+    min-width: 50%;
+}
+
+.chatlog__author-name {
+    font-weight: 500;
+}
+
+.chatlog__timestamp {
+    margin-left: 0.3em;
+    font-size: 0.75em;
+}
+
+.chatlog__message {
+    padding: 0.1em 0.3em;
+    margin: 0 -0.3em;
+    background-color: transparent;
+    transition: background-color 1s ease;
+}
+
+.chatlog__content {
+    font-size: 0.95em;
+    word-wrap: break-word;
+}
+
+.chatlog__edited-timestamp {
+    margin-left: 0.15em;
+    font-size: 0.8em;
+}
+
+.chatlog__attachment {
+    margin-top: 0.3em;
+}
+
+.chatlog__attachment-thumbnail {
+    vertical-align: top;
+    max-width: 45vw;
+    max-height: 500px;
+    border-radius: 3px;
+}
+
+.chatlog__embed {
+    display: flex;
+    margin-top: 0.3em;
+    max-width: 520px;
+}
+
+.chatlog__embed-color-pill {
+    flex-shrink: 0;
+    width: 0.25em;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
+.chatlog__embed-content-container {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5em 0.6em;
+    border: 1px solid;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+.chatlog__embed-content {
+    display: flex;
+    width: 100%;
+}
+
+.chatlog__embed-text {
+    flex: 1;
+}
+
+.chatlog__embed-author {
+    display: flex;
+    margin-bottom: 0.3em;
+    align-items: center;
+}
+
+.chatlog__embed-author-icon {
+    margin-right: 0.5em;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+.chatlog__embed-author-name {
+    font-size: 0.875em;
+    font-weight: 600;
+}
+
+.chatlog__embed-title {
+    margin-bottom: 0.2em;
+    font-size: 0.875em;
+    font-weight: 600;
+}
+
+.chatlog__embed-description {
+    font-weight: 500;
+    font-size: 0.85em;
+}
+
+.chatlog__embed-fields {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.chatlog__embed-field {
+    flex: 0;
+    min-width: 100%;
+    max-width: 506px;
+    padding-top: 0.6em;
+    font-size: 0.875em;
+}
+
+.chatlog__embed-field--inline {
+    flex: 1;
+    flex-basis: auto;
+    min-width: 150px;
+}
+
+.chatlog__embed-field-name {
+    margin-bottom: 0.2em;
+    font-weight: 600;
+}
+
+.chatlog__embed-field-value {
+    font-weight: 500;
+}
+
+.chatlog__embed-thumbnail {
+    flex: 0;
+    margin-left: 1.2em;
+    max-width: 80px;
+    max-height: 80px;
+    border-radius: 3px;
+}
+
+.chatlog__embed-image-container {
+    margin-top: 0.6em;
+}
+
+.chatlog__embed-image {
+    max-width: 500px;
+    max-height: 400px;
+    border-radius: 3px;
+}
+
+.chatlog__embed-footer {
+    margin-top: 0.6em;
+}
+
+.chatlog__embed-footer-icon {
+    margin-right: 0.2em;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+
+.chatlog__embed-footer-text {
+    font-size: 0.75em;
+    font-weight: 500;
+}
+
+.chatlog__reactions {
+    display: flex;
+}
+
+.chatlog__reaction {
+    display: flex;
+    align-items: center;
+    margin: 0.35em 0.1em 0.1em 0.1em;
+    padding: 0.2em 0.35em;
+    border-radius: 3px;
+}
+
+.chatlog__reaction-count {
+    min-width: 9px;
+    margin-left: 0.35em;
+    font-size: 0.875em;
+}
+
+.chatlog__bot-tag {
+    position: relative;
+    top: -.2em;
+    margin-left: 0.3em;
+    padding: 0.05em 0.3em;
+    border-radius: 3px;
+    vertical-align: middle;
+    line-height: 1.3;
+    background: #7289da;
+    color: #ffffff;
+    font-size: 0.625em;
+    font-weight: 500;
+}
+
+/* Postamble */
+
+.postamble {
+    margin: 1.4em 0.3em 0.6em 0.3em;
+    padding: 1em;
+    border-top: 1px solid;
+}
+    </style>
+    <style>
+        /* General */
+
+body {
+    background-color: #36393e;
+    color: #dcddde;
+}
+
+a {
+    color: #0096cf;
+}
+
+.spoiler-text {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.spoiler--hidden .spoiler-text {
+    background-color: #202225;
+}
+
+.spoiler--hidden:hover .spoiler-text {
+    background-color: rgba(32, 34, 37, 0.8);
+}
+
+.quote {
+    border-color: #4f545c;
+}
+
+.pre {
+    background-color: #2f3136 !important;
+}
+
+.pre--multiline {
+    border-color: #282b30 !important;
+    color: #b9bbbe !important;
+}
+
+/* === Preamble === */
+
+.preamble__entry {
+    color: #ffffff;
+}
+
+/* Chatlog */
+
+.chatlog__message-group {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.chatlog__author-name {
+    color: #ffffff;
+}
+
+.chatlog__timestamp {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.chatlog__message--highlighted {
+    background-color: rgba(114, 137, 218, 0.2) !important;
+}
+
+.chatlog__message--pinned {
+    background-color: rgba(249, 168, 37, 0.05);
+}
+
+.chatlog__edited-timestamp {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.chatlog__embed-color-pill--default {
+    background-color: rgba(79, 84, 92, 1);
+}
+
+.chatlog__embed-content-container {
+    background-color: rgba(46, 48, 54, 0.3);
+    border-color: rgba(46, 48, 54, 0.6);
+}
+
+.chatlog__embed-author-name {
+    color: #ffffff;
+}
+
+.chatlog__embed-author-name-link {
+    color: #ffffff;
+}
+
+.chatlog__embed-title {
+    color: #ffffff;
+}
+
+.chatlog__embed-description {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__embed-field-name {
+    color: #ffffff;
+}
+
+.chatlog__embed-field-value {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__embed-footer {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__reaction {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.chatlog__reaction-count {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+/* Postamble */
+
+.postamble {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.postamble__entry {
+    color: #ffffff;
+}
+    </style>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/solarized-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.pre--multiline').forEach(block => hljs.highlightBlock(block));
+        });
+    </script>
+
+    <script>
+        function scrollToMessage(event, id) {
+            var element = document.getElementById('message-' + id);
+
+            if (element) {
+                event.preventDefault();
+
+                element.classList.add('chatlog__message--highlighted');
+
+                window.scrollTo({
+                    top: element.getBoundingClientRect().top - document.body.getBoundingClientRect().top - (window.innerHeight / 2),
+                    behavior: 'smooth'
+                });
+
+                window.setTimeout(function() {
+                    element.classList.remove('chatlog__message--highlighted');
+                }, 2000);
+            }
+        }
+
+        function showSpoiler(event, element) {
+            if (element && element.classList.contains('spoiler--hidden')) {
+                event.preventDefault();
+                element.classList.remove('spoiler--hidden');
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="preamble">
+    <div class="preamble__guild-icon-container">
+        <img class="preamble__guild-icon" src="society-of-the-spectacle.html_Files/784161a8e70ff916c0f69cb3448e3baa.png" alt="Guild icon">
+    </div>
+    <div class="preamble__entries-container">
+        <div class="preamble__entry">rabbithole.help</div>
+        <div class="preamble__entry">research sharing / &#129504;-society-of-the-spectacle</div>
+
+            <div class="preamble__entry preamble__entry--small">broad topic channel.
+psychology, philosophy, conspiracy (theories), censoring, automated workers and general dystopia...</div>
+
+    </div>
+</div>
+
+<div class="chatlog">
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="society-of-the-spectacle.html_Files/7ee4d6a3820e3b8e6bdd70a8ffc58e84.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curb#6617" data-user-id="754263608304861328" style="color: rgb(245,204,51)">Curb</span>
+
+
+        <span class="chatlog__timestamp">15-Sep-20 06:23 PM</span>
+
+            <div class="chatlog__message " data-message-id="755463785736568953" id="message-755463785736568953">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://twitter.com/i/status/1305848897680674821">https://twitter.com/i/status/1305848897680674821</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(29,161,242,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+                                                <img class="chatlog__embed-author-icon" src="society-of-the-spectacle.html_Files/XsYSKJLO_bigger.jpg" alt="Author icon">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/GeLeHesjesNL">Gele Hesjes NL (@GeLeHesjesNL)</a>
+                                                </span>
+                                        </div>
+
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">BREAKING: We ontvangen beelden uit #NewJersey wat lijkt op een #ufo <a href="https://t.co/eUbMfZxOY7">https://t.co/eUbMfZxOY7</a></div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="society-of-the-spectacle.html_Files/aVL6hVlW5HpaPP7i.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="society-of-the-spectacle.html_Files/aVL6hVlW5HpaPP7i.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                                <div class="chatlog__embed-footer">
+                                        <img class="chatlog__embed-footer-icon" src="society-of-the-spectacle.html_Files/apple-touch-icon-192x192.png" alt="Footer icon">
+
+                                        <span class="chatlog__embed-footer-text">
+Twitter
+
+                                        </span>
+                                </div>
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="755464045829816351" id="message-755464045829816351">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://twitter.com/Jordan_Sather_/status/1305824017480257538">https://twitter.com/Jordan_Sather_/status/1305824017480257538</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(29,161,242,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+                                                <img class="chatlog__embed-author-icon" src="society-of-the-spectacle.html_Files/B6BLQdva_bigger.jpg" alt="Author icon">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/Jordan_Sather_">Jordan Sather (@Jordan_Sather_)</a>
+                                                </span>
+                                        </div>
+
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Not <em>all</em> UFO videos are fake, but many are misconstrued or CGI. Just have to analyze them. Turns out that this one is a mini LED blimp, probably one of these <a href="https://t.co/R2B847I3g4">https://t.co/R2B847I3g4</a>
+
+I am dying for some real UFO sightings though. <a href="https://t.co/yu5D8FQGuD">https://t.co/yu5D8FQGuD</a></div>
+                                        </div>
+
+                                        <div class="chatlog__embed-fields">
+                                                <div class="chatlog__embed-field chatlog__embed-field--inline">
+                                                        <div class="chatlog__embed-field-name">
+                                                            <div class="markdown">Likes</div>
+                                                        </div>
+
+                                                        <div class="chatlog__embed-field-value">
+                                                            <div class="markdown">165</div>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                </div>
+
+                            </div>
+
+
+                                <div class="chatlog__embed-footer">
+                                        <img class="chatlog__embed-footer-icon" src="society-of-the-spectacle.html_Files/apple-touch-icon-192x192.png" alt="Footer icon">
+
+                                        <span class="chatlog__embed-footer-text">
+Twitter
+
+                                        </span>
+                                </div>
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="society-of-the-spectacle.html_Files/7ee4d6a3820e3b8e6bdd70a8ffc58e84.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curb#6617" data-user-id="754263608304861328" style="color: rgb(245,204,51)">Curb</span>
+
+
+        <span class="chatlog__timestamp">15-Sep-20 06:44 PM</span>
+
+            <div class="chatlog__message " data-message-id="755469203146014830" id="message-755469203146014830">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://youtu.be/WgEAU9OxeaA">https://youtu.be/WgEAU9OxeaA</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCkJ1N-7g9Q6n7KnriGit-Ig">RonPaulLibertyReport</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=WgEAU9OxeaA">
+                                                    <div class="markdown">&#39;Unconstitutional!&#39; Federal Court Judge Shreds Pennsylvania Covid S...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">A federal judge in Pennsylvania yesterday blew the top off of the massive authoritarian over-reach by governors throughout the country, ruling that Pennsylvania&#39;s governor and state health official violated the US Constitution in exercising what it claimed were &quot;emergency powe...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="society-of-the-spectacle.html_Files/sddefault%20%283%29.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="society-of-the-spectacle.html_Files/sddefault%20%283%29.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="society-of-the-spectacle.html_Files/5afc362259431e95788bd0360ac304d0.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="MegaBertz#8350" data-user-id="180116117790916608" style="">MegaBertz</span>
+
+
+        <span class="chatlog__timestamp">15-Sep-20 07:01 PM</span>
+
+            <div class="chatlog__message " data-message-id="755473293187743846" id="message-755473293187743846">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.youtube.com/watch?v=YpAO8ON_ELU">https://www.youtube.com/watch?v=YpAO8ON_ELU</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCDrhvzZkkGCz7gY0zYoMwmg">Mega Bertz</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=YpAO8ON_ELU">
+                                                    <div class="markdown">Orange orb filmed flying over Moscow</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">&quot;The wind blows from there, from the West.
+Why is it not approaching us?
+Why did it stop and hang there?
+This is either ball lightning or a UFO.
+Or maybe just a balloon that flies against the wind — but this can not be.
+I’m filming from Mitino, on the horizon — Krasnogorsk.
+A ...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="society-of-the-spectacle.html_Files/maxresdefault%20%285%29.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="society-of-the-spectacle.html_Files/maxresdefault%20%285%29.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="755473399366680596" id="message-755473399366680596">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.youtube.com/watch?v=ybm8EmRYjbc">https://www.youtube.com/watch?v=ybm8EmRYjbc</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCDrhvzZkkGCz7gY0zYoMwmg">Mega Bertz</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=ybm8EmRYjbc">
+                                                    <div class="markdown">UFO Cape of Good Hope SA</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Flying saucer as real as it gets. I know there is a better quality version of this video somewhere out there on the internet, I just can&#39;t find it anymore.
+
+This isn&#39;t truly a UFO anymore. It&#39;s an anti-gravity craft.</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="society-of-the-spectacle.html_Files/hqdefault%20%282%29.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="society-of-the-spectacle.html_Files/hqdefault%20%282%29.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="755473483580047601" id="message-755473483580047601">
+                <div class="chatlog__content">
+                    <div class="markdown"> </div>
+                </div>
+
+                    <div class="chatlog__attachment">
+                            <a href="society-of-the-spectacle.html_Files/UFO_-_Crash.mp4">
+Attachment: UFO_-_Crash.mp4 (761,5 KB)                            </a>
+                    </div>
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="755473607609548911" id="message-755473607609548911">
+                <div class="chatlog__content">
+                    <div class="markdown"> </div>
+                </div>
+
+                    <div class="chatlog__attachment">
+                            <a href="society-of-the-spectacle.html_Files/TR-3B.mp4">
+Attachment: TR-3B.mp4 (2,84 MB)                            </a>
+                    </div>
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="755473896458813662" id="message-755473896458813662">
+                <div class="chatlog__content">
+                    <div class="markdown">if people think they see drones, or santa claus and his reindeers, or a weather ballon or it&#39;s CGI, I can&#39;t do much for them. <span class="chatlog__edited-timestamp" title="15-Sep-20 07:03 PM">(edited)</span></div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="755474828101812364" id="message-755474828101812364">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.youtube.com/watch?v=TvPpAfuMY7Q">https://www.youtube.com/watch?v=TvPpAfuMY7Q</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCDrhvzZkkGCz7gY0zYoMwmg">Mega Bertz</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=TvPpAfuMY7Q">
+                                                    <div class="markdown">Eric Chien in America&#39;s got Talent</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Weird Science and Freaking Magic. When is this technology and know-how will be revealed and stop being called magic?
+
+Eric Chien in America&#39;s got Talent.</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="society-of-the-spectacle.html_Files/maxresdefault%20%286%29.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="society-of-the-spectacle.html_Files/maxresdefault%20%286%29.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="755474934498721933" id="message-755474934498721933">
+                <div class="chatlog__content">
+                    <div class="markdown">nice &quot;magic&quot; tricks. too bad how it&#39;s done is top secret. you hide it in plain sight.... </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="755475437710213280" id="message-755475437710213280">
+                <div class="chatlog__content">
+                    <div class="markdown">ET tech is really out of this world. and would solve all world&#39;s current problems. </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="society-of-the-spectacle.html_Files/c97b65de00ec0db14bc4a68ee71eff74.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Luciferium#7469" data-user-id="336297815334584320" style="color: rgb(46,204,113)">Luciferium</span>
+
+
+        <span class="chatlog__timestamp">15-Sep-20 07:36 PM</span>
+
+            <div class="chatlog__message " data-message-id="755482263713611867" id="message-755482263713611867">
+                <div class="chatlog__content">
+                    <div class="markdown">^ that is very very good sleight of hand. I wouldn&#39;t say it&#39;s ET though. the magician </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="society-of-the-spectacle.html_Files/343bc8cb95782f4434f05afaf3c599f2.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Raxcus#8681" data-user-id="530303097776635904" style="color: rgb(46,204,113)">Raxcus</span>
+
+
+        <span class="chatlog__timestamp">15-Sep-20 07:42 PM</span>
+
+            <div class="chatlog__message " data-message-id="755483617546862633" id="message-755483617546862633">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.youtube.com/watch?v=H6vZVJDHPlA">https://www.youtube.com/watch?v=H6vZVJDHPlA</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCd-1pQG-2H5IJl4Jkmy3bXw">FactoFusion</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=H6vZVJDHPlA">
+                                                    <div class="markdown">MOST FAMOUS America&#39;s Got Talent Magic Tricks Finally Revealed | Er...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">The greatest magicians are the ones who are master in their close-up magic skills! But sometimes, creating the much-anticipated hype around their act, also makes a great magician.
+So, be it Eric Chien’s amazing card magic, or the fearsome Aaron Crow’s dangerous knife act, in t...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="society-of-the-spectacle.html_Files/maxresdefault%20%287%29.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="society-of-the-spectacle.html_Files/maxresdefault%20%287%29.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="society-of-the-spectacle.html_Files/5afc362259431e95788bd0360ac304d0.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="MegaBertz#8350" data-user-id="180116117790916608" style="">MegaBertz</span>
+
+
+        <span class="chatlog__timestamp">15-Sep-20 07:43 PM</span>
+
+            <div class="chatlog__message " data-message-id="755483907775922176" id="message-755483907775922176">
+                <div class="chatlog__content">
+                    <div class="markdown">that&#39;s the debunk psyops </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="755483943331168426" id="message-755483943331168426">
+                <div class="chatlog__content">
+                    <div class="markdown"><img class="emoji emoji--large" alt="😂" title="😂" src="https://twemoji.maxcdn.com/2/72x72/1f602.png"> </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="society-of-the-spectacle.html_Files/343bc8cb95782f4434f05afaf3c599f2.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Raxcus#8681" data-user-id="530303097776635904" style="color: rgb(46,204,113)">Raxcus</span>
+
+
+        <span class="chatlog__timestamp">15-Sep-20 07:43 PM</span>
+
+            <div class="chatlog__message " data-message-id="755483948163006504" id="message-755483948163006504">
+                <div class="chatlog__content">
+                    <div class="markdown">Watch the video bro </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="society-of-the-spectacle.html_Files/5afc362259431e95788bd0360ac304d0.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="MegaBertz#8350" data-user-id="180116117790916608" style="">MegaBertz</span>
+
+
+        <span class="chatlog__timestamp">15-Sep-20 07:43 PM</span>
+
+            <div class="chatlog__message " data-message-id="755483955951698061" id="message-755483955951698061">
+                <div class="chatlog__content">
+                    <div class="markdown">I&#39;ve seen it </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="755484997518884895" id="message-755484997518884895">
+                <div class="chatlog__content">
+                    <div class="markdown">anyway. like I said previously, I&#39;m not here to convince anyone. If you don&#39;t believe or don&#39;t want to, which is perfectly fine and understandable, I won&#39;t sleep less well tonight over it. maybe deep in the subconscious the mind of who&#39;s reading has opened a little further, and that&#39;s alraedy good. One point debunkers do often is, they take all the evidence or testemony of witnesses, and then find one thing that can be rationally debunked and stick to it, with the argument that if that thing is false, everything else is also. <span class="chatlog__edited-timestamp" title="16-Sep-20 08:33 AM">(edited)</span></div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="755485117480173628" id="message-755485117480173628">
+                <div class="chatlog__content">
+                    <div class="markdown">very common pattern, it&#39;s just the truth does not work like this. </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="755485243657420812" id="message-755485243657420812">
+                <div class="chatlog__content">
+                    <div class="markdown">and maybe take it to general chat? </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="755485390563049472" id="message-755485390563049472">
+                <div class="chatlog__content">
+                    <div class="markdown">i don&#39;t feel like having this convo, tho. </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="society-of-the-spectacle.html_Files/343bc8cb95782f4434f05afaf3c599f2.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Raxcus#8681" data-user-id="530303097776635904" style="color: rgb(46,204,113)">Raxcus</span>
+
+
+        <span class="chatlog__timestamp">15-Sep-20 07:50 PM</span>
+
+            <div class="chatlog__message " data-message-id="755485590375497809" id="message-755485590375497809">
+                <div class="chatlog__content">
+                    <div class="markdown">If you don&#39;t feel like it then may god bless you brother <img class="emoji " alt="😁" title="😁" src="https://twemoji.maxcdn.com/2/72x72/1f601.png"> </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="society-of-the-spectacle.html_Files/5afc362259431e95788bd0360ac304d0.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="MegaBertz#8350" data-user-id="180116117790916608" style="">MegaBertz</span>
+
+
+        <span class="chatlog__timestamp">15-Sep-20 07:50 PM</span>
+
+            <div class="chatlog__message " data-message-id="755485625498468372" id="message-755485625498468372">
+                <div class="chatlog__content">
+                    <div class="markdown">kk ty you too ! </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="755485930797793411" id="message-755485930797793411">
+                <div class="chatlog__content">
+                    <div class="markdown">do your research seriously first, then I&#39;m willing to discuss. </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="society-of-the-spectacle.html_Files/0cd2208891507ed08b4295b5e114d2c8.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="OurFreeSociety#0296" data-user-id="403042217372942338" style="color: rgb(46,204,113)">OurFreeSociety</span>
+
+
+        <span class="chatlog__timestamp">15-Sep-20 08:51 PM</span>
+
+            <div class="chatlog__message " data-message-id="755500953528041653" id="message-755500953528041653">
+                <div class="chatlog__content">
+                    <div class="markdown"><div class="quote">i don&#39;t believe in the judiciary system to begin with for issues as big as this one. It all begins with the off-shores and tax evasion, everybody and I mean EVERYBODY knows it&#39;s being done at a very large scale. you can not be a big corporation without doing &quot;fiscal optimization&quot; as they call it. Laws are not made to change this, it is left in the grey-zone shaddy territory on purpose.
+</div><span class="mention" title="MegaBertz#8350">@MegaBertz</span> 
+
+I am starting to learn about NOLs as I just joined Lena&#39;s Patreon.
+
+I don&#39;t know if you are in the US, but she told me she needs someone from every state to file &amp; I told her I would help her.
+
+So I&#39;ll start asking around for people soon.
+
+In the meantime I have to do my own NOL &amp; there&#39;s a learning curve. </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="755500991402737807" id="message-755500991402737807">
+                <div class="chatlog__content">
+                    <div class="markdown">Notice of Liability </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="society-of-the-spectacle.html_Files/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon07#7428" data-user-id="217373669146492928" style="color: rgb(44,214,205)">mejon07</span>
+
+
+        <span class="chatlog__timestamp">16-Sep-20 05:31 AM</span>
+
+            <div class="chatlog__message " data-message-id="755631852093571192" id="message-755631852093571192">
+                <div class="chatlog__content">
+                    <div class="markdown">shitty mask propaganda <a href="https://www.youtube.com/watch?v=sr9nwgME_yw">https://www.youtube.com/watch?v=sr9nwgME_yw</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UChLtXXpo4Ge1ReTEboVvTDg">Global News</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=sr9nwgME_yw">
+                                                    <div class="markdown">Coronavirus: Actor Paul Rudd urges younger generations to wear mask...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Actor Paul Rudd produced a comedic public service announcement that was released on Monday to urge “Millennials” and other younger generations to wear a face mask as part of the effort to combat the COVID-19 pandemic, as the number of cases in the 20-39 age group continues to ...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="society-of-the-spectacle.html_Files/maxresdefault%20%288%29.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="society-of-the-spectacle.html_Files/maxresdefault%20%288%29.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="society-of-the-spectacle.html_Files/7ee4d6a3820e3b8e6bdd70a8ffc58e84.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curb#6617" data-user-id="754263608304861328" style="color: rgb(245,204,51)">Curb</span>
+
+
+        <span class="chatlog__timestamp">16-Sep-20 11:26 AM</span>
+
+            <div class="chatlog__message " data-message-id="755721322490757180" id="message-755721322490757180">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.zerohedge.com/political/eight-people-indonesia-caught-not-wearing-masks-punished-having-dig-graves-covid-victims">https://www.zerohedge.com/political/eight-people-indonesia-caught-not-wearing-masks-punished-having-dig-graves-covid-victims</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,255,255,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.zerohedge.com/political/eight-people-indonesia-caught-not-wearing-masks-punished-having-dig-graves-covid-victims">
+                                                    <div class="markdown">Eight People In Indonesia Caught Not Wearing Masks Punished By Havi...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Has Joe Biden adopted this as part of his official 2020 platform yet?</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="society-of-the-spectacle.html_Files/2020-09-15_7-27-50.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="society-of-the-spectacle.html_Files/2020-09-15_7-27-50.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="feelsbad" title="feelsbad" src="society-of-the-spectacle.html_Files/754797793025064990.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="society-of-the-spectacle.html_Files/7ee4d6a3820e3b8e6bdd70a8ffc58e84.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curb#6617" data-user-id="754263608304861328" style="color: rgb(245,204,51)">Curb</span>
+
+
+        <span class="chatlog__timestamp">16-Sep-20 01:17 PM</span>
+
+            <div class="chatlog__message " data-message-id="755749280001556520" id="message-755749280001556520">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.zerohedge.com/geopolitical/tens-thousands-received-china-mystery-seeds-mail-and-many-planted-them">https://www.zerohedge.com/geopolitical/tens-thousands-received-china-mystery-seeds-mail-and-many-planted-them</a> </div>
+                </div>
+
+                    <div class="chatlog__attachment">
+                            <a href="society-of-the-spectacle.html_Files/unknown.png">
+                                    <img class="chatlog__attachment-thumbnail" src="society-of-the-spectacle.html_Files/unknown.png" alt="Attachment">
+                            </a>
+                    </div>
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,255,255,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.zerohedge.com/geopolitical/tens-thousands-received-china-mystery-seeds-mail-and-many-planted-them">
+                                                    <div class="markdown">&quot;Tens Of Thousands&quot; Received China Mystery Seeds In The Mail, And M...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">&quot;...like a dumbass, I planted them, not knowing there was a problem.&quot;</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="society-of-the-spectacle.html_Files/2020-09-11_5-53-37.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="society-of-the-spectacle.html_Files/2020-09-11_5-53-37.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="755749507135701033" id="message-755749507135701033">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.zerohedge.com/technology/mask-enforcing-humanoid-robots-could-invade-office-spaces">https://www.zerohedge.com/technology/mask-enforcing-humanoid-robots-could-invade-office-spaces</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,255,255,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.zerohedge.com/technology/mask-enforcing-humanoid-robots-could-invade-office-spaces">
+                                                    <div class="markdown">Mask-Enforcing Humanoid Robots Set To Invade Office Spaces</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">&quot;Thank you for having put on your mask.&quot;</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="society-of-the-spectacle.html_Files/pepper.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="society-of-the-spectacle.html_Files/pepper.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="pepe_novote" title="pepe_novote" src="society-of-the-spectacle.html_Files/754466461346693272.png">
+                                <span class="chatlog__reaction-count">2</span>
+                            </div>
+                    </div>
+            </div>
+            <div class="chatlog__message " data-message-id="755749587410485308" id="message-755749587410485308">
+                <div class="chatlog__content">
+                    <div class="markdown">#covid #autonomous-workers </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="society-of-the-spectacle.html_Files/7ee4d6a3820e3b8e6bdd70a8ffc58e84.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curb#6617" data-user-id="754263608304861328" style="color: rgb(245,204,51)">Curb</span>
+
+
+        <span class="chatlog__timestamp">16-Sep-20 04:56 PM</span>
+
+            <div class="chatlog__message " data-message-id="755804410457620501" id="message-755804410457620501">
+                <div class="chatlog__content">
+                    <div class="markdown"> </div>
+                </div>
+
+                    <div class="chatlog__attachment">
+                            <a href="society-of-the-spectacle.html_Files/EiBaM_nXgAIMSUR.png">
+                                    <img class="chatlog__attachment-thumbnail" src="society-of-the-spectacle.html_Files/EiBaM_nXgAIMSUR.png" alt="Attachment">
+                            </a>
+                    </div>
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="society-of-the-spectacle.html_Files/2.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Lal#0817" data-user-id="721787996403400736" style="color: rgb(46,204,113)">Lal</span>
+
+
+        <span class="chatlog__timestamp">16-Sep-20 07:15 PM</span>
+
+            <div class="chatlog__message " data-message-id="755839349765046523" id="message-755839349765046523">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.gov.uk/government/consultations/distributing-vaccines-and-treatments-for-covid-19-and-flu">https://www.gov.uk/government/consultations/distributing-vaccines-and-treatments-for-covid-19-and-flu</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(11,12,12,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.gov.uk/government/consultations/distributing-vaccines-and-treatments-for-covid-19-and-flu">
+                                                    <div class="markdown">Distributing vaccines and treatments for COVID-19 and flu</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">We want your views on proposed changes to the Human Medicine Regulations to help with the safe and efficient distribution of a COVID-19 vaccine and expanded flu vaccine programme in the UK, along with treatments for COVID-19 and any other diseases that become pandemic.</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="society-of-the-spectacle.html_Files/opengraph-image-a1f7d89ffd0782738b1aeb0da37842d8bd.png">
+                                            <img class="chatlog__embed-thumbnail" src="society-of-the-spectacle.html_Files/opengraph-image-a1f7d89ffd0782738b1aeb0da37842d8bd.png" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="society-of-the-spectacle.html_Files/2.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Lal#0817" data-user-id="721787996403400736" style="color: rgb(46,204,113)">Lal</span>
+
+
+        <span class="chatlog__timestamp">16-Sep-20 07:38 PM</span>
+
+            <div class="chatlog__message " data-message-id="755845184495026337" id="message-755845184495026337">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.gov.uk/government/consultations/distributing-vaccines-and-treatments-for-covid-19-and-flu/consultation-document-changes-to-human-medicine-regulations-to-support-the-rollout-of-covid-19-vaccines">https://www.gov.uk/government/consultations/distributing-vaccines-and-treatments-for-covid-19-and-flu/consultation-document-changes-to-human-medicine-regulations-to-support-the-rollout-of-covid-19-vaccines</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(11,12,12,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.gov.uk/government/consultations/distributing-vaccines-and-treatments-for-covid-19-and-flu/consultation-document-changes-to-human-medicine-regulations-to-support-the-rollout-of-covid-19-vaccines">
+                                                    <div class="markdown">Consultation document: changes to Human Medicine Regulations to sup...</div>
+                                                </a>
+                                        </div>
+
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="society-of-the-spectacle.html_Files/opengraph-image-a1f7d89ffd0782738b1aeb0da37842d8bd.png">
+                                            <img class="chatlog__embed-thumbnail" src="society-of-the-spectacle.html_Files/opengraph-image-a1f7d89ffd0782738b1aeb0da37842d8bd.png" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="society-of-the-spectacle.html_Files/fa431ce0112d34610ea8da9601435722.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="syllamo#6568" data-user-id="550375048423276545" style="color: rgb(46,204,113)">syllamo</span>
+
+
+        <span class="chatlog__timestamp">16-Sep-20 07:41 PM</span>
+
+            <div class="chatlog__message " data-message-id="755845915058897105" id="message-755845915058897105">
+                <div class="chatlog__content">
+                    <div class="markdown">change the &#39;rules&#39; to do what we want - the &#39;democratic&#39; way <img class="emoji " alt="😛" title="😛" src="https://twemoji.maxcdn.com/2/72x72/1f61b.png"> </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="society-of-the-spectacle.html_Files/7ee4d6a3820e3b8e6bdd70a8ffc58e84.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curb#6617" data-user-id="754263608304861328" style="color: rgb(245,204,51)">Curb</span>
+
+
+        <span class="chatlog__timestamp">17-Sep-20 12:27 AM</span>
+
+            <div class="chatlog__message " data-message-id="755917758453252147" id="message-755917758453252147">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://youtu.be/7n3dtKtDD4Y">https://youtu.be/7n3dtKtDD4Y</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UC8dbqnbGCwMB7-dqZ-u7lZg">Cătălin Stoian</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=7n3dtKtDD4Y">
+                                                    <div class="markdown">PII: Ind&#248;ct&#248;rnati&#248;n [FULL]</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Guided by the meticulous work of Dr. David E. Martin, PII: Ind&#248;ct&#248;rnati&#248;n tracks a three decade-long money trail that leads directly to the key players behind the COVID 19 pandemic. PII connects the dots between all forms of media, the medical industry, politics and the financ...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="society-of-the-spectacle.html_Files/sddefault%20%284%29.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="society-of-the-spectacle.html_Files/sddefault%20%284%29.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="755917906583486596" id="message-755917906583486596">
+                <div class="chatlog__content">
+                    <div class="markdown">backup: <a href="https://www.bitchute.com/video/4u7rt61YeGox/">https://www.bitchute.com/video/4u7rt61YeGox/</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,255,255,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.bitchute.com/video/4u7rt61YeGox/">
+                                                    <div class="markdown">Official Account: Plandemic Documentary Series</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Plandemic 2 | INDOCTORNATION (Download Link in Description)</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="society-of-the-spectacle.html_Files/z7yVtwTz4QbVaCQv9ijruR3p_640x360.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="society-of-the-spectacle.html_Files/z7yVtwTz4QbVaCQv9ijruR3p_640x360.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="755918021398102046" id="message-755918021398102046">
+                <div class="chatlog__content">
+                    <div class="markdown">#covid </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="society-of-the-spectacle.html_Files/7ee4d6a3820e3b8e6bdd70a8ffc58e84.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curb#6617" data-user-id="754263608304861328" style="color: rgb(245,204,51)">Curb</span>
+
+
+        <span class="chatlog__timestamp">17-Sep-20 12:29 PM</span>
+
+            <div class="chatlog__message " data-message-id="756099389579198475" id="message-756099389579198475">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://youtu.be/9BLhsbE9Iys">https://youtu.be/9BLhsbE9Iys</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UC1Esh5OiaDMUt-iEHYCbQCg">Dr. Shiva Ayyadurai</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=9BLhsbE9Iys">
+                                                    <div class="markdown">Dr.SHIVA LIVE: Why #BigPharma NEEDS #ForcedVaccinations</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Dr.SHIVA LIVE: Why #BigPharma NEEDS #ForcedVaccinations
+
+Dr.SHIVA Ayyadurai, MIT PhD in Biological Engineering, the Inventor of Email, Scientist, Innovator, US Senate Candidate (MA) reviews the fundamental reason on WHY #BigPharma needs #ForcedVaccinations.
+
+WRITE IN &quot;Dr.SHIVA...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="society-of-the-spectacle.html_Files/maxresdefault%20%289%29.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="society-of-the-spectacle.html_Files/maxresdefault%20%289%29.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="society-of-the-spectacle.html_Files/7ee4d6a3820e3b8e6bdd70a8ffc58e84.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curb#6617" data-user-id="754263608304861328" style="color: rgb(245,204,51)">Curb</span>
+
+
+        <span class="chatlog__timestamp">17-Sep-20 12:38 PM</span>
+
+            <div class="chatlog__message " data-message-id="756101693808181258" id="message-756101693808181258">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://mobile.twitter.com/zerosum24/status/1306329820826136576">https://mobile.twitter.com/zerosum24/status/1306329820826136576</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(29,161,242,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+                                                <img class="chatlog__embed-author-icon" src="society-of-the-spectacle.html_Files/gdd_yAKg_bigger.jpg" alt="Author icon">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/zerosum24">CIA-Simulation Warlord &#127482;&#127480;&#128520;&#127482;&#127480; (@zerosum24)</a>
+                                                </span>
+                                        </div>
+
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">WTF!! Things got weird when Soros came up. <img class="emoji " alt="🤯" title="🤯" src="https://twemoji.maxcdn.com/2/72x72/1f92f.png"><img class="emoji " alt="🤯" title="🤯" src="https://twemoji.maxcdn.com/2/72x72/1f92f.png"><img class="emoji " alt="🤯" title="🤯" src="https://twemoji.maxcdn.com/2/72x72/1f92f.png"><a href="https://t.co/LlNTp23RIi">https://t.co/LlNTp23RIi</a></div>
+                                        </div>
+
+                                        <div class="chatlog__embed-fields">
+                                                <div class="chatlog__embed-field chatlog__embed-field--inline">
+                                                        <div class="chatlog__embed-field-name">
+                                                            <div class="markdown">Retweets</div>
+                                                        </div>
+
+                                                        <div class="chatlog__embed-field-value">
+                                                            <div class="markdown">2891</div>
+                                                        </div>
+                                                </div>
+                                                <div class="chatlog__embed-field chatlog__embed-field--inline">
+                                                        <div class="chatlog__embed-field-name">
+                                                            <div class="markdown">Likes</div>
+                                                        </div>
+
+                                                        <div class="chatlog__embed-field-value">
+                                                            <div class="markdown">6119</div>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="society-of-the-spectacle.html_Files/Rn1SEY-ylVP6wRBr.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="society-of-the-spectacle.html_Files/Rn1SEY-ylVP6wRBr.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                                <div class="chatlog__embed-footer">
+                                        <img class="chatlog__embed-footer-icon" src="society-of-the-spectacle.html_Files/apple-touch-icon-192x192.png" alt="Footer icon">
+
+                                        <span class="chatlog__embed-footer-text">
+Twitter
+
+                                        </span>
+                                </div>
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="peep00" title="peep00" src="society-of-the-spectacle.html_Files/754362803346866226.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="cringe" title="cringe" src="society-of-the-spectacle.html_Files/754353011047923824.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+            <div class="chatlog__message " data-message-id="756101765321195611" id="message-756101765321195611">
+                <div class="chatlog__content">
+                    <div class="markdown">#covid </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="society-of-the-spectacle.html_Files/7ee4d6a3820e3b8e6bdd70a8ffc58e84.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curb#6617" data-user-id="754263608304861328" style="color: rgb(245,204,51)">Curb</span>
+
+
+        <span class="chatlog__timestamp">17-Sep-20 12:50 PM</span>
+
+            <div class="chatlog__message " data-message-id="756104882867535912" id="message-756104882867535912">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://mobile.twitter.com/DeptofDefense/status/1306232167769411584?s=20">https://mobile.twitter.com/DeptofDefense/status/1306232167769411584?s=20</a> </div>
+                </div>
+
+                    <div class="chatlog__attachment">
+                            <a href="society-of-the-spectacle.html_Files/1_5121094286766506177.mp4">
+Attachment: 1_5121094286766506177.mp4 (617,08 KB)                            </a>
+                    </div>
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(29,161,242,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+                                                <img class="chatlog__embed-author-icon" src="society-of-the-spectacle.html_Files/CGtMu6Ji_bigger.jpg" alt="Author icon">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/DeptofDefense">Department of Defense &#127482;&#127480; (@DeptofDefense)</a>
+                                                </span>
+                                        </div>
+
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">LIVE: @EsperDoD speaks at the @AirForceAssoc #vASC2020 <a href="https://t.co/tTzth3X7oE">https://t.co/tTzth3X7oE</a></div>
+                                        </div>
+
+                                        <div class="chatlog__embed-fields">
+                                                <div class="chatlog__embed-field chatlog__embed-field--inline">
+                                                        <div class="chatlog__embed-field-name">
+                                                            <div class="markdown">Retweets</div>
+                                                        </div>
+
+                                                        <div class="chatlog__embed-field-value">
+                                                            <div class="markdown">3618</div>
+                                                        </div>
+                                                </div>
+                                                <div class="chatlog__embed-field chatlog__embed-field--inline">
+                                                        <div class="chatlog__embed-field-name">
+                                                            <div class="markdown">Likes</div>
+                                                        </div>
+
+                                                        <div class="chatlog__embed-field-value">
+                                                            <div class="markdown">5407</div>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                </div>
+
+                            </div>
+
+
+                                <div class="chatlog__embed-footer">
+                                        <img class="chatlog__embed-footer-icon" src="society-of-the-spectacle.html_Files/apple-touch-icon-192x192.png" alt="Footer icon">
+
+                                        <span class="chatlog__embed-footer-text">
+Twitter
+
+                                        </span>
+                                </div>
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="756105099184570379" id="message-756105099184570379">
+                <div class="chatlog__content">
+                    <div class="markdown"><div class="quote">China has killer satellites, directed energy weapons, and more...
+</div>Dept of Defense @twitter (11 min video) </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="society-of-the-spectacle.html_Files/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon07#7428" data-user-id="217373669146492928" style="color: rgb(44,214,205)">mejon07</span>
+
+
+        <span class="chatlog__timestamp">17-Sep-20 02:25 PM</span>
+
+            <div class="chatlog__message " data-message-id="756128615782940692" id="message-756128615782940692">
+                <div class="chatlog__content">
+                    <div class="markdown"> </div>
+                </div>
+
+                    <div class="chatlog__attachment">
+                            <a href="society-of-the-spectacle.html_Files/mmmmm.jpg">
+                                    <img class="chatlog__attachment-thumbnail" src="society-of-the-spectacle.html_Files/mmmmm.jpg" alt="Attachment">
+                            </a>
+                    </div>
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="society-of-the-spectacle.html_Files/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon07#7428" data-user-id="217373669146492928" style="color: rgb(44,214,205)">mejon07</span>
+
+
+        <span class="chatlog__timestamp">17-Sep-20 03:02 PM</span>
+
+            <div class="chatlog__message " data-message-id="756137957957697608" id="message-756137957957697608">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.theregister.com/2020/09/16/mod_urban_weaponised_drones_tender/">https://www.theregister.com/2020/09/16/mod_urban_weaponised_drones_tender/</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.theregister.com/2020/09/16/mod_urban_weaponised_drones_tender/">
+                                                    <div class="markdown">We want weaponised urban drones flying through your house, says UK ...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">&#163;150k up for grabs if you can help create the dystopian future of warfare</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="society-of-the-spectacle.html_Files/drone_swarm.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="society-of-the-spectacle.html_Files/drone_swarm.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="NWPepe" title="NWPepe" src="society-of-the-spectacle.html_Files/755557307949121726.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="society-of-the-spectacle.html_Files/7ee4d6a3820e3b8e6bdd70a8ffc58e84.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curb#6617" data-user-id="754263608304861328" style="color: rgb(245,204,51)">Curb</span>
+
+
+        <span class="chatlog__timestamp">17-Sep-20 05:42 PM</span>
+
+            <div class="chatlog__message " data-message-id="756178199804641330" id="message-756178199804641330">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://holodomorinfo.com/">https://holodomorinfo.com/</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://holodomorinfo.com/">
+                                                    <div class="markdown">HolodomorInfo.com</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">The Jewish Ethnic Cleansing Of Europeans</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="society-of-the-spectacle.html_Files/0fa7bc368924b403993b04c660cb572a">
+                                            <img class="chatlog__embed-thumbnail" src="society-of-the-spectacle.html_Files/0fa7bc368924b403993b04c660cb572a" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="society-of-the-spectacle.html_Files/7ee4d6a3820e3b8e6bdd70a8ffc58e84.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curb#6617" data-user-id="754263608304861328" style="color: rgb(245,204,51)">Curb</span>
+
+
+        <span class="chatlog__timestamp">17-Sep-20 05:56 PM</span>
+
+            <div class="chatlog__message " data-message-id="756181847855202305" id="message-756181847855202305">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.youtube.com/watch?v=XWAEKQjN-yM">https://www.youtube.com/watch?v=XWAEKQjN-yM</a> </div>
+                </div>
+
+                    <div class="chatlog__attachment">
+                            <a href="society-of-the-spectacle.html_Files/EiE-_giUYAAsj5Z.png">
+                                    <img class="chatlog__attachment-thumbnail" src="society-of-the-spectacle.html_Files/EiE-_giUYAAsj5Z.png" alt="Attachment">
+                            </a>
+                    </div>
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCPofqcNCA5RRQs60tLVpS3Q">Stateless Productions</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=XWAEKQjN-yM">
+                                                    <div class="markdown">The Monopoly On Violence</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">This is our crowdfunded documentary about anarchism and The State. Featuring interviews with: James C. Scott, David Friedman, Michael Huemer, Scott Horton, Stephan Kinsella, Max Borders, Thaddeus Russell, Tom Woods, Walter Block, Ron Paul, Joseph Salerno, Maj Toure, Andrew Nap...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="society-of-the-spectacle.html_Files/maxresdefault%20%2810%29.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="society-of-the-spectacle.html_Files/maxresdefault%20%2810%29.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="society-of-the-spectacle.html_Files/7ee4d6a3820e3b8e6bdd70a8ffc58e84.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curb#6617" data-user-id="754263608304861328" style="color: rgb(245,204,51)">Curb</span>
+
+
+        <span class="chatlog__timestamp">17-Sep-20 06:06 PM</span>
+
+            <div class="chatlog__message " data-message-id="756184246715940924" id="message-756184246715940924">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://en.wikipedia.org/wiki/Shooting_of_Duncan_Lemp">https://en.wikipedia.org/wiki/Shooting_of_Duncan_Lemp</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://en.wikipedia.org/wiki/Shooting_of_Duncan_Lemp">
+                                                    <div class="markdown">Shooting of Duncan Lemp</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">On March 12, 2020, Duncan Socrates Lemp was fatally shot at his home in Potomac, Maryland during a no-knock police raid by the Montgomery County Police Department&#39;s SWAT team. Police have said that Lemp was shot after &quot;confronting&quot; an officer during the execution of the raid. ...</div>
+                                        </div>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="society-of-the-spectacle.html_Files/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon07#7428" data-user-id="217373669146492928" style="color: rgb(44,214,205)">mejon07</span>
+
+
+        <span class="chatlog__timestamp">17-Sep-20 06:35 PM</span>
+
+            <div class="chatlog__message " data-message-id="756191550895030352" id="message-756191550895030352">
+                <div class="chatlog__content">
+                    <div class="markdown"><div class="quote"><a href="https://mobile.twitter.com/zerosum24/status/1306329820826136576">https://mobile.twitter.com/zerosum24/status/1306329820826136576</a> <a href="https://discordapp.com/channels/754280671475925053/754359032696930304/756101693808181258" onclick="scrollToMessage(event, '756101693808181258')">https://discordapp.com/channels/754280671475925053/754359032696930304/756101693808181258</a>
+</div>that cringy encounter should really wake ppl up (at least fox news viewers) that something is going on &amp; soros is involved... doesn&#39;t look like newt will be going on msm anytime soon <span class="chatlog__edited-timestamp" title="17-Sep-20 06:35 PM">(edited)</span></div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(29,161,242,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+                                                <img class="chatlog__embed-author-icon" src="society-of-the-spectacle.html_Files/gdd_yAKg_bigger.jpg" alt="Author icon">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/zerosum24">CIA-Simulation Warlord &#127482;&#127480;&#128520;&#127482;&#127480; (@zerosum24)</a>
+                                                </span>
+                                        </div>
+
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">WTF!! Things got weird when Soros came up. <img class="emoji " alt="🤯" title="🤯" src="https://twemoji.maxcdn.com/2/72x72/1f92f.png"><img class="emoji " alt="🤯" title="🤯" src="https://twemoji.maxcdn.com/2/72x72/1f92f.png"><img class="emoji " alt="🤯" title="🤯" src="https://twemoji.maxcdn.com/2/72x72/1f92f.png"><a href="https://t.co/LlNTp23RIi">https://t.co/LlNTp23RIi</a></div>
+                                        </div>
+
+                                        <div class="chatlog__embed-fields">
+                                                <div class="chatlog__embed-field chatlog__embed-field--inline">
+                                                        <div class="chatlog__embed-field-name">
+                                                            <div class="markdown">Retweets</div>
+                                                        </div>
+
+                                                        <div class="chatlog__embed-field-value">
+                                                            <div class="markdown">4108</div>
+                                                        </div>
+                                                </div>
+                                                <div class="chatlog__embed-field chatlog__embed-field--inline">
+                                                        <div class="chatlog__embed-field-name">
+                                                            <div class="markdown">Likes</div>
+                                                        </div>
+
+                                                        <div class="chatlog__embed-field-value">
+                                                            <div class="markdown">8940</div>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="society-of-the-spectacle.html_Files/Rn1SEY-ylVP6wRBr.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="society-of-the-spectacle.html_Files/Rn1SEY-ylVP6wRBr.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                                <div class="chatlog__embed-footer">
+                                        <img class="chatlog__embed-footer-icon" src="society-of-the-spectacle.html_Files/apple-touch-icon-192x192.png" alt="Footer icon">
+
+                                        <span class="chatlog__embed-footer-text">
+Twitter
+
+                                        </span>
+                                </div>
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="&#128070;" title="&#128070;" src="society-of-the-spectacle.html_Files/1f446.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="&#128175;" title="&#128175;" src="society-of-the-spectacle.html_Files/1f4af.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="society-of-the-spectacle.html_Files/7ee4d6a3820e3b8e6bdd70a8ffc58e84.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curb#6617" data-user-id="754263608304861328" style="color: rgb(245,204,51)">Curb</span>
+
+
+        <span class="chatlog__timestamp">17-Sep-20 06:56 PM</span>
+
+            <div class="chatlog__message " data-message-id="756196859650768947" id="message-756196859650768947">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://twitter.com/conspiracyb0t/status/1306601313300406274">https://twitter.com/conspiracyb0t/status/1306601313300406274</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(29,161,242,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+                                                <img class="chatlog__embed-author-icon" src="society-of-the-spectacle.html_Files/IjUdLaI4_bigger.jpg" alt="Author icon">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/conspiracyb0t">conspiracybot (@conspiracyb0t)</a>
+                                                </span>
+                                        </div>
+
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown"><a href="https://t.co/CiTLWzDR1q">https://t.co/CiTLWzDR1q</a></div>
+                                        </div>
+
+                                </div>
+
+                            </div>
+
+                                <div class="chatlog__embed-image-container">
+                                    <a class="chatlog__embed-image-link" href="society-of-the-spectacle.html_Files/EiH6-IQUMAIYBTK.jpg_large">
+                                        <img class="chatlog__embed-image" src="society-of-the-spectacle.html_Files/EiH6-IQUMAIYBTK.jpg_large" alt="Image">
+                                    </a>
+                                </div>
+
+                                <div class="chatlog__embed-footer">
+                                        <img class="chatlog__embed-footer-icon" src="society-of-the-spectacle.html_Files/apple-touch-icon-192x192.png" alt="Footer icon">
+
+                                        <span class="chatlog__embed-footer-text">
+Twitter
+
+                                        </span>
+                                </div>
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="feelsbad" title="feelsbad" src="society-of-the-spectacle.html_Files/754797793025064990.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+</div>
+
+<div class="postamble">
+    <div class="postamble__entry">Exported 50 message(s)</div>
+</div>
+
+</body>
+</html>
