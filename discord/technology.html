@@ -1,0 +1,1200 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>rabbithole.help - &#128191;-technology</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+
+    <style>
+        /* General */
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-300.woff);
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-400.woff);
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-500.woff);
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-600.woff);
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-700.woff);
+    font-weight: 700;
+}
+
+body {
+    font-family: "Whitney", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 17px;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+img {
+    object-fit: contain;
+}
+
+.markdown {
+    max-width: 100%;
+    white-space: pre-wrap;
+    line-height: 1.3;
+    overflow-wrap: break-word;
+}
+
+.spoiler {
+    width: fit-content;
+}
+
+.spoiler--hidden {
+    cursor: pointer;
+}
+
+.spoiler-text {
+    border-radius: 3px;
+}
+
+.spoiler--hidden .spoiler-text {
+    color: rgba(0, 0, 0, 0);
+}
+
+.spoiler--hidden .spoiler-text::selection {
+    color: rgba(0, 0, 0, 0);
+}
+
+.spoiler-image {
+    position: relative;
+    overflow: hidden;
+    border-radius: 3px;
+}
+
+.spoiler--hidden .spoiler-image {
+    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.spoiler--hidden .spoiler-image img {
+    filter: blur(44px);
+}
+
+.spoiler--hidden .spoiler-image:after {
+    content: "SPOILER";
+    color: #dcddde;
+    background-color: rgba(0, 0, 0, 0.6);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: 600;
+    padding: 0.5em 0.7em;
+    border-radius: 20px;
+    letter-spacing: 0.05em;
+    font-size: 0.9em;
+}
+
+.spoiler--hidden:hover .spoiler-image:after {
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.quote {
+    margin: 0.1em 0;
+    padding-left: 0.6em;
+    border-left: 4px solid;
+    border-radius: 3px;
+}
+
+.pre {
+    font-family: "Consolas", "Courier New", Courier, monospace;
+}
+
+.pre--multiline {
+    margin-top: 0.25em;
+    padding: 0.5em;
+    border: 2px solid;
+    border-radius: 5px;
+}
+
+.pre--inline {
+    padding: 2px;
+    border-radius: 3px;
+    font-size: 0.85em;
+}
+
+.mention {
+    border-radius: 3px;
+    padding: 0 2px;
+    color: #7289da;
+    background: rgba(114, 137, 218, .1);
+    font-weight: 500;
+}
+
+.emoji {
+    width: 1.25em;
+    height: 1.25em;
+    margin: 0 0.06em;
+    vertical-align: -0.4em;
+}
+
+.emoji--small {
+    width: 1em;
+    height: 1em;
+}
+
+.emoji--large {
+    width: 2.8em;
+    height: 2.8em;
+}
+
+/* Preamble */
+
+.preamble {
+    display: grid;
+    margin: 0 0.3em 0.6em 0.3em;
+    max-width: 100%;
+    grid-template-columns: auto 1fr;
+}
+
+.preamble__guild-icon-container {
+    grid-column: 1;
+}
+
+.preamble__guild-icon {
+    max-width: 88px;
+    max-height: 88px;
+}
+
+.preamble__entries-container {
+    grid-column: 2;
+    margin-left: 0.6em;
+}
+
+.preamble__entry {
+    font-size: 1.4em;
+}
+
+.preamble__entry--small {
+    font-size: 1em;
+}
+
+/* Chatlog */
+
+.chatlog {
+    max-width: 100%;
+}
+
+.chatlog__message-group {
+    display: grid;
+    margin: 0 0.6em;
+    padding: 0.9em 0;
+    border-top: 1px solid;
+    grid-template-columns: auto 1fr;
+}
+
+.chatlog__author-avatar-container {
+    grid-column: 1;
+    width: 40px;
+    height: 40px;
+}
+
+.chatlog__author-avatar {
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+}
+
+.chatlog__messages {
+    grid-column: 2;
+    margin-left: 1.2em;
+    min-width: 50%;
+}
+
+.chatlog__author-name {
+    font-weight: 500;
+}
+
+.chatlog__timestamp {
+    margin-left: 0.3em;
+    font-size: 0.75em;
+}
+
+.chatlog__message {
+    padding: 0.1em 0.3em;
+    margin: 0 -0.3em;
+    background-color: transparent;
+    transition: background-color 1s ease;
+}
+
+.chatlog__content {
+    font-size: 0.95em;
+    word-wrap: break-word;
+}
+
+.chatlog__edited-timestamp {
+    margin-left: 0.15em;
+    font-size: 0.8em;
+}
+
+.chatlog__attachment {
+    margin-top: 0.3em;
+}
+
+.chatlog__attachment-thumbnail {
+    vertical-align: top;
+    max-width: 45vw;
+    max-height: 500px;
+    border-radius: 3px;
+}
+
+.chatlog__embed {
+    display: flex;
+    margin-top: 0.3em;
+    max-width: 520px;
+}
+
+.chatlog__embed-color-pill {
+    flex-shrink: 0;
+    width: 0.25em;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
+.chatlog__embed-content-container {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5em 0.6em;
+    border: 1px solid;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+.chatlog__embed-content {
+    display: flex;
+    width: 100%;
+}
+
+.chatlog__embed-text {
+    flex: 1;
+}
+
+.chatlog__embed-author {
+    display: flex;
+    margin-bottom: 0.3em;
+    align-items: center;
+}
+
+.chatlog__embed-author-icon {
+    margin-right: 0.5em;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+.chatlog__embed-author-name {
+    font-size: 0.875em;
+    font-weight: 600;
+}
+
+.chatlog__embed-title {
+    margin-bottom: 0.2em;
+    font-size: 0.875em;
+    font-weight: 600;
+}
+
+.chatlog__embed-description {
+    font-weight: 500;
+    font-size: 0.85em;
+}
+
+.chatlog__embed-fields {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.chatlog__embed-field {
+    flex: 0;
+    min-width: 100%;
+    max-width: 506px;
+    padding-top: 0.6em;
+    font-size: 0.875em;
+}
+
+.chatlog__embed-field--inline {
+    flex: 1;
+    flex-basis: auto;
+    min-width: 150px;
+}
+
+.chatlog__embed-field-name {
+    margin-bottom: 0.2em;
+    font-weight: 600;
+}
+
+.chatlog__embed-field-value {
+    font-weight: 500;
+}
+
+.chatlog__embed-thumbnail {
+    flex: 0;
+    margin-left: 1.2em;
+    max-width: 80px;
+    max-height: 80px;
+    border-radius: 3px;
+}
+
+.chatlog__embed-image-container {
+    margin-top: 0.6em;
+}
+
+.chatlog__embed-image {
+    max-width: 500px;
+    max-height: 400px;
+    border-radius: 3px;
+}
+
+.chatlog__embed-footer {
+    margin-top: 0.6em;
+}
+
+.chatlog__embed-footer-icon {
+    margin-right: 0.2em;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+
+.chatlog__embed-footer-text {
+    font-size: 0.75em;
+    font-weight: 500;
+}
+
+.chatlog__reactions {
+    display: flex;
+}
+
+.chatlog__reaction {
+    display: flex;
+    align-items: center;
+    margin: 0.35em 0.1em 0.1em 0.1em;
+    padding: 0.2em 0.35em;
+    border-radius: 3px;
+}
+
+.chatlog__reaction-count {
+    min-width: 9px;
+    margin-left: 0.35em;
+    font-size: 0.875em;
+}
+
+.chatlog__bot-tag {
+    position: relative;
+    top: -.2em;
+    margin-left: 0.3em;
+    padding: 0.05em 0.3em;
+    border-radius: 3px;
+    vertical-align: middle;
+    line-height: 1.3;
+    background: #7289da;
+    color: #ffffff;
+    font-size: 0.625em;
+    font-weight: 500;
+}
+
+/* Postamble */
+
+.postamble {
+    margin: 1.4em 0.3em 0.6em 0.3em;
+    padding: 1em;
+    border-top: 1px solid;
+}
+    </style>
+    <style>
+        /* General */
+
+body {
+    background-color: #36393e;
+    color: #dcddde;
+}
+
+a {
+    color: #0096cf;
+}
+
+.spoiler-text {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.spoiler--hidden .spoiler-text {
+    background-color: #202225;
+}
+
+.spoiler--hidden:hover .spoiler-text {
+    background-color: rgba(32, 34, 37, 0.8);
+}
+
+.quote {
+    border-color: #4f545c;
+}
+
+.pre {
+    background-color: #2f3136 !important;
+}
+
+.pre--multiline {
+    border-color: #282b30 !important;
+    color: #b9bbbe !important;
+}
+
+/* === Preamble === */
+
+.preamble__entry {
+    color: #ffffff;
+}
+
+/* Chatlog */
+
+.chatlog__message-group {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.chatlog__author-name {
+    color: #ffffff;
+}
+
+.chatlog__timestamp {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.chatlog__message--highlighted {
+    background-color: rgba(114, 137, 218, 0.2) !important;
+}
+
+.chatlog__message--pinned {
+    background-color: rgba(249, 168, 37, 0.05);
+}
+
+.chatlog__edited-timestamp {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.chatlog__embed-color-pill--default {
+    background-color: rgba(79, 84, 92, 1);
+}
+
+.chatlog__embed-content-container {
+    background-color: rgba(46, 48, 54, 0.3);
+    border-color: rgba(46, 48, 54, 0.6);
+}
+
+.chatlog__embed-author-name {
+    color: #ffffff;
+}
+
+.chatlog__embed-author-name-link {
+    color: #ffffff;
+}
+
+.chatlog__embed-title {
+    color: #ffffff;
+}
+
+.chatlog__embed-description {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__embed-field-name {
+    color: #ffffff;
+}
+
+.chatlog__embed-field-value {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__embed-footer {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__reaction {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.chatlog__reaction-count {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+/* Postamble */
+
+.postamble {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.postamble__entry {
+    color: #ffffff;
+}
+    </style>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/solarized-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.pre--multiline').forEach(block => hljs.highlightBlock(block));
+        });
+    </script>
+
+    <script>
+        function scrollToMessage(event, id) {
+            var element = document.getElementById('message-' + id);
+
+            if (element) {
+                event.preventDefault();
+
+                element.classList.add('chatlog__message--highlighted');
+
+                window.scrollTo({
+                    top: element.getBoundingClientRect().top - document.body.getBoundingClientRect().top - (window.innerHeight / 2),
+                    behavior: 'smooth'
+                });
+
+                window.setTimeout(function() {
+                    element.classList.remove('chatlog__message--highlighted');
+                }, 2000);
+            }
+        }
+
+        function showSpoiler(event, element) {
+            if (element && element.classList.contains('spoiler--hidden')) {
+                event.preventDefault();
+                element.classList.remove('spoiler--hidden');
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="preamble">
+    <div class="preamble__guild-icon-container">
+        <img class="preamble__guild-icon" src="technology.html_Files/784161a8e70ff916c0f69cb3448e3baa.png" alt="Guild icon">
+    </div>
+    <div class="preamble__entries-container">
+        <div class="preamble__entry">rabbithole.help</div>
+        <div class="preamble__entry">research sharing / &#128191;-technology</div>
+
+
+    </div>
+</div>
+
+<div class="chatlog">
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="technology.html_Files/0fafcd6d81d43fb58d93c2efe733fe2d.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Saun Virroco#4404" data-user-id="607601902972174346" style="color: rgb(46,204,113)">Saun Virroco</span>
+
+
+        <span class="chatlog__timestamp">13-Sep-20 08:08 PM</span>
+
+            <div class="chatlog__message " data-message-id="754765407709167627" id="message-754765407709167627">
+                <div class="chatlog__content">
+                    <div class="markdown">Here is my setup that I use to download videos from dailymotion/youtube/twitter/reddit etc.
+This is fully portable, tested on Windows 7 and 10.
+I use youtube-dl (open-source command line tool, supports 100+ different websites) and a custom user friendly interface.
+It should work out of the box, however I recommend you to look inside README folder for details.
+Customization is somewhat complicated, so it is mainly for advanced users (requires autohotkey).
+Once you study what this program can do, possibilities are practically limitless.
+You can download thousands of videos or whole playlists by date criterion, popularity, number of comments, subtitles (including auto generated) with a single click.
+I tried my best to provide documentation on how to get started.
+If you have any questions, I will try to help.
+<a href="https://mega.nz/file/ntUDSaSA#8Ht0etMzCRT4HVz9jD_5TmJAgPuAITuNFTO_pZ6sckU">https://mega.nz/file/ntUDSaSA#8Ht0etMzCRT4HVz9jD_5TmJAgPuAITuNFTO_pZ6sckU</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://mega.nz/file/ntUDSaSA">
+                                                    <div class="markdown">34.93 MB file on MEGA</div>
+                                                </a>
+                                        </div>
+
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="technology.html_Files/rich-file.png">
+                                            <img class="chatlog__embed-thumbnail" src="technology.html_Files/rich-file.png" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="&#128077;&#127995;" title="&#128077;&#127995;" src="technology.html_Files/1f44d-1f3fb.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="technology.html_Files/7ee4d6a3820e3b8e6bdd70a8ffc58e84.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curb#6617" data-user-id="754263608304861328" style="color: rgb(245,204,51)">Curb</span>
+
+
+        <span class="chatlog__timestamp">14-Sep-20 08:31 PM</span>
+
+            <div class="chatlog__message " data-message-id="755133694993498112" id="message-755133694993498112">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.cnbc.com/2014/09/22/travel-to-space-via-elevator.html">https://www.cnbc.com/2014/09/22/travel-to-space-via-elevator.html</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.cnbc.com/2014/09/22/travel-to-space-via-elevator.html">
+                                                    <div class="markdown">Japanese firm to build space elevator by 2050</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Japanese firm Obayashi says its space elevator may be ready by 2050 as developments in carbon nanotechnology make stronger cables.</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="technology.html_Files/101913964-58239815_3420d134ed_o.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="technology.html_Files/101913964-58239815_3420d134ed_o.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="technology.html_Files/7ee4d6a3820e3b8e6bdd70a8ffc58e84.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curb#6617" data-user-id="754263608304861328" style="color: rgb(245,204,51)">Curb</span>
+
+
+        <span class="chatlog__timestamp">14-Sep-20 08:52 PM</span>
+
+            <div class="chatlog__message " data-message-id="755138859095949482" id="message-755138859095949482">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.enblocpress.com/3d-printed-guns/plastikov-2-0-the-3d-printed-ak-47-is-updated/">https://www.enblocpress.com/3d-printed-guns/plastikov-2-0-the-3d-printed-ak-47-is-updated/</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.enblocpress.com/3d-printed-guns/plastikov-2-0-the-3d-printed-ak-47-is-updated/">
+                                                    <div class="markdown">Plastikov 2.0: The 3D Printed AK is Updated - En Bloc Press</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Plastikov 2.0 gives the 3D printed AK a facelift. Improved documentation, full assembly video, and accepts more parts kits and AR-15 stocks.</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="technology.html_Files/Parts-Layout.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="technology.html_Files/Parts-Layout.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="&#128077;" title="&#128077;" src="technology.html_Files/1f44d.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="technology.html_Files/5afc362259431e95788bd0360ac304d0.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="MegaBertz#8350" data-user-id="180116117790916608" style="">MegaBertz</span>
+
+
+        <span class="chatlog__timestamp">15-Sep-20 04:36 AM</span>
+
+            <div class="chatlog__message " data-message-id="755255789425524816" id="message-755255789425524816">
+                <div class="chatlog__content">
+                    <div class="markdown">what most of you don&#39;t know is ET technology can materialize and dematerialize any object or living thing at-will, and humans have reversed-engineered this knowledge. 3D printers are the troll, down-sized mainstream technology of the real stuff. I hope one day people will wake up to this reality. </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="755256228082483200" id="message-755256228082483200">
+                <div class="chatlog__content">
+                    <div class="markdown">and I won&#39;t expand on it as it was what I only wanted to say, and two, should be done in general chat as to not infringe any good manner of operating in this discord. </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="technology.html_Files/7fed051e1b3ad325ff84e550e085dfaa.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Rex17#0526" data-user-id="719623293816012863" style="color: rgb(46,204,113)">Rex17</span>
+
+
+        <span class="chatlog__timestamp">15-Sep-20 08:08 AM</span>
+
+            <div class="chatlog__message " data-message-id="755308962676473861" id="message-755308962676473861">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://twitter.com/anony_fa_mous/status/1305199900620197890?s=21">https://twitter.com/anony_fa_mous/status/1305199900620197890?s=21</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(29,161,242,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+                                                <img class="chatlog__embed-author-icon" src="technology.html_Files/Djh7G2Qq_bigger.jpg" alt="Author icon">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/anony_fa_mous">anony_fa_mous (@anony_fa_mous)</a>
+                                                </span>
+                                        </div>
+
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown"><img class="emoji " alt="⚠" title="⚠" src="https://twemoji.maxcdn.com/2/72x72/26a0.png">️THREAD<img class="emoji " alt="⚠" title="⚠" src="https://twemoji.maxcdn.com/2/72x72/26a0.png">️
+<img class="emoji " alt="⚡" title="⚡" src="https://twemoji.maxcdn.com/2/72x72/26a1.png">️The Global Wireless Energy Network<img class="emoji " alt="⚡" title="⚡" src="https://twemoji.maxcdn.com/2/72x72/26a1.png">️
+
+Nikola Tesla&#39;s dream for the world was for everyone to be able to tap into a wireless energy grid for free.
+
+ He might have gotten that idea from a Ancient Civilization.</div>
+                                        </div>
+
+                                        <div class="chatlog__embed-fields">
+                                                <div class="chatlog__embed-field chatlog__embed-field--inline">
+                                                        <div class="chatlog__embed-field-name">
+                                                            <div class="markdown">Retweets</div>
+                                                        </div>
+
+                                                        <div class="chatlog__embed-field-value">
+                                                            <div class="markdown">1450</div>
+                                                        </div>
+                                                </div>
+                                                <div class="chatlog__embed-field chatlog__embed-field--inline">
+                                                        <div class="chatlog__embed-field-name">
+                                                            <div class="markdown">Likes</div>
+                                                        </div>
+
+                                                        <div class="chatlog__embed-field-value">
+                                                            <div class="markdown">2525</div>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                </div>
+
+                            </div>
+
+                                <div class="chatlog__embed-image-container">
+                                    <a class="chatlog__embed-image-link" href="technology.html_Files/EhzoCm7XkAI2coJ.jpg_large">
+                                        <img class="chatlog__embed-image" src="technology.html_Files/EhzoCm7XkAI2coJ.jpg_large" alt="Image">
+                                    </a>
+                                </div>
+
+                                <div class="chatlog__embed-footer">
+                                        <img class="chatlog__embed-footer-icon" src="technology.html_Files/apple-touch-icon-192x192.png" alt="Footer icon">
+
+                                        <span class="chatlog__embed-footer-text">
+Twitter
+
+                                        </span>
+                                </div>
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="hmmm_think" title="hmmm_think" src="technology.html_Files/754648859841527889.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="&#128562;" title="&#128562;" src="technology.html_Files/1f632.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="technology.html_Files/46e2e07ff3d67762cdc2fbde5e9e5a44.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Der Schl&#228;ferhund#8578" data-user-id="730563022346780692" style="color: rgb(46,204,113)">Der Schl&#228;ferhund</span>
+
+
+        <span class="chatlog__timestamp">16-Sep-20 02:04 PM</span>
+
+            <div class="chatlog__message " data-message-id="755760903093223435" id="message-755760903093223435">
+                <div class="chatlog__content">
+                    <div class="markdown">a look into 3d printers seems to be worth it. interesting blog </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="technology.html_Files/7ee4d6a3820e3b8e6bdd70a8ffc58e84.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curb#6617" data-user-id="754263608304861328" style="color: rgb(245,204,51)">Curb</span>
+
+
+        <span class="chatlog__timestamp">16-Sep-20 03:14 PM</span>
+
+            <div class="chatlog__message " data-message-id="755778523217526784" id="message-755778523217526784">
+                <div class="chatlog__content">
+                    <div class="markdown"><span class="mention" title="Der Schl&#228;ferhund#8578">@Der Schl&#228;ferhund</span> some 3d files to download <img class="emoji " alt="😉" title="😉" src="https://twemoji.maxcdn.com/2/72x72/1f609.png"> <a href="https://github.com/maduce/fosscad-repo">https://github.com/maduce/fosscad-repo</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(30,35,39,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://github.com/maduce/fosscad-repo">
+                                                    <div class="markdown">maduce/fosscad-repo</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Official FOSSCAD Library Repository. Contribute to maduce/fosscad-repo development by creating an account on GitHub.</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="technology.html_Files/3700928">
+                                            <img class="chatlog__embed-thumbnail" src="technology.html_Files/3700928" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="technology.html_Files/46e2e07ff3d67762cdc2fbde5e9e5a44.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Der Schl&#228;ferhund#8578" data-user-id="730563022346780692" style="color: rgb(46,204,113)">Der Schl&#228;ferhund</span>
+
+
+        <span class="chatlog__timestamp">16-Sep-20 03:41 PM</span>
+
+            <div class="chatlog__message " data-message-id="755785471287885915" id="message-755785471287885915">
+                <div class="chatlog__content">
+                    <div class="markdown">ok nvm cant post stuff here <img class="emoji " alt="😛" title="😛" src="https://twemoji.maxcdn.com/2/72x72/1f61b.png"> </div>
+                </div>
+
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="hmmm_think" title="hmmm_think" src="technology.html_Files/754648859841527889.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+            <div class="chatlog__message " data-message-id="755785607376142477" id="message-755785607376142477">
+                <div class="chatlog__content">
+                    <div class="markdown">thx for the files. they are not useful to me but ill store them. u never know </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="technology.html_Files/7ee4d6a3820e3b8e6bdd70a8ffc58e84.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curb#6617" data-user-id="754263608304861328" style="color: rgb(245,204,51)">Curb</span>
+
+
+        <span class="chatlog__timestamp">17-Sep-20 09:33 PM</span>
+
+            <div class="chatlog__message " data-message-id="756236427343429642" id="message-756236427343429642">
+                <div class="chatlog__content">
+                    <div class="markdown"> </div>
+                </div>
+
+                    <div class="chatlog__attachment">
+                            <a href="technology.html_Files/EiI4xIXVoAAzSJ5.png">
+                                    <img class="chatlog__attachment-thumbnail" src="technology.html_Files/EiI4xIXVoAAzSJ5.png" alt="Attachment">
+                            </a>
+                    </div>
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="&#128077;" title="&#128077;" src="technology.html_Files/1f44d.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="technology.html_Files/2.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Lal#0817" data-user-id="721787996403400736" style="color: rgb(46,204,113)">Lal</span>
+
+
+        <span class="chatlog__timestamp">18-Sep-20 02:01 PM</span>
+
+            <div class="chatlog__message " data-message-id="756484966946439198" id="message-756484966946439198">
+                <div class="chatlog__content">
+                    <div class="markdown">My phone Galaxy S10e wants me to do a software update and I&#39;ve been avoiding doing it for weeks as I&#39;m worried it&#39;s going to put some enhanced tracking stuff and maybe covid apps on my phone...am not tech savvy..am just going to have to do it eventually I guess...but would appreciate any advice or things to watch out for or settings to change etc...thanks <img class="emoji " alt="🙂" title="🙂" src="https://twemoji.maxcdn.com/2/72x72/1f642.png"> <span class="chatlog__edited-timestamp" title="18-Sep-20 02:01 PM">(edited)</span></div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="technology.html_Files/7ee4d6a3820e3b8e6bdd70a8ffc58e84.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curb#6617" data-user-id="754263608304861328" style="color: rgb(245,204,51)">Curb</span>
+
+
+        <span class="chatlog__timestamp">18-Sep-20 02:10 PM</span>
+
+            <div class="chatlog__message " data-message-id="756487380583841863" id="message-756487380583841863">
+                <div class="chatlog__content">
+                    <div class="markdown"><span class="mention" title="Lal#0817">@Lal</span> im holding off on the updates too. think its getting more embedded. the earlier one you can remove like this on android
+<a href="https://twitter.com/curb_shifter/status/1290311876623183874">https://twitter.com/curb_shifter/status/1290311876623183874</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(29,161,242,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+                                                <img class="chatlog__embed-author-icon" src="technology.html_Files/5aGzNdc2_bigger.jpg" alt="Author icon">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/curb_shifter">CurbShifter (@curb_shifter)</a>
+                                                </span>
+                                        </div>
+
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Got an android phone? its prob infected with covid ;)
+
+steps to remove it
+source: <a href="https://t.co/g2vTonMAGp">https://t.co/g2vTonMAGp</a></div>
+                                        </div>
+
+                                </div>
+
+                            </div>
+
+                                <div class="chatlog__embed-image-container">
+                                    <a class="chatlog__embed-image-link" href="technology.html_Files/EegbV_qXgAA0NWz.png_large">
+                                        <img class="chatlog__embed-image" src="technology.html_Files/EegbV_qXgAA0NWz.png_large" alt="Image">
+                                    </a>
+                                </div>
+
+                                <div class="chatlog__embed-footer">
+                                        <img class="chatlog__embed-footer-icon" src="technology.html_Files/apple-touch-icon-192x192.png" alt="Footer icon">
+
+                                        <span class="chatlog__embed-footer-text">
+Twitter
+
+                                        </span>
+                                </div>
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="technology.html_Files/706ac50391621375bb7e6fb613ccb1fd.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Proioxis#5218" data-user-id="231478530381185025" style="color: rgb(245,204,51)">Proioxis</span>
+
+
+        <span class="chatlog__timestamp">18-Sep-20 02:26 PM</span>
+
+            <div class="chatlog__message " data-message-id="756491259409072259" id="message-756491259409072259">
+                <div class="chatlog__content">
+                    <div class="markdown">Go chinese <img class="emoji " alt="😋" title="😋" src="https://twemoji.maxcdn.com/2/72x72/1f60b.png"> </div>
+                </div>
+
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="&#127836;" title="&#127836;" src="technology.html_Files/1f35c.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="technology.html_Files/2.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Lal#0817" data-user-id="721787996403400736" style="color: rgb(46,204,113)">Lal</span>
+
+
+        <span class="chatlog__timestamp">18-Sep-20 03:06 PM</span>
+
+            <div class="chatlog__message " data-message-id="756501525949317220" id="message-756501525949317220">
+                <div class="chatlog__content">
+                    <div class="markdown"><span class="mention" title="Curb#6617">@Curb</span>  thanks! Yes I went to settings, google, and there under &#39;covid19 support&#39; was &#39;covid19 exposure notifications&#39; ! It was off as default setting and said it doesn&#39;t work without downloading an app...and I cdn&#39;t see any apps that have been downloaded automatically, and have turned off auto update as above...thanks so much for that </div>
+                </div>
+
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="&#128077;" title="&#128077;" src="technology.html_Files/1f44d.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+</div>
+
+<div class="postamble">
+    <div class="postamble__entry">Exported 15 message(s)</div>
+</div>
+
+</body>
+</html>

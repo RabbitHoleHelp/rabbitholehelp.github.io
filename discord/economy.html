@@ -1,0 +1,3863 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>rabbithole.help - &#128184;-economy</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+
+    <style>
+        /* General */
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-300.woff);
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-400.woff);
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-500.woff);
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-600.woff);
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-700.woff);
+    font-weight: 700;
+}
+
+body {
+    font-family: "Whitney", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 17px;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+img {
+    object-fit: contain;
+}
+
+.markdown {
+    max-width: 100%;
+    white-space: pre-wrap;
+    line-height: 1.3;
+    overflow-wrap: break-word;
+}
+
+.spoiler {
+    width: fit-content;
+}
+
+.spoiler--hidden {
+    cursor: pointer;
+}
+
+.spoiler-text {
+    border-radius: 3px;
+}
+
+.spoiler--hidden .spoiler-text {
+    color: rgba(0, 0, 0, 0);
+}
+
+.spoiler--hidden .spoiler-text::selection {
+    color: rgba(0, 0, 0, 0);
+}
+
+.spoiler-image {
+    position: relative;
+    overflow: hidden;
+    border-radius: 3px;
+}
+
+.spoiler--hidden .spoiler-image {
+    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.spoiler--hidden .spoiler-image img {
+    filter: blur(44px);
+}
+
+.spoiler--hidden .spoiler-image:after {
+    content: "SPOILER";
+    color: #dcddde;
+    background-color: rgba(0, 0, 0, 0.6);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: 600;
+    padding: 0.5em 0.7em;
+    border-radius: 20px;
+    letter-spacing: 0.05em;
+    font-size: 0.9em;
+}
+
+.spoiler--hidden:hover .spoiler-image:after {
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.quote {
+    margin: 0.1em 0;
+    padding-left: 0.6em;
+    border-left: 4px solid;
+    border-radius: 3px;
+}
+
+.pre {
+    font-family: "Consolas", "Courier New", Courier, monospace;
+}
+
+.pre--multiline {
+    margin-top: 0.25em;
+    padding: 0.5em;
+    border: 2px solid;
+    border-radius: 5px;
+}
+
+.pre--inline {
+    padding: 2px;
+    border-radius: 3px;
+    font-size: 0.85em;
+}
+
+.mention {
+    border-radius: 3px;
+    padding: 0 2px;
+    color: #7289da;
+    background: rgba(114, 137, 218, .1);
+    font-weight: 500;
+}
+
+.emoji {
+    width: 1.25em;
+    height: 1.25em;
+    margin: 0 0.06em;
+    vertical-align: -0.4em;
+}
+
+.emoji--small {
+    width: 1em;
+    height: 1em;
+}
+
+.emoji--large {
+    width: 2.8em;
+    height: 2.8em;
+}
+
+/* Preamble */
+
+.preamble {
+    display: grid;
+    margin: 0 0.3em 0.6em 0.3em;
+    max-width: 100%;
+    grid-template-columns: auto 1fr;
+}
+
+.preamble__guild-icon-container {
+    grid-column: 1;
+}
+
+.preamble__guild-icon {
+    max-width: 88px;
+    max-height: 88px;
+}
+
+.preamble__entries-container {
+    grid-column: 2;
+    margin-left: 0.6em;
+}
+
+.preamble__entry {
+    font-size: 1.4em;
+}
+
+.preamble__entry--small {
+    font-size: 1em;
+}
+
+/* Chatlog */
+
+.chatlog {
+    max-width: 100%;
+}
+
+.chatlog__message-group {
+    display: grid;
+    margin: 0 0.6em;
+    padding: 0.9em 0;
+    border-top: 1px solid;
+    grid-template-columns: auto 1fr;
+}
+
+.chatlog__author-avatar-container {
+    grid-column: 1;
+    width: 40px;
+    height: 40px;
+}
+
+.chatlog__author-avatar {
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+}
+
+.chatlog__messages {
+    grid-column: 2;
+    margin-left: 1.2em;
+    min-width: 50%;
+}
+
+.chatlog__author-name {
+    font-weight: 500;
+}
+
+.chatlog__timestamp {
+    margin-left: 0.3em;
+    font-size: 0.75em;
+}
+
+.chatlog__message {
+    padding: 0.1em 0.3em;
+    margin: 0 -0.3em;
+    background-color: transparent;
+    transition: background-color 1s ease;
+}
+
+.chatlog__content {
+    font-size: 0.95em;
+    word-wrap: break-word;
+}
+
+.chatlog__edited-timestamp {
+    margin-left: 0.15em;
+    font-size: 0.8em;
+}
+
+.chatlog__attachment {
+    margin-top: 0.3em;
+}
+
+.chatlog__attachment-thumbnail {
+    vertical-align: top;
+    max-width: 45vw;
+    max-height: 500px;
+    border-radius: 3px;
+}
+
+.chatlog__embed {
+    display: flex;
+    margin-top: 0.3em;
+    max-width: 520px;
+}
+
+.chatlog__embed-color-pill {
+    flex-shrink: 0;
+    width: 0.25em;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
+.chatlog__embed-content-container {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5em 0.6em;
+    border: 1px solid;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+.chatlog__embed-content {
+    display: flex;
+    width: 100%;
+}
+
+.chatlog__embed-text {
+    flex: 1;
+}
+
+.chatlog__embed-author {
+    display: flex;
+    margin-bottom: 0.3em;
+    align-items: center;
+}
+
+.chatlog__embed-author-icon {
+    margin-right: 0.5em;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+.chatlog__embed-author-name {
+    font-size: 0.875em;
+    font-weight: 600;
+}
+
+.chatlog__embed-title {
+    margin-bottom: 0.2em;
+    font-size: 0.875em;
+    font-weight: 600;
+}
+
+.chatlog__embed-description {
+    font-weight: 500;
+    font-size: 0.85em;
+}
+
+.chatlog__embed-fields {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.chatlog__embed-field {
+    flex: 0;
+    min-width: 100%;
+    max-width: 506px;
+    padding-top: 0.6em;
+    font-size: 0.875em;
+}
+
+.chatlog__embed-field--inline {
+    flex: 1;
+    flex-basis: auto;
+    min-width: 150px;
+}
+
+.chatlog__embed-field-name {
+    margin-bottom: 0.2em;
+    font-weight: 600;
+}
+
+.chatlog__embed-field-value {
+    font-weight: 500;
+}
+
+.chatlog__embed-thumbnail {
+    flex: 0;
+    margin-left: 1.2em;
+    max-width: 80px;
+    max-height: 80px;
+    border-radius: 3px;
+}
+
+.chatlog__embed-image-container {
+    margin-top: 0.6em;
+}
+
+.chatlog__embed-image {
+    max-width: 500px;
+    max-height: 400px;
+    border-radius: 3px;
+}
+
+.chatlog__embed-footer {
+    margin-top: 0.6em;
+}
+
+.chatlog__embed-footer-icon {
+    margin-right: 0.2em;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+
+.chatlog__embed-footer-text {
+    font-size: 0.75em;
+    font-weight: 500;
+}
+
+.chatlog__reactions {
+    display: flex;
+}
+
+.chatlog__reaction {
+    display: flex;
+    align-items: center;
+    margin: 0.35em 0.1em 0.1em 0.1em;
+    padding: 0.2em 0.35em;
+    border-radius: 3px;
+}
+
+.chatlog__reaction-count {
+    min-width: 9px;
+    margin-left: 0.35em;
+    font-size: 0.875em;
+}
+
+.chatlog__bot-tag {
+    position: relative;
+    top: -.2em;
+    margin-left: 0.3em;
+    padding: 0.05em 0.3em;
+    border-radius: 3px;
+    vertical-align: middle;
+    line-height: 1.3;
+    background: #7289da;
+    color: #ffffff;
+    font-size: 0.625em;
+    font-weight: 500;
+}
+
+/* Postamble */
+
+.postamble {
+    margin: 1.4em 0.3em 0.6em 0.3em;
+    padding: 1em;
+    border-top: 1px solid;
+}
+    </style>
+    <style>
+        /* General */
+
+body {
+    background-color: #36393e;
+    color: #dcddde;
+}
+
+a {
+    color: #0096cf;
+}
+
+.spoiler-text {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.spoiler--hidden .spoiler-text {
+    background-color: #202225;
+}
+
+.spoiler--hidden:hover .spoiler-text {
+    background-color: rgba(32, 34, 37, 0.8);
+}
+
+.quote {
+    border-color: #4f545c;
+}
+
+.pre {
+    background-color: #2f3136 !important;
+}
+
+.pre--multiline {
+    border-color: #282b30 !important;
+    color: #b9bbbe !important;
+}
+
+/* === Preamble === */
+
+.preamble__entry {
+    color: #ffffff;
+}
+
+/* Chatlog */
+
+.chatlog__message-group {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.chatlog__author-name {
+    color: #ffffff;
+}
+
+.chatlog__timestamp {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.chatlog__message--highlighted {
+    background-color: rgba(114, 137, 218, 0.2) !important;
+}
+
+.chatlog__message--pinned {
+    background-color: rgba(249, 168, 37, 0.05);
+}
+
+.chatlog__edited-timestamp {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.chatlog__embed-color-pill--default {
+    background-color: rgba(79, 84, 92, 1);
+}
+
+.chatlog__embed-content-container {
+    background-color: rgba(46, 48, 54, 0.3);
+    border-color: rgba(46, 48, 54, 0.6);
+}
+
+.chatlog__embed-author-name {
+    color: #ffffff;
+}
+
+.chatlog__embed-author-name-link {
+    color: #ffffff;
+}
+
+.chatlog__embed-title {
+    color: #ffffff;
+}
+
+.chatlog__embed-description {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__embed-field-name {
+    color: #ffffff;
+}
+
+.chatlog__embed-field-value {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__embed-footer {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__reaction {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.chatlog__reaction-count {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+/* Postamble */
+
+.postamble {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.postamble__entry {
+    color: #ffffff;
+}
+    </style>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/solarized-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.pre--multiline').forEach(block => hljs.highlightBlock(block));
+        });
+    </script>
+
+    <script>
+        function scrollToMessage(event, id) {
+            var element = document.getElementById('message-' + id);
+
+            if (element) {
+                event.preventDefault();
+
+                element.classList.add('chatlog__message--highlighted');
+
+                window.scrollTo({
+                    top: element.getBoundingClientRect().top - document.body.getBoundingClientRect().top - (window.innerHeight / 2),
+                    behavior: 'smooth'
+                });
+
+                window.setTimeout(function() {
+                    element.classList.remove('chatlog__message--highlighted');
+                }, 2000);
+            }
+        }
+
+        function showSpoiler(event, element) {
+            if (element && element.classList.contains('spoiler--hidden')) {
+                event.preventDefault();
+                element.classList.remove('spoiler--hidden');
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="preamble">
+    <div class="preamble__guild-icon-container">
+        <img class="preamble__guild-icon" src="economy.html_Files/784161a8e70ff916c0f69cb3448e3baa.png" alt="Guild icon">
+    </div>
+    <div class="preamble__entries-container">
+        <div class="preamble__entry">rabbithole.help</div>
+        <div class="preamble__entry">research sharing / &#128184;-economy</div>
+
+            <div class="preamble__entry preamble__entry--small">economy, cashless-society, markets</div>
+
+    </div>
+</div>
+
+<div class="chatlog">
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="economy.html_Files/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon07#7428" data-user-id="217373669146492928" style="color: rgb(44,214,205)">mejon07</span>
+
+
+        <span class="chatlog__timestamp">12-Sep-20 05:23 PM</span>
+
+            <div class="chatlog__message " data-message-id="754361660541763624" id="message-754361660541763624">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.zerohedge.com/markets/budget-deficit-hits-record-3-trillion-us-spends-100-more-it-collects-ytd">https://www.zerohedge.com/markets/budget-deficit-hits-record-3-trillion-us-spends-100-more-it-collects-ytd</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,255,255,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.zerohedge.com/markets/budget-deficit-hits-record-3-trillion-us-spends-100-more-it-collects-ytd">
+                                                    <div class="markdown">Budget Deficit Hits Record $3 Trillion As US Spends 100% More Than ...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Unfortunately due to &quot;helicopter money&quot; it is unlikely that the exploding deficit will ever shrink again until the monetary system is overhauled... or collapses.</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="economy.html_Files/cume%2520deficit%25209.11.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="economy.html_Files/cume%2520deficit%25209.11.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="754361694926405714" id="message-754361694926405714">
+                <div class="chatlog__content">
+                    <div class="markdown">Wonder when they’ll hit 27 trillion </div>
+                </div>
+
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="enuff" title="enuff" src="economy.html_Files/754351948047712357.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="economy.html_Files/7ee4d6a3820e3b8e6bdd70a8ffc58e84.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curb#6617" data-user-id="754263608304861328" style="color: rgb(245,204,51)">Curb</span>
+
+
+        <span class="chatlog__timestamp">12-Sep-20 05:26 PM</span>
+
+            <div class="chatlog__message " data-message-id="754362331215167589" id="message-754362331215167589">
+                <div class="chatlog__content">
+                    <div class="markdown">yeah tbh expected it a while ago <a href="https://usdebtclock.org/">https://usdebtclock.org/</a> </div>
+                </div>
+
+                    <div class="chatlog__attachment">
+                            <a href="economy.html_Files/unknown.png">
+                                    <img class="chatlog__attachment-thumbnail" src="economy.html_Files/unknown.png" alt="Attachment">
+                            </a>
+                    </div>
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="754362566641319987" id="message-754362566641319987">
+                <div class="chatlog__content">
+                    <div class="markdown">the debt to GDP numbers globally are pretty horrific <a href="https://usdebtclock.org/world-debt-clock.html">https://usdebtclock.org/world-debt-clock.html</a> </div>
+                </div>
+
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="cringe" title="cringe" src="economy.html_Files/754353011047923824.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="economy.html_Files/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon07#7428" data-user-id="217373669146492928" style="color: rgb(44,214,205)">mejon07</span>
+
+
+        <span class="chatlog__timestamp">12-Sep-20 05:51 PM</span>
+
+            <div class="chatlog__message " data-message-id="754368563833339924" id="message-754368563833339924">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.cbc.ca/news/politics/guaranteed-basic-income-priorities-liberals-1.5721943">https://www.cbc.ca/news/politics/guaranteed-basic-income-priorities-liberals-1.5721943</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.cbc.ca/news/politics/guaranteed-basic-income-priorities-liberals-1.5721943">
+                                                    <div class="markdown">Guaranteed basic income tops policy priorities for Liberal caucus a...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">A guaranteed basic income for all Canadians has emerged as the top policy choice of Liberal MPs, just as the Trudeau government is crafting its plan to help people weather the ongoing COVID-19 pandemic and rebuild the ravaged economy.</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="economy.html_Files/cmhc-household-debt-20181213.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="economy.html_Files/cmhc-household-debt-20181213.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="&#128184;" title="&#128184;" src="economy.html_Files/1f4b8.png">
+                                <span class="chatlog__reaction-count">2</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="economy.html_Files/7ee4d6a3820e3b8e6bdd70a8ffc58e84.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curb#6617" data-user-id="754263608304861328" style="color: rgb(245,204,51)">Curb</span>
+
+
+        <span class="chatlog__timestamp">12-Sep-20 06:36 PM</span>
+
+            <div class="chatlog__message " data-message-id="754380004158210179" id="message-754380004158210179">
+                <div class="chatlog__content">
+                    <div class="markdown"> </div>
+                </div>
+
+                    <div class="chatlog__attachment">
+                            <a href="economy.html_Files/1582414222017.jpg">
+                                    <img class="chatlog__attachment-thumbnail" src="economy.html_Files/1582414222017.jpg" alt="Attachment">
+                            </a>
+                    </div>
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="economy.html_Files/7ee4d6a3820e3b8e6bdd70a8ffc58e84.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curb#6617" data-user-id="754263608304861328" style="color: rgb(245,204,51)">Curb</span>
+
+
+        <span class="chatlog__timestamp">12-Sep-20 09:36 PM</span>
+
+            <div class="chatlog__message " data-message-id="754425268906623096" id="message-754425268906623096">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://youtu.be/WFmz3c_p9Ms">https://youtu.be/WFmz3c_p9Ms</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCCs_FjJR8A7rompHCnW0-3g">Gerald Celente</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=WFmz3c_p9Ms">
+                                                    <div class="markdown">GENERAL PUSSIES</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Gerald Celente is the Publisher of the Trends Journal, a weekly magazine analyzing global current events forming future trends. Our mission is to present Facts and Truth over hype and propaganda to help subscribers prepare for What’s Next in the increasingly turbulent times ah...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="economy.html_Files/maxresdefault.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="economy.html_Files/maxresdefault.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="economy.html_Files/7ee4d6a3820e3b8e6bdd70a8ffc58e84.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curb#6617" data-user-id="754263608304861328" style="color: rgb(245,204,51)">Curb</span>
+
+
+        <span class="chatlog__timestamp">12-Sep-20 11:09 PM</span>
+
+            <div class="chatlog__message " data-message-id="754448652831031407" id="message-754448652831031407">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.youtube.com/watch?v=PfnS7-P848I">https://www.youtube.com/watch?v=PfnS7-P848I</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCBLGQrOOfs5l7fay66B2-3Q">Silver Report Uncut</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=PfnS7-P848I">
+                                                    <div class="markdown">Vacant Retail Properties Surge As Boarded Up Windows &amp; Guard Dogs B...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Retail vacancies are accelerating rapidly across major US cities as more people rush to escape the city.  NYC seems to be one of the hardest hit and is beginning to resemble the story of the great flight from Detroit that crushed the cities economy and helped deliver the cheap...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="economy.html_Files/sddefault.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="economy.html_Files/sddefault.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="economy.html_Files/7ee4d6a3820e3b8e6bdd70a8ffc58e84.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curb#6617" data-user-id="754263608304861328" style="color: rgb(245,204,51)">Curb</span>
+
+
+        <span class="chatlog__timestamp">13-Sep-20 11:09 AM</span>
+
+            <div class="chatlog__message " data-message-id="754629937906057236" id="message-754629937906057236">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://youtu.be/_esDJ8byass">https://youtu.be/_esDJ8byass</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCoMdktPbSTixAyNGwb-UYkQ">Sky News</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=_esDJ8byass">
+                                                    <div class="markdown">Coronavirus: How homeless camps have grown in LA</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Residents in some of LA&#39;s wealthiest areas have started leaving as homeless camps increase following the pandemic, as many people are not able to afford rent or mortgages. 
+
+Before the pandemic, figures showed a 16.1% rise in homelessness to 41,290 according to the Los Angeles...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="economy.html_Files/maxresdefault%20%281%29.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="economy.html_Files/maxresdefault%20%281%29.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="economy.html_Files/7ee4d6a3820e3b8e6bdd70a8ffc58e84.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curb#6617" data-user-id="754263608304861328" style="color: rgb(245,204,51)">Curb</span>
+
+
+        <span class="chatlog__timestamp">13-Sep-20 11:33 AM</span>
+
+            <div class="chatlog__message " data-message-id="754635747113304135" id="message-754635747113304135">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.zerohedge.com/markets/millennials-are-coming-boomers-money-one-bank-sees-generational-conflict-breaking-out">https://www.zerohedge.com/markets/millennials-are-coming-boomers-money-one-bank-sees-generational-conflict-breaking-out</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,255,255,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.zerohedge.com/markets/millennials-are-coming-boomers-money-one-bank-sees-generational-conflict-breaking-out">
+                                                    <div class="markdown">The Millennials Are Coming For The Boomers&#39; Money: One Bank Sees Ge...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">The young have every right to be aggrieved: in the US, real median net worth by age has diverged markedly since the 1980s, benefiting the boomers and crushing the youth.</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="economy.html_Files/boomers%2520vs%2520millennial.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="economy.html_Files/boomers%2520vs%2520millennial.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="economy.html_Files/7ee4d6a3820e3b8e6bdd70a8ffc58e84.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curb#6617" data-user-id="754263608304861328" style="color: rgb(245,204,51)">Curb</span>
+
+
+        <span class="chatlog__timestamp">13-Sep-20 02:49 PM</span>
+
+            <div class="chatlog__message " data-message-id="754685072656826464" id="message-754685072656826464">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://youtu.be/BV_d9ra95J8">https://youtu.be/BV_d9ra95J8</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCngq92xrmmsfEgGdfAJ6giQ">The Money GPS</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=BV_d9ra95J8">
+                                                    <div class="markdown">How To MAKE MONEY and PROTECT WEALTH With Sound Investing Principle...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown"><img class="emoji " alt="💵" title="💵" src="https://twemoji.maxcdn.com/2/72x72/1f4b5.png"> HOW TO MAKE MONEY ON AMAZON - FREE eCOURSE: <img class="emoji " alt="💵" title="💵" src="https://twemoji.maxcdn.com/2/72x72/1f4b5.png">
+<img class="emoji " alt="👉" title="👉" src="https://twemoji.maxcdn.com/2/72x72/1f449.png"> <a href="http://TheAmazonGPS.com">http://TheAmazonGPS.com</a> <img class="emoji " alt="👈" title="👈" src="https://twemoji.maxcdn.com/2/72x72/1f448.png">
+
+—————————————————————————————————
+
+LOOK THROUGH MY BOOKS! <a href="http://books.themoneygps.com">http://books.themoneygps.com</a>
+
+SUPPORT MY WORK: <a href="https://www.patreon.com/themoneygps">https://www.patreon.com/themoneygps</a>
+PAYPAL: <a href="https://goo.gl/L6VQg9">https://goo.gl/L6VQg9</a>
+OTHER: <a href="http://themoneygps.com">http://themoneygps.com</a>...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="economy.html_Files/sddefault%20%281%29.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="economy.html_Files/sddefault%20%281%29.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="economy.html_Files/7ee4d6a3820e3b8e6bdd70a8ffc58e84.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curb#6617" data-user-id="754263608304861328" style="color: rgb(245,204,51)">Curb</span>
+
+
+        <span class="chatlog__timestamp">13-Sep-20 09:56 PM</span>
+
+            <div class="chatlog__message " data-message-id="754792712376549612" id="message-754792712376549612">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.imf.org/en/Publications/WP/Issues/2016/12/31/Breaking-Through-the-Zero-Lower-Bound-43358">https://www.imf.org/en/Publications/WP/Issues/2016/12/31/Breaking-Through-the-Zero-Lower-Bound-43358</a> </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="economy.html_Files/0fafcd6d81d43fb58d93c2efe733fe2d.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Saun Virroco#4404" data-user-id="607601902972174346" style="color: rgb(46,204,113)">Saun Virroco</span>
+
+
+        <span class="chatlog__timestamp">13-Sep-20 09:58 PM</span>
+
+            <div class="chatlog__message " data-message-id="754793197468909568" id="message-754793197468909568">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.coindesk.com/digital-dollar-project-calls-for-2-tiered-distribution-system-in-first-white-paper-for-us-cbdc">https://www.coindesk.com/digital-dollar-project-calls-for-2-tiered-distribution-system-in-first-white-paper-for-us-cbdc</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(240,240,240,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.coindesk.com/digital-dollar-project-calls-for-2-tiered-distribution-system-in-first-white-paper-for-us-cbdc">
+                                                    <div class="markdown">Digital Dollar Project Calls for 2-Tiered Distribution System in Fi...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">The Digital Dollar Project&#39;s first white paper describes how a two-tiered system underpinning a tokenized dollar could modernize the U.S. financial system.</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="economy.html_Files/Christopher-Giancarlo.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="economy.html_Files/Christopher-Giancarlo.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="754793988606918717" id="message-754793988606918717">
+                <div class="chatlog__content">
+                    <div class="markdown">Digital dollar. FedAccount.
+They tried to pass this in March 2020, however in the final version digital dollar was completely removed. Read page 4 for details: </div>
+                </div>
+
+                    <div class="chatlog__attachment">
+                            <a href="economy.html_Files/Digital_Dollar_Wallet_FedAccount_waters_146_xml_03.pdf">
+Attachment: Digital_Dollar_Wallet_FedAccount_waters_146_xml_03.23.2020.pdf (613,39 KB)                            </a>
+                    </div>
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="754794360578768977" id="message-754794360578768977">
+                <div class="chatlog__content">
+                    <div class="markdown">Here is the forbes article of that bill, there it says final version has no mention of the digital dollar.
+<a href="https://www.forbes.com/sites/jasonbrett/2020/03/23/new-coronavirus-stimulus-bill-introduces-digital-dollar-and-digital-dollar-wallets/#4edfb62b4bea">https://www.forbes.com/sites/jasonbrett/2020/03/23/new-coronavirus-stimulus-bill-introduces-digital-dollar-and-digital-dollar-wallets/#4edfb62b4bea</a> <span class="chatlog__edited-timestamp" title="13-Sep-20 10:04 PM">(edited)</span></div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.forbes.com/sites/jasonbrett/2020/03/23/new-coronavirus-stimulus-bill-introduces-digital-dollar-and-digital-dollar-wallets/">
+                                                    <div class="markdown">Coronavirus Stimulus Offered By House Financial Services Committee ...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">As the markets continue to drop and the U. S. looks to Congress for agreement on a massive stimulus package to save the economy from impacts of the coronavirus pandemic, the newest offer by House Democrats includes a very forward-looking kind of stimulus: the creation of a ‘di...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="economy.html_Files/https%253A%252F%252Fspecials-images.forbesimg.com%252Fimag.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="economy.html_Files/https%253A%252F%252Fspecials-images.forbesimg.com%252Fimag.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="economy.html_Files/7ee4d6a3820e3b8e6bdd70a8ffc58e84.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curb#6617" data-user-id="754263608304861328" style="color: rgb(245,204,51)">Curb</span>
+
+
+        <span class="chatlog__timestamp">13-Sep-20 10:04 PM</span>
+
+            <div class="chatlog__message " data-message-id="754794561250918460" id="message-754794561250918460">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://archive.is/RmGIt">https://archive.is/RmGIt</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://archive.is/RmGIt">
+                                                    <div class="markdown">Will the pandemic finally kill cash? - The Washington Post</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">archived 10 Aug 2020 10:57:14 UTC</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="economy.html_Files/scr.png">
+                                            <img class="chatlog__embed-thumbnail" src="economy.html_Files/scr.png" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="economy.html_Files/0fafcd6d81d43fb58d93c2efe733fe2d.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Saun Virroco#4404" data-user-id="607601902972174346" style="color: rgb(46,204,113)">Saun Virroco</span>
+
+
+        <span class="chatlog__timestamp">13-Sep-20 10:04 PM</span>
+
+            <div class="chatlog__message " data-message-id="754794589834969158" id="message-754794589834969158">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://btcmanager.com/digital-yuan-traceable-hardware-wallet/">https://btcmanager.com/digital-yuan-traceable-hardware-wallet/</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(229,166,81,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://btcmanager.com/digital-yuan-traceable-hardware-wallet/">
+                                                    <div class="markdown">The Digital Yuan May Launch With a Traceable Hardware Wallet | BTCM...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">In an interesting twist--and perhaps another chess move by the Chinese central bank-- is the revelation that the digital yuan may not only be stored using a &quot;hot&quot; wallet but a traceable hardware wallet activated by users submitting personal details as per a CoinDesk&#160;report&#160;on ...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="economy.html_Files/Chinese-local-government-employees-to-receive-cent.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="economy.html_Files/Chinese-local-government-employees-to-receive-cent.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="economy.html_Files/7ee4d6a3820e3b8e6bdd70a8ffc58e84.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curb#6617" data-user-id="754263608304861328" style="color: rgb(245,204,51)">Curb</span>
+
+
+        <span class="chatlog__timestamp">13-Sep-20 10:05 PM</span>
+
+            <div class="chatlog__message " data-message-id="754794797423788116" id="message-754794797423788116">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.zerohedge.com/personal-finance/australians-are-hoarding-cash-businesses-go-cashless">https://www.zerohedge.com/personal-finance/australians-are-hoarding-cash-businesses-go-cashless</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,255,255,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.zerohedge.com/personal-finance/australians-are-hoarding-cash-businesses-go-cashless">
+                                                    <div class="markdown">Australians Are Hoarding Cash As Businesses Go Cashless</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">“While COVID-19 has accelerated the shift to electronic payments, there has, paradoxically, also been record demand for banknotes...”</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="economy.html_Files/General-View-of-Westpac-882274658-700x420.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="economy.html_Files/General-View-of-Westpac-882274658-700x420.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="754794861944635502" id="message-754794861944635502">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.zerohedge.com/economics/real-moneys-revenge">https://www.zerohedge.com/economics/real-moneys-revenge</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,255,255,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.zerohedge.com/economics/real-moneys-revenge">
+                                                    <div class="markdown">Garrison: The Revenge Of &quot;Real Money&quot; Or &quot;Cashless Enslavement Of H...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">What’s likely is the Fed will convert us to a cashless society and adopt a social credit system... it will mean the total enslavement of humanity...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="economy.html_Files/real_money_king_dollar.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="economy.html_Files/real_money_king_dollar.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="754794912893108344" id="message-754794912893108344">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.zerohedge.com/geopolitical/dark-side-cashless-society">https://www.zerohedge.com/geopolitical/dark-side-cashless-society</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,255,255,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.zerohedge.com/geopolitical/dark-side-cashless-society">
+                                                    <div class="markdown">The Dark Side Of The Cashless Society</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Some argue elites are pushing for the cashless society so they can “herd” us all into “the digital pens.” Then they can impose negative interest rates on us. But there’s another angle...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="economy.html_Files/dr_img1-2.png">
+                                            <img class="chatlog__embed-thumbnail" src="economy.html_Files/dr_img1-2.png" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="&#128562;" title="&#128562;" src="economy.html_Files/1f632.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+            <div class="chatlog__message " data-message-id="754794976554123445" id="message-754794976554123445">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://youtu.be/srOqk-SbJdE">https://youtu.be/srOqk-SbJdE</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCY-UU3bN4FkMILC-CMd8N5w">reallygraceful</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=srOqk-SbJdE">
+                                                    <div class="markdown">Who Benefits from a Cashless Society?</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">In today&#39;s video, we talk money and ask: &quot;cui bono?&quot; Who benefits from a cashless society? 
+
+These videos are always fully sourced. Links to sources are always pinned as top comment.
+
+Please consider supporting my channel on Patreon: <a href="http://patreon.com/reallygraceful">http://patreon.com/reallygraceful</a>
+Subscribe...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="economy.html_Files/maxresdefault%20%282%29.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="economy.html_Files/maxresdefault%20%282%29.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="754795042887041136" id="message-754795042887041136">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://youtu.be/5PImI0YfdGI">https://youtu.be/5PImI0YfdGI</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCSJx2iNjVaCCPaB8SPU_XXw">Epic Economist</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=5PImI0YfdGI">
+                                                    <div class="markdown">Alert Global Coin Shortage Leads To A Cashless Society</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">For the last few weeks, the United States has been experiencing a growing coin shortage, which may sound harmless enough. However, this could be a subtle move pushing the country towards a cashless society and we are forced to turn to digital payments instead.
+
+On June 11th, t...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="economy.html_Files/maxresdefault%20%283%29.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="economy.html_Files/maxresdefault%20%283%29.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="754795086700740779" id="message-754795086700740779">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.zerohedge.com/personal-finance/nationwide-coin-shortage-being-used-push-us-toward-cashless-society">https://www.zerohedge.com/personal-finance/nationwide-coin-shortage-being-used-push-us-toward-cashless-society</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,255,255,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.zerohedge.com/personal-finance/nationwide-coin-shortage-being-used-push-us-toward-cashless-society">
+                                                    <div class="markdown">Is The Nationwide Coin Shortage Being Used To Push Us Toward A Cash...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">...central banks all over the globe have been encouraging the use of digital payments for a very long time, and so this pandemic has given them a golden opportunity to accelerate that agenda.</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="economy.html_Files/Snip20200630_5-600x411.png">
+                                            <img class="chatlog__embed-thumbnail" src="economy.html_Files/Snip20200630_5-600x411.png" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="economy.html_Files/7ee4d6a3820e3b8e6bdd70a8ffc58e84.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curb#6617" data-user-id="754263608304861328" style="color: rgb(245,204,51)">Curb</span>
+
+
+        <span class="chatlog__timestamp">13-Sep-20 10:25 PM</span>
+
+            <div class="chatlog__message " data-message-id="754799945625632880" id="message-754799945625632880">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://blogs.imf.org/2019/02/05/cashing-in-how-to-make-negative-interest-rates-work/">https://blogs.imf.org/2019/02/05/cashing-in-how-to-make-negative-interest-rates-work/</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://blogs.imf.org/2019/02/05/cashing-in-how-to-make-negative-interest-rates-work/">
+                                                    <div class="markdown">Cashing In: How to Make Negative Interest Rates Work</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">By Ruchir Agarwal and Signe Krogstrup
+Espa&#241;ol, Fran&#231;ais,</div>
+                                        </div>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="economy.html_Files/7ee4d6a3820e3b8e6bdd70a8ffc58e84.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curb#6617" data-user-id="754263608304861328" style="color: rgb(245,204,51)">Curb</span>
+
+
+        <span class="chatlog__timestamp">13-Sep-20 10:32 PM</span>
+
+            <div class="chatlog__message " data-message-id="754801795636658227" id="message-754801795636658227">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://youtu.be/_Rfwm9gqI24">https://youtu.be/_Rfwm9gqI24</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCkB8eF4ATHl4Jm1BeCZgQ9A">Uneducated Economist</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=_Rfwm9gqI24">
+                                                    <div class="markdown">Silver Because No Matter What It Works</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Sweden is the most cashless society some young adults have never used cash. some big concerns come with a pure digital transactions. 
+
+<a href="https://www.bloomberg.com/news/articles/2020-09-12/sweden-s-cashless-future-reveals-a-whole-world-of-hidden-risks">https://www.bloomberg.com/news/articles/2020-09-12/sweden-s-cashless-future-reveals-a-whole-world-of-hidden-risks</a>
+
+uneducatedeconomist@gmail.c...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="economy.html_Files/maxresdefault%20%284%29.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="economy.html_Files/maxresdefault%20%284%29.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="economy.html_Files/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon07#7428" data-user-id="217373669146492928" style="color: rgb(44,214,205)">mejon07</span>
+
+
+        <span class="chatlog__timestamp">14-Sep-20 03:09 AM</span>
+
+            <div class="chatlog__message " data-message-id="754871330482028605" id="message-754871330482028605">
+                <div class="chatlog__content">
+                    <div class="markdown">some economic infographics shared from the old server: </div>
+                </div>
+
+                    <div class="chatlog__attachment">
+                            <a href="economy.html_Files/1.jpg">
+                                    <img class="chatlog__attachment-thumbnail" src="economy.html_Files/1.jpg" alt="Attachment">
+                            </a>
+                    </div>
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="754871333157994506" id="message-754871333157994506">
+                <div class="chatlog__content">
+                    <div class="markdown"> </div>
+                </div>
+
+                    <div class="chatlog__attachment">
+                            <a href="economy.html_Files/2.jpg">
+                                    <img class="chatlog__attachment-thumbnail" src="economy.html_Files/2.jpg" alt="Attachment">
+                            </a>
+                    </div>
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="754871335397752842" id="message-754871335397752842">
+                <div class="chatlog__content">
+                    <div class="markdown"> </div>
+                </div>
+
+                    <div class="chatlog__attachment">
+                            <a href="economy.html_Files/3.jpg">
+                                    <img class="chatlog__attachment-thumbnail" src="economy.html_Files/3.jpg" alt="Attachment">
+                            </a>
+                    </div>
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="754871352166711306" id="message-754871352166711306">
+                <div class="chatlog__content">
+                    <div class="markdown"> </div>
+                </div>
+
+                    <div class="chatlog__attachment">
+                            <a href="economy.html_Files/4.png">
+                                    <img class="chatlog__attachment-thumbnail" src="economy.html_Files/4.png" alt="Attachment">
+                            </a>
+                    </div>
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="economy.html_Files/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon07#7428" data-user-id="217373669146492928" style="color: rgb(44,214,205)">mejon07</span>
+
+
+        <span class="chatlog__timestamp">14-Sep-20 05:11 AM</span>
+
+            <div class="chatlog__message " data-message-id="754902226031607958" id="message-754902226031607958">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://tradingeconomics.com/canada/personal-savings">https://tradingeconomics.com/canada/personal-savings</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(51,51,51,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Household Saving Rate in Canada increased to 28.20 percent in the second quarter of 2020 from 6.10 percent in the first quarter of 2020. Personal Savings in Canada averaged 7.70 percent from 1961 until 2020, reaching an all time high of 28.20 percent in the second quarter of 2...</div>
+                                        </div>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="754902326225141851" id="message-754902326225141851">
+                <div class="chatlog__content">
+                    <div class="markdown"> </div>
+                </div>
+
+                    <div class="chatlog__attachment">
+                            <a href="economy.html_Files/canada-personal-savings.png">
+                                    <img class="chatlog__attachment-thumbnail" src="economy.html_Files/canada-personal-savings.png" alt="Attachment">
+                            </a>
+                    </div>
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="754903008965296198" id="message-754903008965296198">
+                <div class="chatlog__content">
+                    <div class="markdown">hyperinflation incoming once velocity picks up <span class="chatlog__edited-timestamp" title="14-Sep-20 05:15 AM">(edited)</span></div>
+                </div>
+
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="pepehands" title="pepehands" src="economy.html_Files/754362741526888561.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="economy.html_Files/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon07#7428" data-user-id="217373669146492928" style="color: rgb(44,214,205)">mejon07</span>
+
+
+        <span class="chatlog__timestamp">14-Sep-20 05:43 AM</span>
+
+            <div class="chatlog__message " data-message-id="754910264318623794" id="message-754910264318623794">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.cnet.com/personal-finance/stimulus-check-money-you-and-your-family-might-receive-1200-or-more-with-a-new-relief-payment/">https://www.cnet.com/personal-finance/stimulus-check-money-you-and-your-family-might-receive-1200-or-more-with-a-new-relief-payment/</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(184,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.cnet.com/personal-finance/stimulus-check-money-you-and-your-family-might-receive-1200-or-more-with-a-new-relief-payment/">
+                                                    <div class="markdown">Stimulus check money: You and your family might receive $1,200 or m...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Here&#39;s how much money to expect if a new round of direct payments is sent this year.</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="economy.html_Files/money-bills-dollars-recession-stimulus-cash-4376.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="economy.html_Files/money-bills-dollars-recession-stimulus-cash-4376.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="&#128184;" title="&#128184;" src="economy.html_Files/1f4b8.png">
+                                <span class="chatlog__reaction-count">2</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="economy.html_Files/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon07#7428" data-user-id="217373669146492928" style="color: rgb(44,214,205)">mejon07</span>
+
+
+        <span class="chatlog__timestamp">14-Sep-20 06:02 AM</span>
+
+            <div class="chatlog__message " data-message-id="754914873426706483" id="message-754914873426706483">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.marketwatch.com/story/70-million-in-nyc-taxi-cab-debt-forgiven-2020-09-13">https://www.marketwatch.com/story/70-million-in-nyc-taxi-cab-debt-forgiven-2020-09-13</a> <span class="chatlog__edited-timestamp" title="14-Sep-20 06:02 AM">(edited)</span></div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(46,46,47,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.marketwatch.com/story/70-million-in-nyc-taxi-cab-debt-forgiven-2020-09-13">
+                                                    <div class="markdown">$70 million in NYC taxi-cab debt forgiven</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">The largest holder of New York City taxi-medallion loans is throwing lifelines to thousands of drivers struggling to survive a collapse in ridership caused...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="economy.html_Files/mw_logo_social.png">
+                                            <img class="chatlog__embed-thumbnail" src="economy.html_Files/mw_logo_social.png" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="peep00" title="peep00" src="economy.html_Files/754362803346866226.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="economy.html_Files/7ee4d6a3820e3b8e6bdd70a8ffc58e84.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curb#6617" data-user-id="754263608304861328" style="color: rgb(245,204,51)">Curb</span>
+
+
+        <span class="chatlog__timestamp">14-Sep-20 01:15 PM</span>
+
+            <div class="chatlog__message " data-message-id="755023890308136991" id="message-755023890308136991">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.weforum.org/agenda/2020/09/the-great-reset-financing-a-sustainable-recovery/">https://www.weforum.org/agenda/2020/09/the-great-reset-financing-a-sustainable-recovery/</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(3,91,156,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.weforum.org/agenda/2020/09/the-great-reset-financing-a-sustainable-recovery/">
+                                                    <div class="markdown">The Great Reset: Financing a Sustainable Recovery</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">The Forum&#39;s latest Great Reset Dialogue hears from IMF chief Kristalina Georgieva, Saudi Finance Minister Mohammed Al-Jadaan, Fidelity International CEO Anne Richards and economist Cameron Hepburn.</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="economy.html_Files/responsive_medium_wX5-8yg9fPxu0rJSqRq8d01hZXuHgy5I.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="economy.html_Files/responsive_medium_wX5-8yg9fPxu0rJSqRq8d01hZXuHgy5I.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="755024000236781640" id="message-755024000236781640">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://youtu.be/DYepgdLCkPg">https://youtu.be/DYepgdLCkPg</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCw-kH-Od73XDAt7qtH9uBYA">World Economic Forum</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=DYepgdLCkPg">
+                                                    <div class="markdown">The Great Reset: Financing a Sustainable Recovery</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">More than $10 trillion has been spent on global fiscal policy relief and to contain COVID-19, with new rounds of stimulus to support economic recovery expected as lockdowns relax. How can capital that is mobilized to counter the economic fallout be directed towards a sustainab...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="economy.html_Files/maxresdefault%20%285%29.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="economy.html_Files/maxresdefault%20%285%29.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="economy.html_Files/7ee4d6a3820e3b8e6bdd70a8ffc58e84.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curb#6617" data-user-id="754263608304861328" style="color: rgb(245,204,51)">Curb</span>
+
+
+        <span class="chatlog__timestamp">14-Sep-20 01:50 PM</span>
+
+            <div class="chatlog__message " data-message-id="755032812955893840" id="message-755032812955893840">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://youtu.be/X7RrdR8jmMA">https://youtu.be/X7RrdR8jmMA</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UC0iTb2U2nWkm5X3XRityENw">WallStForMainSt</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=X7RrdR8jmMA">
+                                                    <div class="markdown">This Was Very Predictable: Massive PPP Loan Fraud Uncovered Already!</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Back in March when Congress announced the Paycheck Protection Program (PPP) that the Small Business Administration (SBA) would be in charge of giving out hundreds of billions of dollars in loans, it was obvious that there was going to be a lot of waste, fraud, corruption and a...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="economy.html_Files/maxresdefault%20%286%29.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="economy.html_Files/maxresdefault%20%286%29.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="economy.html_Files/7ee4d6a3820e3b8e6bdd70a8ffc58e84.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curb#6617" data-user-id="754263608304861328" style="color: rgb(245,204,51)">Curb</span>
+
+
+        <span class="chatlog__timestamp">14-Sep-20 02:15 PM</span>
+
+            <div class="chatlog__message " data-message-id="755039011986472980" id="message-755039011986472980">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://youtu.be/_en1ZGLlZ5o">https://youtu.be/_en1ZGLlZ5o</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCaMpMU8OYVD5gUWU8dvjFjQ">WOLFSTREET.com</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=_en1ZGLlZ5o">
+                                                    <div class="markdown">Great Time to Turn a Nest Egg into Scrambled Eggs</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">It just looks so tempting.</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="economy.html_Files/maxresdefault%20%287%29.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="economy.html_Files/maxresdefault%20%287%29.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="755040519096238111" id="message-755040519096238111">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://youtu.be/Zj_PTTYsP-U">https://youtu.be/Zj_PTTYsP-U</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCngq92xrmmsfEgGdfAJ6giQ">The Money GPS</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=Zj_PTTYsP-U">
+                                                    <div class="markdown">Why the Global Economy CAN’T Recover! More Job Cuts, Recession, and...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown"><img class="emoji " alt="💵" title="💵" src="https://twemoji.maxcdn.com/2/72x72/1f4b5.png"> HOW TO MAKE MONEY ON AMAZON - FREE eCOURSE: <img class="emoji " alt="💵" title="💵" src="https://twemoji.maxcdn.com/2/72x72/1f4b5.png">
+<img class="emoji " alt="👉" title="👉" src="https://twemoji.maxcdn.com/2/72x72/1f449.png"> <a href="http://TheAmazonGPS.com">http://TheAmazonGPS.com</a> <img class="emoji " alt="👈" title="👈" src="https://twemoji.maxcdn.com/2/72x72/1f448.png">
+
+—————————————————————————————————
+
+LOOK THROUGH MY BOOKS! <a href="http://books.themoneygps.com">http://books.themoneygps.com</a>
+
+SUPPORT MY WORK: <a href="https://www.patreon.com/themoneygps">https://www.patreon.com/themoneygps</a>
+PAYPAL: <a href="https://goo.gl/L6VQg9">https://goo.gl/L6VQg9</a>
+OTHER: <a href="http://themoneygps.com">http://themoneygps.com</a>...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="economy.html_Files/sddefault%20%282%29.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="economy.html_Files/sddefault%20%282%29.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="PinkWojak" title="PinkWojak" src="economy.html_Files/755053453239255101.png">
+                                <span class="chatlog__reaction-count">2</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="economy.html_Files/7ee4d6a3820e3b8e6bdd70a8ffc58e84.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curb#6617" data-user-id="754263608304861328" style="color: rgb(245,204,51)">Curb</span>
+
+
+        <span class="chatlog__timestamp">14-Sep-20 03:04 PM</span>
+
+            <div class="chatlog__message " data-message-id="755051360864436315" id="message-755051360864436315">
+                <div class="chatlog__content">
+                    <div class="markdown">memba this &#39;the economics&#39; cover? </div>
+                </div>
+
+                    <div class="chatlog__attachment">
+                            <a href="economy.html_Files/20200328_cna1280_0.jpg">
+                                    <img class="chatlog__attachment-thumbnail" src="economy.html_Files/20200328_cna1280_0.jpg" alt="Attachment">
+                            </a>
+                    </div>
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="&#128567;" title="&#128567;" src="economy.html_Files/1f637.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="&#128175;" title="&#128175;" src="economy.html_Files/1f4af.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="economy.html_Files/7ee4d6a3820e3b8e6bdd70a8ffc58e84.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curb#6617" data-user-id="754263608304861328" style="color: rgb(245,204,51)">Curb</span>
+
+
+        <span class="chatlog__timestamp">14-Sep-20 06:39 PM</span>
+
+            <div class="chatlog__message " data-message-id="755105449103196171" id="message-755105449103196171">
+                <div class="chatlog__content">
+                    <div class="markdown">too big to fail? <img class="emoji " alt="🙄" title="🙄" src="https://twemoji.maxcdn.com/2/72x72/1f644.png"> 
+<a href="https://www.afr.com/companies/financial-services/ubs-explores-merger-with-credit-suisse-20200914-p55vl6">https://www.afr.com/companies/financial-services/ubs-explores-merger-with-credit-suisse-20200914-p55vl6</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.afr.com/companies/financial-services/ubs-explores-merger-with-credit-suisse-20200914-p55vl6">
+                                                    <div class="markdown">UBS explores merger with Credit Suisse</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">The chairmen of UBS Group AG and Credit Suisse Group AG are exploring a potential merger to create one of Europe’s largest banks, Inside Paradeplatz reported.</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="economy.html_Files/a2111fe0baa7a8aaeb49388b69b734a70a264ea5">
+                                            <img class="chatlog__embed-thumbnail" src="economy.html_Files/a2111fe0baa7a8aaeb49388b69b734a70a264ea5" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="economy.html_Files/7ee4d6a3820e3b8e6bdd70a8ffc58e84.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curb#6617" data-user-id="754263608304861328" style="color: rgb(245,204,51)">Curb</span>
+
+
+        <span class="chatlog__timestamp">14-Sep-20 07:15 PM</span>
+
+            <div class="chatlog__message " data-message-id="755114624050790451" id="message-755114624050790451">
+                <div class="chatlog__content">
+                    <div class="markdown">pandemic funds ready to go at beginning of 2019.. <img class="emoji " alt="hmmm_think" title="hmmm_think" src="https://cdn.discordapp.com/emojis/754648859841527889.png"> 
+<a href="https://www.worldbank.org/en/topic/pandemics/brief/pandemic-emergency-financing-facility">https://www.worldbank.org/en/topic/pandemics/brief/pandemic-emergency-financing-facility</a> </div>
+                </div>
+
+                    <div class="chatlog__attachment">
+                            <a href="economy.html_Files/unknown%20%281%29.png">
+                                    <img class="chatlog__attachment-thumbnail" src="economy.html_Files/unknown%20%281%29.png" alt="Attachment">
+                            </a>
+                    </div>
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.worldbank.org/en/topic/pandemics/brief/pandemic-emergency-financing-facility">
+                                                    <div class="markdown">Pandemic Emergency Financing Facility</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Pandemic emergency financing facility</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="economy.html_Files/PEF_HOW_WORKS.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="economy.html_Files/PEF_HOW_WORKS.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="economy.html_Files/7ee4d6a3820e3b8e6bdd70a8ffc58e84.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curb#6617" data-user-id="754263608304861328" style="color: rgb(245,204,51)">Curb</span>
+
+
+        <span class="chatlog__timestamp">14-Sep-20 07:44 PM</span>
+
+            <div class="chatlog__message " data-message-id="755121818313949360" id="message-755121818313949360">
+                <div class="chatlog__content">
+                    <div class="markdown"><img class="emoji " alt="PinkWojak" title="PinkWojak" src="https://cdn.discordapp.com/emojis/755053453239255101.png"> 
+<a href="https://www.cnbc.com/2020/09/14/americans-are-forced-to-raid-retirement-savings-during-the-pandemic.html">https://www.cnbc.com/2020/09/14/americans-are-forced-to-raid-retirement-savings-during-the-pandemic.html</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.cnbc.com/2020/09/14/americans-are-forced-to-raid-retirement-savings-during-the-pandemic.html">
+                                                    <div class="markdown">Americans are raiding retirement savings during coronavirus pandemic</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">The economic fallout from the coronavirus pandemic is pushing retirement savers to pull thousands of dollars from their nest eggs to make ends meet.</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="economy.html_Files/106698034-1599771467554-gettyimages-902863704-pi-1.jpeg">
+                                            <img class="chatlog__embed-thumbnail" src="economy.html_Files/106698034-1599771467554-gettyimages-902863704-pi-1.jpeg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="PinkWojak" title="PinkWojak" src="economy.html_Files/755053453239255101.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="economy.html_Files/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon07#7428" data-user-id="217373669146492928" style="color: rgb(44,214,205)">mejon07</span>
+
+
+        <span class="chatlog__timestamp">15-Sep-20 03:16 AM</span>
+
+            <div class="chatlog__message " data-message-id="755235561773465630" id="message-755235561773465630">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.podbean.com/media/share/pb-bmtpc-eb91da">https://www.podbean.com/media/share/pb-bmtpc-eb91da</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.podbean.com/media/share/pb-bmtpc-eb91da">
+                                                    <div class="markdown">52% Of Millennials Live With THEIR PARENTS! - This CANNOT End Well!</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Josh Sigurdson talks with Tim Picciott, The Liberty Advisor about the new shocking numbers that show 52% of all millennials currently live with their parents.&#160;
+While there is certainly an uptick this year, it was only a catalyst. This year&#39;s uptick was bound to happen anyways....</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="economy.html_Files/the-liberty-advisor_medium.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="economy.html_Files/the-liberty-advisor_medium.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="economy.html_Files/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon07#7428" data-user-id="217373669146492928" style="color: rgb(44,214,205)">mejon07</span>
+
+
+        <span class="chatlog__timestamp">15-Sep-20 04:53 AM</span>
+
+            <div class="chatlog__message " data-message-id="755259923310313512" id="message-755259923310313512">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.investing.com/news/economic-indicators/new-zealand-set-to-post-deepest-economic-slump-on-record-reuters-poll-2295440">https://www.investing.com/news/economic-indicators/new-zealand-set-to-post-deepest-economic-slump-on-record-reuters-poll-2295440</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.investing.com/news/economic-indicators/new-zealand-set-to-post-deepest-economic-slump-on-record-reuters-poll-2295440">
+                                                    <div class="markdown">New Zealand set to post deepest economic slump on record: Reuters poll</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">New Zealand set to post deepest economic slump on record: Reuters poll</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="economy.html_Files/LYNXMPEG8E013_L.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="economy.html_Files/LYNXMPEG8E013_L.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="PinkWojak" title="PinkWojak" src="economy.html_Files/755053453239255101.png">
+                                <span class="chatlog__reaction-count">2</span>
+                            </div>
+                    </div>
+            </div>
+            <div class="chatlog__message " data-message-id="755260378346422352" id="message-755260378346422352">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.cnn.com/2020/09/14/politics/biden-tax-spending-plans-trump-deficits/">https://www.cnn.com/2020/09/14/politics/biden-tax-spending-plans-trump-deficits/</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.cnn.com/2020/09/14/politics/biden-tax-spending-plans-trump-deficits/">
+                                                    <div class="markdown">Biden proposes $5 trillion in new spending, undaunted by Trump&#39;s ma...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">The nation&#39;s deficits and outlays have hit post-World War II highs thanks to tax cuts under President Donald Trump, but Democratic presidential nominee Joe Biden is proposing adding to that, at least in the near term, with a $5.4 trillion spending plan.</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="economy.html_Files/200914121834-biden-tax-spending-plans-file-super-t.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="economy.html_Files/200914121834-biden-tax-spending-plans-file-super-t.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                                <div class="chatlog__embed-footer">
+
+                                        <span class="chatlog__embed-footer-text">
+
+
+15-Sep-20 02:34 AM                                        </span>
+                                </div>
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="&#128184;" title="&#128184;" src="economy.html_Files/1f4b8.png">
+                                <span class="chatlog__reaction-count">2</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="&#127463;" title="&#127463;" src="economy.html_Files/1f1e7.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="&#127479;" title="&#127479;" src="economy.html_Files/1f1f7.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="PinkWojak" title="PinkWojak" src="economy.html_Files/755053453239255101.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="economy.html_Files/7ee4d6a3820e3b8e6bdd70a8ffc58e84.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curb#6617" data-user-id="754263608304861328" style="color: rgb(245,204,51)">Curb</span>
+
+
+        <span class="chatlog__timestamp">15-Sep-20 12:23 PM</span>
+
+            <div class="chatlog__message " data-message-id="755373136379117669" id="message-755373136379117669">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.zerohedge.com/markets/citi-restarts-job-cuts-ending-pandemic-no-layoff-pledge">https://www.zerohedge.com/markets/citi-restarts-job-cuts-ending-pandemic-no-layoff-pledge</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,255,255,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.zerohedge.com/markets/citi-restarts-job-cuts-ending-pandemic-no-layoff-pledge">
+                                                    <div class="markdown">Citi Restarts Job Cuts, Ending Pandemic &quot;No Layoff&quot; Pledge</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">And the hits just keep on coming for Citigroup.</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="economy.html_Files/banker%2520box%2520quit.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="economy.html_Files/banker%2520box%2520quit.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="755373609504997387" id="message-755373609504997387">
+                <div class="chatlog__content">
+                    <div class="markdown"><div class="quote">After promising to pause layoffs in late March, Banks resumed job cuts in recent weeks, and many firms are now pushing to cut costs as the pandemic has dragged on, threatening lenders with higher credit costs and crimping revenue growth, which in the case of Citi is expected to decline this year as noted above.</div> </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="economy.html_Files/7ee4d6a3820e3b8e6bdd70a8ffc58e84.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curb#6617" data-user-id="754263608304861328" style="color: rgb(245,204,51)">Curb</span>
+
+
+        <span class="chatlog__timestamp">15-Sep-20 12:54 PM</span>
+
+            <div class="chatlog__message " data-message-id="755381101010092042" id="message-755381101010092042">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://youtu.be/cQRtE9PPS54">https://youtu.be/cQRtE9PPS54</a>
+in short : <em>we will brrrr and spend and you will pay</em> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCXB8fM4VyQubRu3UVGhd3wA">European Central Bank</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=cQRtE9PPS54">
+                                                    <div class="markdown">Speech Fabio Panetta: 24th Economist Roundtable with the Government...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Speech by Fabio Panetta, Member of the Executive Board of the ECB at the 24th Economist Roundtable with the Government of Greece</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="economy.html_Files/maxresdefault%20%288%29.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="economy.html_Files/maxresdefault%20%288%29.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="economy.html_Files/7ee4d6a3820e3b8e6bdd70a8ffc58e84.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curb#6617" data-user-id="754263608304861328" style="color: rgb(245,204,51)">Curb</span>
+
+
+        <span class="chatlog__timestamp">15-Sep-20 01:04 PM</span>
+
+            <div class="chatlog__message " data-message-id="755383595354554438" id="message-755383595354554438">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://youtu.be/B4xcCO9v-Os">https://youtu.be/B4xcCO9v-Os</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCpvyOqtEc86X8w8_Se0t4-w">George Gammon</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=B4xcCO9v-Os">
+                                                    <div class="markdown">Lyn Alden/Jeff Snider (QE, Deflation, Inflation, Dollar, Eurodollar...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">The Rebel Capitalist show helps YOU learn more about Macro, Investing, Entrepreneurship AND Personal Freedom.   
+
+✅  Want to take your investing to the next level?  Check out my new online investing forum!! I&#39;ve partnered with Lyn Alden and Chris MacIntosh to bring you the bes...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="economy.html_Files/maxresdefault%20%289%29.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="economy.html_Files/maxresdefault%20%289%29.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="economy.html_Files/7ee4d6a3820e3b8e6bdd70a8ffc58e84.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curb#6617" data-user-id="754263608304861328" style="color: rgb(245,204,51)">Curb</span>
+
+
+        <span class="chatlog__timestamp">15-Sep-20 01:11 PM</span>
+
+            <div class="chatlog__message " data-message-id="755385396602470451" id="message-755385396602470451">
+                <div class="chatlog__content">
+                    <div class="markdown">a technical talk about inflation vs deflation in relation to QE (&quot;money&quot; printing) </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="economy.html_Files/7ee4d6a3820e3b8e6bdd70a8ffc58e84.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curb#6617" data-user-id="754263608304861328" style="color: rgb(245,204,51)">Curb</span>
+
+
+        <span class="chatlog__timestamp">15-Sep-20 02:43 PM</span>
+
+            <div class="chatlog__message " data-message-id="755408455761789088" id="message-755408455761789088">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://globalnews.ca/video/7304545/the-case-for-universal-basic-income-in-post-pandemic-canada">https://globalnews.ca/video/7304545/the-case-for-universal-basic-income-in-post-pandemic-canada</a>
+<a href="https://globalnews.ca/news/7332968/canada-basic-income-program-coronavirus/">https://globalnews.ca/news/7332968/canada-basic-income-program-coronavirus/</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(19,63,111,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://globalnews.ca/video/7304545/the-case-for-universal-basic-income-in-post-pandemic-canada">
+                                                    <div class="markdown">The case for universal basic income in post-pandemic Canada | Watch...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Watch The case for universal basic income in post-pandemic Canada Video Online, on GlobalNews.ca</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="economy.html_Files/UBI_thumb_no_txt.png">
+                                            <img class="chatlog__embed-thumbnail" src="economy.html_Files/UBI_thumb_no_txt.png" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(19,63,111,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://globalnews.ca/author/bill-kelly/">bkelly900</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://globalnews.ca/news/7332968/canada-basic-income-program-coronavirus/">
+                                                    <div class="markdown">Bill Kelly: Is Canada ready for a basic income program?</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">The concept of a basic income is not some crazy, left-wing idea, as some critics have characterized it, says Bill Kelly.</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="economy.html_Files/20200722ajw11873081-7.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="economy.html_Files/20200722ajw11873081-7.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="pepe_novote" title="pepe_novote" src="economy.html_Files/754466461346693272.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="economy.html_Files/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon07#7428" data-user-id="217373669146492928" style="color: rgb(44,214,205)">mejon07</span>
+
+
+        <span class="chatlog__timestamp">15-Sep-20 05:00 PM</span>
+
+            <div class="chatlog__message " data-message-id="755442820298571783" id="message-755442820298571783">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://theprint.in/economy/modi-govt-plans-to-make-a-law-to-ban-cryptocurrency-trading/503421/">https://theprint.in/economy/modi-govt-plans-to-make-a-law-to-ban-cryptocurrency-trading/503421/</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://theprint.in/author/archana-chaudhary/">Archana Chaudhary</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://theprint.in/economy/modi-govt-plans-to-make-a-law-to-ban-cryptocurrency-trading/503421/">
+                                                    <div class="markdown">Modi govt plans to make a law to ban cryptocurrency trading</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">India will encourage blockchain, the technology underlying cryptocurrencies, but isn’t keen on cryptocurrency trading &amp; a bill is expected soon.</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="economy.html_Files/1x-1-2-1-e1583467782547.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="economy.html_Files/1x-1-2-1-e1583467782547.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="economy.html_Files/7ee4d6a3820e3b8e6bdd70a8ffc58e84.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curb#6617" data-user-id="754263608304861328" style="color: rgb(245,204,51)">Curb</span>
+
+
+        <span class="chatlog__timestamp">15-Sep-20 05:06 PM</span>
+
+            <div class="chatlog__message " data-message-id="755444453363417209" id="message-755444453363417209">
+                <div class="chatlog__content">
+                    <div class="markdown">geez again? think India banned it (but not for realsies) a few times now </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="755444475022803065" id="message-755444475022803065">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.marketwatch.com/articles/house-to-introduce-bipartisan-stimulus-bill-51600172660">https://www.marketwatch.com/articles/house-to-introduce-bipartisan-stimulus-bill-51600172660</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(46,46,47,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.marketwatch.com/articles/house-to-introduce-bipartisan-stimulus-bill-51600172660">
+                                                    <div class="markdown">House to Introduce Bipartisan Stimulus Bill</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">The bill is expected to include state and local aid, additional unemployment benefits, and another round of stimulus payments.</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="economy.html_Files/social">
+                                            <img class="chatlog__embed-thumbnail" src="economy.html_Files/social" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="&#128184;" title="&#128184;" src="economy.html_Files/1f4b8.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+            <div class="chatlog__message " data-message-id="755444514444804208" id="message-755444514444804208">
+                <div class="chatlog__content">
+                    <div class="markdown"><img class="emoji " alt="PinkWojak" title="PinkWojak" src="https://cdn.discordapp.com/emojis/755053453239255101.png">  BRRRRRRR </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="economy.html_Files/7ee4d6a3820e3b8e6bdd70a8ffc58e84.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curb#6617" data-user-id="754263608304861328" style="color: rgb(245,204,51)">Curb</span>
+
+
+        <span class="chatlog__timestamp">15-Sep-20 06:48 PM</span>
+
+            <div class="chatlog__message " data-message-id="755470222714077296" id="message-755470222714077296">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.youtube.com/watch?v=tzN8gWB_xc4">https://www.youtube.com/watch?v=tzN8gWB_xc4</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCkJ1N-7g9Q6n7KnriGit-Ig">RonPaulLibertyReport</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=tzN8gWB_xc4">
+                                                    <div class="markdown">Weekly Update --- Debt is the Real Pandemic</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">The warfare-welfare state is alive and well.</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="economy.html_Files/maxresdefault%20%2810%29.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="economy.html_Files/maxresdefault%20%2810%29.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="economy.html_Files/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon07#7428" data-user-id="217373669146492928" style="color: rgb(44,214,205)">mejon07</span>
+
+
+        <span class="chatlog__timestamp">16-Sep-20 06:21 AM</span>
+
+            <div class="chatlog__message " data-message-id="755644484561403945" id="message-755644484561403945">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://twitter.com/SallyMayweather/status/1305494958355423232">https://twitter.com/SallyMayweather/status/1305494958355423232</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(29,161,242,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+                                                <img class="chatlog__embed-author-icon" src="economy.html_Files/tgcqYXDU_bigger.png" alt="Author icon">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/SallyMayweather">Sal the Agorist (@SallyMayweather)</a>
+                                                </span>
+                                        </div>
+
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown"><a href="https://t.co/1V2V6NWf8j">https://t.co/1V2V6NWf8j</a></div>
+                                        </div>
+
+                                        <div class="chatlog__embed-fields">
+                                                <div class="chatlog__embed-field chatlog__embed-field--inline">
+                                                        <div class="chatlog__embed-field-name">
+                                                            <div class="markdown">Likes</div>
+                                                        </div>
+
+                                                        <div class="chatlog__embed-field-value">
+                                                            <div class="markdown">268</div>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                </div>
+
+                            </div>
+
+                                <div class="chatlog__embed-image-container">
+                                    <a class="chatlog__embed-image-link" href="economy.html_Files/Eh4MvbtWsAAo8hC.jpg_large">
+                                        <img class="chatlog__embed-image" src="economy.html_Files/Eh4MvbtWsAAo8hC.jpg_large" alt="Image">
+                                    </a>
+                                </div>
+
+                                <div class="chatlog__embed-footer">
+                                        <img class="chatlog__embed-footer-icon" src="economy.html_Files/apple-touch-icon-192x192.png" alt="Footer icon">
+
+                                        <span class="chatlog__embed-footer-text">
+Twitter
+
+                                        </span>
+                                </div>
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="honkhonk_clown" title="honkhonk_clown" src="economy.html_Files/754468370279301160.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="economy.html_Files/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon07#7428" data-user-id="217373669146492928" style="color: rgb(44,214,205)">mejon07</span>
+
+
+        <span class="chatlog__timestamp">16-Sep-20 06:56 AM</span>
+
+            <div class="chatlog__message " data-message-id="755653275461615647" id="message-755653275461615647">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.cnbc.com/2020/09/16/japans-exports-extend-double-digit-declines-as-pandemic-hits-demand.html">https://www.cnbc.com/2020/09/16/japans-exports-extend-double-digit-declines-as-pandemic-hits-demand.html</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.cnbc.com/2020/09/16/japans-exports-extend-double-digit-declines-as-pandemic-hits-demand.html">
+                                                    <div class="markdown">Japan&#39;s exports extend double-digit declines as pandemic hits demand</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Total exports fell 14.8% year-on-year in August, highlighting the immense task that Yoshihide Suga, who is assured to be elected prime minister later on Wednesday, faces in driving an economic recovery.</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="economy.html_Files/106704024-1600225879475-GettyImages-1227930602_1.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="economy.html_Files/106704024-1600225879475-GettyImages-1227930602_1.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="PinkWojak" title="PinkWojak" src="economy.html_Files/755053453239255101.png">
+                                <span class="chatlog__reaction-count">2</span>
+                            </div>
+                    </div>
+            </div>
+            <div class="chatlog__message " data-message-id="755653610272063491" id="message-755653610272063491">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.cbc.ca/news/politics/federal-government-billions-green-recovery-1.5725311">https://www.cbc.ca/news/politics/federal-government-billions-green-recovery-1.5725311</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.cbc.ca/news/politics/federal-government-billions-green-recovery-1.5725311">
+                                                    <div class="markdown">Task force calls on federal government to spend billions on a &#39;gree...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">An independent task force made up of experts in financial and environmental policy is calling on Ottawa to spend&#160;$55 billion over five years on clean energy and measures to cope with climate change&#160;to&#160;kick-start a Canadian&#160;economy stalled by the global pandemic.</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="economy.html_Files/wind1.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="economy.html_Files/wind1.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="honkhonk_clown" title="honkhonk_clown" src="economy.html_Files/754468370279301160.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="&#128184;" title="&#128184;" src="economy.html_Files/1f4b8.png">
+                                <span class="chatlog__reaction-count">2</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="economy.html_Files/7ee4d6a3820e3b8e6bdd70a8ffc58e84.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curb#6617" data-user-id="754263608304861328" style="color: rgb(245,204,51)">Curb</span>
+
+
+        <span class="chatlog__timestamp">16-Sep-20 01:21 PM</span>
+
+            <div class="chatlog__message " data-message-id="755750286081130527" id="message-755750286081130527">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.youtube.com/watch?v=6WUDUWmFJUg">https://www.youtube.com/watch?v=6WUDUWmFJUg</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCCs_FjJR8A7rompHCnW0-3g">Gerald Celente</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=6WUDUWmFJUg">
+                                                    <div class="markdown">Trends Journal: Teaching Fear, From the Cold War to the COVID War</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Gerald Celente is the Publisher of the Trends Journal, a weekly magazine analyzing global current events forming future trends. Our mission is to present Facts and Truth over hype and propaganda to help subscribers prepare for What’s Next in the increasingly turbulent times ah...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="economy.html_Files/maxresdefault%20%2811%29.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="economy.html_Files/maxresdefault%20%2811%29.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="economy.html_Files/7ee4d6a3820e3b8e6bdd70a8ffc58e84.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curb#6617" data-user-id="754263608304861328" style="color: rgb(245,204,51)">Curb</span>
+
+
+        <span class="chatlog__timestamp">16-Sep-20 01:39 PM</span>
+
+            <div class="chatlog__message " data-message-id="755754802499158027" id="message-755754802499158027">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://youtu.be/C5Ahqp-J1Cw">https://youtu.be/C5Ahqp-J1Cw</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCpvyOqtEc86X8w8_Se0t4-w">George Gammon</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=C5Ahqp-J1Cw">
+                                                    <div class="markdown">Luke Gromen (Dollar Hegemony Fading, Economic Collapse, MMT, And So...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">The Rebel Capitalist show helps YOU learn more about Macro, Investing, Entrepreneurship AND Personal Freedom.   
+
+✅  Check out our affiliate link for Lukes research products!  <a href="https://www.georgegammon.com/luke">https://www.georgegammon.com/luke</a>
+
+For more content that&#39;ll help you build wealth and thrive in a wor...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="economy.html_Files/maxresdefault%20%2812%29.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="economy.html_Files/maxresdefault%20%2812%29.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="economy.html_Files/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon07#7428" data-user-id="217373669146492928" style="color: rgb(44,214,205)">mejon07</span>
+
+
+        <span class="chatlog__timestamp">16-Sep-20 04:02 PM</span>
+
+            <div class="chatlog__message " data-message-id="755790683700199537" id="message-755790683700199537">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.marketwatch.com/story/gold-prices-rise-as-dollar-weakness-buttresses-bullion-2020-09-14">https://www.marketwatch.com/story/gold-prices-rise-as-dollar-weakness-buttresses-bullion-2020-09-14</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(46,46,47,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.marketwatch.com/story/gold-prices-rise-as-dollar-weakness-buttresses-bullion-2020-09-14">
+                                                    <div class="markdown">Gold prices tally best one-day gain since August as dollar weakness...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Gold futures rise on Monday to tally their largest one-day gain of the month, as weakness in the dollar and superlow government bond yields help to keep the...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="economy.html_Files/MW-HQ435_coins__ZG_20190829155849.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="economy.html_Files/MW-HQ435_coins__ZG_20190829155849.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="economy.html_Files/7ee4d6a3820e3b8e6bdd70a8ffc58e84.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curb#6617" data-user-id="754263608304861328" style="color: rgb(245,204,51)">Curb</span>
+
+
+        <span class="chatlog__timestamp">16-Sep-20 06:52 PM</span>
+
+            <div class="chatlog__message " data-message-id="755833617225351278" id="message-755833617225351278">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.principles.com/the-changing-world-order/">https://www.principles.com/the-changing-world-order/</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(42,42,42,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.principles.com/the-changing-world-order/">
+                                                    <div class="markdown">Principles by Ray Dalio</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Principles: Life &amp; Work by Ray Dalio now available in hardcover and as an audiobook. Learn more at principles.com</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="economy.html_Files/social-ray-dalio-principles-share-banner-7cf8e88cf.png">
+                                            <img class="chatlog__embed-thumbnail" src="economy.html_Files/social-ray-dalio-principles-share-banner-7cf8e88cf.png" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="economy.html_Files/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon07#7428" data-user-id="217373669146492928" style="color: rgb(44,214,205)">mejon07</span>
+
+
+        <span class="chatlog__timestamp">17-Sep-20 07:15 AM</span>
+
+            <div class="chatlog__message " data-message-id="756020401213276160" id="message-756020401213276160">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.zerohedge.com/markets/trump-agrees-powell-much-higher-fiscal-stimulus-needed-and-why-could-crash-stocks">https://www.zerohedge.com/markets/trump-agrees-powell-much-higher-fiscal-stimulus-needed-and-why-could-crash-stocks</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,255,255,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.zerohedge.com/markets/trump-agrees-powell-much-higher-fiscal-stimulus-needed-and-why-could-crash-stocks">
+                                                    <div class="markdown">Trump Agrees With Powell: &quot;Much Higher&quot; Fiscal Stimulus Is Needed.....</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">&quot;Go for the much higher numbers, Republicans, it all comes back to the USA anyway (one way or another!).&quot;</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="economy.html_Files/powell%2520trump%2520up%2520close.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="economy.html_Files/powell%2520trump%2520up%2520close.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="PinkWojak" title="PinkWojak" src="economy.html_Files/755053453239255101.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="&#128184;" title="&#128184;" src="economy.html_Files/1f4b8.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="economy.html_Files/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon07#7428" data-user-id="217373669146492928" style="color: rgb(44,214,205)">mejon07</span>
+
+
+        <span class="chatlog__timestamp">17-Sep-20 02:08 PM</span>
+
+            <div class="chatlog__message " data-message-id="756124321935654993" id="message-756124321935654993">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.cnbc.com/2020/09/16/yelp-data-shows-60percent-of-business-closures-due-to-the-coronavirus-pandemic-are-now-permanent.html">https://www.cnbc.com/2020/09/16/yelp-data-shows-60percent-of-business-closures-due-to-the-coronavirus-pandemic-are-now-permanent.html</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.cnbc.com/2020/09/16/yelp-data-shows-60percent-of-business-closures-due-to-the-coronavirus-pandemic-are-now-permanent.html">
+                                                    <div class="markdown">Yelp data shows 60% of business closures due to the coronavirus pan...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Yelp on Wednesday released its latest Economic Impact Report, revealing business closures across the U.S. are increasing as a result of the coronavirus.</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="economy.html_Files/106696476-1599706559243-gettyimages-1268610261-nng.jpeg">
+                                            <img class="chatlog__embed-thumbnail" src="economy.html_Files/106696476-1599706559243-gettyimages-1268610261-nng.jpeg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="economy.html_Files/7ee4d6a3820e3b8e6bdd70a8ffc58e84.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curb#6617" data-user-id="754263608304861328" style="color: rgb(245,204,51)">Curb</span>
+
+
+        <span class="chatlog__timestamp">17-Sep-20 03:00 PM</span>
+
+            <div class="chatlog__message " data-message-id="756137625533808671" id="message-756137625533808671">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.zerohedge.com/markets/pound-tumbles-after-boe-said-it-discussed-implementation-negative-rates">https://www.zerohedge.com/markets/pound-tumbles-after-boe-said-it-discussed-implementation-negative-rates</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,255,255,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.zerohedge.com/markets/pound-tumbles-after-boe-said-it-discussed-implementation-negative-rates">
+                                                    <div class="markdown">Pound Tumbles After BOE Said It Discussed Implementation Of Negativ...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">The MPC had been briefed on the Bank of England’s plans to explore how a negative Bank Rate could be implemented effectively, should the outlook for inflation and output warrant it at some point during this period of low equilibrium rates.</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="economy.html_Files/gbpusd.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="economy.html_Files/gbpusd.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="economy.html_Files/7ee4d6a3820e3b8e6bdd70a8ffc58e84.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curb#6617" data-user-id="754263608304861328" style="color: rgb(245,204,51)">Curb</span>
+
+
+        <span class="chatlog__timestamp">17-Sep-20 04:35 PM</span>
+
+            <div class="chatlog__message " data-message-id="756161486040072292" id="message-756161486040072292">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.zerohedge.com/markets/deutsche-bank-gold-manipulator-spoofing-was-so-commonplace-i-figured-it-was-ok">https://www.zerohedge.com/markets/deutsche-bank-gold-manipulator-spoofing-was-so-commonplace-i-figured-it-was-ok</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,255,255,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.zerohedge.com/markets/deutsche-bank-gold-manipulator-spoofing-was-so-commonplace-i-figured-it-was-ok">
+                                                    <div class="markdown">Deutsche Bank Gold Manipulator: &quot;Spoofing Was So Commonplace I Figu...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Just in case there is still anyone who claims that the price of gold is not manipulated.</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="economy.html_Files/gold%2520manipulation.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="economy.html_Files/gold%2520manipulation.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="economy.html_Files/7ee4d6a3820e3b8e6bdd70a8ffc58e84.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curb#6617" data-user-id="754263608304861328" style="color: rgb(245,204,51)">Curb</span>
+
+
+        <span class="chatlog__timestamp">17-Sep-20 06:49 PM</span>
+
+            <div class="chatlog__message " data-message-id="756195104389202060" id="message-756195104389202060">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.bloomberg.com/news/articles/2020-09-17/deutsche-bank-metal-spoofer-tells-jury-his-bosses-showed-him-how">https://www.bloomberg.com/news/articles/2020-09-17/deutsche-bank-metal-spoofer-tells-jury-his-bosses-showed-him-how</a>
+<div class="quote">Former Deutsche Bank AG analyst David Liew told a Chicago jury he learned how to manipulate gold and silver prices from the two successful senior traders he admired and worked with for about three years.</div> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.bloomberg.com/news/articles/2020-09-17/deutsche-bank-metal-spoofer-tells-jury-his-bosses-showed-him-how">
+                                                    <div class="markdown">Deutsche Bank Spoofer Tells Jury His Bosses Showed Him How</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Former Deutsche Bank AG analyst David Liew told a Chicago jury he learned how to manipulate gold and silver prices from the two successful senior traders he admired and worked with for about three years.</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="economy.html_Files/1200x800.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="economy.html_Files/1200x800.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                                <div class="chatlog__embed-footer">
+
+                                        <span class="chatlog__embed-footer-text">
+
+
+17-Sep-20 12:00 PM                                        </span>
+                                </div>
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="economy.html_Files/7ee4d6a3820e3b8e6bdd70a8ffc58e84.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curb#6617" data-user-id="754263608304861328" style="color: rgb(245,204,51)">Curb</span>
+
+
+        <span class="chatlog__timestamp">17-Sep-20 08:38 PM</span>
+
+            <div class="chatlog__message " data-message-id="756222616024514720" id="message-756222616024514720">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://twitter.com/i/status/1306661758245928969">https://twitter.com/i/status/1306661758245928969</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(29,161,242,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+                                                <img class="chatlog__embed-author-icon" src="economy.html_Files/5qNzuVlU_bigger.jpg" alt="Author icon">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/QuickTake">Bloomberg QuickTake (@QuickTake)</a>
+                                                </span>
+                                        </div>
+
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">People don’t have money.”
+
+The world is hurtling toward an unprecedented hunger crisis, even at a time of enormous food surpluses around the globe.
+
+Read more in @business: <a href="https://t.co/AHEm00SN3y">https://t.co/AHEm00SN3y</a> <a href="https://t.co/9FCOjiVVHY">https://t.co/9FCOjiVVHY</a></div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="economy.html_Files/2-fK5dW7z9GRZzQf.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="economy.html_Files/2-fK5dW7z9GRZzQf.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                                <div class="chatlog__embed-footer">
+                                        <img class="chatlog__embed-footer-icon" src="economy.html_Files/apple-touch-icon-192x192.png" alt="Footer icon">
+
+                                        <span class="chatlog__embed-footer-text">
+Twitter
+
+                                        </span>
+                                </div>
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="economy.html_Files/7ee4d6a3820e3b8e6bdd70a8ffc58e84.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curb#6617" data-user-id="754263608304861328" style="color: rgb(245,204,51)">Curb</span>
+
+
+        <span class="chatlog__timestamp">18-Sep-20 01:54 AM</span>
+
+            <div class="chatlog__message " data-message-id="756302152812593152" id="message-756302152812593152">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.zerohedge.com/markets/more-380000-applied-job-amazon-one-day">https://www.zerohedge.com/markets/more-380000-applied-job-amazon-one-day</a> </div>
+                </div>
+
+                    <div class="chatlog__attachment">
+                            <a href="economy.html_Files/proxy-image.png">
+                                    <img class="chatlog__attachment-thumbnail" src="economy.html_Files/proxy-image.png" alt="Attachment">
+                            </a>
+                    </div>
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,255,255,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.zerohedge.com/markets/more-380000-applied-job-amazon-one-day">
+                                                    <div class="markdown">More Than 380,000 Applied For A Job At Amazon In One Day</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Amazon isn&#39;t just taking over the entire U.S. economy, but also the U.S. job market.</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="economy.html_Files/jobs1.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="economy.html_Files/jobs1.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="peep00" title="peep00" src="economy.html_Files/754362803346866226.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+</div>
+
+<div class="postamble">
+    <div class="postamble__entry">Exported 71 message(s)</div>
+</div>
+
+</body>
+</html>
