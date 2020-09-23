@@ -1,0 +1,1301 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>rabbithole.help - &#128184;-economy</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+
+    <style>
+        /* General */
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-300.woff);
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-400.woff);
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-500.woff);
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-600.woff);
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-700.woff);
+    font-weight: 700;
+}
+
+body {
+    font-family: "Whitney", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 17px;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+img {
+    object-fit: contain;
+}
+
+.markdown {
+    max-width: 100%;
+    white-space: pre-wrap;
+    line-height: 1.3;
+    overflow-wrap: break-word;
+}
+
+.spoiler {
+    width: fit-content;
+}
+
+.spoiler--hidden {
+    cursor: pointer;
+}
+
+.spoiler-text {
+    border-radius: 3px;
+}
+
+.spoiler--hidden .spoiler-text {
+    color: rgba(0, 0, 0, 0);
+}
+
+.spoiler--hidden .spoiler-text::selection {
+    color: rgba(0, 0, 0, 0);
+}
+
+.spoiler-image {
+    position: relative;
+    overflow: hidden;
+    border-radius: 3px;
+}
+
+.spoiler--hidden .spoiler-image {
+    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.spoiler--hidden .spoiler-image img {
+    filter: blur(44px);
+}
+
+.spoiler--hidden .spoiler-image:after {
+    content: "SPOILER";
+    color: #dcddde;
+    background-color: rgba(0, 0, 0, 0.6);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: 600;
+    padding: 0.5em 0.7em;
+    border-radius: 20px;
+    letter-spacing: 0.05em;
+    font-size: 0.9em;
+}
+
+.spoiler--hidden:hover .spoiler-image:after {
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.quote {
+    margin: 0.1em 0;
+    padding-left: 0.6em;
+    border-left: 4px solid;
+    border-radius: 3px;
+}
+
+.pre {
+    font-family: "Consolas", "Courier New", Courier, monospace;
+}
+
+.pre--multiline {
+    margin-top: 0.25em;
+    padding: 0.5em;
+    border: 2px solid;
+    border-radius: 5px;
+}
+
+.pre--inline {
+    padding: 2px;
+    border-radius: 3px;
+    font-size: 0.85em;
+}
+
+.mention {
+    border-radius: 3px;
+    padding: 0 2px;
+    color: #7289da;
+    background: rgba(114, 137, 218, .1);
+    font-weight: 500;
+}
+
+.emoji {
+    width: 1.25em;
+    height: 1.25em;
+    margin: 0 0.06em;
+    vertical-align: -0.4em;
+}
+
+.emoji--small {
+    width: 1em;
+    height: 1em;
+}
+
+.emoji--large {
+    width: 2.8em;
+    height: 2.8em;
+}
+
+/* Preamble */
+
+.preamble {
+    display: grid;
+    margin: 0 0.3em 0.6em 0.3em;
+    max-width: 100%;
+    grid-template-columns: auto 1fr;
+}
+
+.preamble__guild-icon-container {
+    grid-column: 1;
+}
+
+.preamble__guild-icon {
+    max-width: 88px;
+    max-height: 88px;
+}
+
+.preamble__entries-container {
+    grid-column: 2;
+    margin-left: 0.6em;
+}
+
+.preamble__entry {
+    font-size: 1.4em;
+}
+
+.preamble__entry--small {
+    font-size: 1em;
+}
+
+/* Chatlog */
+
+.chatlog {
+    max-width: 100%;
+}
+
+.chatlog__message-group {
+    display: grid;
+    margin: 0 0.6em;
+    padding: 0.9em 0;
+    border-top: 1px solid;
+    grid-template-columns: auto 1fr;
+}
+
+.chatlog__author-avatar-container {
+    grid-column: 1;
+    width: 40px;
+    height: 40px;
+}
+
+.chatlog__author-avatar {
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+}
+
+.chatlog__messages {
+    grid-column: 2;
+    margin-left: 1.2em;
+    min-width: 50%;
+}
+
+.chatlog__author-name {
+    font-weight: 500;
+}
+
+.chatlog__timestamp {
+    margin-left: 0.3em;
+    font-size: 0.75em;
+}
+
+.chatlog__message {
+    padding: 0.1em 0.3em;
+    margin: 0 -0.3em;
+    background-color: transparent;
+    transition: background-color 1s ease;
+}
+
+.chatlog__content {
+    font-size: 0.95em;
+    word-wrap: break-word;
+}
+
+.chatlog__edited-timestamp {
+    margin-left: 0.15em;
+    font-size: 0.8em;
+}
+
+.chatlog__attachment {
+    margin-top: 0.3em;
+}
+
+.chatlog__attachment-thumbnail {
+    vertical-align: top;
+    max-width: 45vw;
+    max-height: 500px;
+    border-radius: 3px;
+}
+
+.chatlog__embed {
+    display: flex;
+    margin-top: 0.3em;
+    max-width: 520px;
+}
+
+.chatlog__embed-color-pill {
+    flex-shrink: 0;
+    width: 0.25em;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
+.chatlog__embed-content-container {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5em 0.6em;
+    border: 1px solid;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+.chatlog__embed-content {
+    display: flex;
+    width: 100%;
+}
+
+.chatlog__embed-text {
+    flex: 1;
+}
+
+.chatlog__embed-author {
+    display: flex;
+    margin-bottom: 0.3em;
+    align-items: center;
+}
+
+.chatlog__embed-author-icon {
+    margin-right: 0.5em;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+.chatlog__embed-author-name {
+    font-size: 0.875em;
+    font-weight: 600;
+}
+
+.chatlog__embed-title {
+    margin-bottom: 0.2em;
+    font-size: 0.875em;
+    font-weight: 600;
+}
+
+.chatlog__embed-description {
+    font-weight: 500;
+    font-size: 0.85em;
+}
+
+.chatlog__embed-fields {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.chatlog__embed-field {
+    flex: 0;
+    min-width: 100%;
+    max-width: 506px;
+    padding-top: 0.6em;
+    font-size: 0.875em;
+}
+
+.chatlog__embed-field--inline {
+    flex: 1;
+    flex-basis: auto;
+    min-width: 150px;
+}
+
+.chatlog__embed-field-name {
+    margin-bottom: 0.2em;
+    font-weight: 600;
+}
+
+.chatlog__embed-field-value {
+    font-weight: 500;
+}
+
+.chatlog__embed-thumbnail {
+    flex: 0;
+    margin-left: 1.2em;
+    max-width: 80px;
+    max-height: 80px;
+    border-radius: 3px;
+}
+
+.chatlog__embed-image-container {
+    margin-top: 0.6em;
+}
+
+.chatlog__embed-image {
+    max-width: 500px;
+    max-height: 400px;
+    border-radius: 3px;
+}
+
+.chatlog__embed-footer {
+    margin-top: 0.6em;
+}
+
+.chatlog__embed-footer-icon {
+    margin-right: 0.2em;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+
+.chatlog__embed-footer-text {
+    font-size: 0.75em;
+    font-weight: 500;
+}
+
+.chatlog__reactions {
+    display: flex;
+}
+
+.chatlog__reaction {
+    display: flex;
+    align-items: center;
+    margin: 0.35em 0.1em 0.1em 0.1em;
+    padding: 0.2em 0.35em;
+    border-radius: 3px;
+}
+
+.chatlog__reaction-count {
+    min-width: 9px;
+    margin-left: 0.35em;
+    font-size: 0.875em;
+}
+
+.chatlog__bot-tag {
+    position: relative;
+    top: -.2em;
+    margin-left: 0.3em;
+    padding: 0.05em 0.3em;
+    border-radius: 3px;
+    vertical-align: middle;
+    line-height: 1.3;
+    background: #7289da;
+    color: #ffffff;
+    font-size: 0.625em;
+    font-weight: 500;
+}
+
+/* Postamble */
+
+.postamble {
+    margin: 1.4em 0.3em 0.6em 0.3em;
+    padding: 1em;
+    border-top: 1px solid;
+}
+    </style>
+    <style>
+        /* General */
+
+body {
+    background-color: #36393e;
+    color: #dcddde;
+}
+
+a {
+    color: #0096cf;
+}
+
+.spoiler-text {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.spoiler--hidden .spoiler-text {
+    background-color: #202225;
+}
+
+.spoiler--hidden:hover .spoiler-text {
+    background-color: rgba(32, 34, 37, 0.8);
+}
+
+.quote {
+    border-color: #4f545c;
+}
+
+.pre {
+    background-color: #2f3136 !important;
+}
+
+.pre--multiline {
+    border-color: #282b30 !important;
+    color: #b9bbbe !important;
+}
+
+/* === Preamble === */
+
+.preamble__entry {
+    color: #ffffff;
+}
+
+/* Chatlog */
+
+.chatlog__message-group {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.chatlog__author-name {
+    color: #ffffff;
+}
+
+.chatlog__timestamp {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.chatlog__message--highlighted {
+    background-color: rgba(114, 137, 218, 0.2) !important;
+}
+
+.chatlog__message--pinned {
+    background-color: rgba(249, 168, 37, 0.05);
+}
+
+.chatlog__edited-timestamp {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.chatlog__embed-color-pill--default {
+    background-color: rgba(79, 84, 92, 1);
+}
+
+.chatlog__embed-content-container {
+    background-color: rgba(46, 48, 54, 0.3);
+    border-color: rgba(46, 48, 54, 0.6);
+}
+
+.chatlog__embed-author-name {
+    color: #ffffff;
+}
+
+.chatlog__embed-author-name-link {
+    color: #ffffff;
+}
+
+.chatlog__embed-title {
+    color: #ffffff;
+}
+
+.chatlog__embed-description {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__embed-field-name {
+    color: #ffffff;
+}
+
+.chatlog__embed-field-value {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__embed-footer {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__reaction {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.chatlog__reaction-count {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+/* Postamble */
+
+.postamble {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.postamble__entry {
+    color: #ffffff;
+}
+    </style>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/solarized-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.pre--multiline').forEach(block => hljs.highlightBlock(block));
+        });
+    </script>
+
+    <script>
+        function scrollToMessage(event, id) {
+            var element = document.getElementById('message-' + id);
+
+            if (element) {
+                event.preventDefault();
+
+                element.classList.add('chatlog__message--highlighted');
+
+                window.scrollTo({
+                    top: element.getBoundingClientRect().top - document.body.getBoundingClientRect().top - (window.innerHeight / 2),
+                    behavior: 'smooth'
+                });
+
+                window.setTimeout(function() {
+                    element.classList.remove('chatlog__message--highlighted');
+                }, 2000);
+            }
+        }
+
+        function showSpoiler(event, element) {
+            if (element && element.classList.contains('spoiler--hidden')) {
+                event.preventDefault();
+                element.classList.remove('spoiler--hidden');
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="preamble">
+    <div class="preamble__guild-icon-container">
+        <img class="preamble__guild-icon" src="economy.html_Files/784161a8e70ff916c0f69cb3448e3baa.png" alt="Guild icon">
+    </div>
+    <div class="preamble__entries-container">
+        <div class="preamble__entry">rabbithole.help</div>
+        <div class="preamble__entry">research sharing / &#128184;-economy</div>
+
+            <div class="preamble__entry preamble__entry--small">economy, cashless-society, markets</div>
+
+    </div>
+</div>
+
+<div class="chatlog">
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="economy.html_Files/9bea5afc75fcd39ae71773df0db5c2f6.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Erik Nixon#3741" data-user-id="748928657929797742" style="color: rgb(46,204,113)">Erik Nixon</span>
+
+
+        <span class="chatlog__timestamp">22-Sep-20 01:10 AM</span>
+
+            <div class="chatlog__message " data-message-id="757740462407680031" id="message-757740462407680031">
+                <div class="chatlog__content">
+                    <div class="markdown">Yeah. But what isn&#39;t. </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="757740897936080926" id="message-757740897936080926">
+                <div class="chatlog__content">
+                    <div class="markdown">Cryptocurrencies seem to be the new USD, even according to mainstream economists </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="757742116611817542" id="message-757742116611817542">
+                <div class="chatlog__content">
+                    <div class="markdown">This whole discord and many other similar forums are dedicated to what seems to be a sort of &quot;divining&quot; of what&#39;s real, out of the wave upon wave of bullshit we are fed. Maybe the root cause is indeed cryptic, and not simply based in the greed of a few individuals </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="economy.html_Files/7ee4d6a3820e3b8e6bdd70a8ffc58e84.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curb#6617" data-user-id="754263608304861328" style="color: rgb(245,204,51)">Curb</span>
+
+
+        <span class="chatlog__timestamp">22-Sep-20 01:17 AM</span>
+
+            <div class="chatlog__message " data-message-id="757742236262727760" id="message-757742236262727760">
+                <div class="chatlog__content">
+                    <div class="markdown">if anything it will be something like this
+<a href="https://patents.google.com/patent/WO2020060606A1/en">https://patents.google.com/patent/WO2020060606A1/en</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://patents.google.com/patent/WO2020060606A1/en">
+                                                    <div class="markdown">WO2020060606A1 - Cryptocurrency system using body activity data 
+  ...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Human body activity associated with a task provided to a user may be used in a mining process of a cryptocurrency system. A server may provide a task to a device of a user which is communicatively coupled to the server. A sensor communicatively coupled to or comprised in...</div>
+                                        </div>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="economy.html_Files/9bea5afc75fcd39ae71773df0db5c2f6.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Erik Nixon#3741" data-user-id="748928657929797742" style="color: rgb(46,204,113)">Erik Nixon</span>
+
+
+        <span class="chatlog__timestamp">22-Sep-20 01:20 AM</span>
+
+            <div class="chatlog__message " data-message-id="757742999659741217" id="message-757742999659741217">
+                <div class="chatlog__content">
+                    <div class="markdown">Yeah ok. I actually meant something different from what I said. What I was referring to was advice to invest in cryptocurrencies, particularly bitcoin, as the collapse of the USD is forecast. Bitcoin and gold, silver, seen as &quot;safe&quot;, though I know nothing of these things (apart from gold/silver traditionally safe) - I&#39;ve just seen several pieces of investment advice relating to bitcoin </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="economy.html_Files/7ee4d6a3820e3b8e6bdd70a8ffc58e84.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curb#6617" data-user-id="754263608304861328" style="color: rgb(245,204,51)">Curb</span>
+
+
+        <span class="chatlog__timestamp">22-Sep-20 01:22 AM</span>
+
+            <div class="chatlog__message " data-message-id="757743642311131217" id="message-757743642311131217">
+                <div class="chatlog__content">
+                    <div class="markdown">bitcoin is a speculation. if you want to preserve wealth i would go with gold silver. 
+diversify </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="757744024093327491" id="message-757744024093327491">
+                <div class="chatlog__content">
+                    <div class="markdown">USD actually getting stronger now. and bitcoin gold silver going down. was a weird day in the markets and this might go on for a bit </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="757744561287331850" id="message-757744561287331850">
+                <div class="chatlog__content">
+                    <div class="markdown"><em>not investment advice</em> </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="economy.html_Files/7ee4d6a3820e3b8e6bdd70a8ffc58e84.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curb#6617" data-user-id="754263608304861328" style="color: rgb(245,204,51)">Curb</span>
+
+
+        <span class="chatlog__timestamp">22-Sep-20 01:52 AM</span>
+
+            <div class="chatlog__message " data-message-id="757751255958290463" id="message-757751255958290463">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.zerohedge.com/markets/banks-bader-ginsburg-and-limey-lockdowns-slam-stocks-silver-usd-soars">https://www.zerohedge.com/markets/banks-bader-ginsburg-and-limey-lockdowns-slam-stocks-silver-usd-soars</a>
+<a href="https://twitter.com/i/status/1308049244725542915">https://twitter.com/i/status/1308049244725542915</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,255,255,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.zerohedge.com/markets/banks-bader-ginsburg-and-limey-lockdowns-slam-stocks-silver-usd-soars">
+                                                    <div class="markdown">&#39;Bad&#39; Banks, Bader Ginsburg, And Limey Lockdowns Slam Stocks &amp; Silv...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">RBG&#39;s death ramps up election, and thus stimulus, uncertainty to &#39;11&#39;; blowback from the FinCEN leaks on the world&#39;s biggest banks did nothing to comfort investors; and the resurgence of COVID across various European nations (and increasing chatter of lockdowns) was the cherry...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="economy.html_Files/2020-09-21_12-18-10.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="economy.html_Files/2020-09-21_12-18-10.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(29,161,242,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+                                                <img class="chatlog__embed-author-icon" src="economy.html_Files/09QdPfQe_bigger.jpg" alt="Author icon">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/RudyHavenstein">Gravity-Powered Rudy Havenstein (@RudyHavenstein)</a>
+                                                </span>
+                                        </div>
+
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">I guess I should check and see how my portfolio is doing so far today... <a href="https://t.co/vyjiNzBYZ1">https://t.co/vyjiNzBYZ1</a></div>
+                                        </div>
+
+                                        <div class="chatlog__embed-fields">
+                                                <div class="chatlog__embed-field chatlog__embed-field--inline">
+                                                        <div class="chatlog__embed-field-name">
+                                                            <div class="markdown">Retweets</div>
+                                                        </div>
+
+                                                        <div class="chatlog__embed-field-value">
+                                                            <div class="markdown">126</div>
+                                                        </div>
+                                                </div>
+                                                <div class="chatlog__embed-field chatlog__embed-field--inline">
+                                                        <div class="chatlog__embed-field-name">
+                                                            <div class="markdown">Likes</div>
+                                                        </div>
+
+                                                        <div class="chatlog__embed-field-value">
+                                                            <div class="markdown">666</div>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="economy.html_Files/hByWLWuIj4sdBlaj.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="economy.html_Files/hByWLWuIj4sdBlaj.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                                <div class="chatlog__embed-footer">
+                                        <img class="chatlog__embed-footer-icon" src="economy.html_Files/apple-touch-icon-192x192.png" alt="Footer icon">
+
+                                        <span class="chatlog__embed-footer-text">
+Twitter
+
+                                        </span>
+                                </div>
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="economy.html_Files/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon07#7428" data-user-id="217373669146492928" style="color: rgb(44,214,205)">mejon07</span>
+
+
+        <span class="chatlog__timestamp">22-Sep-20 03:30 PM</span>
+
+            <div class="chatlog__message " data-message-id="757957079125458964" id="message-757957079125458964">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.bloomberg.com/news/articles/2020-09-22/thai-cabinet-backs-2-2-billion-cash-aid-to-boost-economy-jobs">https://www.bloomberg.com/news/articles/2020-09-22/thai-cabinet-backs-2-2-billion-cash-aid-to-boost-economy-jobs</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.bloomberg.com/news/articles/2020-09-22/thai-cabinet-backs-2-2-billion-cash-aid-to-boost-economy-jobs">
+                                                    <div class="markdown">Thai Cabinet Backs $2.2 Billion Cash Aid to Boost Economy, Jobs</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Thailand’s cabinet backed several stimulus measures worth a combined budget of 70 billion baht ($2.2 billion) to boost consumption and jobs to counter the economic downturn from the Covid-19 outbreak.</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="economy.html_Files/1200x800%20%281%29.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="economy.html_Files/1200x800%20%281%29.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                                <div class="chatlog__embed-footer">
+
+                                        <span class="chatlog__embed-footer-text">
+
+
+22-Sep-20 12:40 PM                                        </span>
+                                </div>
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="economy.html_Files/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon07#7428" data-user-id="217373669146492928" style="color: rgb(44,214,205)">mejon07</span>
+
+
+        <span class="chatlog__timestamp">22-Sep-20 04:32 PM</span>
+
+            <div class="chatlog__message " data-message-id="757972505720913972" id="message-757972505720913972">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.youtube.com/watch?v=jHaPo7MYFHY">https://www.youtube.com/watch?v=jHaPo7MYFHY</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCLdZo0Mkh_z2IQZSmD8Iy0Q">World Alternative Media</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=jHaPo7MYFHY">
+                                                    <div class="markdown">Canadian Stock Market Is DOOMED! - Debt SKYROCKETS As Market Riggin...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">PFT PRIVACY PROTECTOR:
+<a href="https://high-output.thrivecart.com/privacy-protector-jsigurdson/">https://high-output.thrivecart.com/privacy-protector-jsigurdson/</a>
+
+JOIN US On BitChute:
+<a href="https://www.bitchute.com/channel/gzFCj8AuSWgp/">https://www.bitchute.com/channel/gzFCj8AuSWgp/</a>
+
+JOIN US On Flote:
+<a href="https://flote.app/JoshSigurdson">https://flote.app/JoshSigurdson</a>
+
+JOIN US On LBRY:
+<a href="https://lbry.tv/@WAM:0">https://lbry.tv/@WAM:0</a>
+
+Josh Sigurdson talks with J...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="economy.html_Files/maxresdefault%20%2813%29.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="economy.html_Files/maxresdefault%20%2813%29.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="economy.html_Files/7ee4d6a3820e3b8e6bdd70a8ffc58e84.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curb#6617" data-user-id="754263608304861328" style="color: rgb(245,204,51)">Curb</span>
+
+
+        <span class="chatlog__timestamp">22-Sep-20 11:18 PM</span>
+
+            <div class="chatlog__message " data-message-id="758074791755513947" id="message-758074791755513947">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.investing.com/analysis/bank-of-england-spooks-markets-with-negative-rate-talk-as-covid-gloom-returns-200538397">https://www.investing.com/analysis/bank-of-england-spooks-markets-with-negative-rate-talk-as-covid-gloom-returns-200538397</a>
+<div class="quote">The UK central bank raised the possibility of negative interest rates after officials had pooh-poohed the idea for months. According to the minutes, the Monetary Policy Committee:
+“...had been briefed on the Bank of England’s plans to explore how a negative bank rate could be implemented effectively, should the outlook for inflation and output warrant it.”</div> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.investing.com/analysis/bank-of-england-spooks-markets-with-negative-rate-talk-as-covid-gloom-returns-200538397">
+                                                    <div class="markdown">Bank Of England Spooks Markets With Negative Rate Talk As COVID Glo...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Bonds Analysis by Investing.com (Darrell Delamaide/Investing.com) covering: GBP/USD, S&amp;P 500, United Kingdom 10-Year, United States 10-Year. Read Investing.com (Darrell Delamaide/Investing.com)&#39;s latest article on Investing.com</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="economy.html_Files/investingcom_analysis_og.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="economy.html_Files/investingcom_analysis_og.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="economy.html_Files/7ee4d6a3820e3b8e6bdd70a8ffc58e84.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curb#6617" data-user-id="754263608304861328" style="color: rgb(245,204,51)">Curb</span>
+
+
+        <span class="chatlog__timestamp">23-Sep-20 02:19 AM</span>
+
+            <div class="chatlog__message " data-message-id="758120412931686480" id="message-758120412931686480">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://thehill.com/policy/defense/517520-pentagon-redirected-pandemic-funds-to-defense-contractors-report">https://thehill.com/policy/defense/517520-pentagon-redirected-pandemic-funds-to-defense-contractors-report</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://thehill.com/policy/defense/517520-pentagon-redirected-pandemic-funds-to-defense-contractors-report">
+                                                    <div class="markdown">Pentagon redirected pandemic funds to defense contractors</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">The Pentagon redirected most of its $1 billion in pandemic funding to defense contractors who exchanged the money for jet engine parts, body armor, dress uniforms and other military needs,</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="economy.html_Files/pentagon_012920gn9_lead.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="economy.html_Files/pentagon_012920gn9_lead.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="NWPepe" title="NWPepe" src="economy.html_Files/755557307949121726.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="grabler" title="grabler" src="economy.html_Files/755052200564097065.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+            <div class="chatlog__message " data-message-id="758120430929707068" id="message-758120430929707068">
+                <div class="chatlog__content">
+                    <div class="markdown"><img class="emoji emoji--large" alt="NWPepe" title="NWPepe" src="https://cdn.discordapp.com/emojis/755557307949121726.png"> </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="economy.html_Files/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon07#7428" data-user-id="217373669146492928" style="color: rgb(44,214,205)">mejon07</span>
+
+
+        <span class="chatlog__timestamp">23-Sep-20 03:25 AM</span>
+
+            <div class="chatlog__message " data-message-id="758136862115627008" id="message-758136862115627008">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://youtu.be/oZFcRhdIXic">https://youtu.be/oZFcRhdIXic</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCThv5tYUVaG4ZPA3p6EXZbQ">GoldSilver (w/ Mike Maloney)</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=oZFcRhdIXic">
+                                                    <div class="markdown">BROKEN: Do You Really Think The FED Knows What it is Doing?</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">One year ago today - something massive happened in the global markets that marked the beginning of the current crisis. No, it wasn’t the health crisis that kicked off this industrial scale panic…tune in to Mike Maloney’s latest analysis to see the evidence of this event as wel...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="economy.html_Files/maxresdefault%20%2814%29.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="economy.html_Files/maxresdefault%20%2814%29.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="feelsbad" title="feelsbad" src="economy.html_Files/754797793025064990.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="economy.html_Files/7ee4d6a3820e3b8e6bdd70a8ffc58e84.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curb#6617" data-user-id="754263608304861328" style="color: rgb(245,204,51)">Curb</span>
+
+
+        <span class="chatlog__timestamp">23-Sep-20 10:23 AM</span>
+
+            <div class="chatlog__message " data-message-id="758242182330187806" id="message-758242182330187806">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://youtu.be/RViGGmxOk9A">https://youtu.be/RViGGmxOk9A</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCpvyOqtEc86X8w8_Se0t4-w">George Gammon</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=RViGGmxOk9A">
+                                                    <div class="markdown">Ray Dalio Reveals Shocking New Predictions (Dollar Collapse!)</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">For more content that&#39;ll help you build wealth and thrive in a world of out of control central banks and big governments check out Rebel Capitalist Pro! <a href="https://GeorgeGammon.com/pro">https://GeorgeGammon.com/pro</a> 
+
+<img class="emoji " alt="🔴" title="🔴" src="https://twemoji.maxcdn.com/2/72x72/1f534.png"> Subscribe for more free YouTube tips: <a href="https://www.youtube.com/channel/UCpvy">https://www.youtube.com/channel/UCpvy</a>...
+
+Do you wann...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="economy.html_Files/maxresdefault%20%2815%29.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="economy.html_Files/maxresdefault%20%2815%29.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="economy.html_Files/7ee4d6a3820e3b8e6bdd70a8ffc58e84.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curb#6617" data-user-id="754263608304861328" style="color: rgb(245,204,51)">Curb</span>
+
+
+        <span class="chatlog__timestamp">23-Sep-20 01:12 PM</span>
+
+            <div class="chatlog__message " data-message-id="758284529906876426" id="message-758284529906876426">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.zerohedge.com/markets/138-billion-bridgewater-set-50-tent-offices-woods-outside-its-hq-its-traders">https://www.zerohedge.com/markets/138-billion-bridgewater-set-50-tent-offices-woods-outside-its-hq-its-traders</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,255,255,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.zerohedge.com/markets/138-billion-bridgewater-set-50-tent-offices-woods-outside-its-hq-its-traders">
+                                                    <div class="markdown">$138 Billion Bridgewater Set Up 50 &quot;Tent Offices&quot; In The Woods Outs...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Whatever the fund is doing, it isn&#39;t working. The $138 billion fund is down 18.6% this year.</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="economy.html_Files/2020-09-22_6-39-18.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="economy.html_Files/2020-09-22_6-39-18.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+</div>
+
+<div class="postamble">
+    <div class="postamble__entry">Exported 17 message(s)</div>
+</div>
+
+</body>
+</html>
