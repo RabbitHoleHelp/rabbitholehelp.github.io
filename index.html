@@ -46,20 +46,20 @@ title: rabbithole.help
 	const response = await fetch('https://api.github.com/repos/{{ site.github.owner_name }}/{{ site.github.repository_name }}/contents/archive');
 	const data = await response.json();
 
-	let htmlString = '<hr>';
+	let htmlString = `<hr>`;
 	for (let file of data)
 	{
 		if (file.type == "dir")
 		{
-			htmlString += '<h2>${file.name}</h2>';
-			htmlString += '<ul>';
+			htmlString += `<h2>${file.name}</h2>`;
+			htmlString += `<ul>`;
 			const response_sub = await fetch(file.url);
 			const data_sub = await response_sub.json();
 			for (let file_sub of data_sub) {
 				if (file_sub.type == "file")
-					htmlString += '<li><a href="${file_sub.path}">${file_sub.name}</a></li>';
+					htmlString += `<li><a href="${file_sub.path}">${file_sub.name}</a></li>`;
 			}
-			htmlString += '</ul>';
+			htmlString += `</ul>`;
 		}
 	}
 
