@@ -1,0 +1,2842 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>rabbithole.help - &#128371;-memory-hole</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+
+    <style>
+        /* General */
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-300.woff);
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-400.woff);
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-500.woff);
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-600.woff);
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-700.woff);
+    font-weight: 700;
+}
+
+body {
+    font-family: "Whitney", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 17px;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+img {
+    object-fit: contain;
+}
+
+.markdown {
+    max-width: 100%;
+    white-space: pre-wrap;
+    line-height: 1.3;
+    overflow-wrap: break-word;
+}
+
+.spoiler {
+    width: fit-content;
+}
+
+.spoiler--hidden {
+    cursor: pointer;
+}
+
+.spoiler-text {
+    border-radius: 3px;
+}
+
+.spoiler--hidden .spoiler-text {
+    color: rgba(0, 0, 0, 0);
+}
+
+.spoiler--hidden .spoiler-text::selection {
+    color: rgba(0, 0, 0, 0);
+}
+
+.spoiler-image {
+    position: relative;
+    overflow: hidden;
+    border-radius: 3px;
+}
+
+.spoiler--hidden .spoiler-image {
+    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.spoiler--hidden .spoiler-image img {
+    filter: blur(44px);
+}
+
+.spoiler--hidden .spoiler-image:after {
+    content: "SPOILER";
+    color: #dcddde;
+    background-color: rgba(0, 0, 0, 0.6);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: 600;
+    padding: 0.5em 0.7em;
+    border-radius: 20px;
+    letter-spacing: 0.05em;
+    font-size: 0.9em;
+}
+
+.spoiler--hidden:hover .spoiler-image:after {
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.quote {
+    margin: 0.1em 0;
+    padding-left: 0.6em;
+    border-left: 4px solid;
+    border-radius: 3px;
+}
+
+.pre {
+    font-family: "Consolas", "Courier New", Courier, monospace;
+}
+
+.pre--multiline {
+    margin-top: 0.25em;
+    padding: 0.5em;
+    border: 2px solid;
+    border-radius: 5px;
+}
+
+.pre--inline {
+    padding: 2px;
+    border-radius: 3px;
+    font-size: 0.85em;
+}
+
+.mention {
+    border-radius: 3px;
+    padding: 0 2px;
+    color: #7289da;
+    background: rgba(114, 137, 218, .1);
+    font-weight: 500;
+}
+
+.emoji {
+    width: 1.25em;
+    height: 1.25em;
+    margin: 0 0.06em;
+    vertical-align: -0.4em;
+}
+
+.emoji--small {
+    width: 1em;
+    height: 1em;
+}
+
+.emoji--large {
+    width: 2.8em;
+    height: 2.8em;
+}
+
+/* Preamble */
+
+.preamble {
+    display: grid;
+    margin: 0 0.3em 0.6em 0.3em;
+    max-width: 100%;
+    grid-template-columns: auto 1fr;
+}
+
+.preamble__guild-icon-container {
+    grid-column: 1;
+}
+
+.preamble__guild-icon {
+    max-width: 88px;
+    max-height: 88px;
+}
+
+.preamble__entries-container {
+    grid-column: 2;
+    margin-left: 0.6em;
+}
+
+.preamble__entry {
+    font-size: 1.4em;
+}
+
+.preamble__entry--small {
+    font-size: 1em;
+}
+
+/* Chatlog */
+
+.chatlog {
+    max-width: 100%;
+}
+
+.chatlog__message-group {
+    display: grid;
+    margin: 0 0.6em;
+    padding: 0.9em 0;
+    border-top: 1px solid;
+    grid-template-columns: auto 1fr;
+}
+
+.chatlog__author-avatar-container {
+    grid-column: 1;
+    width: 40px;
+    height: 40px;
+}
+
+.chatlog__author-avatar {
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+}
+
+.chatlog__messages {
+    grid-column: 2;
+    margin-left: 1.2em;
+    min-width: 50%;
+}
+
+.chatlog__author-name {
+    font-weight: 500;
+}
+
+.chatlog__timestamp {
+    margin-left: 0.3em;
+    font-size: 0.75em;
+}
+
+.chatlog__message {
+    padding: 0.1em 0.3em;
+    margin: 0 -0.3em;
+    background-color: transparent;
+    transition: background-color 1s ease;
+}
+
+.chatlog__content {
+    font-size: 0.95em;
+    word-wrap: break-word;
+}
+
+.chatlog__edited-timestamp {
+    margin-left: 0.15em;
+    font-size: 0.8em;
+}
+
+.chatlog__attachment {
+    margin-top: 0.3em;
+}
+
+.chatlog__attachment-thumbnail {
+    vertical-align: top;
+    max-width: 45vw;
+    max-height: 500px;
+    border-radius: 3px;
+}
+
+.chatlog__embed {
+    display: flex;
+    margin-top: 0.3em;
+    max-width: 520px;
+}
+
+.chatlog__embed-color-pill {
+    flex-shrink: 0;
+    width: 0.25em;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
+.chatlog__embed-content-container {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5em 0.6em;
+    border: 1px solid;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+.chatlog__embed-content {
+    display: flex;
+    width: 100%;
+}
+
+.chatlog__embed-text {
+    flex: 1;
+}
+
+.chatlog__embed-author {
+    display: flex;
+    margin-bottom: 0.3em;
+    align-items: center;
+}
+
+.chatlog__embed-author-icon {
+    margin-right: 0.5em;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+.chatlog__embed-author-name {
+    font-size: 0.875em;
+    font-weight: 600;
+}
+
+.chatlog__embed-title {
+    margin-bottom: 0.2em;
+    font-size: 0.875em;
+    font-weight: 600;
+}
+
+.chatlog__embed-description {
+    font-weight: 500;
+    font-size: 0.85em;
+}
+
+.chatlog__embed-fields {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.chatlog__embed-field {
+    flex: 0;
+    min-width: 100%;
+    max-width: 506px;
+    padding-top: 0.6em;
+    font-size: 0.875em;
+}
+
+.chatlog__embed-field--inline {
+    flex: 1;
+    flex-basis: auto;
+    min-width: 150px;
+}
+
+.chatlog__embed-field-name {
+    margin-bottom: 0.2em;
+    font-weight: 600;
+}
+
+.chatlog__embed-field-value {
+    font-weight: 500;
+}
+
+.chatlog__embed-thumbnail {
+    flex: 0;
+    margin-left: 1.2em;
+    max-width: 80px;
+    max-height: 80px;
+    border-radius: 3px;
+}
+
+.chatlog__embed-image-container {
+    margin-top: 0.6em;
+}
+
+.chatlog__embed-image {
+    max-width: 500px;
+    max-height: 400px;
+    border-radius: 3px;
+}
+
+.chatlog__embed-footer {
+    margin-top: 0.6em;
+}
+
+.chatlog__embed-footer-icon {
+    margin-right: 0.2em;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+
+.chatlog__embed-footer-text {
+    font-size: 0.75em;
+    font-weight: 500;
+}
+
+.chatlog__reactions {
+    display: flex;
+}
+
+.chatlog__reaction {
+    display: flex;
+    align-items: center;
+    margin: 0.35em 0.1em 0.1em 0.1em;
+    padding: 0.2em 0.35em;
+    border-radius: 3px;
+}
+
+.chatlog__reaction-count {
+    min-width: 9px;
+    margin-left: 0.35em;
+    font-size: 0.875em;
+}
+
+.chatlog__bot-tag {
+    position: relative;
+    top: -.2em;
+    margin-left: 0.3em;
+    padding: 0.05em 0.3em;
+    border-radius: 3px;
+    vertical-align: middle;
+    line-height: 1.3;
+    background: #7289da;
+    color: #ffffff;
+    font-size: 0.625em;
+    font-weight: 500;
+}
+
+/* Postamble */
+
+.postamble {
+    margin: 1.4em 0.3em 0.6em 0.3em;
+    padding: 1em;
+    border-top: 1px solid;
+}
+    </style>
+    <style>
+        /* General */
+
+body {
+    background-color: #36393e;
+    color: #dcddde;
+}
+
+a {
+    color: #0096cf;
+}
+
+.spoiler-text {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.spoiler--hidden .spoiler-text {
+    background-color: #202225;
+}
+
+.spoiler--hidden:hover .spoiler-text {
+    background-color: rgba(32, 34, 37, 0.8);
+}
+
+.quote {
+    border-color: #4f545c;
+}
+
+.pre {
+    background-color: #2f3136 !important;
+}
+
+.pre--multiline {
+    border-color: #282b30 !important;
+    color: #b9bbbe !important;
+}
+
+/* === Preamble === */
+
+.preamble__entry {
+    color: #ffffff;
+}
+
+/* Chatlog */
+
+.chatlog__message-group {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.chatlog__author-name {
+    color: #ffffff;
+}
+
+.chatlog__timestamp {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.chatlog__message--highlighted {
+    background-color: rgba(114, 137, 218, 0.2) !important;
+}
+
+.chatlog__message--pinned {
+    background-color: rgba(249, 168, 37, 0.05);
+}
+
+.chatlog__edited-timestamp {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.chatlog__embed-color-pill--default {
+    background-color: rgba(79, 84, 92, 1);
+}
+
+.chatlog__embed-content-container {
+    background-color: rgba(46, 48, 54, 0.3);
+    border-color: rgba(46, 48, 54, 0.6);
+}
+
+.chatlog__embed-author-name {
+    color: #ffffff;
+}
+
+.chatlog__embed-author-name-link {
+    color: #ffffff;
+}
+
+.chatlog__embed-title {
+    color: #ffffff;
+}
+
+.chatlog__embed-description {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__embed-field-name {
+    color: #ffffff;
+}
+
+.chatlog__embed-field-value {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__embed-footer {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__reaction {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.chatlog__reaction-count {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+/* Postamble */
+
+.postamble {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.postamble__entry {
+    color: #ffffff;
+}
+    </style>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/solarized-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.pre--multiline').forEach(block => hljs.highlightBlock(block));
+        });
+    </script>
+
+    <script>
+        function scrollToMessage(event, id) {
+            var element = document.getElementById('message-' + id);
+
+            if (element) {
+                event.preventDefault();
+
+                element.classList.add('chatlog__message--highlighted');
+
+                window.scrollTo({
+                    top: element.getBoundingClientRect().top - document.body.getBoundingClientRect().top - (window.innerHeight / 2),
+                    behavior: 'smooth'
+                });
+
+                window.setTimeout(function() {
+                    element.classList.remove('chatlog__message--highlighted');
+                }, 2000);
+            }
+        }
+
+        function showSpoiler(event, element) {
+            if (element && element.classList.contains('spoiler--hidden')) {
+                event.preventDefault();
+                element.classList.remove('spoiler--hidden');
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="preamble">
+    <div class="preamble__guild-icon-container">
+        <img class="preamble__guild-icon" src="memory-hole.html_Files/784161a8e70ff916c0f69cb3448e3baa.png" alt="Guild icon">
+    </div>
+    <div class="preamble__entries-container">
+        <div class="preamble__entry">rabbithole.help</div>
+        <div class="preamble__entry">research sharing / &#128371;-memory-hole</div>
+
+            <div class="preamble__entry preamble__entry--small">historic events that are pushed into the memory hole.</div>
+
+            <div class="preamble__entry preamble__entry--small">
+Between 01-Sep-20 12:00 AM and 01-Oct-20 12:00 AM            </div>
+    </div>
+</div>
+
+<div class="chatlog">
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="memory-hole.html_Files/7ee4d6a3820e3b8e6bdd70a8ffc58e84.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curb#6617" data-user-id="754263608304861328" style="color: rgb(245,204,51)">Curb</span>
+
+
+        <span class="chatlog__timestamp">19-Sep-20 01:08 PM</span>
+
+            <div class="chatlog__message " data-message-id="756834168243093555" id="message-756834168243093555">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://twitter.com/jenniferatntd/status/1307066279518449670">https://twitter.com/jenniferatntd/status/1307066279518449670</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(29,161,242,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+                                                <img class="chatlog__embed-author-icon" src="memory-hole.html_Files/Qxm4XQsw_bigger.jpg" alt="Author icon">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/jenniferatntd">Jennifer Zeng 曾錚 (@jenniferatntd)</a>
+                                                </span>
+                                        </div>
+
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">A #CCP soldier laughing triumphantly after #TiananmenSquareMassacre. #天安門大屠殺 後，他在笑。（聽說當時士兵都給洗腦外加吃興奮劑的）。這筆帳一定要算的！</div>
+                                        </div>
+
+                                        <div class="chatlog__embed-fields">
+                                                <div class="chatlog__embed-field chatlog__embed-field--inline">
+                                                        <div class="chatlog__embed-field-name">
+                                                            <div class="markdown">Retweets</div>
+                                                        </div>
+
+                                                        <div class="chatlog__embed-field-value">
+                                                            <div class="markdown">304</div>
+                                                        </div>
+                                                </div>
+                                                <div class="chatlog__embed-field chatlog__embed-field--inline">
+                                                        <div class="chatlog__embed-field-name">
+                                                            <div class="markdown">Likes</div>
+                                                        </div>
+
+                                                        <div class="chatlog__embed-field-value">
+                                                            <div class="markdown">601</div>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                </div>
+
+                            </div>
+
+                                <div class="chatlog__embed-image-container">
+                                    <a class="chatlog__embed-image-link" href="memory-hole.html_Files/EiOhC5wWsAMuNBc.jpg_large">
+                                        <img class="chatlog__embed-image" src="memory-hole.html_Files/EiOhC5wWsAMuNBc.jpg_large" alt="Image">
+                                    </a>
+                                </div>
+
+                                <div class="chatlog__embed-footer">
+                                        <img class="chatlog__embed-footer-icon" src="memory-hole.html_Files/apple-touch-icon-192x192.png" alt="Footer icon">
+
+                                        <span class="chatlog__embed-footer-text">
+Twitter
+
+                                        </span>
+                                </div>
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="memory-hole.html_Files/7ee4d6a3820e3b8e6bdd70a8ffc58e84.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curb#6617" data-user-id="754263608304861328" style="color: rgb(245,204,51)">Curb</span>
+
+
+        <span class="chatlog__timestamp">19-Sep-20 01:28 PM</span>
+
+            <div class="chatlog__message " data-message-id="756839041206583320" id="message-756839041206583320">
+                <div class="chatlog__content">
+                    <div class="markdown"> </div>
+                </div>
+
+                    <div class="chatlog__attachment">
+                            <a href="memory-hole.html_Files/unknown.png">
+                                    <img class="chatlog__attachment-thumbnail" src="memory-hole.html_Files/unknown.png" alt="Attachment">
+                            </a>
+                    </div>
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="756839240079245312" id="message-756839240079245312">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="http://chuckmaultsby.net/id233.html">http://chuckmaultsby.net/id233.html</a>
+<a href="https://video.search.yahoo.com/yhs/search?fr=yhs-ddc-linuxmint&hsimp=yhs-linuxmint&hspart=ddc&p=Jewish+involvement+in+armenian+genocide#">https://video.search.yahoo.com/yhs/search?fr=yhs-ddc-linuxmint&amp;hsimp=yhs-linuxmint&amp;hspart=ddc&amp;p=Jewish+involvement+in+armenian+genocide#</a> </div>
+                </div>
+
+                    <div class="chatlog__attachment">
+                            <a href="memory-hole.html_Files/nwxlel.jpg">
+                                    <img class="chatlog__attachment-thumbnail" src="memory-hole.html_Files/nwxlel.jpg" alt="Attachment">
+                            </a>
+                    </div>
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://video.search.yahoo.com/yhs/search?fr=yhs-ddc-linuxmint&amp;hsimp=yhs-linuxmint&amp;hspart=ddc&amp;p=Jewish+involvement+in+armenian+genocide">
+                                                    <div class="markdown">Jewish involvement in armenian genocide - LinuxMint Video Search Re...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">The search engine that helps you find exactly what you&#39;re looking for. Find the most relevant information, video, images, and answers from all across the Web.</div>
+                                        </div>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="756839276519358544" id="message-756839276519358544">
+                <div class="chatlog__content">
+                    <div class="markdown"> </div>
+                </div>
+
+                    <div class="chatlog__attachment">
+                            <a href="memory-hole.html_Files/saaf6m.jpg">
+                                    <img class="chatlog__attachment-thumbnail" src="memory-hole.html_Files/saaf6m.jpg" alt="Attachment">
+                            </a>
+                    </div>
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="memory-hole.html_Files/7ee4d6a3820e3b8e6bdd70a8ffc58e84.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curb#6617" data-user-id="754263608304861328" style="color: rgb(245,204,51)">Curb</span>
+
+
+        <span class="chatlog__timestamp">19-Sep-20 02:04 PM</span>
+
+            <div class="chatlog__message " data-message-id="756848085824700436" id="message-756848085824700436">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://youtu.be/R058ysrL1Pc">https://youtu.be/R058ysrL1Pc</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCnrE7PkiyVPP5ZTMqo3QW-Q">The Outer Light</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=R058ysrL1Pc">
+                                                    <div class="markdown">Free Julian Assange | Pardon Julian Assange #Unity4j</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Glenn Greenwald recently said &quot;Trump should use his pardon power to end the abusive prosecution of Julian Assange&quot; and the world agrees. The unjust fake trail of Julian Assange is an embarrassment to everyone involved - and it makes The West, no different than how people are t...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="memory-hole.html_Files/hqdefault.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="memory-hole.html_Files/hqdefault.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="memory-hole.html_Files/7ee4d6a3820e3b8e6bdd70a8ffc58e84.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curb#6617" data-user-id="754263608304861328" style="color: rgb(245,204,51)">Curb</span>
+
+
+        <span class="chatlog__timestamp">19-Sep-20 05:43 PM</span>
+
+            <div class="chatlog__message " data-message-id="756903186392023142" id="message-756903186392023142">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://twitter.com/conspiracyb0t/status/1307341213469536257">https://twitter.com/conspiracyb0t/status/1307341213469536257</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(29,161,242,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+                                                <img class="chatlog__embed-author-icon" src="memory-hole.html_Files/IjUdLaI4_bigger.jpg" alt="Author icon">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/conspiracyb0t">conspiracybot (@conspiracyb0t)</a>
+                                                </span>
+                                        </div>
+
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown"><a href="https://t.co/bROCJfHQjz">https://t.co/bROCJfHQjz</a></div>
+                                        </div>
+
+                                </div>
+
+                            </div>
+
+                                <div class="chatlog__embed-image-container">
+                                    <a class="chatlog__embed-image-link" href="memory-hole.html_Files/EiSb58oVoAA2js-.png_large">
+                                        <img class="chatlog__embed-image" src="memory-hole.html_Files/EiSb58oVoAA2js-.png_large" alt="Image">
+                                    </a>
+                                </div>
+
+                                <div class="chatlog__embed-footer">
+                                        <img class="chatlog__embed-footer-icon" src="memory-hole.html_Files/apple-touch-icon-192x192.png" alt="Footer icon">
+
+                                        <span class="chatlog__embed-footer-text">
+Twitter
+
+                                        </span>
+                                </div>
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="memory-hole.html_Files/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon07#7428" data-user-id="217373669146492928" style="color: rgb(44,214,205)">mejon07</span>
+
+
+        <span class="chatlog__timestamp">20-Sep-20 06:44 AM</span>
+
+            <div class="chatlog__message " data-message-id="757099802528841738" id="message-757099802528841738">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://youtu.be/LgkLdEtK7LI">https://youtu.be/LgkLdEtK7LI</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UChb2XNX3E6Dlj34laXEIpUQ">TDV Clips</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=LgkLdEtK7LI">
+                                                    <div class="markdown">Do You Remember When Dr Fauci Said, &quot;You Do Not Need to Wear a Mask&quot;.</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Watch the full video here:
+<a href="https://youtu.be/kjQwfMC4r0g">https://youtu.be/kjQwfMC4r0g</a>
+
+Register for the TDV Summit here: <a href="https://tdvsummit.com">https://tdvsummit.com</a>
+
+Sign up to free email list at:
+<a href="https://dollarvigilante.com">https://dollarvigilante.com</a>
+
+Subscribe to the The Dollar Vigilante newsletter: <a href="https://dollarvigilante.com/subscribe/">https://dollarvigilante.com/subscribe/</a>
+
+Our Bitchute ...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="memory-hole.html_Files/maxresdefault.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="memory-hole.html_Files/maxresdefault.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="memory-hole.html_Files/7ee4d6a3820e3b8e6bdd70a8ffc58e84.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curb#6617" data-user-id="754263608304861328" style="color: rgb(245,204,51)">Curb</span>
+
+
+        <span class="chatlog__timestamp">20-Sep-20 11:39 AM</span>
+
+            <div class="chatlog__message " data-message-id="757174205220651029" id="message-757174205220651029">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://nworeport.me/2018/01/30/supreme-court-justice-ginsburg-favors-decriminalizing-pedophilia-and-child-sex-trafficking/">https://nworeport.me/2018/01/30/supreme-court-justice-ginsburg-favors-decriminalizing-pedophilia-and-child-sex-trafficking/</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://nworeport.me/author/qronos/">Nwo Report</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://nworeport.me/2018/01/30/supreme-court-justice-ginsburg-favors-decriminalizing-pedophilia-and-child-sex-trafficking/">
+                                                    <div class="markdown">Supreme Court Justice Ginsburg FAVORS Decriminalizing Pedophilia an...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Posted By: Lauren Richardson It’s important to understand the legal definition of “age of consent,” and how it pertains to Supreme Court Justice Ruth Ginsburg’s views on pedophilia: Age of consent …</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="memory-hole.html_Files/PresidentObamaDeliversStateUnionAddressY9WrLhR4FFw.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="memory-hole.html_Files/PresidentObamaDeliversStateUnionAddressY9WrLhR4FFw.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="&#128562;" title="&#128562;" src="memory-hole.html_Files/1f632.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="memory-hole.html_Files/7ee4d6a3820e3b8e6bdd70a8ffc58e84.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curb#6617" data-user-id="754263608304861328" style="color: rgb(245,204,51)">Curb</span>
+
+
+        <span class="chatlog__timestamp">20-Sep-20 01:26 PM</span>
+
+            <div class="chatlog__message " data-message-id="757201113647808584" id="message-757201113647808584">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://cdn.discordapp.com/attachments/757007940925390848/757151986918359090/unknown.png">https://cdn.discordapp.com/attachments/757007940925390848/757151986918359090/unknown.png</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://cdn.discordapp.com/attachments/757007940925390848/757151986918359090/unknown.png">
+                                            <img class="chatlog__embed-thumbnail" src="https://cdn.discordapp.com/attachments/757007940925390848/757151986918359090/unknown.png" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="757201120237191238" id="message-757201120237191238">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://cdn.discordapp.com/attachments/757007940925390848/757154616940167178/unknown.png">https://cdn.discordapp.com/attachments/757007940925390848/757154616940167178/unknown.png</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://cdn.discordapp.com/attachments/757007940925390848/757154616940167178/unknown.png">
+                                            <img class="chatlog__embed-thumbnail" src="https://cdn.discordapp.com/attachments/757007940925390848/757154616940167178/unknown.png" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="memory-hole.html_Files/7ee4d6a3820e3b8e6bdd70a8ffc58e84.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curb#6617" data-user-id="754263608304861328" style="color: rgb(245,204,51)">Curb</span>
+
+
+        <span class="chatlog__timestamp">20-Sep-20 01:53 PM</span>
+
+            <div class="chatlog__message " data-message-id="757207730762154035" id="message-757207730762154035">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://youtu.be/uDmoRTs87DY">https://youtu.be/uDmoRTs87DY</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UC3UtENYJ3Ikwy4GBtVwr63A">WorldReformMedia</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=uDmoRTs87DY">
+                                                    <div class="markdown">To catch a predator: David Kaye [Best Version]</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">How do predators reach the upper echelons of Religious family Based organizations? this episode was especially shocking because of the high status position of David Kaye, and the fact that it lead to the discovery of a small ring of individuals assosiated with Kaye.
+Bishops of...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="memory-hole.html_Files/maxresdefault%20%281%29.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="memory-hole.html_Files/maxresdefault%20%281%29.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="757207984161161247" id="message-757207984161161247">
+                <div class="chatlog__content">
+                    <div class="markdown"><div class="quote">How do predators reach the upper echelons of Religious family Based organizations? this episode was especially shocking because of the high status position of David Kaye, and the fact that it lead to the discovery of a small ring of individuals assosiated with Kaye.
+Bishops of the catholic church have been implicated in similar incidences, it leaves many Americans concerned.</div> </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="memory-hole.html_Files/9bea5afc75fcd39ae71773df0db5c2f6.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Erik Nixon#3741" data-user-id="748928657929797742" style="color: rgb(46,204,113)">Erik Nixon</span>
+
+
+        <span class="chatlog__timestamp">20-Sep-20 03:16 PM</span>
+
+            <div class="chatlog__message " data-message-id="757228660167147629" id="message-757228660167147629">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://repub.eur.nl/pub/102423/REPUB_102423.pdf">https://repub.eur.nl/pub/102423/REPUB_102423.pdf</a> </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="757228905332736190" id="message-757228905332736190">
+                <div class="chatlog__content">
+                    <div class="markdown"> </div>
+                </div>
+
+                    <div class="chatlog__attachment">
+                            <a href="memory-hole.html_Files/unknown%20%281%29.png">
+                                    <img class="chatlog__attachment-thumbnail" src="memory-hole.html_Files/unknown%20%281%29.png" alt="Attachment">
+                            </a>
+                    </div>
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="memory-hole.html_Files/9bea5afc75fcd39ae71773df0db5c2f6.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Erik Nixon#3741" data-user-id="748928657929797742" style="color: rgb(46,204,113)">Erik Nixon</span>
+
+
+        <span class="chatlog__timestamp">20-Sep-20 03:53 PM</span>
+
+            <div class="chatlog__message " data-message-id="757237998109589505" id="message-757237998109589505">
+                <div class="chatlog__content">
+                    <div class="markdown">A thesis by a Rotterdam PHD student. Light reading....to cover you for the next couple months </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="memory-hole.html_Files/7ee4d6a3820e3b8e6bdd70a8ffc58e84.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curb#6617" data-user-id="754263608304861328" style="color: rgb(245,204,51)">Curb</span>
+
+
+        <span class="chatlog__timestamp">21-Sep-20 09:08 AM</span>
+
+            <div class="chatlog__message " data-message-id="757498586849214584" id="message-757498586849214584">
+                <div class="chatlog__content">
+                    <div class="markdown"> </div>
+                </div>
+
+                    <div class="chatlog__attachment">
+                            <a href="memory-hole.html_Files/2_5422734199356394404.mp4">
+Attachment: 2_5422734199356394404.mp4 (424,15 KB)                            </a>
+                    </div>
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="grabler" title="grabler" src="memory-hole.html_Files/755052200564097065.png">
+                                <span class="chatlog__reaction-count">2</span>
+                            </div>
+                    </div>
+            </div>
+            <div class="chatlog__message " data-message-id="757499170860040232" id="message-757499170860040232">
+                <div class="chatlog__content">
+                    <div class="markdown"><div class="quote">Old footage of Hilary Clinton indirectly endorsing a One World Govt</div> </div>
+                </div>
+
+                    <div class="chatlog__attachment">
+                            <a href="memory-hole.html_Files/2_5422734199356394471.mp4">
+Attachment: 2_5422734199356394471.mp4 (2 MB)                            </a>
+                    </div>
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="memory-hole.html_Files/7ee4d6a3820e3b8e6bdd70a8ffc58e84.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curb#6617" data-user-id="754263608304861328" style="color: rgb(245,204,51)">Curb</span>
+
+
+        <span class="chatlog__timestamp">21-Sep-20 09:40 AM</span>
+
+            <div class="chatlog__message " data-message-id="757506564818206772" id="message-757506564818206772">
+                <div class="chatlog__content">
+                    <div class="markdown"><div class="quote">Bill Gates saying to Trump not to investigate vaccine safety in April.</div> </div>
+                </div>
+
+                    <div class="chatlog__attachment">
+                            <a href="memory-hole.html_Files/2_5422734199356394547.mp4">
+Attachment: 2_5422734199356394547.mp4 (3,67 MB)                            </a>
+                    </div>
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="757507002569064479" id="message-757507002569064479">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://archives.stanforddaily.com/1975/05/13?page=1">https://archives.stanforddaily.com/1975/05/13?page=1</a>
+<div class="quote">Meet Don Harris, Kamala Harris’ Communist Father RAIR . Original article is from 1975 called &quot;Marxist offered economic post&quot; stanforddaily</div> </div>
+                </div>
+
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="&#128562;" title="&#128562;" src="memory-hole.html_Files/1f632.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="memory-hole.html_Files/7ee4d6a3820e3b8e6bdd70a8ffc58e84.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curb#6617" data-user-id="754263608304861328" style="color: rgb(245,204,51)">Curb</span>
+
+
+        <span class="chatlog__timestamp">23-Sep-20 01:01 AM</span>
+
+            <div class="chatlog__message " data-message-id="758100723954221077" id="message-758100723954221077">
+                <div class="chatlog__content">
+                    <div class="markdown"> </div>
+                </div>
+
+                    <div class="chatlog__attachment">
+                            <a href="memory-hole.html_Files/unknown%20%282%29.png">
+                                    <img class="chatlog__attachment-thumbnail" src="memory-hole.html_Files/unknown%20%282%29.png" alt="Attachment">
+                            </a>
+                    </div>
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="&#128175;" title="&#128175;" src="memory-hole.html_Files/1f4af.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="&#128077;" title="&#128077;" src="memory-hole.html_Files/1f44d.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="memory-hole.html_Files/7ee4d6a3820e3b8e6bdd70a8ffc58e84.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curb#6617" data-user-id="754263608304861328" style="color: rgb(245,204,51)">Curb</span>
+
+
+        <span class="chatlog__timestamp">23-Sep-20 11:29 AM</span>
+
+            <div class="chatlog__message " data-message-id="758258826796990505" id="message-758258826796990505">
+                <div class="chatlog__content">
+                    <div class="markdown"> </div>
+                </div>
+
+                    <div class="chatlog__attachment">
+                            <a href="memory-hole.html_Files/100017800644_66649.jpg">
+                                    <img class="chatlog__attachment-thumbnail" src="memory-hole.html_Files/100017800644_66649.jpg" alt="Attachment">
+                            </a>
+                    </div>
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="memory-hole.html_Files/7ee4d6a3820e3b8e6bdd70a8ffc58e84.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curb#6617" data-user-id="754263608304861328" style="color: rgb(245,204,51)">Curb</span>
+
+
+        <span class="chatlog__timestamp">23-Sep-20 06:30 PM</span>
+
+            <div class="chatlog__message " data-message-id="758364732435988531" id="message-758364732435988531">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://redpilluniversity.org/2020/09/04/creature-from-jekyll-island-a-second-look-at-the-federal-reserve/">https://redpilluniversity.org/2020/09/04/creature-from-jekyll-island-a-second-look-at-the-federal-reserve/</a>
+<div class="quote">In this vintage video, G. Edward Griffin, author of The Creature from Jekyll Island, takes a hard look at the Federal Reserve System, explaining what it does, how it works, and why it’s important for citizens of all countries to understand it. In short, it’s because the Fed (and the central-banking system it represents) is the greatest mechanism of legalized plunder the world has ever seen.</div> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://redpilluniversity.org/2020/09/04/creature-from-jekyll-island-a-second-look-at-the-federal-reserve/">
+                                                    <div class="markdown">The Creature From Jekyll Island – Legalized Plunder Called Banking ...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">4.9 (89) In this vintage video, G. Edward Griffin, author of The Creature from Jekyll Island, takes a hard look at the Federal Reserve System, explaining what it does, how it works, and why it’s [...]</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="memory-hole.html_Files/GEG-CFJI-circa-1965.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="memory-hole.html_Files/GEG-CFJI-circa-1965.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="memory-hole.html_Files/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon07#7428" data-user-id="217373669146492928" style="color: rgb(44,214,205)">mejon07</span>
+
+
+        <span class="chatlog__timestamp">23-Sep-20 11:50 PM</span>
+
+            <div class="chatlog__message " data-message-id="758445288838398033" id="message-758445288838398033">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.youtube.com/watch?v=iV1IZVT_LCE">https://www.youtube.com/watch?v=iV1IZVT_LCE</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCcSM2XYz5c79t9xrNNgTP4w">HumanSayNo</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=iV1IZVT_LCE">
+                                                    <div class="markdown">Channel 4 News Exposes Swine Flu Scandal</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Channel 4&#39;s John Snow reports on the Council of Europe&#39;s investigation into the manufactured swine flu hoax. The former Chair of the Sub-committee on Health of the Parliamentary Assembly Dr Wolfgang Wodarg had accused the World Health Organization (WHO) of lowering the definit...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="memory-hole.html_Files/hqdefault%20%281%29.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="memory-hole.html_Files/hqdefault%20%281%29.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="peep00" title="peep00" src="memory-hole.html_Files/754362803346866226.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="&#128077;" title="&#128077;" src="memory-hole.html_Files/1f44d.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="memory-hole.html_Files/7ee4d6a3820e3b8e6bdd70a8ffc58e84.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curb#6617" data-user-id="754263608304861328" style="color: rgb(245,204,51)">Curb</span>
+
+
+        <span class="chatlog__timestamp">24-Sep-20 07:52 PM</span>
+
+            <div class="chatlog__message " data-message-id="758747788229607455" id="message-758747788229607455">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://youtu.be/oVJ3CkIzCec">https://youtu.be/oVJ3CkIzCec</a> </div>
+                </div>
+
+                    <div class="chatlog__attachment">
+                            <a href="memory-hole.html_Files/Eir50rBWsAAAVsO.png">
+                                    <img class="chatlog__attachment-thumbnail" src="memory-hole.html_Files/Eir50rBWsAAAVsO.png" alt="Attachment">
+                            </a>
+                    </div>
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCyDBRusFny3oB9c1An1WH9Q">sanderson1769 mirror</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=oVJ3CkIzCec">
+                                                    <div class="markdown">Documentary    Marxist Lucifer King  full movie on MLK Martin Luthe...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Pastor Steven L. Anderson of Faithful Word Baptist Church.</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="memory-hole.html_Files/maxresdefault%20%282%29.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="memory-hole.html_Files/maxresdefault%20%282%29.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="memory-hole.html_Files/7ee4d6a3820e3b8e6bdd70a8ffc58e84.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curb#6617" data-user-id="754263608304861328" style="color: rgb(245,204,51)">Curb</span>
+
+
+        <span class="chatlog__timestamp">25-Sep-20 12:10 AM</span>
+
+            <div class="chatlog__message " data-message-id="758812755536511027" id="message-758812755536511027">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://twitter.com/redfishstream/status/1309244067490992129">https://twitter.com/redfishstream/status/1309244067490992129</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(29,161,242,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+                                                <img class="chatlog__embed-author-icon" src="memory-hole.html_Files/RO2Chva7_bigger.jpg" alt="Author icon">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/redfishstream">redfish (@redfishstream)</a>
+                                                </span>
+                                        </div>
+
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">That time Malcolm X met Fidel Castro in Harlem 60 years ago on this day. (A thread)</div>
+                                        </div>
+
+                                        <div class="chatlog__embed-fields">
+                                                <div class="chatlog__embed-field chatlog__embed-field--inline">
+                                                        <div class="chatlog__embed-field-name">
+                                                            <div class="markdown">Retweets</div>
+                                                        </div>
+
+                                                        <div class="chatlog__embed-field-value">
+                                                            <div class="markdown">209</div>
+                                                        </div>
+                                                </div>
+                                                <div class="chatlog__embed-field chatlog__embed-field--inline">
+                                                        <div class="chatlog__embed-field-name">
+                                                            <div class="markdown">Likes</div>
+                                                        </div>
+
+                                                        <div class="chatlog__embed-field-value">
+                                                            <div class="markdown">756</div>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                </div>
+
+                            </div>
+
+                                <div class="chatlog__embed-image-container">
+                                    <a class="chatlog__embed-image-link" href="memory-hole.html_Files/EitcUd3XsAEa3_u.jpg_large">
+                                        <img class="chatlog__embed-image" src="memory-hole.html_Files/EitcUd3XsAEa3_u.jpg_large" alt="Image">
+                                    </a>
+                                </div>
+
+                                <div class="chatlog__embed-footer">
+                                        <img class="chatlog__embed-footer-icon" src="memory-hole.html_Files/apple-touch-icon-192x192.png" alt="Footer icon">
+
+                                        <span class="chatlog__embed-footer-text">
+Twitter
+
+                                        </span>
+                                </div>
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="memory-hole.html_Files/7ee4d6a3820e3b8e6bdd70a8ffc58e84.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curb#6617" data-user-id="754263608304861328" style="color: rgb(245,204,51)">Curb</span>
+
+
+        <span class="chatlog__timestamp">25-Sep-20 12:49 AM</span>
+
+            <div class="chatlog__message " data-message-id="758822520102060063" id="message-758822520102060063">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://youtu.be/7lFayd9TWa0">https://youtu.be/7lFayd9TWa0</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCvbVhpxO5NT8EacN-BYpuyw">Labour Heartlands</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=7lFayd9TWa0">
+                                                    <div class="markdown">1946 King David Hotel Bombing</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">1946 King David Hotel Bombing - Zionist &#39;Israel&#39; the Founding Fathers of Modern Terrorism
+
+King David Hotel Bombing
+
+The King David Hotel bombing was an attack carried out by the militant right-wing Zionist underground organisation, the Irgun, on the King David Hotel in Jerusa...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="memory-hole.html_Files/hqdefault%20%282%29.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="memory-hole.html_Files/hqdefault%20%282%29.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="memory-hole.html_Files/7ee4d6a3820e3b8e6bdd70a8ffc58e84.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curb#6617" data-user-id="754263608304861328" style="color: rgb(245,204,51)">Curb</span>
+
+
+        <span class="chatlog__timestamp">25-Sep-20 01:26 AM</span>
+
+            <div class="chatlog__message " data-message-id="758831819360960522" id="message-758831819360960522">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://twitter.com/i/status/1309187909694627841">https://twitter.com/i/status/1309187909694627841</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(29,161,242,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+                                                <img class="chatlog__embed-author-icon" src="memory-hole.html_Files/1kuN9m34_bigger.jpg" alt="Author icon">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/o_rips">Spiro (@o_rips)</a>
+                                                </span>
+                                        </div>
+
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">George Soros is on record as a Nazi collaborator...
+
+George Soros is on record funding colour revolutions...
+
+To destabilize &amp; overthrow governments...
+
+George Soros is on record funding Black Lives Matter...
+
+Does anyone see a correlation? 
+
+Why is George Soros not in jail? ...</div>
+                                        </div>
+
+                                        <div class="chatlog__embed-fields">
+                                                <div class="chatlog__embed-field chatlog__embed-field--inline">
+                                                        <div class="chatlog__embed-field-name">
+                                                            <div class="markdown">Retweets</div>
+                                                        </div>
+
+                                                        <div class="chatlog__embed-field-value">
+                                                            <div class="markdown">282</div>
+                                                        </div>
+                                                </div>
+                                                <div class="chatlog__embed-field chatlog__embed-field--inline">
+                                                        <div class="chatlog__embed-field-name">
+                                                            <div class="markdown">Likes</div>
+                                                        </div>
+
+                                                        <div class="chatlog__embed-field-value">
+                                                            <div class="markdown">527</div>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="memory-hole.html_Files/qC3byWxWiMhgdWn9.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="memory-hole.html_Files/qC3byWxWiMhgdWn9.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                                <div class="chatlog__embed-footer">
+                                        <img class="chatlog__embed-footer-icon" src="memory-hole.html_Files/apple-touch-icon-192x192.png" alt="Footer icon">
+
+                                        <span class="chatlog__embed-footer-text">
+Twitter
+
+                                        </span>
+                                </div>
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="memory-hole.html_Files/7ee4d6a3820e3b8e6bdd70a8ffc58e84.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curb#6617" data-user-id="754263608304861328" style="color: rgb(245,204,51)">Curb</span>
+
+
+        <span class="chatlog__timestamp">25-Sep-20 01:35 AM</span>
+
+            <div class="chatlog__message " data-message-id="758833980841000962" id="message-758833980841000962">
+                <div class="chatlog__content">
+                    <div class="markdown"> </div>
+                </div>
+
+                    <div class="chatlog__attachment">
+                            <a href="memory-hole.html_Files/EisgbvRWkAUKqky.png">
+                                    <img class="chatlog__attachment-thumbnail" src="memory-hole.html_Files/EisgbvRWkAUKqky.png" alt="Attachment">
+                            </a>
+                    </div>
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="memory-hole.html_Files/7ee4d6a3820e3b8e6bdd70a8ffc58e84.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curb#6617" data-user-id="754263608304861328" style="color: rgb(245,204,51)">Curb</span>
+
+
+        <span class="chatlog__timestamp">25-Sep-20 07:20 PM</span>
+
+            <div class="chatlog__message " data-message-id="759101970589679636" id="message-759101970589679636">
+                <div class="chatlog__content">
+                    <div class="markdown"> </div>
+                </div>
+
+                    <div class="chatlog__attachment">
+                            <a href="memory-hole.html_Files/1.png">
+                                    <img class="chatlog__attachment-thumbnail" src="memory-hole.html_Files/1.png" alt="Attachment">
+                            </a>
+                    </div>
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="reee" title="reee" src="memory-hole.html_Files/754365423012544512.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="memory-hole.html_Files/7ee4d6a3820e3b8e6bdd70a8ffc58e84.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curb#6617" data-user-id="754263608304861328" style="color: rgb(245,204,51)">Curb</span>
+
+
+        <span class="chatlog__timestamp">26-Sep-20 01:59 PM</span>
+
+            <div class="chatlog__message " data-message-id="759383743914835969" id="message-759383743914835969">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.zerohedge.com/economics/lessons-inflation-past">https://www.zerohedge.com/economics/lessons-inflation-past</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,255,255,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.zerohedge.com/economics/lessons-inflation-past">
+                                                    <div class="markdown">Lessons On Inflation From The Past</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">...above all, it would be a mistake to think it cannot happen, nor that it will be a long process giving us all plenty of time to plan. The final flight out of paper marks took approximately six months. Law’s scheme took slightly longer to destroy his livre...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="memory-hole.html_Files/AD---Sept-19-2.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="memory-hole.html_Files/AD---Sept-19-2.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="memory-hole.html_Files/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon07#7428" data-user-id="217373669146492928" style="color: rgb(44,214,205)">mejon07</span>
+
+
+        <span class="chatlog__timestamp">26-Sep-20 07:09 PM</span>
+
+            <div class="chatlog__message " data-message-id="759461697403486270" id="message-759461697403486270">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.youtube.com/watch?v=2okFk6zrVrE">https://www.youtube.com/watch?v=2okFk6zrVrE</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCIIh8mt52jaUF9Z27Wrdbqg">Ending Deception</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=2okFk6zrVrE">
+                                                    <div class="markdown">Ex Dutch Banker Ronald Bernard exposes Elite satanism and child sac...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Former Dutch Banker Ronald Bernard details his time among the financial elite and attending satanic ceremonies and eventually being asked to participate in a child sacrifice. This is just a clip cut out of a 3 part interview. I would recommend watching the full interviews.</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="memory-hole.html_Files/maxresdefault%20%283%29.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="memory-hole.html_Files/maxresdefault%20%283%29.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="wtf_omg" title="wtf_omg" src="memory-hole.html_Files/755052767839780875.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="memory-hole.html_Files/7ee4d6a3820e3b8e6bdd70a8ffc58e84.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curb#6617" data-user-id="754263608304861328" style="color: rgb(245,204,51)">Curb</span>
+
+
+        <span class="chatlog__timestamp">26-Sep-20 07:19 PM</span>
+
+            <div class="chatlog__message " data-message-id="759464142099709952" id="message-759464142099709952">
+                <div class="chatlog__content">
+                    <div class="markdown">a longer version 
+<a href="https://youtu.be/Y-DwTsUKXxQ">https://youtu.be/Y-DwTsUKXxQ</a>
+<a href="https://youtu.be/CbjnVhG2-Y8">https://youtu.be/CbjnVhG2-Y8</a>
+<a href="https://www.youtube.com/watch?v=2OJ_5Xt99xg">https://www.youtube.com/watch?v=2OJ_5Xt99xg</a>
+<a href="https://www.youtube.com/watch?v=p1-DxfwB9EA">https://www.youtube.com/watch?v=p1-DxfwB9EA</a>
+<a href="https://www.youtube.com/watch?v=ocJT9wKwhaA">https://www.youtube.com/watch?v=ocJT9wKwhaA</a> <span class="chatlog__edited-timestamp" title="26-Sep-20 07:39 PM">(edited)</span></div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCZLddqn76ekxwgoXr0xh05w">Vitali Feiten</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=Y-DwTsUKXxQ">
+                                                    <div class="markdown">Revelations by an insider Part 1 - Ronald Bernard - Real Big Money</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">NL gesproken-Dutch spoken 
+A videoproduction from DVM-tv (WWW.DVM-TV.COM)</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="memory-hole.html_Files/maxresdefault%20%284%29.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="memory-hole.html_Files/maxresdefault%20%284%29.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCZLddqn76ekxwgoXr0xh05w">Vitali Feiten</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=CbjnVhG2-Y8">
+                                                    <div class="markdown">Revelations by insider part 2 - Ronald Bernard - Real Big Power</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">NL gesproken-Dutch spoken 
+A videoproduction from DVM-tv (WWW.DVM-TV.COM)</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="memory-hole.html_Files/maxresdefault%20%285%29.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="memory-hole.html_Files/maxresdefault%20%285%29.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCZLddqn76ekxwgoXr0xh05w">Vitali Feiten</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=2OJ_5Xt99xg">
+                                                    <div class="markdown">Revelations by an insider Part 3 - Ronald Bernard</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Ronald Bernard
+NL gesproken-Dutch spoken 
+A videoproduction from DVM-tv (WWW.DVM-TV.COM)</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="memory-hole.html_Files/maxresdefault%20%286%29.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="memory-hole.html_Files/maxresdefault%20%286%29.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCZLddqn76ekxwgoXr0xh05w">Vitali Feiten</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=p1-DxfwB9EA">
+                                                    <div class="markdown">Revelations from an insider Part 4 - Ronald Bernard</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">NL gesproken-Dutch spoken 
+A videoproduction from DVM-tv (WWW.DVM-TV.COM)</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="memory-hole.html_Files/maxresdefault%20%287%29.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="memory-hole.html_Files/maxresdefault%20%287%29.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCZLddqn76ekxwgoXr0xh05w">Vitali Feiten</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=ocJT9wKwhaA">
+                                                    <div class="markdown">Revelations by insider part 5 -  Ronald Bernard - the local powers ...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Ronald Bernard
+NL gesproken-Dutch spoken 
+A videoproduction from DVM-tv (WWW.DVM-TV.COM)</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="memory-hole.html_Files/maxresdefault%20%288%29.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="memory-hole.html_Files/maxresdefault%20%288%29.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="&#128077;" title="&#128077;" src="memory-hole.html_Files/1f44d.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="memory-hole.html_Files/7ee4d6a3820e3b8e6bdd70a8ffc58e84.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curb#6617" data-user-id="754263608304861328" style="color: rgb(245,204,51)">Curb</span>
+
+
+        <span class="chatlog__timestamp">26-Sep-20 08:37 PM</span>
+
+            <div class="chatlog__message " data-message-id="759483876509876246" id="message-759483876509876246">
+                <div class="chatlog__content">
+                    <div class="markdown"> </div>
+                </div>
+
+                    <div class="chatlog__attachment">
+                            <a href="memory-hole.html_Files/Protocols_of_Learned_Elders_of_Zion-1-70.pdf">
+Attachment: Protocols_of_Learned_Elders_of_Zion-1-70.pdf (4,82 MB)                            </a>
+                    </div>
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="759483888212639774" id="message-759483888212639774">
+                <div class="chatlog__content">
+                    <div class="markdown"> </div>
+                </div>
+
+                    <div class="chatlog__attachment">
+                            <a href="memory-hole.html_Files/Protocols_of_Learned_Elders_of_Zion-71-139.pdf">
+Attachment: Protocols_of_Learned_Elders_of_Zion-71-139.pdf (5,35 MB)                            </a>
+                    </div>
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="memory-hole.html_Files/7ee4d6a3820e3b8e6bdd70a8ffc58e84.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curb#6617" data-user-id="754263608304861328" style="color: rgb(245,204,51)">Curb</span>
+
+
+        <span class="chatlog__timestamp">26-Sep-20 09:34 PM</span>
+
+            <div class="chatlog__message " data-message-id="759498085813714994" id="message-759498085813714994">
+                <div class="chatlog__content">
+                    <div class="markdown">the (rare) Dutch book Ronald Bernard refers to in part 5
+<a href="https://archive.org/details/RiddersVanNuonvolledigAuteurAndreVanBosbeke/mode/2up">https://archive.org/details/RiddersVanNuonvolledigAuteurAndreVanBosbeke/mode/2up</a> <span class="chatlog__edited-timestamp" title="26-Sep-20 09:34 PM">(edited)</span></div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://archive.org/details/RiddersVanNuonvolledigAuteurAndreVanBosbeke/mode/2up">
+                                                    <div class="markdown">Ridders Van Nu (onvolledig) Auteur Andre Van Bosbeke : -<u>--</u>---_ ...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Ridders van Nu</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="memory-hole.html_Files/RiddersVanNuonvolledigAuteurAndreVanBosbeke">
+                                            <img class="chatlog__embed-thumbnail" src="memory-hole.html_Files/RiddersVanNuonvolledigAuteurAndreVanBosbeke" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="hmmm_think" title="hmmm_think" src="memory-hole.html_Files/754648859841527889.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="memory-hole.html_Files/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon07#7428" data-user-id="217373669146492928" style="color: rgb(44,214,205)">mejon07</span>
+
+
+        <span class="chatlog__timestamp">26-Sep-20 10:03 PM</span>
+
+            <div class="chatlog__message " data-message-id="759505363149783050" id="message-759505363149783050">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.youtube.com/watch?v=F8HpPsT_X9c">https://www.youtube.com/watch?v=F8HpPsT_X9c</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCnkuYv7Zjxn1g1hbcESqXQQ">Alternative Narrative</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=F8HpPsT_X9c">
+                                                    <div class="markdown">Mossad &quot;Art Students&quot; = 9/11 - FOX News Exposes Israeli Spying</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Collection of reports from Fox News in the wake on 9/11. Original video had to be edited, otherwise the upload simply never completes. It gets to 3 seconds to go... &amp; then stalls there.
+Art students were also installed in the WTC in the run-up to the apparently Islamic terror ...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="memory-hole.html_Files/hqdefault%20%283%29.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="memory-hole.html_Files/hqdefault%20%283%29.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="NWPepe" title="NWPepe" src="memory-hole.html_Files/755557307949121726.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="memory-hole.html_Files/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon07#7428" data-user-id="217373669146492928" style="color: rgb(44,214,205)">mejon07</span>
+
+
+        <span class="chatlog__timestamp">26-Sep-20 11:04 PM</span>
+
+            <div class="chatlog__message " data-message-id="759520712015740948" id="message-759520712015740948">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.youtube.com/watch?v=7kqhD6Fl3eM">https://www.youtube.com/watch?v=7kqhD6Fl3eM</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCaFDYitxUPMIxu06tbk-oZg">TheRealDamiani</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=7kqhD6Fl3eM">
+                                                    <div class="markdown">Aaron Russo Exposing Satanic Agenda</div>
+                                                </a>
+                                        </div>
+
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="memory-hole.html_Files/sddefault.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="memory-hole.html_Files/sddefault.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="memory-hole.html_Files/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon07#7428" data-user-id="217373669146492928" style="color: rgb(44,214,205)">mejon07</span>
+
+
+        <span class="chatlog__timestamp">27-Sep-20 09:33 PM</span>
+
+            <div class="chatlog__message " data-message-id="759860182037037076" id="message-759860182037037076">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.youtube.com/watch?v=d9CJmvBXNTc">https://www.youtube.com/watch?v=d9CJmvBXNTc</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCny4Y_22KLanvpVm63yrh2g">Christine Robert</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=d9CJmvBXNTc">
+                                                    <div class="markdown">Yuri Bezmenov Explaining 4 Stages to Bring Down a Country</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Over 30 years ago Yuri Bezmenov (Tomas Schuman) gave warning to America of how we were being subverted by patient Russian tactics. This is just a clip, I recommend watching the full length lectures. Given the state of politics against our current president, Donald Trump, and t...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="memory-hole.html_Files/maxresdefault%20%289%29.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="memory-hole.html_Files/maxresdefault%20%289%29.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="memory-hole.html_Files/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon07#7428" data-user-id="217373669146492928" style="color: rgb(44,214,205)">mejon07</span>
+
+
+        <span class="chatlog__timestamp">28-Sep-20 07:33 AM</span>
+
+            <div class="chatlog__message " data-message-id="760011178234609665" id="message-760011178234609665">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://youtu.be/mS4-aEYhLd8">https://youtu.be/mS4-aEYhLd8</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UC36El2lZyElGjzA--L-lt7Q">Gematria News</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=mS4-aEYhLd8">
+                                                    <div class="markdown">Kay Griggs Interview (1998)</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Public Domain video of the Kay Griggs Interview (1998) by Rick Strawcutter. This is the first of two interviews and testimonies of Kay Griggs.
+
+Kay Griggs was a military wife who learned way too much about her husband&#39;s job. Her husband would drink too much and he started talk...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="memory-hole.html_Files/sddefault%20%281%29.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="memory-hole.html_Files/sddefault%20%281%29.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="memory-hole.html_Files/7ee4d6a3820e3b8e6bdd70a8ffc58e84.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curb#6617" data-user-id="754263608304861328" style="color: rgb(245,204,51)">Curb</span>
+
+
+        <span class="chatlog__timestamp">28-Sep-20 02:58 PM</span>
+
+            <div class="chatlog__message " data-message-id="760123200439844865" id="message-760123200439844865">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://archive.org/stream/LimitCIARoleToIntelligenceByHarrySTruman/Limit%2520CIA%2520Role%2520To%2520Intelligence%2520by%2520Harry%2520S%2520Truman_djvu.txt">https://archive.org/stream/LimitCIARoleToIntelligenceByHarrySTruman/Limit%20CIA%20Role%20To%20Intelligence%20by%20Harry%20S%20Truman_djvu.txt</a>
+<div class="quote">8/9/20 1 5 Limit CIA Role To Intelligence by Harry S Truman 
+</div>&gt; 
+<div class="quote">I never had any thought that when I set up the CIA that it would be injected into peacetime 
+cloak and dagger operations. Some of the complications and embarrassment I think we have 
+experienced are in part attributable to the fact that this quiet intelligence arm of the President 
+has been so removed from its intended role that it is being interpreted as a symbol of sinister 
+and mysterious foreign intrigue— and a subject for cold war enemy propaganda.</div> </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="memory-hole.html_Files/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon07#7428" data-user-id="217373669146492928" style="color: rgb(44,214,205)">mejon07</span>
+
+
+        <span class="chatlog__timestamp">28-Sep-20 03:16 PM</span>
+
+            <div class="chatlog__message " data-message-id="760127810185854976" id="message-760127810185854976">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.youtube.com/watch?v=FNt7s_Wed_4">https://www.youtube.com/watch?v=FNt7s_Wed_4</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCyE66dw8F9hsFCNH6uLY8hA">Jack Italix</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=FNt7s_Wed_4">
+                                                    <div class="markdown">General Wesley Clark   Wars Were Planned   Seven Countries In Five ...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">re-uploaded from an Uploaded on Sep 11, 2011
+Originally published in March 2007
+General Wesley Clark:
+Because I had been through the Pentagon right after 9/11. About ten days after 9/11, I went through the Pentagon and I saw Secretary Rumsfeld and Deputy Secretary Wolfowitz. I...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="memory-hole.html_Files/hqdefault%20%284%29.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="memory-hole.html_Files/hqdefault%20%284%29.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="memory-hole.html_Files/7ee4d6a3820e3b8e6bdd70a8ffc58e84.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curb#6617" data-user-id="754263608304861328" style="color: rgb(245,204,51)">Curb</span>
+
+
+        <span class="chatlog__timestamp">29-Sep-20 02:08 AM</span>
+
+            <div class="chatlog__message " data-message-id="760291880121401344" id="message-760291880121401344">
+                <div class="chatlog__content">
+                    <div class="markdown"><span class="spoiler spoiler--hidden" onclick="showSpoiler(event, this)"><span class="spoiler-text"> <a href="https://twitter.com/PeterRQuinones/status/1310701173096304640">https://twitter.com/PeterRQuinones/status/1310701173096304640</a> </span></span> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(29,161,242,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+                                                <img class="chatlog__embed-author-icon" src="memory-hole.html_Files/7jYCPJvr_bigger.jpg" alt="Author icon">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/PeterRQuinones">Peter R. Qui&#241;ones (@PeterRQuinones)</a>
+                                                </span>
+                                        </div>
+
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown"><a href="https://t.co/IVE8UxVKtp">https://t.co/IVE8UxVKtp</a></div>
+                                        </div>
+
+                                </div>
+
+                            </div>
+
+                                <div class="chatlog__embed-image-container">
+                                    <a class="chatlog__embed-image-link" href="memory-hole.html_Files/EjCLxTLXkAAX4_y.jpg_large">
+                                        <img class="chatlog__embed-image" src="memory-hole.html_Files/EjCLxTLXkAAX4_y.jpg_large" alt="Image">
+                                    </a>
+                                </div>
+
+                                <div class="chatlog__embed-footer">
+                                        <img class="chatlog__embed-footer-icon" src="memory-hole.html_Files/apple-touch-icon-192x192.png" alt="Footer icon">
+
+                                        <span class="chatlog__embed-footer-text">
+Twitter
+
+                                        </span>
+                                </div>
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="feelsbad" title="feelsbad" src="memory-hole.html_Files/754797793025064990.png">
+                                <span class="chatlog__reaction-count">2</span>
+                            </div>
+                    </div>
+            </div>
+            <div class="chatlog__message " data-message-id="760291949797310494" id="message-760291949797310494">
+                <div class="chatlog__content">
+                    <div class="markdown"><img class="emoji " alt="⚠" title="⚠" src="https://twemoji.maxcdn.com/2/72x72/26a0.png">️ graphic meme </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="memory-hole.html_Files/7ee4d6a3820e3b8e6bdd70a8ffc58e84.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curb#6617" data-user-id="754263608304861328" style="color: rgb(245,204,51)">Curb</span>
+
+
+        <span class="chatlog__timestamp">29-Sep-20 03:29 AM</span>
+
+            <div class="chatlog__message " data-message-id="760312167102414848" id="message-760312167102414848">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://en.wikipedia.org/wiki/Alta_Vendita">https://en.wikipedia.org/wiki/Alta_Vendita</a>
+<div class="quote">The Alta Vendita were a lodge of the Carbonari,[3] who used the book to announce their objective to spend decades overthrowing the Papacy.[4] Many participants in the instruction posed as various Catholic figures to make their way into the church.[4] The book was issued to every Carbonari lodge under the signature of &quot;Nubius&quot;, thought to be the pseudonym of the supreme leader.[4]
+</div>&gt; 
+<div class="quote">The document details an alleged Masonic plan to infiltrate the Catholic Church and spread liberal ideas within it.[5] The Carbonari had strong similarities to Freemasonry and so the document is seen by some as a Masonic document. The Carbonari had ties to the Freemasons, who are known for their Anti-clericalism. The author, who wrote under the pseudonym &quot;Piccolo Tigre&quot; has been found to be the author of other Masonic documents in the 19th century.[6]</div> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://en.wikipedia.org/wiki/Alta_Vendita">
+                                                    <div class="markdown">Alta Vendita</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">The Permanent Instruction of the Alta Vendita (commonly called the Alta Vendita, meaning &quot;high marketplace&quot;) is a document, originally published in Italian in 1859, produced by the highest lodge of the Italian Carbonari and written by &quot;Piccolo Tigre&quot; (&quot;Little Tiger&quot;), which, a...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="memory-hole.html_Files/Permanent_Instruction_of_the_Alta_Vendita.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="memory-hole.html_Files/Permanent_Instruction_of_the_Alta_Vendita.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="memory-hole.html_Files/7ee4d6a3820e3b8e6bdd70a8ffc58e84.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curb#6617" data-user-id="754263608304861328" style="color: rgb(245,204,51)">Curb</span>
+
+
+        <span class="chatlog__timestamp">29-Sep-20 07:15 PM</span>
+
+            <div class="chatlog__message " data-message-id="760550255908487169" id="message-760550255908487169">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://youtu.be/S3dvdaVeWRQ">https://youtu.be/S3dvdaVeWRQ</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCkJ1N-7g9Q6n7KnriGit-Ig">RonPaulLibertyReport</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=S3dvdaVeWRQ">
+                                                    <div class="markdown">Weekly Update -- Question &#39;The Science&#39;? Go To Gulag!</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Ron Paul on why we must question...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="memory-hole.html_Files/maxresdefault%20%2810%29.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="memory-hole.html_Files/maxresdefault%20%2810%29.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="memory-hole.html_Files/7ee4d6a3820e3b8e6bdd70a8ffc58e84.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curb#6617" data-user-id="754263608304861328" style="color: rgb(245,204,51)">Curb</span>
+
+
+        <span class="chatlog__timestamp">29-Sep-20 08:50 PM</span>
+
+            <div class="chatlog__message " data-message-id="760574249101951097" id="message-760574249101951097">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://youtu.be/rVD8tOWLmaU">https://youtu.be/rVD8tOWLmaU</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCy4AoHDNBTi75TzRIWr1vcw">wobblyboost</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=rVD8tOWLmaU">
+                                                    <div class="markdown">Oswald Mosley on Globalism [mirror]</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">MIRROR from channel Niklas Nydahl
+<a href="https://www.youtube.com/watch?v=Isq6YltjRRU">https://www.youtube.com/watch?v=Isq6YltjRRU</a>
+Watch the full documentary here: <a href="https://www.youtube.com/watch?v=zbbL4">https://www.youtube.com/watch?v=zbbL4</a>...
+
+&quot;They talked of what they called multiracialism. Which was simply a universal mix up. Take humanity, put it in a bag, shake ...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="memory-hole.html_Files/sddefault%20%282%29.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="memory-hole.html_Files/sddefault%20%282%29.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+</div>
+
+<div class="postamble">
+    <div class="postamble__entry">Exported 46 message(s)</div>
+</div>
+
+</body>
+</html>
