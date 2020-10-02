@@ -1,8 +1,8 @@
 ---
 layout: post
+title: Archive
 month:Sep
 year:20
-title: Discord Archive {{ page.month page.year }}
 ---
 
 ### Reseach Sharing {{ page.month page.year }}

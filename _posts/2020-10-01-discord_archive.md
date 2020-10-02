@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Discord Archive
+title: Archive
 month:Oct
 year:20
 ---
