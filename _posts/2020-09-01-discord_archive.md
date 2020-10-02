@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Archive September
-month:Sep
-year:20
+month: Sep
+year: 20
 ---
 
 ### Reseach Sharing {{ post.month }} {{ post.year }}
