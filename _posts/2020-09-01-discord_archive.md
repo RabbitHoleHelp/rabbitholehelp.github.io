@@ -5,7 +5,7 @@ month:Sep
 year:20
 ---
 
-### Reseach Sharing {{ page.month }} {{ page.year }}
+### Reseach Sharing {{ post.month }} {{ post.year }}
 
 - [external-gateways](/archive/discord-{{ page.month }}-{{ page.year }}/external-gateways.html)
 - [general-news](/archive/discord-{{ page.month }}-{{ page.year }}/general-news.html)
@@ -18,3 +18,18 @@ year:20
 - [technology](/archive/discord-{{ page.month }}-{{ page.year }}/technology.html)
 - [tools](/archive/discord-{{ page.month }}-{{ page.year }}/tools.html)
 - [economy](/archive/discord-{{ page.month }}-{{ page.year }}/economy.html)
+
+  <p name="filesindex"></p>
+  <script>
+	(async () => {
+        const response = await fetch('https://api.github.com/repos/{{ site.github.owner_name }}/{{ site.github.repository_name }}/contents/archive/discord-Sep-20');
+        const data = await response.json();
+        let htmlString = '<ul>';
+        for (let file of data) {
+          if (file.type == "folder")
+            htmlString += `<li><a href="${file.path}" target="_blank">${file.name}</a></li>`;
+        }
+        htmlString += '</ul>';
+        document.getElementsByName('filesindex')[0].innerHTML = htmlString;
+      })()
+  </script>
