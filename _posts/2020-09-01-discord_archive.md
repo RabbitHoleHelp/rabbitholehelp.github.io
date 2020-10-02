@@ -5,7 +5,7 @@ month: Sep
 year: 20
 ---
 
-### Reseach Sharing {{ post.month }} {{ post.year }}
+### Reseach Sharing {{ page.month }} {{ page.year }}
 
 - [external-gateways](/archive/discord-{{ page.month }}-{{ page.year }}/external-gateways.html)
 - [general-news](/archive/discord-{{ page.month }}-{{ page.year }}/general-news.html)
@@ -18,6 +18,7 @@ year: 20
 - [technology](/archive/discord-{{ page.month }}-{{ page.year }}/technology.html)
 - [tools](/archive/discord-{{ page.month }}-{{ page.year }}/tools.html)
 - [economy](/archive/discord-{{ page.month }}-{{ page.year }}/economy.html)
+
 
   <p name="filesindex"></p>
   <script>
