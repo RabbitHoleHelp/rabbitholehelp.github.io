@@ -5,7 +5,7 @@ month: Oct
 year: 20
 ---
 
-### Reseach Sharing {{ page.month }}-{{ page.year }}
+### Reseach Sharing {{ page.month }} {{ page.year }}
 
 - [external-gateways](/archive/discord-{{ page.month }}-{{ page.year }}/external-gateways.html)
 - [general-news](/archive/discord-{{ page.month }}-{{ page.year }}/general-news.html)
