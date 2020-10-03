@@ -1,6 +1,8 @@
 ---
-layout: post
+layout: page
 title: English resources
+date: 2020-10-03 00:00:00 -0000
+categories: Resources English
 ---
 
 ### Websites
