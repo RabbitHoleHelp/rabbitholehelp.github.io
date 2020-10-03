@@ -1,6 +1,7 @@
 ---
-layout: post
 title: Dutch resources
+date: 2020-09-12 00:00:00 -0000
+categories: Resources English
 ---
 
 🇳🇱
