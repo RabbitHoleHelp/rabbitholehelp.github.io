@@ -29,8 +29,9 @@ categories: Resources English
 
 ### Downloads
 
+- [Uitzonderingskaart Mondkapjes](/downloads/uitzonderingskaart-mondkapjes.pdf)
+
 - [DOKTERSVERKLARING inzake het dragen van mondkapjes](/downloads/DOKTERSVERKLARING-inzake-het-dragen-van-mondkapjes.pdf)
 - [VERKLARING VAN STAATSRECHTGELEERDEN INZAKE HET DRAGEN VAN MONDKAPJES](/downloads/VERKLARING_VAN_STAATSRECHTGELEERDEN_INZAKE_HET_DRAGEN_VAN_MONDKAPJES.pdf)
 - [Legaal vaccin weigeren](/downloads/Legaal_vaccin_weigeren.pdf)
-
-
+- [Overheid regeling aanvullende mondkapjesverplichtingen](/downloads/regeling-aanvullende-mondkapjesverplichtingen-covid-19.pdf)
