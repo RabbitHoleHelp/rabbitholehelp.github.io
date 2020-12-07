@@ -14,6 +14,7 @@ categories: Resources English
 - [Viruswaarheid](https://viruswaarheid.nl/)
 - [Wakker2020](http://wakker2020.nl/)
 - [Leven in coronatijd als je risico loopt](https://www.vilans.nl/leven-in-coronatijd-als-je-risico-loopt#item1)
+
 ----
 
 ### Youtube channels
@@ -29,7 +30,8 @@ categories: Resources English
 
 ### Downloads
 
-- [Uitzonderingskaart Mondkapjes](/downloads/uitzonderingskaart-mondkapjes.pdf)
+- [Uitzonderingskaart Mondkapjes PDF](/downloads/uitzonderingskaart-mondkapjes.pdf)
+- [Uitzonderingskaart Mondkapjes PNG uitgeknipt](/downloads/uitzonderingskaart-mondkapjes.png)
 - [DOKTERSVERKLARING inzake het dragen van mondkapjes](/downloads/DOKTERSVERKLARING-inzake-het-dragen-van-mondkapjes.pdf)
 - [VERKLARING VAN STAATSRECHTGELEERDEN INZAKE HET DRAGEN VAN MONDKAPJES](/downloads/VERKLARING_VAN_STAATSRECHTGELEERDEN_INZAKE_HET_DRAGEN_VAN_MONDKAPJES.pdf)
 - [Legaal vaccin weigeren](/downloads/Legaal_vaccin_weigeren.pdf)
