@@ -38,3 +38,7 @@ categories: Resources English
 - [VERKLARING VAN STAATSRECHTGELEERDEN INZAKE HET DRAGEN VAN MONDKAPJES](/downloads/VERKLARING_VAN_STAATSRECHTGELEERDEN_INZAKE_HET_DRAGEN_VAN_MONDKAPJES.pdf)
 - [Legaal vaccin weigeren](/downloads/Legaal_vaccin_weigeren.pdf)
 - [Overheid regeling aanvullende mondkapjesverplichtingen](/downloads/regeling-aanvullende-mondkapjesverplichtingen-covid-19.pdf)
+
+----
+
+- [CORONA - DE WAARHEID IN 7 MINUTEN](https://www.bitchute.com/video/IpJjtKM1uyMp/)
