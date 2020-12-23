@@ -16,6 +16,7 @@ categories: Resources English
 - [Commonsensetv](https://commonsensetv.nl/)
 - [Viruswaarheid](https://viruswaarheid.nl/)
 - [Wakker2020](http://wakker2020.nl/)
+- [sta op voor vrijheid](https://staopvoorvrijheid.nl/)
 
 ----
 
