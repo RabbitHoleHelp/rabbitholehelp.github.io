@@ -1,7 +1,7 @@
 ---
 title: Discord rules
 date: 2021-02-02 00:01:00 -0000
-categories: Resources Dutch
+categories: Rules
 ---
 
 # Welcome to Rabbithole.help part 2 !!!
