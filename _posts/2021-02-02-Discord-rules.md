@@ -9,11 +9,13 @@ categories: Resources Dutch
 
 - listen to the admins and moderators
 - respect each other
+- no calls for violence
+- free chat in #💬-main-chat and #🗨-alt-chat 
 
-under the RESEARCH SHARING category
+The channels under the RESEARCH SHARING category
 - we collect links relevant to each channel
 - post in the proper channels.
-- keep the chatting to a minimum
+- keep the chatting in these channels to a minimum
 
 In honor of our previous 2 servers that were deleted without warning:
 THX1138 (10 months) and rabbithole.help (5 months) 
