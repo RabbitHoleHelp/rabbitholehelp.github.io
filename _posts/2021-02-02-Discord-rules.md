@@ -19,5 +19,3 @@ The channels under the RESEARCH SHARING category
 
 In honor of our previous 2 servers that were deleted without warning:
 THX1138 (10 months) and rabbithole.help (5 months) 
-
-
