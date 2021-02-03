@@ -9,6 +9,8 @@ categories: Discord
 
 ## channels
 
+----
+
 📏-rules
 
 **Welcome to Rabbithole.help**
@@ -29,47 +31,70 @@ The channels under the RESEARCH SHARING category:
 
 Lurking is fine. Try to keep to the ethos of this server.
 
---
+----
 
-General
---
+### General
+
 💬-main-chat
+
 🗨-alt-chat
+
 🥳-fun
+
 🎶-music
+
 🤖-bot-feed
 
-Research sharing
---
-❗-general-news
-🤵-politics
-📺-livestreams
-💸-economy
-🔃-the-great-reset
-🧬-covid19
-🤬-protests
-😲-happenings
-🧠-society-of-the-spectacle
-💿-tech-and-science
-🕳-memory-hole
-🧰-tools
-🚪-gateways
-	post links to channels and websites that contain relevant sources. (post the main pages, not specific videos or articles of those sources). - any language, but please tag it. - posting invite links to other servers is allowed - we are building a list, so keep it short
-	
 
-admin
---
+### Research sharing
+
+❗-general-news
+
+🤵-politics
+
+📺-livestreams
+
+💸-economy
+
+🔃-the-great-reset
+
+🧬-covid19
+
+🤬-protests
+
+😲-happenings
+
+🧠-society-of-the-spectacle
+
+💿-tech-and-science
+
+🕳-memory-hole
+
+🧰-tools
+
+🚪-gateways
+
+	links to places with sources. (post the main pages/entrance, specific videos or articles belong in the other channels). please tag topic/language where needed - posting invite links to other servers is allowed.
+
+
+### admin
+
 🤖-github
+
 admin-chat
 
+----
 
-# bots
+## bots
 
 IFTTT.com
-	Breaking911
-	Zerohedge
-	Disclose.tv
+
+- Breaking911
+- Zerohedge
+- Disclose.tv
 	
-Github
-https://gist.github.com/jagrosh/5b1761213e33fc5b54ec7f6379034a22
+Github bot
+
+[adding a github webhook](https://gist.github.com/jagrosh/5b1761213e33fc5b54ec7f6379034a22)
+
 Adding the /github to the end of your webhook URL is absolutely needed. You get a bunch of 400s if you leave it out.
