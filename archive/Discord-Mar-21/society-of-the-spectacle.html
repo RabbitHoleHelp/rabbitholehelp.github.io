@@ -1,0 +1,1454 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>rabbithole.help part 2 - &#129504;-society-of-the-spectacle</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+
+    <style>
+        /* General */
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-300.woff);
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-400.woff);
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-500.woff);
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-600.woff);
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-700.woff);
+    font-weight: 700;
+}
+
+body {
+    font-family: "Whitney", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 17px;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+img {
+    object-fit: contain;
+}
+
+.markdown {
+    max-width: 100%;
+    white-space: pre-wrap;
+    line-height: 1.3;
+    overflow-wrap: break-word;
+}
+
+.spoiler {
+    width: fit-content;
+}
+
+.spoiler--hidden {
+    cursor: pointer;
+}
+
+.spoiler-text {
+    border-radius: 3px;
+}
+
+.spoiler--hidden .spoiler-text {
+    color: rgba(0, 0, 0, 0);
+}
+
+.spoiler--hidden .spoiler-text::selection {
+    color: rgba(0, 0, 0, 0);
+}
+
+.spoiler-image {
+    position: relative;
+    overflow: hidden;
+    border-radius: 3px;
+}
+
+.spoiler--hidden .spoiler-image {
+    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.spoiler--hidden .spoiler-image img {
+    filter: blur(44px);
+}
+
+.spoiler--hidden .spoiler-image:after {
+    content: "SPOILER";
+    color: #dcddde;
+    background-color: rgba(0, 0, 0, 0.6);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: 600;
+    padding: 0.5em 0.7em;
+    border-radius: 20px;
+    letter-spacing: 0.05em;
+    font-size: 0.9em;
+}
+
+.spoiler--hidden:hover .spoiler-image:after {
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.quote {
+    margin: 0.1em 0;
+    padding-left: 0.6em;
+    border-left: 4px solid;
+    border-radius: 3px;
+}
+
+.pre {
+    font-family: "Consolas", "Courier New", Courier, monospace;
+}
+
+.pre--multiline {
+    margin-top: 0.25em;
+    padding: 0.5em;
+    border: 2px solid;
+    border-radius: 5px;
+}
+
+.pre--inline {
+    padding: 2px;
+    border-radius: 3px;
+    font-size: 0.85em;
+}
+
+.mention {
+    border-radius: 3px;
+    padding: 0 2px;
+    color: #7289da;
+    background: rgba(114, 137, 218, .1);
+    font-weight: 500;
+}
+
+.emoji {
+    width: 1.25em;
+    height: 1.25em;
+    margin: 0 0.06em;
+    vertical-align: -0.4em;
+}
+
+.emoji--small {
+    width: 1em;
+    height: 1em;
+}
+
+.emoji--large {
+    width: 2.8em;
+    height: 2.8em;
+}
+
+/* Preamble */
+
+.preamble {
+    display: grid;
+    margin: 0 0.3em 0.6em 0.3em;
+    max-width: 100%;
+    grid-template-columns: auto 1fr;
+}
+
+.preamble__guild-icon-container {
+    grid-column: 1;
+}
+
+.preamble__guild-icon {
+    max-width: 88px;
+    max-height: 88px;
+}
+
+.preamble__entries-container {
+    grid-column: 2;
+    margin-left: 0.6em;
+}
+
+.preamble__entry {
+    font-size: 1.4em;
+}
+
+.preamble__entry--small {
+    font-size: 1em;
+}
+
+/* Chatlog */
+
+.chatlog {
+    max-width: 100%;
+}
+
+.chatlog__message-group {
+    display: grid;
+    margin: 0 0.6em;
+    padding: 0.9em 0;
+    border-top: 1px solid;
+    grid-template-columns: auto 1fr;
+}
+
+.chatlog__author-avatar-container {
+    grid-column: 1;
+    width: 40px;
+    height: 40px;
+}
+
+.chatlog__author-avatar {
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+}
+
+.chatlog__messages {
+    grid-column: 2;
+    margin-left: 1.2em;
+    min-width: 50%;
+}
+
+.chatlog__author-name {
+    font-weight: 500;
+}
+
+.chatlog__timestamp {
+    margin-left: 0.3em;
+    font-size: 0.75em;
+}
+
+.chatlog__message {
+    padding: 0.1em 0.3em;
+    margin: 0 -0.3em;
+    background-color: transparent;
+    transition: background-color 1s ease;
+}
+
+.chatlog__content {
+    font-size: 0.95em;
+    word-wrap: break-word;
+}
+
+.chatlog__edited-timestamp {
+    margin-left: 0.15em;
+    font-size: 0.8em;
+}
+
+.chatlog__attachment {
+    margin-top: 0.3em;
+}
+
+.chatlog__attachment-thumbnail {
+    vertical-align: top;
+    max-width: 45vw;
+    max-height: 500px;
+    border-radius: 3px;
+}
+
+.chatlog__embed {
+    display: flex;
+    margin-top: 0.3em;
+    max-width: 520px;
+}
+
+.chatlog__embed-color-pill {
+    flex-shrink: 0;
+    width: 0.25em;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
+.chatlog__embed-content-container {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5em 0.6em;
+    border: 1px solid;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+.chatlog__embed-content {
+    display: flex;
+    width: 100%;
+}
+
+.chatlog__embed-text {
+    flex: 1;
+}
+
+.chatlog__embed-author {
+    display: flex;
+    margin-bottom: 0.3em;
+    align-items: center;
+}
+
+.chatlog__embed-author-icon {
+    margin-right: 0.5em;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+.chatlog__embed-author-name {
+    font-size: 0.875em;
+    font-weight: 600;
+}
+
+.chatlog__embed-title {
+    margin-bottom: 0.2em;
+    font-size: 0.875em;
+    font-weight: 600;
+}
+
+.chatlog__embed-description {
+    font-weight: 500;
+    font-size: 0.85em;
+}
+
+.chatlog__embed-fields {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.chatlog__embed-field {
+    flex: 0;
+    min-width: 100%;
+    max-width: 506px;
+    padding-top: 0.6em;
+    font-size: 0.875em;
+}
+
+.chatlog__embed-field--inline {
+    flex: 1;
+    flex-basis: auto;
+    min-width: 150px;
+}
+
+.chatlog__embed-field-name {
+    margin-bottom: 0.2em;
+    font-weight: 600;
+}
+
+.chatlog__embed-field-value {
+    font-weight: 500;
+}
+
+.chatlog__embed-thumbnail {
+    flex: 0;
+    margin-left: 1.2em;
+    max-width: 80px;
+    max-height: 80px;
+    border-radius: 3px;
+}
+
+.chatlog__embed-image-container {
+    margin-top: 0.6em;
+}
+
+.chatlog__embed-image {
+    max-width: 500px;
+    max-height: 400px;
+    border-radius: 3px;
+}
+
+.chatlog__embed-footer {
+    margin-top: 0.6em;
+}
+
+.chatlog__embed-footer-icon {
+    margin-right: 0.2em;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+
+.chatlog__embed-footer-text {
+    font-size: 0.75em;
+    font-weight: 500;
+}
+
+.chatlog__reactions {
+    display: flex;
+}
+
+.chatlog__reaction {
+    display: flex;
+    align-items: center;
+    margin: 0.35em 0.1em 0.1em 0.1em;
+    padding: 0.2em 0.35em;
+    border-radius: 3px;
+}
+
+.chatlog__reaction-count {
+    min-width: 9px;
+    margin-left: 0.35em;
+    font-size: 0.875em;
+}
+
+.chatlog__bot-tag {
+    position: relative;
+    top: -.2em;
+    margin-left: 0.3em;
+    padding: 0.05em 0.3em;
+    border-radius: 3px;
+    vertical-align: middle;
+    line-height: 1.3;
+    background: #7289da;
+    color: #ffffff;
+    font-size: 0.625em;
+    font-weight: 500;
+}
+
+/* Postamble */
+
+.postamble {
+    margin: 1.4em 0.3em 0.6em 0.3em;
+    padding: 1em;
+    border-top: 1px solid;
+}
+    </style>
+    <style>
+        /* General */
+
+body {
+    background-color: #36393e;
+    color: #dcddde;
+}
+
+a {
+    color: #0096cf;
+}
+
+.spoiler-text {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.spoiler--hidden .spoiler-text {
+    background-color: #202225;
+}
+
+.spoiler--hidden:hover .spoiler-text {
+    background-color: rgba(32, 34, 37, 0.8);
+}
+
+.quote {
+    border-color: #4f545c;
+}
+
+.pre {
+    background-color: #2f3136 !important;
+}
+
+.pre--multiline {
+    border-color: #282b30 !important;
+    color: #b9bbbe !important;
+}
+
+/* === Preamble === */
+
+.preamble__entry {
+    color: #ffffff;
+}
+
+/* Chatlog */
+
+.chatlog__message-group {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.chatlog__author-name {
+    color: #ffffff;
+}
+
+.chatlog__timestamp {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.chatlog__message--highlighted {
+    background-color: rgba(114, 137, 218, 0.2) !important;
+}
+
+.chatlog__message--pinned {
+    background-color: rgba(249, 168, 37, 0.05);
+}
+
+.chatlog__edited-timestamp {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.chatlog__embed-color-pill--default {
+    background-color: rgba(79, 84, 92, 1);
+}
+
+.chatlog__embed-content-container {
+    background-color: rgba(46, 48, 54, 0.3);
+    border-color: rgba(46, 48, 54, 0.6);
+}
+
+.chatlog__embed-author-name {
+    color: #ffffff;
+}
+
+.chatlog__embed-author-name-link {
+    color: #ffffff;
+}
+
+.chatlog__embed-title {
+    color: #ffffff;
+}
+
+.chatlog__embed-description {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__embed-field-name {
+    color: #ffffff;
+}
+
+.chatlog__embed-field-value {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__embed-footer {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__reaction {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.chatlog__reaction-count {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+/* Postamble */
+
+.postamble {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.postamble__entry {
+    color: #ffffff;
+}
+    </style>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/solarized-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.pre--multiline').forEach(block => hljs.highlightBlock(block));
+        });
+    </script>
+
+    <script>
+        function scrollToMessage(event, id) {
+            var element = document.getElementById('message-' + id);
+
+            if (element) {
+                event.preventDefault();
+
+                element.classList.add('chatlog__message--highlighted');
+
+                window.scrollTo({
+                    top: element.getBoundingClientRect().top - document.body.getBoundingClientRect().top - (window.innerHeight / 2),
+                    behavior: 'smooth'
+                });
+
+                window.setTimeout(function() {
+                    element.classList.remove('chatlog__message--highlighted');
+                }, 2000);
+            }
+        }
+
+        function showSpoiler(event, element) {
+            if (element && element.classList.contains('spoiler--hidden')) {
+                event.preventDefault();
+                element.classList.remove('spoiler--hidden');
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="preamble">
+    <div class="preamble__guild-icon-container">
+        <img class="preamble__guild-icon" src="society-of-the-spectacle.html_Files/ac79fbbd60df0e0307032b9a19b8cdb6.png" alt="Guild icon">
+    </div>
+    <div class="preamble__entries-container">
+        <div class="preamble__entry">rabbithole.help part 2</div>
+        <div class="preamble__entry">Research sharing / &#129504;-society-of-the-spectacle</div>
+
+            <div class="preamble__entry preamble__entry--small">miscellaneous channel. if it does not fits elsewhere just post it here</div>
+
+            <div class="preamble__entry preamble__entry--small">
+Between 01-Mar-21 12:00 AM and 01-Apr-21 12:00 AM            </div>
+    </div>
+</div>
+
+<div class="chatlog">
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="society-of-the-spectacle.html_Files/9daca66f480d04fcd3b6de91aeb294a8.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon07#4800" data-user-id="622453000962834453" style="color: rgb(241,196,15)">mejon07</span>
+
+
+        <span class="chatlog__timestamp">01-Mar-21 04:58 AM</span>
+
+            <div class="chatlog__message " data-message-id="815795053376307200" id="message-815795053376307200">
+                <div class="chatlog__content">
+                    <div class="markdown">yeah they just went there <a href="https://web.archive.org/web/20210301015135/https://www.washingtonpost.com/opinions/anti-vaccine-extremism-is-akin-to-domestic-terrorism/2021/02/26/736aee22-787e-11eb-8115-9ad5e9c02117_story.html">https://web.archive.org/web/20210301015135/https://www.washingtonpost.com/opinions/anti-vaccine-extremism-is-akin-to-domestic-terrorism/2021/02/26/736aee22-787e-11eb-8115-9ad5e9c02117_story.html</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://web.archive.org/web/20210301015135/https://www.washingtonpost.com/opinions/anti-vaccine-extremism-is-akin-to-domestic-terrorism/2021/02/26/736aee22-787e-11eb-8115-9ad5e9c02117_story.html">
+                                                    <div class="markdown">Opinion | Anti-vaccine extremism is akin to domestic terrorism</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">The movement to stop vaccinations is a danger to America and should be treated that way.</div>
+                                        </div>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="grabbler" title="grabbler" src="society-of-the-spectacle.html_Files/806258203527610388.png">
+                                <span class="chatlog__reaction-count">2</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="honkler" title="honkler" src="society-of-the-spectacle.html_Files/806258203057979463.png">
+                                <span class="chatlog__reaction-count">2</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="NWOpepe" title="NWOpepe" src="society-of-the-spectacle.html_Files/806258202475364393.png">
+                                <span class="chatlog__reaction-count">2</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="society-of-the-spectacle.html_Files/9bcca68278801417670c6a7113f020ba.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curbs#2663" data-user-id="754849491143753869" style="color: rgb(241,196,15)">CurbShifter</span>
+
+
+        <span class="chatlog__timestamp">01-Mar-21 09:09 AM</span>
+
+            <div class="chatlog__message " data-message-id="815858171649851424" id="message-815858171649851424">
+                <div class="chatlog__content">
+                    <div class="markdown"> </div>
+                </div>
+
+                    <div class="chatlog__attachment">
+                            <a href="society-of-the-spectacle.html_Files/400090900529_378511.jpg">
+                                    <img class="chatlog__attachment-thumbnail" src="society-of-the-spectacle.html_Files/400090900529_378511.jpg" alt="Attachment">
+                            </a>
+                    </div>
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="honkler" title="honkler" src="society-of-the-spectacle.html_Files/806258203057979463.png">
+                                <span class="chatlog__reaction-count">3</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="society-of-the-spectacle.html_Files/9bcca68278801417670c6a7113f020ba.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curbs#2663" data-user-id="754849491143753869" style="color: rgb(241,196,15)">CurbShifter</span>
+
+
+        <span class="chatlog__timestamp">01-Mar-21 10:37 AM</span>
+
+            <div class="chatlog__message " data-message-id="815880355135094805" id="message-815880355135094805">
+                <div class="chatlog__content">
+                    <div class="markdown"> </div>
+                </div>
+
+                    <div class="chatlog__attachment">
+                            <a href="society-of-the-spectacle.html_Files/400149400230_152659.jpg">
+                                    <img class="chatlog__attachment-thumbnail" src="society-of-the-spectacle.html_Files/400149400230_152659.jpg" alt="Attachment">
+                            </a>
+                    </div>
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="gulag" title="gulag" src="society-of-the-spectacle.html_Files/808835879694368849.png">
+                                <span class="chatlog__reaction-count">4</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="society-of-the-spectacle.html_Files/9daca66f480d04fcd3b6de91aeb294a8.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon07#4800" data-user-id="622453000962834453" style="color: rgb(241,196,15)">mejon07</span>
+
+
+        <span class="chatlog__timestamp">01-Mar-21 02:08 PM</span>
+
+            <div class="chatlog__message " data-message-id="815933541690114058" id="message-815933541690114058">
+                <div class="chatlog__content">
+                    <div class="markdown">Segregation is back ... rejoice all you paranoid serfs. </div>
+                </div>
+
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="npc" title="npc" src="society-of-the-spectacle.html_Files/806258201808338984.png">
+                                <span class="chatlog__reaction-count">2</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="society-of-the-spectacle.html_Files/9daca66f480d04fcd3b6de91aeb294a8.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon07#4800" data-user-id="622453000962834453" style="color: rgb(241,196,15)">mejon07</span>
+
+
+        <span class="chatlog__timestamp">01-Mar-21 08:39 PM</span>
+
+            <div class="chatlog__message " data-message-id="816031925210185778" id="message-816031925210185778">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.youtube.com/watch?v=pA8CZGexguM">https://www.youtube.com/watch?v=pA8CZGexguM</a> interesting vid of her detailing her itinerary through the dystopian airports in Tirana, Albania, Frankfurt, DE and Toronto.. She&#39;s a bit of an NPC though cause was ranting how some ppl weren&#39;t wearing masks on the plane <img class="emoji " alt="npc" title="npc" src="https://cdn.discordapp.com/emojis/806258201808338984.png"> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCumDKkURYIw_dKqtn9hN-Ew">Alina Mcleod</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=pA8CZGexguM">
+                                                    <div class="markdown">Trying To Get Home To Canada During Covid-19</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Canada has some the strictest border restrictions in the world right now. If you are thinking of traveling to Canada in the next few months, make sure you check the latest rules on the official website www.canada.ca because even after my return, the travel regulations have changed once again. I feel very fortunate to have been able to make it ho...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="society-of-the-spectacle.html_Files/maxresdefault.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="society-of-the-spectacle.html_Files/maxresdefault.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="grabbler" title="grabbler" src="society-of-the-spectacle.html_Files/806258203527610388.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="npc" title="npc" src="society-of-the-spectacle.html_Files/806258201808338984.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="society-of-the-spectacle.html_Files/9daca66f480d04fcd3b6de91aeb294a8.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon07#4800" data-user-id="622453000962834453" style="color: rgb(241,196,15)">mejon07</span>
+
+
+        <span class="chatlog__timestamp">01-Mar-21 08:51 PM</span>
+
+            <div class="chatlog__message " data-message-id="816034841053233157" id="message-816034841053233157">
+                <div class="chatlog__content">
+                    <div class="markdown">result of lockdowns <img class="emoji " alt="feelsbadman" title="feelsbadman" src="https://cdn.discordapp.com/emojis/806258202522026024.png">  <a href="https://globalnews.ca/news/7665498/lexi-daken-new-brunswick-mother-failing-system/">https://globalnews.ca/news/7665498/lexi-daken-new-brunswick-mother-failing-system/</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(19,63,111,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://globalnews.ca/author/karla-renic/">krenic</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://globalnews.ca/news/7665498/lexi-daken-new-brunswick-mother-failing-system/">
+                                                    <div class="markdown">The story of Lexi Daken and a New Brunswick mother’s fight to fix a...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Sixteen-year-old Lexi Daken died by suicide on Wednesday. Her mother, Shawna Betts, took to Facebook the next day in an outcry, saying the health-care system failed her daughter.</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="society-of-the-spectacle.html_Files/Lexi-Daken.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="society-of-the-spectacle.html_Files/Lexi-Daken.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="Fpepe" title="Fpepe" src="society-of-the-spectacle.html_Files/806258202719158292.png">
+                                <span class="chatlog__reaction-count">3</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="society-of-the-spectacle.html_Files/9bcca68278801417670c6a7113f020ba.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curbs#2663" data-user-id="754849491143753869" style="color: rgb(241,196,15)">CurbShifter</span>
+
+
+        <span class="chatlog__timestamp">01-Mar-21 11:54 PM</span>
+
+            <div class="chatlog__message " data-message-id="816081033228845057" id="message-816081033228845057">
+                <div class="chatlog__content">
+                    <div class="markdown"> </div>
+                </div>
+
+                    <div class="chatlog__attachment">
+                            <a href="society-of-the-spectacle.html_Files/400084300529_384922.jpg">
+                                    <img class="chatlog__attachment-thumbnail" src="society-of-the-spectacle.html_Files/400084300529_384922.jpg" alt="Attachment">
+                            </a>
+                    </div>
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="npc" title="npc" src="society-of-the-spectacle.html_Files/806258201808338984.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="society-of-the-spectacle.html_Files/9daca66f480d04fcd3b6de91aeb294a8.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon07#4800" data-user-id="622453000962834453" style="color: rgb(241,196,15)">mejon07</span>
+
+
+        <span class="chatlog__timestamp">02-Mar-21 12:22 AM</span>
+
+            <div class="chatlog__message " data-message-id="816088109451706388" id="message-816088109451706388">
+                <div class="chatlog__content">
+                    <div class="markdown"><img class="emoji emoji--large" alt="npc" title="npc" src="https://cdn.discordapp.com/emojis/806258201808338984.png"> <img class="emoji emoji--large" alt="tardapu" title="tardapu" src="https://cdn.discordapp.com/emojis/806258201636241491.png"> </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="society-of-the-spectacle.html_Files/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="ShadowSpectre#7488" data-user-id="198526379514396672" style="color: rgb(54,117,255)">ShadowSpectre</span>
+
+
+        <span class="chatlog__timestamp">02-Mar-21 02:10 AM</span>
+
+            <div class="chatlog__message " data-message-id="816115247856222208" id="message-816115247856222208">
+                <div class="chatlog__content">
+                    <div class="markdown">Apparently helmets (which actually help save lives in motorcycle accidents) are less important when riding a motorcycle than the coof virus potential. <img class="emoji " alt="npc" title="npc" src="https://cdn.discordapp.com/emojis/806258201808338984.png"> </div>
+                </div>
+
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="honkler" title="honkler" src="society-of-the-spectacle.html_Files/806258203057979463.png">
+                                <span class="chatlog__reaction-count">3</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="society-of-the-spectacle.html_Files/9daca66f480d04fcd3b6de91aeb294a8.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon07#4800" data-user-id="622453000962834453" style="color: rgb(241,196,15)">mejon07</span>
+
+
+        <span class="chatlog__timestamp">02-Mar-21 04:32 AM</span>
+
+            <div class="chatlog__message " data-message-id="816150947813785630" id="message-816150947813785630">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://twitter.com/BridgetPhetasy/status/1366507394541387779">https://twitter.com/BridgetPhetasy/status/1366507394541387779</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(29,161,242,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+                                                <img class="chatlog__embed-author-icon" src="society-of-the-spectacle.html_Files/u3ZpEOwB_bigger.jpg" alt="Author icon">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/BridgetPhetasy">Phetasy (@BridgetPhetasy)</a>
+                                                </span>
+                                        </div>
+
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">California is a dystopian nightmare.  <a href="https://t.co/5nWEarQNoa">https://t.co/5nWEarQNoa</a></div>
+                                        </div>
+
+                                        <div class="chatlog__embed-fields">
+                                                <div class="chatlog__embed-field chatlog__embed-field--inline">
+                                                        <div class="chatlog__embed-field-name">
+                                                            <div class="markdown">Retweets</div>
+                                                        </div>
+
+                                                        <div class="chatlog__embed-field-value">
+                                                            <div class="markdown">1216</div>
+                                                        </div>
+                                                </div>
+                                                <div class="chatlog__embed-field chatlog__embed-field--inline">
+                                                        <div class="chatlog__embed-field-name">
+                                                            <div class="markdown">Likes</div>
+                                                        </div>
+
+                                                        <div class="chatlog__embed-field-value">
+                                                            <div class="markdown">5126</div>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="society-of-the-spectacle.html_Files/7EcI15Kdv1yGjULd.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="society-of-the-spectacle.html_Files/7EcI15Kdv1yGjULd.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                                <div class="chatlog__embed-footer">
+                                        <img class="chatlog__embed-footer-icon" src="society-of-the-spectacle.html_Files/apple-touch-icon-192x192.png" alt="Footer icon">
+
+                                        <span class="chatlog__embed-footer-text">
+Twitter
+ • 
+01-Mar-21 10:55 PM                                        </span>
+                                </div>
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="cringe" title="cringe" src="society-of-the-spectacle.html_Files/806258202240614431.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="npc" title="npc" src="society-of-the-spectacle.html_Files/806258201808338984.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="society-of-the-spectacle.html_Files/9daca66f480d04fcd3b6de91aeb294a8.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon07#4800" data-user-id="622453000962834453" style="color: rgb(241,196,15)">mejon07</span>
+
+
+        <span class="chatlog__timestamp">02-Mar-21 03:04 PM</span>
+
+            <div class="chatlog__message " data-message-id="816310080818642945" id="message-816310080818642945">
+                <div class="chatlog__content">
+                    <div class="markdown">50% of americans no longer having blind faith in the two-party paradigm? <a href="https://twitter.com/leedrutman/status/1366400818300215298">https://twitter.com/leedrutman/status/1366400818300215298</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(29,161,242,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+                                                <img class="chatlog__embed-author-icon" src="society-of-the-spectacle.html_Files/cXRZo4Ur_bigger.jpg" alt="Author icon">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/leedrutman">Lee Drutman (@leedrutman)</a>
+                                                </span>
+                                        </div>
+
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">HALF of Americans now identify as Independents.
+This is a record-high in Gallup polling. And a huge jump since the election.
+This disaffiliation from the two major parties is very dangerous for democracy. It reveals deep, deep dissatisfaction. <a href="https://t.co/01p54BAiRA">https://t.co/01p54BAiRA</a></div>
+                                        </div>
+
+                                        <div class="chatlog__embed-fields">
+                                                <div class="chatlog__embed-field chatlog__embed-field--inline">
+                                                        <div class="chatlog__embed-field-name">
+                                                            <div class="markdown">Retweets</div>
+                                                        </div>
+
+                                                        <div class="chatlog__embed-field-value">
+                                                            <div class="markdown">383</div>
+                                                        </div>
+                                                </div>
+                                                <div class="chatlog__embed-field chatlog__embed-field--inline">
+                                                        <div class="chatlog__embed-field-name">
+                                                            <div class="markdown">Likes</div>
+                                                        </div>
+
+                                                        <div class="chatlog__embed-field-value">
+                                                            <div class="markdown">1453</div>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                </div>
+
+                            </div>
+
+                                <div class="chatlog__embed-image-container">
+                                    <a class="chatlog__embed-image-link" href="society-of-the-spectacle.html_Files/EvZuMZcWgAM0mlE.jpg_large">
+                                        <img class="chatlog__embed-image" src="society-of-the-spectacle.html_Files/EvZuMZcWgAM0mlE.jpg_large" alt="Image">
+                                    </a>
+                                </div>
+
+                                <div class="chatlog__embed-footer">
+                                        <img class="chatlog__embed-footer-icon" src="society-of-the-spectacle.html_Files/apple-touch-icon-192x192.png" alt="Footer icon">
+
+                                        <span class="chatlog__embed-footer-text">
+Twitter
+ • 
+01-Mar-21 03:51 PM                                        </span>
+                                </div>
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="feelsgoodman" title="feelsgoodman" src="society-of-the-spectacle.html_Files/806258202605912195.png">
+                                <span class="chatlog__reaction-count">2</span>
+                            </div>
+                    </div>
+            </div>
+            <div class="chatlog__message " data-message-id="816310590091952148" id="message-816310590091952148">
+                <div class="chatlog__content">
+                    <div class="markdown"><span class="spoiler spoiler--hidden" onclick="showSpoiler(event, this)"><span class="spoiler-text"> <a href="https://twitter.com/alihadi68/status/1366470198056910855">https://twitter.com/alihadi68/status/1366470198056910855</a> </span></span> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(29,161,242,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+                                                <img class="chatlog__embed-author-icon" src="society-of-the-spectacle.html_Files/7aD6_rdc_bigger.jpg" alt="Author icon">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/alihadi68">ali hadi (@alihadi68)</a>
+                                                </span>
+                                        </div>
+
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">UK gives &#163;87 million aid to #Yemen while making &#163;3 billion from selling arms to barbaric #Saudi headed by their killer MBS to kill &amp; destroy the same country incl directing Saudi fighter jets. It’s like destroying your house, killing your family then throwing you a sandwich</div>
+                                        </div>
+
+                                </div>
+
+                            </div>
+
+                                <div class="chatlog__embed-image-container">
+                                    <a class="chatlog__embed-image-link" href="society-of-the-spectacle.html_Files/EvatZr-WYAMGW-a.jpg_large">
+                                        <img class="chatlog__embed-image" src="society-of-the-spectacle.html_Files/EvatZr-WYAMGW-a.jpg_large" alt="Image">
+                                    </a>
+                                </div>
+
+                                <div class="chatlog__embed-footer">
+                                        <img class="chatlog__embed-footer-icon" src="society-of-the-spectacle.html_Files/apple-touch-icon-192x192.png" alt="Footer icon">
+
+                                        <span class="chatlog__embed-footer-text">
+Twitter
+ • 
+01-Mar-21 08:27 PM                                        </span>
+                                </div>
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="Fpepe" title="Fpepe" src="society-of-the-spectacle.html_Files/806258202719158292.png">
+                                <span class="chatlog__reaction-count">3</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="feelsbadman" title="feelsbadman" src="society-of-the-spectacle.html_Files/806258202522026024.png">
+                                <span class="chatlog__reaction-count">3</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="society-of-the-spectacle.html_Files/9daca66f480d04fcd3b6de91aeb294a8.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon07#4800" data-user-id="622453000962834453" style="color: rgb(241,196,15)">mejon07</span>
+
+
+        <span class="chatlog__timestamp">02-Mar-21 10:32 PM</span>
+
+            <div class="chatlog__message " data-message-id="816422748359622716" id="message-816422748359622716">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.technologyreview.com/2021/03/01/1020154/israels-green-pass-is-an-early-vision-of-how-we-leave-lockdown/">https://www.technologyreview.com/2021/03/01/1020154/israels-green-pass-is-an-early-vision-of-how-we-leave-lockdown/</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.technologyreview.com/2021/03/01/1020154/israels-green-pass-is-an-early-vision-of-how-we-leave-lockdown/">
+                                                    <div class="markdown">Israel’s “green pass” vaccine passport is an early vision of how we...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">There are plans all over the world for apps and cards that would prove vaccination. But Israel’s experience suggests major caveats.</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="society-of-the-spectacle.html_Files/AP_21056431748848.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="society-of-the-spectacle.html_Files/AP_21056431748848.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="pewpew" title="pewpew" src="society-of-the-spectacle.html_Files/806258203833794620.png">
+                                <span class="chatlog__reaction-count">2</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="NWOpepe" title="NWOpepe" src="society-of-the-spectacle.html_Files/806258202475364393.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="society-of-the-spectacle.html_Files/9daca66f480d04fcd3b6de91aeb294a8.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon07#4800" data-user-id="622453000962834453" style="color: rgb(241,196,15)">mejon07</span>
+
+
+        <span class="chatlog__timestamp">03-Mar-21 02:39 AM</span>
+
+            <div class="chatlog__message " data-message-id="816484891722121296" id="message-816484891722121296">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://westernstandardonline.com/2021/02/despite-covid-19-alberta-icu-admissions-dropped-in-2020/">https://westernstandardonline.com/2021/02/despite-covid-19-alberta-icu-admissions-dropped-in-2020/</a> but i thought the hospitals were at beyond capacity to the point where they had patients in the hallways <img class="emoji " alt="honkler" title="honkler" src="https://cdn.discordapp.com/emojis/806258203057979463.png"> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://westernstandardonline.com/author/dave-naylor/">Dave Naylor</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://westernstandardonline.com/2021/02/despite-covid-19-alberta-icu-admissions-dropped-in-2020/">
+                                                    <div class="markdown">Despite COVID-19, Alberta ICU admissions dropped in 2020</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">In fact, ICU admissions dropped in every ICU across the entire province, except two which saw slight increases.</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="society-of-the-spectacle.html_Files/Screen-Shot-2021-02-27-at-11.19.29-AM.png">
+                                            <img class="chatlog__embed-thumbnail" src="society-of-the-spectacle.html_Files/Screen-Shot-2021-02-27-at-11.19.29-AM.png" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="honkler" title="honkler" src="society-of-the-spectacle.html_Files/806258203057979463.png">
+                                <span class="chatlog__reaction-count">2</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="grabbler" title="grabbler" src="society-of-the-spectacle.html_Files/806258203527610388.png">
+                                <span class="chatlog__reaction-count">2</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="society-of-the-spectacle.html_Files/9daca66f480d04fcd3b6de91aeb294a8.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon07#4800" data-user-id="622453000962834453" style="color: rgb(241,196,15)">mejon07</span>
+
+
+        <span class="chatlog__timestamp">03-Mar-21 02:19 PM</span>
+
+            <div class="chatlog__message " data-message-id="816661036978667530" id="message-816661036978667530">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.dailymail.co.uk/news/article-9319401/Self-harm-claims-rise-333-overdoses-120-shocking-toll-pandemic-teenagers.html">https://www.dailymail.co.uk/news/article-9319401/Self-harm-claims-rise-333-overdoses-120-shocking-toll-pandemic-teenagers.html</a> result of lockdowns <img class="emoji " alt="feelsbadman" title="feelsbadman" src="https://cdn.discordapp.com/emojis/806258202522026024.png"> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.dailymail.co.uk/news/article-9319401/Self-harm-claims-rise-333-overdoses-120-shocking-toll-pandemic-teenagers.html">
+                                                    <div class="markdown">Self-harm by teenagers rises 333% and overdoses up 120% amid pandemic</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">A nonprofit specializing in healthcare data analyzed 32 billion private healthcare claim records from January-November 2020 and compared with 2019, showing the scale of the mental health crisis.</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="society-of-the-spectacle.html_Files/39977190-0-image-a-59_1614744980604.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="society-of-the-spectacle.html_Files/39977190-0-image-a-59_1614744980604.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="dumpsterfire" title="dumpsterfire" src="society-of-the-spectacle.html_Files/806258202584416288.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="stoned" title="stoned" src="society-of-the-spectacle.html_Files/806258202705920053.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="society-of-the-spectacle.html_Files/9bcca68278801417670c6a7113f020ba.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curbs#2663" data-user-id="754849491143753869" style="color: rgb(241,196,15)">CurbShifter</span>
+
+
+        <span class="chatlog__timestamp">03-Mar-21 03:50 PM</span>
+
+            <div class="chatlog__message " data-message-id="816683918257422396" id="message-816683918257422396">
+                <div class="chatlog__content">
+                    <div class="markdown"><div class="quote">BREAKING <img class="emoji " alt="🚨" title="🚨" src="https://twemoji.maxcdn.com/2/72x72/1f6a8.png"> FINNISH WOMAN WAS ARRESTED FOR REFUSING A PCR TEST THEN GOT THROWN INTO A PSYCH WARD BY THE POLICE <img class="emoji " alt="🇫🇮" title="🇫🇮" src="https://twemoji.maxcdn.com/2/72x72/1f1eb-1f1ee.png">
+</div>
+<img class="emoji " alt="👮" title="👮" src="https://twemoji.maxcdn.com/2/72x72/1f46e.png"> Merike had been in contact with someone who tested positive for covid-19. Police tracked &amp; traced Merike then broke into her apartment in Iisalmi on March 1st to give her a PCR test. The police deleted the video she had of them illegally breaking in. Her daughter then filmed her getting arrested.
+
+<img class="emoji " alt="🏥" title="🏥" src="https://twemoji.maxcdn.com/2/72x72/1f3e5.png"> She was forcibly taken from her home by the police in handcuffs for refusing the PCR </div>
+                </div>
+
+                    <div class="chatlog__attachment">
+                            <a href="society-of-the-spectacle.html_Files/4_5906712696480336827.mp4">
+Attachment: 4_5906712696480336827.mp4 (4.83 MB)                            </a>
+                    </div>
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="816684034440036382" id="message-816684034440036382">
+                <div class="chatlog__content">
+                    <div class="markdown"><div class="quote">test. She was then taken to Iisalmi Hospital and thrown in a psych ward. She is still in a closed ward at Iisalmi Hospital and has not been released.  She was initially tied to the hospital bed for 24 hours and has bruising on her wrists. She also was allegedly strangled on several occasions.
+</div>
+<img class="emoji " alt="⚖" title="⚖" src="https://twemoji.maxcdn.com/2/72x72/2696.png">️ Fortunately, Merike has been contacted for legal assistance. </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+</div>
+
+<div class="postamble">
+    <div class="postamble__entry">Exported 17 message(s)</div>
+</div>
+
+</body>
+</html>
