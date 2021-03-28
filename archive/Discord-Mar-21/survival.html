@@ -1,0 +1,2393 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>rabbithole.help part 2 - &#127957;-survival</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+
+    <style>
+        /* General */
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-300.woff);
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-400.woff);
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-500.woff);
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-600.woff);
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-700.woff);
+    font-weight: 700;
+}
+
+body {
+    font-family: "Whitney", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 17px;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+img {
+    object-fit: contain;
+}
+
+.markdown {
+    max-width: 100%;
+    white-space: pre-wrap;
+    line-height: 1.3;
+    overflow-wrap: break-word;
+}
+
+.spoiler {
+    width: fit-content;
+}
+
+.spoiler--hidden {
+    cursor: pointer;
+}
+
+.spoiler-text {
+    border-radius: 3px;
+}
+
+.spoiler--hidden .spoiler-text {
+    color: rgba(0, 0, 0, 0);
+}
+
+.spoiler--hidden .spoiler-text::selection {
+    color: rgba(0, 0, 0, 0);
+}
+
+.spoiler-image {
+    position: relative;
+    overflow: hidden;
+    border-radius: 3px;
+}
+
+.spoiler--hidden .spoiler-image {
+    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.spoiler--hidden .spoiler-image img {
+    filter: blur(44px);
+}
+
+.spoiler--hidden .spoiler-image:after {
+    content: "SPOILER";
+    color: #dcddde;
+    background-color: rgba(0, 0, 0, 0.6);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: 600;
+    padding: 0.5em 0.7em;
+    border-radius: 20px;
+    letter-spacing: 0.05em;
+    font-size: 0.9em;
+}
+
+.spoiler--hidden:hover .spoiler-image:after {
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.quote {
+    margin: 0.1em 0;
+    padding-left: 0.6em;
+    border-left: 4px solid;
+    border-radius: 3px;
+}
+
+.pre {
+    font-family: "Consolas", "Courier New", Courier, monospace;
+}
+
+.pre--multiline {
+    margin-top: 0.25em;
+    padding: 0.5em;
+    border: 2px solid;
+    border-radius: 5px;
+}
+
+.pre--inline {
+    padding: 2px;
+    border-radius: 3px;
+    font-size: 0.85em;
+}
+
+.mention {
+    border-radius: 3px;
+    padding: 0 2px;
+    color: #7289da;
+    background: rgba(114, 137, 218, .1);
+    font-weight: 500;
+}
+
+.emoji {
+    width: 1.25em;
+    height: 1.25em;
+    margin: 0 0.06em;
+    vertical-align: -0.4em;
+}
+
+.emoji--small {
+    width: 1em;
+    height: 1em;
+}
+
+.emoji--large {
+    width: 2.8em;
+    height: 2.8em;
+}
+
+/* Preamble */
+
+.preamble {
+    display: grid;
+    margin: 0 0.3em 0.6em 0.3em;
+    max-width: 100%;
+    grid-template-columns: auto 1fr;
+}
+
+.preamble__guild-icon-container {
+    grid-column: 1;
+}
+
+.preamble__guild-icon {
+    max-width: 88px;
+    max-height: 88px;
+}
+
+.preamble__entries-container {
+    grid-column: 2;
+    margin-left: 0.6em;
+}
+
+.preamble__entry {
+    font-size: 1.4em;
+}
+
+.preamble__entry--small {
+    font-size: 1em;
+}
+
+/* Chatlog */
+
+.chatlog {
+    max-width: 100%;
+}
+
+.chatlog__message-group {
+    display: grid;
+    margin: 0 0.6em;
+    padding: 0.9em 0;
+    border-top: 1px solid;
+    grid-template-columns: auto 1fr;
+}
+
+.chatlog__author-avatar-container {
+    grid-column: 1;
+    width: 40px;
+    height: 40px;
+}
+
+.chatlog__author-avatar {
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+}
+
+.chatlog__messages {
+    grid-column: 2;
+    margin-left: 1.2em;
+    min-width: 50%;
+}
+
+.chatlog__author-name {
+    font-weight: 500;
+}
+
+.chatlog__timestamp {
+    margin-left: 0.3em;
+    font-size: 0.75em;
+}
+
+.chatlog__message {
+    padding: 0.1em 0.3em;
+    margin: 0 -0.3em;
+    background-color: transparent;
+    transition: background-color 1s ease;
+}
+
+.chatlog__content {
+    font-size: 0.95em;
+    word-wrap: break-word;
+}
+
+.chatlog__edited-timestamp {
+    margin-left: 0.15em;
+    font-size: 0.8em;
+}
+
+.chatlog__attachment {
+    margin-top: 0.3em;
+}
+
+.chatlog__attachment-thumbnail {
+    vertical-align: top;
+    max-width: 45vw;
+    max-height: 500px;
+    border-radius: 3px;
+}
+
+.chatlog__embed {
+    display: flex;
+    margin-top: 0.3em;
+    max-width: 520px;
+}
+
+.chatlog__embed-color-pill {
+    flex-shrink: 0;
+    width: 0.25em;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
+.chatlog__embed-content-container {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5em 0.6em;
+    border: 1px solid;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+.chatlog__embed-content {
+    display: flex;
+    width: 100%;
+}
+
+.chatlog__embed-text {
+    flex: 1;
+}
+
+.chatlog__embed-author {
+    display: flex;
+    margin-bottom: 0.3em;
+    align-items: center;
+}
+
+.chatlog__embed-author-icon {
+    margin-right: 0.5em;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+.chatlog__embed-author-name {
+    font-size: 0.875em;
+    font-weight: 600;
+}
+
+.chatlog__embed-title {
+    margin-bottom: 0.2em;
+    font-size: 0.875em;
+    font-weight: 600;
+}
+
+.chatlog__embed-description {
+    font-weight: 500;
+    font-size: 0.85em;
+}
+
+.chatlog__embed-fields {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.chatlog__embed-field {
+    flex: 0;
+    min-width: 100%;
+    max-width: 506px;
+    padding-top: 0.6em;
+    font-size: 0.875em;
+}
+
+.chatlog__embed-field--inline {
+    flex: 1;
+    flex-basis: auto;
+    min-width: 150px;
+}
+
+.chatlog__embed-field-name {
+    margin-bottom: 0.2em;
+    font-weight: 600;
+}
+
+.chatlog__embed-field-value {
+    font-weight: 500;
+}
+
+.chatlog__embed-thumbnail {
+    flex: 0;
+    margin-left: 1.2em;
+    max-width: 80px;
+    max-height: 80px;
+    border-radius: 3px;
+}
+
+.chatlog__embed-image-container {
+    margin-top: 0.6em;
+}
+
+.chatlog__embed-image {
+    max-width: 500px;
+    max-height: 400px;
+    border-radius: 3px;
+}
+
+.chatlog__embed-footer {
+    margin-top: 0.6em;
+}
+
+.chatlog__embed-footer-icon {
+    margin-right: 0.2em;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+
+.chatlog__embed-footer-text {
+    font-size: 0.75em;
+    font-weight: 500;
+}
+
+.chatlog__reactions {
+    display: flex;
+}
+
+.chatlog__reaction {
+    display: flex;
+    align-items: center;
+    margin: 0.35em 0.1em 0.1em 0.1em;
+    padding: 0.2em 0.35em;
+    border-radius: 3px;
+}
+
+.chatlog__reaction-count {
+    min-width: 9px;
+    margin-left: 0.35em;
+    font-size: 0.875em;
+}
+
+.chatlog__bot-tag {
+    position: relative;
+    top: -.2em;
+    margin-left: 0.3em;
+    padding: 0.05em 0.3em;
+    border-radius: 3px;
+    vertical-align: middle;
+    line-height: 1.3;
+    background: #7289da;
+    color: #ffffff;
+    font-size: 0.625em;
+    font-weight: 500;
+}
+
+/* Postamble */
+
+.postamble {
+    margin: 1.4em 0.3em 0.6em 0.3em;
+    padding: 1em;
+    border-top: 1px solid;
+}
+    </style>
+    <style>
+        /* General */
+
+body {
+    background-color: #36393e;
+    color: #dcddde;
+}
+
+a {
+    color: #0096cf;
+}
+
+.spoiler-text {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.spoiler--hidden .spoiler-text {
+    background-color: #202225;
+}
+
+.spoiler--hidden:hover .spoiler-text {
+    background-color: rgba(32, 34, 37, 0.8);
+}
+
+.quote {
+    border-color: #4f545c;
+}
+
+.pre {
+    background-color: #2f3136 !important;
+}
+
+.pre--multiline {
+    border-color: #282b30 !important;
+    color: #b9bbbe !important;
+}
+
+/* === Preamble === */
+
+.preamble__entry {
+    color: #ffffff;
+}
+
+/* Chatlog */
+
+.chatlog__message-group {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.chatlog__author-name {
+    color: #ffffff;
+}
+
+.chatlog__timestamp {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.chatlog__message--highlighted {
+    background-color: rgba(114, 137, 218, 0.2) !important;
+}
+
+.chatlog__message--pinned {
+    background-color: rgba(249, 168, 37, 0.05);
+}
+
+.chatlog__edited-timestamp {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.chatlog__embed-color-pill--default {
+    background-color: rgba(79, 84, 92, 1);
+}
+
+.chatlog__embed-content-container {
+    background-color: rgba(46, 48, 54, 0.3);
+    border-color: rgba(46, 48, 54, 0.6);
+}
+
+.chatlog__embed-author-name {
+    color: #ffffff;
+}
+
+.chatlog__embed-author-name-link {
+    color: #ffffff;
+}
+
+.chatlog__embed-title {
+    color: #ffffff;
+}
+
+.chatlog__embed-description {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__embed-field-name {
+    color: #ffffff;
+}
+
+.chatlog__embed-field-value {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__embed-footer {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__reaction {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.chatlog__reaction-count {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+/* Postamble */
+
+.postamble {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.postamble__entry {
+    color: #ffffff;
+}
+    </style>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/solarized-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.pre--multiline').forEach(block => hljs.highlightBlock(block));
+        });
+    </script>
+
+    <script>
+        function scrollToMessage(event, id) {
+            var element = document.getElementById('message-' + id);
+
+            if (element) {
+                event.preventDefault();
+
+                element.classList.add('chatlog__message--highlighted');
+
+                window.scrollTo({
+                    top: element.getBoundingClientRect().top - document.body.getBoundingClientRect().top - (window.innerHeight / 2),
+                    behavior: 'smooth'
+                });
+
+                window.setTimeout(function() {
+                    element.classList.remove('chatlog__message--highlighted');
+                }, 2000);
+            }
+        }
+
+        function showSpoiler(event, element) {
+            if (element && element.classList.contains('spoiler--hidden')) {
+                event.preventDefault();
+                element.classList.remove('spoiler--hidden');
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="preamble">
+    <div class="preamble__guild-icon-container">
+        <img class="preamble__guild-icon" src="survival.html_Files/ac79fbbd60df0e0307032b9a19b8cdb6.png" alt="Guild icon">
+    </div>
+    <div class="preamble__entries-container">
+        <div class="preamble__entry">rabbithole.help part 2</div>
+        <div class="preamble__entry">Research sharing / &#127957;-survival</div>
+
+
+            <div class="preamble__entry preamble__entry--small">
+Between 01-Mar-21 12:00 AM and 01-Apr-21 12:00 AM            </div>
+    </div>
+</div>
+
+<div class="chatlog">
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="survival.html_Files/0.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Didi#3750" data-user-id="408342581454569472" style="color: rgb(241,196,15)">Didi</span>
+
+
+        <span class="chatlog__timestamp">25-Mar-21 01:54 PM</span>
+
+            <div class="chatlog__message " data-message-id="824627232919912448" id="message-824627232919912448">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.freepermaculture.com/onlinecourse/?f">https://www.freepermaculture.com/onlinecourse/?f</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.freepermaculture.com/author/hedgebis/">Heather Jo Flores</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.freepermaculture.com/onlinecourse/?f">
+                                                    <div class="markdown">Free Online Permaculture Course</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Free online permaculture course with 52 weekly classes and a community of gardeners and designers fo all ages.</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="survival.html_Files/Final-25-Food-Forest.png">
+                                            <img class="chatlog__embed-thumbnail" src="survival.html_Files/Final-25-Food-Forest.png" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="824627405884358698" id="message-824627405884358698">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.youtube.com/watch?v=rVRBiirj2ZI">https://www.youtube.com/watch?v=rVRBiirj2ZI</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCbNF3nemgJUHJuVRgH7V0YQ">Better Homes and Gardens</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=rVRBiirj2ZI">
+                                                    <div class="markdown">Seed Bombs | Made by Me - Garden | Better Homes &amp; Gardens</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Make planting seeds in bulk a whole lot easier with DIY seed bombs. These balls of clay and soil hold seeds and disperse them in your garden as they break apart.
+
+Subscribe to the Better Homes and Gardens Channel: <a href="http://www.youtube.com/subscription_center?add_user=bhg">http://www.youtube.com/subscription_center?add_user=bhg</a>
+
+Official Better Homes and Gardens Website: <a href="http://www.bhg.com/">http://www.bhg.com/</a>
+Facebook: htt...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="survival.html_Files/hqdefault.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="survival.html_Files/hqdefault.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="824627481280512070" id="message-824627481280512070">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.youtube.com/watch?v=qle74vMe8_Y">https://www.youtube.com/watch?v=qle74vMe8_Y</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCXZlHQ_FtpDjCKJpfxEgGOA">Gorilla Gardening</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=qle74vMe8_Y">
+                                                    <div class="markdown">Seedballs Timelapse - Gorilla Gardening Seedbombs</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Timelapse von unserem Wildblumen-Seedball. Mehr Informationen zu unseren Seedballs und unseren Shop findest du unter:
+<a href="http://www.gorilla-gardening.ch/">http://www.gorilla-gardening.ch/</a>
+
+(Musik: cdk - Silence Await)</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="survival.html_Files/maxresdefault.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="survival.html_Files/maxresdefault.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="824627545776980000" id="message-824627545776980000">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.youtube.com/watch?v=OuD9NFR6sNo">https://www.youtube.com/watch?v=OuD9NFR6sNo</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCEsx-GzwcfYLVg4oscaSHHw">Let&#39;s Eat Food</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=OuD9NFR6sNo">
+                                                    <div class="markdown">10 Rules of Guerrilla Gardening</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">▼▼▼Click &quot;Show More&quot; for resources▼▼▼
+
+Learn how to break the rules and plant food in restricted areas!
+
+
+<em><u><em><u><em><u><em><u><em><u><em><u><em><u>__</u></em></u></em></u></em></u></em></u></em></u></em></u></em>
+▼▼▼10 Rules of Guerrilla Gardening▼▼▼
+
+1. Never ask permission.  Rather ask forgiveness.
+2. Know thy area.  Don’t plant invasive species.
+3. Plant food, then trees, then flowers.
+4. Mix species to...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="survival.html_Files/maxresdefault%20%281%29.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="survival.html_Files/maxresdefault%20%281%29.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="824628090415087667" id="message-824628090415087667">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.westcoastseeds.com/blogs/garden-wisdom/list-of-edible-flowers?">https://www.westcoastseeds.com/blogs/garden-wisdom/list-of-edible-flowers?</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.westcoastseeds.com/blogs/garden-wisdom/list-of-edible-flowers?">
+                                                    <div class="markdown">List of Edible Flowers</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Edible flowers can be used to add a splash of colour to all kinds of foods, from salads to desserts to fancy cocktails. A single borage petal, carefully placed, can really enhance a slice of cake or an amuse bouche.
+Before&#160;venturing out to the garden&#160;to harvest a bunch of flowers for the dinner table, it’s important to remember that some flowers...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="survival.html_Files/List-of-Edible-Flowers_1024x1024.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="survival.html_Files/List-of-Edible-Flowers_1024x1024.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="824628237115719771" id="message-824628237115719771">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.youtube.com/watch?v=SjC1AJOQ8sI">https://www.youtube.com/watch?v=SjC1AJOQ8sI</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCCLmk2gwkDrcBBaqeLs_Fvg">Prepper Potpourri</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=SjC1AJOQ8sI">
+                                                    <div class="markdown">Dehydrating Potatoes -- Slices, Dices &amp; Shreds</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Step-by-step guide how to dehydrate sliced, diced shredded and even frozen potatoes. Covers how to rehydrate, store and use your dehydrated potatoes in your everyday cooking and answers viewers&#39; questions regarding dehydrating.</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="survival.html_Files/maxresdefault%20%282%29.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="survival.html_Files/maxresdefault%20%282%29.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="824628526652588093" id="message-824628526652588093">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.youtube.com/watch?v=_uff4Bawudw">https://www.youtube.com/watch?v=_uff4Bawudw</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UC9V_-gqJsZNOy4v_HqbRz3w">The Gardening Channel With James Prigioni</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=_uff4Bawudw">
+                                                    <div class="markdown">You are being LIED to about saving and growing seeds for your garden</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">A successful Garden starts with high quality seeds. Using the the right techniques and methods is what will lead to bigger healthier plants and ultimately bigger harvests.  
+
+Thanks for the kind words and support <img class="emoji " alt="😁" title="😁" src="https://twemoji.maxcdn.com/2/72x72/1f601.png"><img class="emoji " alt="🐕" title="🐕" src="https://twemoji.maxcdn.com/2/72x72/1f415.png">❤️
+
+SUPPORT ME AND TUCK
+
+→Amazon affiliate link: <a href="https://amzn.to/2z7NIRQ">https://amzn.to/2z7NIRQ</a>
+
+→Merchandise: <a href="https://teespring.com/stores/jps-store-5">https://teespring.com/stores/jps-store-5</a>
+
+MY...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="survival.html_Files/maxresdefault%20%283%29.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="survival.html_Files/maxresdefault%20%283%29.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="824628612338679868" id="message-824628612338679868">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://livelovefruit.com/companion-planting-chart/?">https://livelovefruit.com/companion-planting-chart/?</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://livelovefruit.com/author/carlyfraser/">Carly Fraser</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://livelovefruit.com/companion-planting-chart/?">
+                                                    <div class="markdown">Tomatoes Hate Cucumbers: Secrets of Companion Planting and Popular ...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Find out which fruit and vegetables should and shouldn’t be planted together with our companion planting chart for some of the most popular garden foods!</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="survival.html_Files/companion-planting-chart-FB-01.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="survival.html_Files/companion-planting-chart-FB-01.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="824628850125963356" id="message-824628850125963356">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.youtube.com/watch?v=ZVb9JIAXJxU">https://www.youtube.com/watch?v=ZVb9JIAXJxU</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCB1J6siDdmhwah7q0O2WJBg">Charles Dowding</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=ZVb9JIAXJxU">
+                                                    <div class="markdown">Seed Saving</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">See me saving seeds of lettuce, tomatoes, peas and beans. I explain the principles, timings and techniques, it&#39;s not difficult but you need to know which vegetables self-pollinate or cross-pollinate, how much growing time and space is needed, and how to harvest. More information in No Dig Organic Home &amp; Garden Chapter 11. Filmed and edited by Ed...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="survival.html_Files/maxresdefault%20%284%29.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="survival.html_Files/maxresdefault%20%284%29.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="824629009680957493" id="message-824629009680957493">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.youtube.com/watch?v=1YrBZWDXUpY">https://www.youtube.com/watch?v=1YrBZWDXUpY</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCWsI0LmiDyezbnN2JCL4P9w">Gardener Scott</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=1YrBZWDXUpY">
+                                                    <div class="markdown">Never Buy Seeds Again - How to Collect Carrot Seeds</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Knowing how to collect carrot seeds is a little more involved than typical seed saving. Carrots are biennial plants and don&#39;t flower until their second year. By planning ahead and leaving a few carrots in the ground over winter, you can reward yourself with thousands of carrot seeds.
+
+&quot;The Complete Guide to Saving Seeds&quot;: <a href="https://amzn.to/3luTKik">https://amzn.to/3luTKik</a>...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="survival.html_Files/maxresdefault%20%285%29.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="survival.html_Files/maxresdefault%20%285%29.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="survival.html_Files/0.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Didi#3750" data-user-id="408342581454569472" style="color: rgb(241,196,15)">Didi</span>
+
+
+        <span class="chatlog__timestamp">25-Mar-21 02:08 PM</span>
+
+            <div class="chatlog__message " data-message-id="824630934199730266" id="message-824630934199730266">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.youtube.com/watch?v=7P59IiCQt04">https://www.youtube.com/watch?v=7P59IiCQt04</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UC-bU0T-JKZ3kVpO77Nt1hMA">Morag Gamble : Our Permaculture Life</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=7P59IiCQt04">
+                                                    <div class="markdown">How to create a Community Seed Library.  Morag Gamble at the Lampet...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Morag Gamble visits the Lampeter Seed Library in Wales - a fabulous community initiative to ensure people have access to good organic non-hybrid seed to grow good healthy food that is adapted to the local conditions. Learn how it works and why we should all be creating local seed libraries.
+
+A seed library is essentially a local exchange system,...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="survival.html_Files/maxresdefault%20%286%29.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="survival.html_Files/maxresdefault%20%286%29.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="824631022959460404" id="message-824631022959460404">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.youtube.com/watch?v=f8iyFCsBH74">https://www.youtube.com/watch?v=f8iyFCsBH74</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCzSfkQdLdPW0tDSNBq48D9g">Sarvodaya Institute</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=f8iyFCsBH74">
+                                                    <div class="markdown">How to Create a Seed Bank at Home</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Learn to how save and store your own seeds at home.
+
+This video was produced by members of The Growing Club. The Growing Club is a non-profit community group dedicated to helping people grow food at home and develop urban farms. Support our work and become part of the club at <a href="http://thegrowingclub.com">http://thegrowingclub.com</a></div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="survival.html_Files/maxresdefault%20%287%29.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="survival.html_Files/maxresdefault%20%287%29.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="824631117993869312" id="message-824631117993869312">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.youtube.com/watch?v=Z_yFuVnL0us">https://www.youtube.com/watch?v=Z_yFuVnL0us</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCKirXBZV7hE4Fws3VSdYkRQ">Rob Greenfield</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=Z_yFuVnL0us">
+                                                    <div class="markdown">How to Turn Your Yard into a Garden | Grow Food Not Lawns</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Today I&#39;m walking you through some simple tips on how to turn your lawn or backyard into a productive vegetable garden to grow your own food! 
+
+Gardening Guide for Beginners:
+<a href="http://robgreenfield.org/freeseedprojectguide/">http://robgreenfield.org/freeseedprojectguide/</a>
+
+Rob Greenfield’s Guide to Gardening for Beginners in Orlando, Florida:
+<a href="http://robgreenfield.org/grow/">http://robgreenfield.org/grow/</a>
+
+Thank you to Live Lik...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="survival.html_Files/maxresdefault%20%288%29.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="survival.html_Files/maxresdefault%20%288%29.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="824631234495381576" id="message-824631234495381576">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.youtube.com/user/knightreplica/videos">https://www.youtube.com/user/knightreplica/videos</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/user/knightreplica/videos">
+                                                    <div class="markdown">Simplify Gardening</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">If you love gardening. Are looking for that perfect garden to relax in. Or just want to learn how to grow your own nutrient-dense organic food, then you found the right channel. On this channel, I cover everything garden related, beekeeping and poultry keeping.  If you have that nagging question or just don&#39;t know what to do something, then I ha...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="survival.html_Files/AAUvwnhXPlap80d0HIzdrYV9duIosRSSuVdxwgJMKTGnaA%3Ds90">
+                                            <img class="chatlog__embed-thumbnail" src="survival.html_Files/AAUvwnhXPlap80d0HIzdrYV9duIosRSSuVdxwgJMKTGnaA%3Ds90" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="824631397112086549" id="message-824631397112086549">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.youtube.com/channel/UCxr2d4As312LulcajAkKJYw">https://www.youtube.com/channel/UCxr2d4As312LulcajAkKJYw</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/channel/UCxr2d4As312LulcajAkKJYw">
+                                                    <div class="markdown">Townsends</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">A channel dedicated to exploring the 18th Century lifestyle.
+ 
+Subscribe for hundreds of videos on 18th century living, cooking, clothing, and much more.
+
+Our Website - <a href="http://townsends.us">http://townsends.us</a>
+
+Request a print catalog - <a href="http://www.townsends.us/catalog_request/">http://www.townsends.us/catalog_request/</a></div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="survival.html_Files/AAUvwniUAYH2Kfo_BcPys3fQMLmUXchTdm0mHILvnozrWw%3Ds90">
+                                            <img class="chatlog__embed-thumbnail" src="survival.html_Files/AAUvwniUAYH2Kfo_BcPys3fQMLmUXchTdm0mHILvnozrWw%3Ds90" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="824631460018651136" id="message-824631460018651136">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.youtube.com/channel/UCnniUmgeeFG6Bcir8ootwRQ">https://www.youtube.com/channel/UCnniUmgeeFG6Bcir8ootwRQ</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/channel/UCnniUmgeeFG6Bcir8ootwRQ">
+                                                    <div class="markdown">Fandabi Dozi</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Hi there! 
+
+My name is Tom and this is my channel “Fandabi Dozi” (check out my &quot;Who, What, Why&quot; video for an explanation)
+I make videos about wilderness living skills (Bushcraft, survival), nature, Rewilding and my adventures in general.
+
+My main objective with the channel is to use wildness-living skills to re-connect people with nature, land a...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="survival.html_Files/AAUvwnhjyoneJN7BCTe47AT6GH1CEnMcKDrmWrsg8OZ_%3Ds900-">
+                                            <img class="chatlog__embed-thumbnail" src="survival.html_Files/AAUvwnhjyoneJN7BCTe47AT6GH1CEnMcKDrmWrsg8OZ_%3Ds900-" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="824631546975092796" id="message-824631546975092796">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.youtube.com/channel/UCX1ztT76CZfs29aGK9Nn7_A">https://www.youtube.com/channel/UCX1ztT76CZfs29aGK9Nn7_A</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/channel/UCX1ztT76CZfs29aGK9Nn7_A">
+                                                    <div class="markdown">Corporals Corner</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Welcome to Corporals Corner. My channel combines Bushcraft, Survival and the Love of the Outdoors all into one. I deliver No B.S. no Fluff videos and create a family friendly environment where we can learn together. These videos will take you through the basic survival Priorities (Shelter, Fire, Water, food and Tools) step by step at a basic lev...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="survival.html_Files/AAUvwni10ZPLpnxyEsEXgLNdYxNQy4S3K81cxSg24QVDKQ%3Ds90">
+                                            <img class="chatlog__embed-thumbnail" src="survival.html_Files/AAUvwni10ZPLpnxyEsEXgLNdYxNQy4S3K81cxSg24QVDKQ%3Ds90" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="824631644207185931" id="message-824631644207185931">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.youtube.com/watch?v=90bhL8B0ha8">https://www.youtube.com/watch?v=90bhL8B0ha8</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCu99W5TTPAucVN83TYQtCqQ">Homesteading Family</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=90bhL8B0ha8">
+                                                    <div class="markdown">Canning Meat (Super Easy Raw Pack)</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Homemade Convenience Food!  Can your own meat.
+
+<em><strong> Our new home-canning masterclass will be released this August!  Join the wait list now for exclusive videos, recipes, sneak peek lessons and more! <a href="https://www.schooloftraditionalskills.com/pl/88425">https://www.schooloftraditionalskills.com/pl/88425</a>   *</strong></em>
+
+Keeping some jars of your own home canned red meat on the shelf makes a quick meal really...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="survival.html_Files/maxresdefault%20%289%29.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="survival.html_Files/maxresdefault%20%289%29.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="824631708199551057" id="message-824631708199551057">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.youtube.com/watch?v=0O46shWOdm8">https://www.youtube.com/watch?v=0O46shWOdm8</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCfnYhj9llnBS78vM8jwtNCA">Free From Crohn&#39;s &amp; Colitis</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=0O46shWOdm8">
+                                                    <div class="markdown">Homemade Probiotics | How To Make Fermented Vegetables The Easy Way</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Homemade Probiotics | How To Make Fermented Vegetables The Easy Way
+
+In this video I talk you through the fastest and easiest way of fermenting your own vegetables at home. 
+
+If you wanted to grab some mason jars to start fermenting! - <a href="https://amzn.to/3l23Uqh">https://amzn.to/3l23Uqh</a> (UK)
+                                                                                  ...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="survival.html_Files/maxresdefault%20%2810%29.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="survival.html_Files/maxresdefault%20%2810%29.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="824631765808185364" id="message-824631765808185364">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.youtube.com/watch?v=qH6i9DyDb38">https://www.youtube.com/watch?v=qH6i9DyDb38</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UC7sSXR8nW7Udp300-1G6y3Q">AnOregonCottage</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=qH6i9DyDb38">
+                                                    <div class="markdown">Step-By-Step Guide To Water Bath Canning (Pickled Beans)- AnOregonC...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Here is a link to that pickled bean recipe if you&#39;re interested (it&#39;s my favorite with the perfect balance of sweet and salty): 
+<a href="https://anoregoncottage.com/canned-pickled-beans/">https://anoregoncottage.com/canned-pickled-beans/</a>
+
+CANNER UPDATE: I now use a stainless steel canner with a glass top that I wish I had always used!! It&#39;s SO much easier to monitor the boil with a glass top AND it has ...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="survival.html_Files/maxresdefault%20%2811%29.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="survival.html_Files/maxresdefault%20%2811%29.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="824631871102517269" id="message-824631871102517269">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.youtube.com/watch?v=ikW3WUHkpUs">https://www.youtube.com/watch?v=ikW3WUHkpUs</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCCKFt7y9MS8BjPlpVHAdYwA">Steve Owens</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=ikW3WUHkpUs">
+                                                    <div class="markdown">EASY BREAD RECIPE - Unleavened Flat Bread Yeast Free and Quick</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">IF YOU ARE WATCHING TODAY? Join me for LIVE Flat Bread Making Episode <a href="https://youtu.be/3qbsgdJUdik">https://youtu.be/3qbsgdJUdik</a> 
+IRISH SODA BREAD - Another bread that needs NO YEAST
+↪︎<a href="https://youtu.be/JdjOudfYZdk">https://youtu.be/JdjOudfYZdk</a>
+CHICKEN CAESAR BURGER - Make your Bun with NO OVEN and NO YEAST
+↪︎ <a href="https://youtu.be/Km_GK9x6ilQ">https://youtu.be/Km_GK9x6ilQ</a>
+BREAKFAST QUESADILLA - With Bacon and Eggs using the FLAT BREADS<img class="emoji " alt="😉" title="😉" src="https://twemoji.maxcdn.com/2/72x72/1f609.png">
+↪...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="survival.html_Files/sddefault.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="survival.html_Files/sddefault.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="824632062191075448" id="message-824632062191075448">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.youtube.com/watch?v=TdI2YrNIf5g">https://www.youtube.com/watch?v=TdI2YrNIf5g</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCTZN3HhejW1tOiRdLGUCGGA">Roots and Refuge Farm</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=TdI2YrNIf5g">
+                                                    <div class="markdown">A Complete Guide to Vertical Gardening (On A Budget!)  | Growing Fo...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">So many people dismiss growing vertically in their garden assuming it isn&#39;t worth the cost or effort. Today I&#39;m telling you, from my experience, the many benefits of vertical gardening, how to do it cheaply, and what you can grow! 
+
+(Our 10,000 square foot garden is located in Central Arkansas, Zone 7b)
+
+Want More Roots &amp; Refuge? Check Out:
+Our ...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="survival.html_Files/sddefault%20%281%29.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="survival.html_Files/sddefault%20%281%29.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="824632137831153705" id="message-824632137831153705">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.youtube.com/watch?v=dmZVeux-T2k">https://www.youtube.com/watch?v=dmZVeux-T2k</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UC7gjHdoa_A55nAuDD56WU8A">Organic Edible Garden</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=dmZVeux-T2k">
+                                                    <div class="markdown">How To Make Liquid Fertiliser &amp; Black Gold</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">One of the most effective ways of feeding your plants is with liquid fertiliser. Nutrients are easily absorbed through the roots and leaves when you apply a liquid fertiliser.
+Our summertime recipe is made up of comfrey, stinging nettles and cleavers (bidibidi). This combination is high in potassium and low on nitrogen which is exactly what hung...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="survival.html_Files/sddefault%20%282%29.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="survival.html_Files/sddefault%20%282%29.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="824632237382434847" id="message-824632237382434847">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.youtube.com/watch?v=gzm3LSlwRfc">https://www.youtube.com/watch?v=gzm3LSlwRfc</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCHb1Y6XRWYT6nlQlstAYCfg">Planet Natural</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=gzm3LSlwRfc">
+                                                    <div class="markdown">Square Foot Gardening: A Small Space Revolution</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Square foot gardening got its start when people in small spaces challenged the idea that seeds had to be planted in a large area with lots of unused space between each row. These pioneers decided to toss tradition by building raised beds and crowding plants together.</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="survival.html_Files/sddefault%20%283%29.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="survival.html_Files/sddefault%20%283%29.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="824632463728050237" id="message-824632463728050237">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://seasonedcitizenprepper.com/preparedness-downloads/">https://seasonedcitizenprepper.com/preparedness-downloads/</a> </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="824634006619684884" id="message-824634006619684884">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.youtube.com/watch?v=oyRf0dFnr84">https://www.youtube.com/watch?v=oyRf0dFnr84</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCc4kgvFkImY303x1s-TWjCw">StrayHydraBlade</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=oyRf0dFnr84">
+                                                    <div class="markdown">How to Make: a Riot Shield</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Finally figured out if a trash can would make a good riot shield or not. So in this video we will learn how to make a riot shield out of a trash can. The trash can i&#39;m using is made out of HDPE, the same plastic milk jugs are made from. Its very impact resistant but vulnerable to cuts. So the chicken wire helps stop slashes and stabs. The Trash ...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="survival.html_Files/sddefault%20%284%29.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="survival.html_Files/sddefault%20%284%29.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="824634242931490826" id="message-824634242931490826">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.youtube.com/watch?v=qENPPQZeiRE">https://www.youtube.com/watch?v=qENPPQZeiRE</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCX1ztT76CZfs29aGK9Nn7_A">Corporals Corner</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=qENPPQZeiRE">
+                                                    <div class="markdown">3 Simple Ways To Disinfect Water</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Whether you are in an Urban or Field Environment, Water Will Need to Be Made Safe. In This Video We Discuss Different Ways To Do Just That.
+<a href="https://www.cdc.gov/healthywater/pdf/drinking/Backcountry_Water_Treatment.pdf">https://www.cdc.gov/healthywater/pdf/drinking/Backcountry_Water_Treatment.pdf</a>
+<a href="https://www.cdc.gov/healthywater/emergency/pdf/make-water-safe.pdf">https://www.cdc.gov/healthywater/emergency/pdf/make-water-safe.pdf</a>
+<a href="https://www.cdc.gov/healthywater/emergency/drinking/making-wat">https://www.cdc.gov/healthywater/emergency/drinking/making-wat</a>...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="survival.html_Files/sddefault%20%285%29.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="survival.html_Files/sddefault%20%285%29.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="824634359118036993" id="message-824634359118036993">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.youtube.com/watch?v=0DlnAq5UAqY">https://www.youtube.com/watch?v=0DlnAq5UAqY</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCekxymZShQqaT6z4I2XGRlA">Survival on the SKinney</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=0DlnAq5UAqY">
+                                                    <div class="markdown">2 Liter Water Filter from Natural Items</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">In this video I will show how to build a water filter using an empty 2 Liter bottle and materials that you can source from the wild. This will work with any container, whether it be a bottle, hollow wood or whatever will hold water. The More you cycle through the filter the cleaner the water will be. I was using some VERY muddy water, try and so...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="survival.html_Files/maxresdefault%20%2812%29.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="survival.html_Files/maxresdefault%20%2812%29.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="824634504978366545" id="message-824634504978366545">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.youtube.com/watch?v=_2SWjq0HlV4">https://www.youtube.com/watch?v=_2SWjq0HlV4</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCePrn2J8rF1tueB91zsmOXw">JoeandZachSurvival</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=_2SWjq0HlV4">
+                                                    <div class="markdown">How To Make The Survival Food Pemmican. My first time.</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">I have been wanting to make pemmican for a very long time. A great survival food that lasts for decades. I finally gathered all the ingredients and gave it a try. Not bad. Beef eye of round steak, blueberries,walnuts, beef suet and spices.</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="survival.html_Files/maxresdefault%20%2813%29.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="survival.html_Files/maxresdefault%20%2813%29.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="824634681458163773" id="message-824634681458163773">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.youtube.com/watch?v=8HOpLo_Ftm0">https://www.youtube.com/watch?v=8HOpLo_Ftm0</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCX1ztT76CZfs29aGK9Nn7_A">Corporals Corner</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=8HOpLo_Ftm0">
+                                                    <div class="markdown">My Urban Get Home Bag</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Get this gear at my amazon store.  Please Hit The LIKE and SUBSCRIBE BUTTONS as well as the NOTIFICATION BELL. Feel Free to Check out my Amazon Influencer Page and Follow Me on Instagram, Facebook and Twitter. Thanks For Watching.
+
+Amazon <a href="https://www.amazon.com/shop/corporalscorner?isVisitor=true&ref=exp_inf_own_pub_corporalscorner">https://www.amazon.com/shop/corporalscorner?isVisitor=true&amp;ref=exp_inf_own_pub_corporalscorner</a>
+
+Self-relianc...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="survival.html_Files/sddefault%20%286%29.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="survival.html_Files/sddefault%20%286%29.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="824634845120167956" id="message-824634845120167956">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.youtube.com/watch?v=onMbSLuC7Oc">https://www.youtube.com/watch?v=onMbSLuC7Oc</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCXA05MlE6HicYcKkQ9jNCpQ">Live Simple, Live Free</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=onMbSLuC7Oc">
+                                                    <div class="markdown">DIY Brick Rocket Stove - Cooking Without Electrical Power</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">How to build a simple and inexpensive rocket stove for cooking using 25 bricks for about $15.
+
+Thrive Life can be purchased from our website. <a href="http://bkeller.thrivelife.com/index">http://bkeller.thrivelife.com/index</a>
+Would you like to learn more about the Thrive Life freeze dried food we were using in the video?  Here is our &quot;Cooking with Thrive&quot; playlist  <a href="https://www.youtube.com/pla">https://www.youtube.com/pla</a>...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="survival.html_Files/sddefault%20%287%29.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="survival.html_Files/sddefault%20%287%29.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="824634916892442634" id="message-824634916892442634">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.youtube.com/watch?v=8xDgrkYcSsw">https://www.youtube.com/watch?v=8xDgrkYcSsw</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCzYMTUy7uWCfaoBX0tPJE5A">SensiblePrepper</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=8xDgrkYcSsw">
+                                                    <div class="markdown">15 Survival Uses for Baking Soda</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">15 Survival Uses for Baking Soda. Improvise to Survive  #Survival #SHTF #BakingSoda
+
+Exclusive Weekly Sensible Prepper videos on Survival Dispatch Insider: <a href="https://goo.gl/7p7TqT">https://goo.gl/7p7TqT</a>
+
+Be a Team Sootch Minuteman: 
+<a href="https://www.patreon.com/Sootch00">https://www.patreon.com/Sootch00</a>
+
+Sootch00 Gear available at: <a href="https://teespring.com/Sootch00">https://teespring.com/Sootch00</a>
+
+Thanks For Watching, Liking &amp; Subscribing! ~ ...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="survival.html_Files/sddefault%20%288%29.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="survival.html_Files/sddefault%20%288%29.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="824634967627792385" id="message-824634967627792385">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.youtube.com/watch?v=YHzAjgGYtDI">https://www.youtube.com/watch?v=YHzAjgGYtDI</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCMWOhHvbTlBOmvKCeMnrMZA">Cooking with Dr. Chill</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=YHzAjgGYtDI">
+                                                    <div class="markdown">how to make soap from wood ashes (lye water and tallow/lard)</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">In this episode I go over how to make home made soap the old fashioned way. making soap out of wood ash and fat (tallow/lard) is kind of a fun project, but don&#39;t expect soap you can sell on amazon. its really just something that should be used if you absolutely have to. the labor and time involved isn&#39;t worth the result. first you need to make l...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="survival.html_Files/sddefault%20%289%29.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="survival.html_Files/sddefault%20%289%29.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="824635247622488094" id="message-824635247622488094">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.youtube.com/watch?v=BVPzI4a9QYw">https://www.youtube.com/watch?v=BVPzI4a9QYw</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCNROLKAEQSNYWeOIiVXdj7g">L&#39;astucerie</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=BVPzI4a9QYw">
+                                                    <div class="markdown">Ceux qui font &#231;a avec leurs pots de fleurs ne seront plus jamais fa...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">4 id&#233;es pour &#233;conomiser de l&#39;argent avec des pots de fleurs
+
+Saviez-vous que les pots de fleurs ne servent pas seulement aux plantes ? En effet, ils peuvent facilement &#234;tre utilis&#233;s pour fabriquer des appareils &#233;lectrom&#233;nagers pratiques qui fonctionnent sans &#233;lectricit&#233; et qui permettent m&#234;me d&#39;&#233;conomiser de l&#39;argent. Vous apprendrez comment fai...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="survival.html_Files/maxresdefault%20%2814%29.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="survival.html_Files/maxresdefault%20%2814%29.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="824635352438013962" id="message-824635352438013962">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.youtube.com/watch?v=zwqPiZ4Wgys">https://www.youtube.com/watch?v=zwqPiZ4Wgys</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UChehL6PYmucEHUS6g2LVFGA">The Outsider</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=zwqPiZ4Wgys">
+                                                    <div class="markdown">Off Grid Heating Prototype- Copper Coil Water Heater / Heat Exchang...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">With an ammo box, mason jar, and copper coil, I constructed an off grid water heater / heat exchanger / space heater. 
+
+Important to note:
+- Notice that this is an &quot;open&quot; system. Meaning that I made sure to leave a vent hole to prevent any pressure buildup. 
+- This system is not for drinking or cooking, as the ammo can and other components are d...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="survival.html_Files/maxresdefault%20%2815%29.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="survival.html_Files/maxresdefault%20%2815%29.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="824635442535596133" id="message-824635442535596133">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.youtube.com/watch?v=PT6cjp_zThw">https://www.youtube.com/watch?v=PT6cjp_zThw</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCFtc3XdXgLFwhlDajMGK69w">NightHawkInLight</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=PT6cjp_zThw">
+                                                    <div class="markdown">DIY Salt-Water Survival Bottle (Compact Desalination Kit)</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Thanks to Dollar Shave Club for sponsoring. Go to → <a href="https://www.dollarshaveclub.com/nighthawk">https://www.dollarshaveclub.com/nighthawk</a> to get your first Starter Set for $5. After that, the restock box ships regular-sized products at regular price.
+
+In this video I show how to make a simple distillation kit from a water bottle that can be used to make fresh water from ocean water. Any s...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="survival.html_Files/maxresdefault%20%2816%29.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="survival.html_Files/maxresdefault%20%2816%29.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="824635497384247296" id="message-824635497384247296">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://youtu.be/3xt3Ms0ka4A">https://youtu.be/3xt3Ms0ka4A</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCi1styP4uINRvGzqxzhro7g">SNO Multimedia</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=3xt3Ms0ka4A">
+                                                    <div class="markdown">DIY Faraday Cage</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown"><a href="http://www.survivalnewsonline.com/index.php/2014/05/protect-your-electronics-from-an-emp/">http://www.survivalnewsonline.com/index.php/2014/05/protect-your-electronics-from-an-emp/</a>
+
+Survival Tips S2 E6 -- Build your own faraday cage with a cardboard box and some aluminum foil to protect small electronics from an EMP. Just be sure to tape the seams to avoid a tunnel effect.</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="survival.html_Files/maxresdefault%20%2817%29.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="survival.html_Files/maxresdefault%20%2817%29.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="824637256085798963" id="message-824637256085798963">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.youtube.com/watch?v=c0HrG0RB42A">https://www.youtube.com/watch?v=c0HrG0RB42A</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UC295-Dw_tDNtZXFeAPAW6Aw">5-Minute Crafts</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=c0HrG0RB42A">
+                                                    <div class="markdown">TRY THESE 30 BODY HACKS AND SEE WHAT HAPPENS</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">HEALTHY BODY HACKS
+
+
+Being healthy is very important. And your ability to cure minor diseases at home at the early stages is equally important!
+So let&#39;s start with the easy and yummy recipe for cough drops. 
+
+You&#39;re gonna need some sugar, water, honey, lemon juice, ginger and cloves. Put these ingredients together into a pot, make it boil, then ...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="survival.html_Files/maxresdefault%20%2818%29.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="survival.html_Files/maxresdefault%20%2818%29.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="survival.html_Files/0.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Didi#3750" data-user-id="408342581454569472" style="color: rgb(241,196,15)">Didi</span>
+
+
+        <span class="chatlog__timestamp">25-Mar-21 02:46 PM</span>
+
+            <div class="chatlog__message " data-message-id="824640303121694811" id="message-824640303121694811">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.youtube.com/watch?v=WIAWUW1R9_Y">https://www.youtube.com/watch?v=WIAWUW1R9_Y</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UC4rlAVgAK0SGk-yTfe48Qpw">BRIGHT SIDE</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=WIAWUW1R9_Y">
+                                                    <div class="markdown">All the Signs That You’re Not Drinking Enough Water</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">More than half the world’s population suffers from dehydration without even realizing that this can lead to&#160;serious health problems.
+
+Watch the video till the end to learn the ways in&#160;which dehydration can have negative effects and a simple way to check your level of dehydration in 5 seconds. 
+
+TIMWSTAMPS
+What will happen if you don’t drink enou...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="survival.html_Files/maxresdefault%20%2819%29.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="survival.html_Files/maxresdefault%20%2819%29.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+</div>
+
+<div class="postamble">
+    <div class="postamble__entry">Exported 39 message(s)</div>
+</div>
+
+</body>
+</html>
