@@ -1,0 +1,1403 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>rabbithole.help part 2 - ❗-general-news</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+
+    <style>
+        /* General */
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-300.woff);
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-400.woff);
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-500.woff);
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-600.woff);
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-700.woff);
+    font-weight: 700;
+}
+
+body {
+    font-family: "Whitney", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 17px;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+img {
+    object-fit: contain;
+}
+
+.markdown {
+    max-width: 100%;
+    white-space: pre-wrap;
+    line-height: 1.3;
+    overflow-wrap: break-word;
+}
+
+.spoiler {
+    width: fit-content;
+}
+
+.spoiler--hidden {
+    cursor: pointer;
+}
+
+.spoiler-text {
+    border-radius: 3px;
+}
+
+.spoiler--hidden .spoiler-text {
+    color: rgba(0, 0, 0, 0);
+}
+
+.spoiler--hidden .spoiler-text::selection {
+    color: rgba(0, 0, 0, 0);
+}
+
+.spoiler-image {
+    position: relative;
+    overflow: hidden;
+    border-radius: 3px;
+}
+
+.spoiler--hidden .spoiler-image {
+    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.spoiler--hidden .spoiler-image img {
+    filter: blur(44px);
+}
+
+.spoiler--hidden .spoiler-image:after {
+    content: "SPOILER";
+    color: #dcddde;
+    background-color: rgba(0, 0, 0, 0.6);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: 600;
+    padding: 0.5em 0.7em;
+    border-radius: 20px;
+    letter-spacing: 0.05em;
+    font-size: 0.9em;
+}
+
+.spoiler--hidden:hover .spoiler-image:after {
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.quote {
+    margin: 0.1em 0;
+    padding-left: 0.6em;
+    border-left: 4px solid;
+    border-radius: 3px;
+}
+
+.pre {
+    font-family: "Consolas", "Courier New", Courier, monospace;
+}
+
+.pre--multiline {
+    margin-top: 0.25em;
+    padding: 0.5em;
+    border: 2px solid;
+    border-radius: 5px;
+}
+
+.pre--inline {
+    padding: 2px;
+    border-radius: 3px;
+    font-size: 0.85em;
+}
+
+.mention {
+    border-radius: 3px;
+    padding: 0 2px;
+    color: #7289da;
+    background: rgba(114, 137, 218, .1);
+    font-weight: 500;
+}
+
+.emoji {
+    width: 1.25em;
+    height: 1.25em;
+    margin: 0 0.06em;
+    vertical-align: -0.4em;
+}
+
+.emoji--small {
+    width: 1em;
+    height: 1em;
+}
+
+.emoji--large {
+    width: 2.8em;
+    height: 2.8em;
+}
+
+/* Preamble */
+
+.preamble {
+    display: grid;
+    margin: 0 0.3em 0.6em 0.3em;
+    max-width: 100%;
+    grid-template-columns: auto 1fr;
+}
+
+.preamble__guild-icon-container {
+    grid-column: 1;
+}
+
+.preamble__guild-icon {
+    max-width: 88px;
+    max-height: 88px;
+}
+
+.preamble__entries-container {
+    grid-column: 2;
+    margin-left: 0.6em;
+}
+
+.preamble__entry {
+    font-size: 1.4em;
+}
+
+.preamble__entry--small {
+    font-size: 1em;
+}
+
+/* Chatlog */
+
+.chatlog {
+    max-width: 100%;
+}
+
+.chatlog__message-group {
+    display: grid;
+    margin: 0 0.6em;
+    padding: 0.9em 0;
+    border-top: 1px solid;
+    grid-template-columns: auto 1fr;
+}
+
+.chatlog__author-avatar-container {
+    grid-column: 1;
+    width: 40px;
+    height: 40px;
+}
+
+.chatlog__author-avatar {
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+}
+
+.chatlog__messages {
+    grid-column: 2;
+    margin-left: 1.2em;
+    min-width: 50%;
+}
+
+.chatlog__author-name {
+    font-weight: 500;
+}
+
+.chatlog__timestamp {
+    margin-left: 0.3em;
+    font-size: 0.75em;
+}
+
+.chatlog__message {
+    padding: 0.1em 0.3em;
+    margin: 0 -0.3em;
+    background-color: transparent;
+    transition: background-color 1s ease;
+}
+
+.chatlog__content {
+    font-size: 0.95em;
+    word-wrap: break-word;
+}
+
+.chatlog__edited-timestamp {
+    margin-left: 0.15em;
+    font-size: 0.8em;
+}
+
+.chatlog__attachment {
+    margin-top: 0.3em;
+}
+
+.chatlog__attachment-thumbnail {
+    vertical-align: top;
+    max-width: 45vw;
+    max-height: 500px;
+    border-radius: 3px;
+}
+
+.chatlog__embed {
+    display: flex;
+    margin-top: 0.3em;
+    max-width: 520px;
+}
+
+.chatlog__embed-color-pill {
+    flex-shrink: 0;
+    width: 0.25em;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
+.chatlog__embed-content-container {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5em 0.6em;
+    border: 1px solid;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+.chatlog__embed-content {
+    display: flex;
+    width: 100%;
+}
+
+.chatlog__embed-text {
+    flex: 1;
+}
+
+.chatlog__embed-author {
+    display: flex;
+    margin-bottom: 0.3em;
+    align-items: center;
+}
+
+.chatlog__embed-author-icon {
+    margin-right: 0.5em;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+.chatlog__embed-author-name {
+    font-size: 0.875em;
+    font-weight: 600;
+}
+
+.chatlog__embed-title {
+    margin-bottom: 0.2em;
+    font-size: 0.875em;
+    font-weight: 600;
+}
+
+.chatlog__embed-description {
+    font-weight: 500;
+    font-size: 0.85em;
+}
+
+.chatlog__embed-fields {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.chatlog__embed-field {
+    flex: 0;
+    min-width: 100%;
+    max-width: 506px;
+    padding-top: 0.6em;
+    font-size: 0.875em;
+}
+
+.chatlog__embed-field--inline {
+    flex: 1;
+    flex-basis: auto;
+    min-width: 150px;
+}
+
+.chatlog__embed-field-name {
+    margin-bottom: 0.2em;
+    font-weight: 600;
+}
+
+.chatlog__embed-field-value {
+    font-weight: 500;
+}
+
+.chatlog__embed-thumbnail {
+    flex: 0;
+    margin-left: 1.2em;
+    max-width: 80px;
+    max-height: 80px;
+    border-radius: 3px;
+}
+
+.chatlog__embed-image-container {
+    margin-top: 0.6em;
+}
+
+.chatlog__embed-image {
+    max-width: 500px;
+    max-height: 400px;
+    border-radius: 3px;
+}
+
+.chatlog__embed-footer {
+    margin-top: 0.6em;
+}
+
+.chatlog__embed-footer-icon {
+    margin-right: 0.2em;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+
+.chatlog__embed-footer-text {
+    font-size: 0.75em;
+    font-weight: 500;
+}
+
+.chatlog__reactions {
+    display: flex;
+}
+
+.chatlog__reaction {
+    display: flex;
+    align-items: center;
+    margin: 0.35em 0.1em 0.1em 0.1em;
+    padding: 0.2em 0.35em;
+    border-radius: 3px;
+}
+
+.chatlog__reaction-count {
+    min-width: 9px;
+    margin-left: 0.35em;
+    font-size: 0.875em;
+}
+
+.chatlog__bot-tag {
+    position: relative;
+    top: -.2em;
+    margin-left: 0.3em;
+    padding: 0.05em 0.3em;
+    border-radius: 3px;
+    vertical-align: middle;
+    line-height: 1.3;
+    background: #7289da;
+    color: #ffffff;
+    font-size: 0.625em;
+    font-weight: 500;
+}
+
+/* Postamble */
+
+.postamble {
+    margin: 1.4em 0.3em 0.6em 0.3em;
+    padding: 1em;
+    border-top: 1px solid;
+}
+    </style>
+    <style>
+        /* General */
+
+body {
+    background-color: #36393e;
+    color: #dcddde;
+}
+
+a {
+    color: #0096cf;
+}
+
+.spoiler-text {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.spoiler--hidden .spoiler-text {
+    background-color: #202225;
+}
+
+.spoiler--hidden:hover .spoiler-text {
+    background-color: rgba(32, 34, 37, 0.8);
+}
+
+.quote {
+    border-color: #4f545c;
+}
+
+.pre {
+    background-color: #2f3136 !important;
+}
+
+.pre--multiline {
+    border-color: #282b30 !important;
+    color: #b9bbbe !important;
+}
+
+/* === Preamble === */
+
+.preamble__entry {
+    color: #ffffff;
+}
+
+/* Chatlog */
+
+.chatlog__message-group {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.chatlog__author-name {
+    color: #ffffff;
+}
+
+.chatlog__timestamp {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.chatlog__message--highlighted {
+    background-color: rgba(114, 137, 218, 0.2) !important;
+}
+
+.chatlog__message--pinned {
+    background-color: rgba(249, 168, 37, 0.05);
+}
+
+.chatlog__edited-timestamp {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.chatlog__embed-color-pill--default {
+    background-color: rgba(79, 84, 92, 1);
+}
+
+.chatlog__embed-content-container {
+    background-color: rgba(46, 48, 54, 0.3);
+    border-color: rgba(46, 48, 54, 0.6);
+}
+
+.chatlog__embed-author-name {
+    color: #ffffff;
+}
+
+.chatlog__embed-author-name-link {
+    color: #ffffff;
+}
+
+.chatlog__embed-title {
+    color: #ffffff;
+}
+
+.chatlog__embed-description {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__embed-field-name {
+    color: #ffffff;
+}
+
+.chatlog__embed-field-value {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__embed-footer {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__reaction {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.chatlog__reaction-count {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+/* Postamble */
+
+.postamble {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.postamble__entry {
+    color: #ffffff;
+}
+    </style>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/solarized-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.pre--multiline').forEach(block => hljs.highlightBlock(block));
+        });
+    </script>
+
+    <script>
+        function scrollToMessage(event, id) {
+            var element = document.getElementById('message-' + id);
+
+            if (element) {
+                event.preventDefault();
+
+                element.classList.add('chatlog__message--highlighted');
+
+                window.scrollTo({
+                    top: element.getBoundingClientRect().top - document.body.getBoundingClientRect().top - (window.innerHeight / 2),
+                    behavior: 'smooth'
+                });
+
+                window.setTimeout(function() {
+                    element.classList.remove('chatlog__message--highlighted');
+                }, 2000);
+            }
+        }
+
+        function showSpoiler(event, element) {
+            if (element && element.classList.contains('spoiler--hidden')) {
+                event.preventDefault();
+                element.classList.remove('spoiler--hidden');
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="preamble">
+    <div class="preamble__guild-icon-container">
+        <img class="preamble__guild-icon" src="general-news.html_Files/95447a8568250a8fbeb474229185859a.png" alt="Guild icon">
+    </div>
+    <div class="preamble__entries-container">
+        <div class="preamble__entry">rabbithole.help part 2</div>
+        <div class="preamble__entry">Research sharing / ❗-general-news</div>
+
+            <div class="preamble__entry preamble__entry--small">post links to news and events here. please tag it with #county #subject where needed. these will be shared on the website https://rabbithole.help</div>
+
+            <div class="preamble__entry preamble__entry--small">
+Between 01-Jul-21 12:00 AM and 01-Aug-21 12:00 AM            </div>
+    </div>
+</div>
+
+<div class="chatlog">
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="general-news.html_Files/9daca66f480d04fcd3b6de91aeb294a8.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon07#4800" data-user-id="622453000962834453" style="color: rgb(241,196,15)">mejon07</span>
+
+
+        <span class="chatlog__timestamp">01-Jul-21 02:47 PM</span>
+
+            <div class="chatlog__message " data-message-id="860139491078307850" id="message-860139491078307850">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.easterneye.biz/bangladesh-to-deploy-army-to-administer-strict-lockdown/">https://www.easterneye.biz/bangladesh-to-deploy-army-to-administer-strict-lockdown/</a>
+
+<div class="quote">Bangladesh: Soldiers will be used alongside poluce to enforce a strict lockdown from 1 July amid a record spike in COVID cases driven by the delta variant.
+</div>
+<div class="quote">The govt said “No one will be allowed go out except in case of an emergency during this period”</div> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.easterneye.biz/author/swati/">Swati Rana</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.easterneye.biz/bangladesh-to-deploy-army-to-administer-strict-lockdown/">
+                                                    <div class="markdown">Bangladesh to deploy army to administer strict lockdown - EasternEye</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">BANGLADESH’S troops will enforce a strict lockdown&#160;from Thursday (July 1)&#160;amid a record spike in coronavirus cases driven by the delta variant. Most restrictions imposed as part of a strict lockdown introduced in April have since been lifted, but a record spike in cases this week of the highly contagious delta variant has prompted the government...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="general-news.html_Files/iStock-1304233080-1024x576.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="general-news.html_Files/iStock-1304233080-1024x576.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="honkler" title="honkler" src="general-news.html_Files/806258203057979463.png">
+                                <span class="chatlog__reaction-count">2</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="NWOpepe" title="NWOpepe" src="general-news.html_Files/806258202475364393.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="pinkwojak" title="pinkwojak" src="general-news.html_Files/806258203917942814.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="general-news.html_Files/3fa942aa96d876a45cd910df68a0072a.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="alt-theories#7036" data-user-id="720810291943833683" style="color: rgb(54,117,255)">alt-theories</span>
+
+
+        <span class="chatlog__timestamp">02-Jul-21 06:19 AM</span>
+
+            <div class="chatlog__message " data-message-id="860373998512111617" id="message-860373998512111617">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.thelastamericanvagabond.com/why-are-conspiracy-theorists-worried-about-an-impending-power-grid-failure/">https://www.thelastamericanvagabond.com/why-are-conspiracy-theorists-worried-about-an-impending-power-grid-failure/</a> great read! </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.thelastamericanvagabond.com/author/derrick-broze/">Derrick Broze</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.thelastamericanvagabond.com/why-are-conspiracy-theorists-worried-about-an-impending-power-grid-failure/">
+                                                    <div class="markdown">Why Are &#39;Conspiracy Theorists&#39; Worried About an Impending Power Gri...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">On the eve of the WEF&#39;s Cyber Polygon simulation, a number of independent journalists are warning of a potential power grid failure.</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="general-news.html_Files/grid-space.png">
+                                            <img class="chatlog__embed-thumbnail" src="general-news.html_Files/grid-space.png" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="hmmm" title="hmmm" src="general-news.html_Files/806258203825274940.png">
+                                <span class="chatlog__reaction-count">2</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="general-news.html_Files/9daca66f480d04fcd3b6de91aeb294a8.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon07#4800" data-user-id="622453000962834453" style="color: rgb(241,196,15)">mejon07</span>
+
+
+        <span class="chatlog__timestamp">02-Jul-21 03:51 PM</span>
+
+            <div class="chatlog__message " data-message-id="860517930482401311" id="message-860517930482401311">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.cbc.ca/news/canada/manitoba/manitoba-universities-colleges-mandatory-vaccinations-1.6085093">https://www.cbc.ca/news/canada/manitoba/manitoba-universities-colleges-mandatory-vaccinations-1.6085093</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.cbc.ca/news/canada/manitoba/manitoba-universities-colleges-mandatory-vaccinations-1.6085093">
+                                                    <div class="markdown">Manitoba universities, colleges will not be making vaccinations man...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Universities and colleges in Manitoba are not putting in a mandatory vaccination rule on campus, although a handful of schools in Ontario have.</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="general-news.html_Files/st-boniface-university-campus.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="general-news.html_Files/st-boniface-university-campus.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="hmmm" title="hmmm" src="general-news.html_Files/806258203825274940.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="general-news.html_Files/3fa942aa96d876a45cd910df68a0072a.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="alt-theories#7036" data-user-id="720810291943833683" style="color: rgb(54,117,255)">alt-theories</span>
+
+
+        <span class="chatlog__timestamp">03-Jul-21 05:11 PM</span>
+
+            <div class="chatlog__message " data-message-id="860900598596370443" id="message-860900598596370443">
+                <div class="chatlog__content">
+                    <div class="markdown">“Modern vaccines change their name.  Vaccinators out in the country now have to get used to a new vaccine name and perhaps changed packaging.  
+
+According to the Swedish Medical Products Agency, it is important to know the name change for those who vaccinate against covid-19 as product information, labeling and packaging may look different.
+ Otherwise, the name change should not involve any changes - although some who are to be vaccinated may have questions.” 
+
+<a href="https://www.fiercepharma.com/marketing/moderna-secures-spikevax-name-europe-joins-pfizer-s-comirnaty-awaiting-official-name-and">https://www.fiercepharma.com/marketing/moderna-secures-spikevax-name-europe-joins-pfizer-s-comirnaty-awaiting-official-name-and</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,255,255,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.fiercepharma.com/marketing/moderna-secures-spikevax-name-europe-joins-pfizer-s-comirnaty-awaiting-official-name-and">
+                                                    <div class="markdown">Moderna locks up Spikevax name in Europe, joins Pfizer&#39;s Comirnaty ...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Moderna has officially earned&#160;European Medicine Association&#160;approval for Spikevax as its COVID-19 vaccine brand name. Now, it&#160;joins Pfizer and BioNTech’s Comirnaty and AstraZeneca’s Vaxzevria, all with European name approvals, in awaiting a U.S. nod.</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="general-news.html_Files/GettyImages-1288838574.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="general-news.html_Files/GettyImages-1288838574.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="general-news.html_Files/9daca66f480d04fcd3b6de91aeb294a8.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon07#4800" data-user-id="622453000962834453" style="color: rgb(241,196,15)">mejon07</span>
+
+
+        <span class="chatlog__timestamp">04-Jul-21 05:50 AM</span>
+
+            <div class="chatlog__message " data-message-id="861091549655597086" id="message-861091549655597086">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://bnonews.com/index.php/2021/07/tajikistan-becomes-first-country-to-make-covid-19-vaccines-mandatory/">https://bnonews.com/index.php/2021/07/tajikistan-becomes-first-country-to-make-covid-19-vaccines-mandatory/</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://bnonews.com/index.php/2021/07/tajikistan-becomes-first-country-to-make-covid-19-vaccines-mandatory/">
+                                                    <div class="markdown">Tajikistan becomes first country to make COVID-19 vaccines mandatory</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Tajikistan’s government announced Saturday that all adults will be required to get vaccinated against COVID-19, making it the first country in the world to announce such a sweeping mandate as it tries to contain a new outbreak of coronavirus. A statement from the Republican Headquarters for Strengthening Anti-Epidemic Measures against COVID-19 a...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="general-news.html_Files/1202021COVID19Vaccine.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="general-news.html_Files/1202021COVID19Vaccine.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="NWOpepe" title="NWOpepe" src="general-news.html_Files/806258202475364393.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="wtf" title="wtf" src="general-news.html_Files/806258203481735180.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="general-news.html_Files/9115f4f25e4060ac08b22706504d9cd9.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Goober#4104" data-user-id="233074042217824258" style="color: rgb(54,117,255)">Goober</span>
+
+
+        <span class="chatlog__timestamp">05-Jul-21 09:28 AM</span>
+
+            <div class="chatlog__message " data-message-id="861508882005491722" id="message-861508882005491722">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://nypost.com/2021/07/02/female-officer-jailed-for-sex-with-inmate-in-view-of-11-others/">https://nypost.com/2021/07/02/female-officer-jailed-for-sex-with-inmate-in-view-of-11-others/</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://nypost.com/2021/07/02/female-officer-jailed-for-sex-with-inmate-in-view-of-11-others/">
+                                                    <div class="markdown">Female corrections officer jailed for sex with inmate in view of 11...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Tina Gonzalez, a 26-year-old California corrections officer, even cut a hole in her uniform pants to make it easier to have sex.</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="general-news.html_Files/fresno-jail-guard-01.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="general-news.html_Files/fresno-jail-guard-01.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="gulag" title="gulag" src="general-news.html_Files/808835879694368849.png">
+                                <span class="chatlog__reaction-count">5</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="general-news.html_Files/9daca66f480d04fcd3b6de91aeb294a8.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon07#4800" data-user-id="622453000962834453" style="color: rgb(241,196,15)">mejon07</span>
+
+
+        <span class="chatlog__timestamp">06-Jul-21 01:57 AM</span>
+
+            <div class="chatlog__message " data-message-id="861757799691190272" id="message-861757799691190272">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://twitter.com/EwaMazierska/status/1412116255809671175">https://twitter.com/EwaMazierska/status/1412116255809671175</a> i wonder by how much undergraduate enrollment will decline by? </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(29,161,242,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+                                                <img class="chatlog__embed-author-icon" src="general-news.html_Files/I7QmYkiN_bigger.jpg" alt="Author icon">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/EwaMazierska">Ewa Mazierska (@EwaMazierska)</a>
+                                                </span>
+                                        </div>
+
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Manchester University plans to keep its lectures permanently online (and students permanently at home).  
+<a href="https://t.co/KyjVfIUAMb">https://t.co/KyjVfIUAMb</a></div>
+                                        </div>
+
+                                </div>
+
+                            </div>
+
+                                <div class="chatlog__embed-image-container">
+                                    <a class="chatlog__embed-image-link" href="general-news.html_Files/DQqbLPWv">
+                                        <img class="chatlog__embed-image" src="general-news.html_Files/DQqbLPWv" alt="Image">
+                                    </a>
+                                </div>
+
+                                <div class="chatlog__embed-footer">
+                                        <img class="chatlog__embed-footer-icon" src="general-news.html_Files/apple-touch-icon-192x192.png" alt="Footer icon">
+
+                                        <span class="chatlog__embed-footer-text">
+Twitter
+ • 
+05-Jul-21 08:28 PM                                        </span>
+                                </div>
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="klaus" title="klaus" src="general-news.html_Files/854230902007136276.png">
+                                <span class="chatlog__reaction-count">2</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="general-news.html_Files/3fa942aa96d876a45cd910df68a0072a.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="alt-theories#7036" data-user-id="720810291943833683" style="color: rgb(54,117,255)">alt-theories</span>
+
+
+        <span class="chatlog__timestamp">06-Jul-21 03:47 PM</span>
+
+            <div class="chatlog__message " data-message-id="861966616997003295" id="message-861966616997003295">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://youtu.be/IDkh5PVo-rA">https://youtu.be/IDkh5PVo-rA</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCMOWB-s0Kek9o9sS8xA_kZQ">Press For Truth</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=IDkh5PVo-rA">
+                                                    <div class="markdown">Ransomware “Hackers” Strike Again Demanding $70M in BTC Days Before...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">DONATE ➜ <a href="https://pressfortruth.ca/donate/">https://pressfortruth.ca/donate/</a>
+PATREON ➜ <a href="https://www.patreon.com/PressForTruth">https://www.patreon.com/PressForTruth</a>
+SUBSCRIBESTAR ➜ <a href="https://www.subscribestar.com/pressfortruth">https://www.subscribestar.com/pressfortruth</a>
+Operation Save The Press (For Truth)! ➜ <a href="https://gogetfunding.com/operationsavethepress/">https://gogetfunding.com/operationsavethepress/</a> 
+A group of “Russian speaking” “hackers” are being blamed for a massive ransomware attack affecting hundreds ...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="general-news.html_Files/maxresdefault.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="general-news.html_Files/maxresdefault.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="klaus" title="klaus" src="general-news.html_Files/854230902007136276.png">
+                                <span class="chatlog__reaction-count">2</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="general-news.html_Files/3fa942aa96d876a45cd910df68a0072a.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="alt-theories#7036" data-user-id="720810291943833683" style="color: rgb(54,117,255)">alt-theories</span>
+
+
+        <span class="chatlog__timestamp">06-Jul-21 08:48 PM</span>
+
+            <div class="chatlog__message " data-message-id="862042318827421738" id="message-862042318827421738">
+                <div class="chatlog__content">
+                    <div class="markdown">&gt;Man gets blood clots from AstraZeneca shot, is rushed to ICU
+&gt;Still wants his second shot, but with Pfizer instead
+&gt;His wife after seeing her husband hospitalised for 2 weeks over a vaccine wants her shot too
+
+No, this isn’t the Babylon Bee, this is a state broadcaster and these are real people.
+
+<a href="https://www.abc.net.au/news/2021-06-29/garry-recovering-from-blood-clots-linked-to-astrazeneca/100252574">https://www.abc.net.au/news/2021-06-29/garry-recovering-from-blood-clots-linked-to-astrazeneca/100252574</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.abc.net.au/news/2021-06-29/garry-recovering-from-blood-clots-linked-to-astrazeneca/100252574">
+                                                    <div class="markdown">Australia has administered 4.2 million doses of AstraZeneca. Garry ...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">A week after Garry&#160;Richardson had his first AstraZeneca shot he developed severe abdominal pain and was found to have blood clots. He knows his case is very rare.</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="general-news.html_Files/befd907116eaac783bd06e4d8506ac62">
+                                            <img class="chatlog__embed-thumbnail" src="general-news.html_Files/befd907116eaac783bd06e4d8506ac62" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="honkler" title="honkler" src="general-news.html_Files/806258203057979463.png">
+                                <span class="chatlog__reaction-count">4</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="yuri_bezmenov" title="yuri_bezmenov" src="general-news.html_Files/808334430556651591.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="general-news.html_Files/9bcca68278801417670c6a7113f020ba.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curbs#2663" data-user-id="754849491143753869" style="color: rgb(241,196,15)">CurbShifter</span>
+
+
+        <span class="chatlog__timestamp">07-Jul-21 09:37 AM</span>
+
+            <div class="chatlog__message " data-message-id="862235818566877194" id="message-862235818566877194">
+                <div class="chatlog__content">
+                    <div class="markdown"><div class="quote">For sharing with those NHS staff <img class="emoji " alt="😊" title="😊" src="https://twemoji.maxcdn.com/2/72x72/1f60a.png"> ....
+</div>
+Re: NHS staff
+
+Forwarded from another group .. it’s been asked to be shared urgently .. just incase anyone knows anyone this may help..
+
+I am working as a full time researcher with the covid 19 assembly team of barristers &amp; lawyers &amp; also for HART org . The cv19 assembly is offering free legal advice &amp; anonymous ( if needed ) whistleblowing support to all healthcare workers who are still “too scared” to come forward , if you are in contact with any nhs / HCA staff who feel this way still PLEASE PLEASE tell them to whistleblow now - we are already serving legal Notice of Liability to ALL Nhs trusts, hospitals  in the uk , paramedics, school trusts , drs surgeries , nhs CCG , etc etc - people who have not spoken out in the immediate  future will all be held PERSONALLY liable for crimes against humanity &amp; child genocide . <img class="emoji " alt="😩" title="😩" src="https://twemoji.maxcdn.com/2/72x72/1f629.png"><img class="emoji " alt="💔" title="💔" src="https://twemoji.maxcdn.com/2/72x72/1f494.png"> Time is not on their side now they have maybe 2 weeks tops if they to come forward now or they will be considered to be complicit , I can’t impress this strongly enough . They need to find courage &amp; fast .
+
+please do share! 
+
+It’s really important otherwise they will be considered complicit <img class="emoji " alt="💔" title="💔" src="https://twemoji.maxcdn.com/2/72x72/1f494.png"> notices of Liability have been going out for the last 3 weeks already . 
+
+We’re aiming to cover the whole uk . People can whistleblow by going to <a href="https://www.covid19assembly.org">https://www.covid19assembly.org</a> </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="general-news.html_Files/9daca66f480d04fcd3b6de91aeb294a8.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon07#4800" data-user-id="622453000962834453" style="color: rgb(241,196,15)">mejon07</span>
+
+
+        <span class="chatlog__timestamp">08-Jul-21 02:24 AM</span>
+
+            <div class="chatlog__message " data-message-id="862489268486930442" id="message-862489268486930442">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://thehill.com/homenews/state-watch/561933-flight-to-bahamas-cancelled-after-boston-area-students-refuse-to-wear">https://thehill.com/homenews/state-watch/561933-flight-to-bahamas-cancelled-after-boston-area-students-refuse-to-wear</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://thehill.com/homenews/state-watch/561933-flight-to-bahamas-cancelled-after-boston-area-students-refuse-to-wear">
+                                                    <div class="markdown">Flight to Bahamas canceled after students refuse to wear masks</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">A flight to the Bahamas leaving from North Carolina was canceled after a group of students refused to wear masks during the travel.</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="general-news.html_Files/americanairlines_dca_012920gn2_lead.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="general-news.html_Files/americanairlines_dca_012920gn2_lead.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="honkler" title="honkler" src="general-news.html_Files/806258203057979463.png">
+                                <span class="chatlog__reaction-count">2</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="hyperz" title="hyperz" src="general-news.html_Files/806258201737035795.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="general-news.html_Files/28960f0a88e531c405e3c81193840201.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Junkyard#5313" data-user-id="461535989379366923" style="color: rgb(54,117,255)">Junkyard</span>
+
+
+        <span class="chatlog__timestamp">08-Jul-21 05:12 AM</span>
+
+            <div class="chatlog__message " data-message-id="862531530856988672" id="message-862531530856988672">
+                <div class="chatlog__content">
+                    <div class="markdown">Direct quote:
+You think we&#39;re sinful
+You fight against our rights
+You say we all lead lives you can&#39;t respect
+But you&#39;re just frightened
+You think that we&#39;ll corrupt your kids
+If our agenda goes unchecked
+Fine, just this once, you&#39;re correct.
+We&#39;ll convert your children
+Happens bit by bit
+quietly and subltly, and you will barely notice it
+You can keep them from disco
+Warn about San francisco
+Make them wear pleated pants we don&#39;t care
+We&#39;ll convert your children
+We&#39;ll make them tolerant and fair.
+And much more.
+
+<a href="https://streamable.com/ab3q3u">https://streamable.com/ab3q3u</a>
+
+Do some digging. Many of these people are convicted pedophiles. </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://streamable.com/ab3q3u">
+                                                    <div class="markdown">A Message From the Gay Community  Performed by the San Francisco Ga...</div>
+                                                </a>
+                                        </div>
+
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="general-news.html_Files/ab3q3u.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="general-news.html_Files/ab3q3u.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="general-news.html_Files/3fa942aa96d876a45cd910df68a0072a.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="alt-theories#7036" data-user-id="720810291943833683" style="color: rgb(54,117,255)">alt-theories</span>
+
+
+        <span class="chatlog__timestamp">08-Jul-21 09:52 AM</span>
+
+            <div class="chatlog__message " data-message-id="862601933943472168" id="message-862601933943472168">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://amicohoops.net/after-a-new-cyber-attack-on-american-companies-by-russian-hackers-joe-biden-reiterated-that-he-will-fight-hackers/">https://amicohoops.net/after-a-new-cyber-attack-on-american-companies-by-russian-hackers-joe-biden-reiterated-that-he-will-fight-hackers/</a>
+
+“We are all aware of these growing threats to national security, As well as civil infrastructure. We believe it The response of the United States to these threats must come from the entire government.” And it can’t just be a military liability.” </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://amicohoops.net/after-a-new-cyber-attack-on-american-companies-by-russian-hackers-joe-biden-reiterated-that-he-will-fight-hackers/">
+                                                    <div class="markdown">After a new cyber attack on American companies by Russian hackers, ...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Joe Biden and Vladimir Putin met on June 16 at Villa Lagrange in Geneva, Switzerland (photo. Reuters)Joe Biden This Wednesday he met with his national</div>
+                                        </div>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+</div>
+
+<div class="postamble">
+    <div class="postamble__entry">Exported 13 message(s)</div>
+</div>
+
+</body>
+</html>
