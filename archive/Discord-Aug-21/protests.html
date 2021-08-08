@@ -1,0 +1,2660 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>rabbithole.help part 2 - &#129324;-protests</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+
+    <style>
+        /* General */
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-300.woff);
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-400.woff);
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-500.woff);
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-600.woff);
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-700.woff);
+    font-weight: 700;
+}
+
+body {
+    font-family: "Whitney", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 17px;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+img {
+    object-fit: contain;
+}
+
+.markdown {
+    max-width: 100%;
+    white-space: pre-wrap;
+    line-height: 1.3;
+    overflow-wrap: break-word;
+}
+
+.spoiler {
+    width: fit-content;
+}
+
+.spoiler--hidden {
+    cursor: pointer;
+}
+
+.spoiler-text {
+    border-radius: 3px;
+}
+
+.spoiler--hidden .spoiler-text {
+    color: rgba(0, 0, 0, 0);
+}
+
+.spoiler--hidden .spoiler-text::selection {
+    color: rgba(0, 0, 0, 0);
+}
+
+.spoiler-image {
+    position: relative;
+    overflow: hidden;
+    border-radius: 3px;
+}
+
+.spoiler--hidden .spoiler-image {
+    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.spoiler--hidden .spoiler-image img {
+    filter: blur(44px);
+}
+
+.spoiler--hidden .spoiler-image:after {
+    content: "SPOILER";
+    color: #dcddde;
+    background-color: rgba(0, 0, 0, 0.6);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: 600;
+    padding: 0.5em 0.7em;
+    border-radius: 20px;
+    letter-spacing: 0.05em;
+    font-size: 0.9em;
+}
+
+.spoiler--hidden:hover .spoiler-image:after {
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.quote {
+    margin: 0.1em 0;
+    padding-left: 0.6em;
+    border-left: 4px solid;
+    border-radius: 3px;
+}
+
+.pre {
+    font-family: "Consolas", "Courier New", Courier, monospace;
+}
+
+.pre--multiline {
+    margin-top: 0.25em;
+    padding: 0.5em;
+    border: 2px solid;
+    border-radius: 5px;
+}
+
+.pre--inline {
+    padding: 2px;
+    border-radius: 3px;
+    font-size: 0.85em;
+}
+
+.mention {
+    border-radius: 3px;
+    padding: 0 2px;
+    color: #7289da;
+    background: rgba(114, 137, 218, .1);
+    font-weight: 500;
+}
+
+.emoji {
+    width: 1.25em;
+    height: 1.25em;
+    margin: 0 0.06em;
+    vertical-align: -0.4em;
+}
+
+.emoji--small {
+    width: 1em;
+    height: 1em;
+}
+
+.emoji--large {
+    width: 2.8em;
+    height: 2.8em;
+}
+
+/* Preamble */
+
+.preamble {
+    display: grid;
+    margin: 0 0.3em 0.6em 0.3em;
+    max-width: 100%;
+    grid-template-columns: auto 1fr;
+}
+
+.preamble__guild-icon-container {
+    grid-column: 1;
+}
+
+.preamble__guild-icon {
+    max-width: 88px;
+    max-height: 88px;
+}
+
+.preamble__entries-container {
+    grid-column: 2;
+    margin-left: 0.6em;
+}
+
+.preamble__entry {
+    font-size: 1.4em;
+}
+
+.preamble__entry--small {
+    font-size: 1em;
+}
+
+/* Chatlog */
+
+.chatlog {
+    max-width: 100%;
+}
+
+.chatlog__message-group {
+    display: grid;
+    margin: 0 0.6em;
+    padding: 0.9em 0;
+    border-top: 1px solid;
+    grid-template-columns: auto 1fr;
+}
+
+.chatlog__author-avatar-container {
+    grid-column: 1;
+    width: 40px;
+    height: 40px;
+}
+
+.chatlog__author-avatar {
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+}
+
+.chatlog__messages {
+    grid-column: 2;
+    margin-left: 1.2em;
+    min-width: 50%;
+}
+
+.chatlog__author-name {
+    font-weight: 500;
+}
+
+.chatlog__timestamp {
+    margin-left: 0.3em;
+    font-size: 0.75em;
+}
+
+.chatlog__message {
+    padding: 0.1em 0.3em;
+    margin: 0 -0.3em;
+    background-color: transparent;
+    transition: background-color 1s ease;
+}
+
+.chatlog__content {
+    font-size: 0.95em;
+    word-wrap: break-word;
+}
+
+.chatlog__edited-timestamp {
+    margin-left: 0.15em;
+    font-size: 0.8em;
+}
+
+.chatlog__attachment {
+    margin-top: 0.3em;
+}
+
+.chatlog__attachment-thumbnail {
+    vertical-align: top;
+    max-width: 45vw;
+    max-height: 500px;
+    border-radius: 3px;
+}
+
+.chatlog__embed {
+    display: flex;
+    margin-top: 0.3em;
+    max-width: 520px;
+}
+
+.chatlog__embed-color-pill {
+    flex-shrink: 0;
+    width: 0.25em;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
+.chatlog__embed-content-container {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5em 0.6em;
+    border: 1px solid;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+.chatlog__embed-content {
+    display: flex;
+    width: 100%;
+}
+
+.chatlog__embed-text {
+    flex: 1;
+}
+
+.chatlog__embed-author {
+    display: flex;
+    margin-bottom: 0.3em;
+    align-items: center;
+}
+
+.chatlog__embed-author-icon {
+    margin-right: 0.5em;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+.chatlog__embed-author-name {
+    font-size: 0.875em;
+    font-weight: 600;
+}
+
+.chatlog__embed-title {
+    margin-bottom: 0.2em;
+    font-size: 0.875em;
+    font-weight: 600;
+}
+
+.chatlog__embed-description {
+    font-weight: 500;
+    font-size: 0.85em;
+}
+
+.chatlog__embed-fields {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.chatlog__embed-field {
+    flex: 0;
+    min-width: 100%;
+    max-width: 506px;
+    padding-top: 0.6em;
+    font-size: 0.875em;
+}
+
+.chatlog__embed-field--inline {
+    flex: 1;
+    flex-basis: auto;
+    min-width: 150px;
+}
+
+.chatlog__embed-field-name {
+    margin-bottom: 0.2em;
+    font-weight: 600;
+}
+
+.chatlog__embed-field-value {
+    font-weight: 500;
+}
+
+.chatlog__embed-thumbnail {
+    flex: 0;
+    margin-left: 1.2em;
+    max-width: 80px;
+    max-height: 80px;
+    border-radius: 3px;
+}
+
+.chatlog__embed-image-container {
+    margin-top: 0.6em;
+}
+
+.chatlog__embed-image {
+    max-width: 500px;
+    max-height: 400px;
+    border-radius: 3px;
+}
+
+.chatlog__embed-footer {
+    margin-top: 0.6em;
+}
+
+.chatlog__embed-footer-icon {
+    margin-right: 0.2em;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+
+.chatlog__embed-footer-text {
+    font-size: 0.75em;
+    font-weight: 500;
+}
+
+.chatlog__reactions {
+    display: flex;
+}
+
+.chatlog__reaction {
+    display: flex;
+    align-items: center;
+    margin: 0.35em 0.1em 0.1em 0.1em;
+    padding: 0.2em 0.35em;
+    border-radius: 3px;
+}
+
+.chatlog__reaction-count {
+    min-width: 9px;
+    margin-left: 0.35em;
+    font-size: 0.875em;
+}
+
+.chatlog__bot-tag {
+    position: relative;
+    top: -.2em;
+    margin-left: 0.3em;
+    padding: 0.05em 0.3em;
+    border-radius: 3px;
+    vertical-align: middle;
+    line-height: 1.3;
+    background: #7289da;
+    color: #ffffff;
+    font-size: 0.625em;
+    font-weight: 500;
+}
+
+/* Postamble */
+
+.postamble {
+    margin: 1.4em 0.3em 0.6em 0.3em;
+    padding: 1em;
+    border-top: 1px solid;
+}
+    </style>
+    <style>
+        /* General */
+
+body {
+    background-color: #36393e;
+    color: #dcddde;
+}
+
+a {
+    color: #0096cf;
+}
+
+.spoiler-text {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.spoiler--hidden .spoiler-text {
+    background-color: #202225;
+}
+
+.spoiler--hidden:hover .spoiler-text {
+    background-color: rgba(32, 34, 37, 0.8);
+}
+
+.quote {
+    border-color: #4f545c;
+}
+
+.pre {
+    background-color: #2f3136 !important;
+}
+
+.pre--multiline {
+    border-color: #282b30 !important;
+    color: #b9bbbe !important;
+}
+
+/* === Preamble === */
+
+.preamble__entry {
+    color: #ffffff;
+}
+
+/* Chatlog */
+
+.chatlog__message-group {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.chatlog__author-name {
+    color: #ffffff;
+}
+
+.chatlog__timestamp {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.chatlog__message--highlighted {
+    background-color: rgba(114, 137, 218, 0.2) !important;
+}
+
+.chatlog__message--pinned {
+    background-color: rgba(249, 168, 37, 0.05);
+}
+
+.chatlog__edited-timestamp {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.chatlog__embed-color-pill--default {
+    background-color: rgba(79, 84, 92, 1);
+}
+
+.chatlog__embed-content-container {
+    background-color: rgba(46, 48, 54, 0.3);
+    border-color: rgba(46, 48, 54, 0.6);
+}
+
+.chatlog__embed-author-name {
+    color: #ffffff;
+}
+
+.chatlog__embed-author-name-link {
+    color: #ffffff;
+}
+
+.chatlog__embed-title {
+    color: #ffffff;
+}
+
+.chatlog__embed-description {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__embed-field-name {
+    color: #ffffff;
+}
+
+.chatlog__embed-field-value {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__embed-footer {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__reaction {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.chatlog__reaction-count {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+/* Postamble */
+
+.postamble {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.postamble__entry {
+    color: #ffffff;
+}
+    </style>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/solarized-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.pre--multiline').forEach(block => hljs.highlightBlock(block));
+        });
+    </script>
+
+    <script>
+        function scrollToMessage(event, id) {
+            var element = document.getElementById('message-' + id);
+
+            if (element) {
+                event.preventDefault();
+
+                element.classList.add('chatlog__message--highlighted');
+
+                window.scrollTo({
+                    top: element.getBoundingClientRect().top - document.body.getBoundingClientRect().top - (window.innerHeight / 2),
+                    behavior: 'smooth'
+                });
+
+                window.setTimeout(function() {
+                    element.classList.remove('chatlog__message--highlighted');
+                }, 2000);
+            }
+        }
+
+        function showSpoiler(event, element) {
+            if (element && element.classList.contains('spoiler--hidden')) {
+                event.preventDefault();
+                element.classList.remove('spoiler--hidden');
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="preamble">
+    <div class="preamble__guild-icon-container">
+        <img class="preamble__guild-icon" src="protests.html_Files/95447a8568250a8fbeb474229185859a.png" alt="Guild icon">
+    </div>
+    <div class="preamble__entries-container">
+        <div class="preamble__entry">rabbithole.help part 2</div>
+        <div class="preamble__entry">Research sharing / &#129324;-protests</div>
+
+
+            <div class="preamble__entry preamble__entry--small">
+Between 01-Aug-21 12:00 AM and 01-Sep-21 12:00 AM            </div>
+    </div>
+</div>
+
+<div class="chatlog">
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="protests.html_Files/9bcca68278801417670c6a7113f020ba.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curbs#2663" data-user-id="754849491143753869" style="color: rgb(241,196,15)">CurbShifter</span>
+
+
+        <span class="chatlog__timestamp">01-Aug-21 12:17 AM</span>
+
+            <div class="chatlog__message " data-message-id="871154754238177290" id="message-871154754238177290">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://fxtwitter.com/Demo2020cracy/status/1421595172870234123?s=20">https://fxtwitter.com/Demo2020cracy/status/1421595172870234123?s=20</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(67,181,129,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+NOT ON BBC &quot;NEWS&quot;,  ＃NICE, LE HUGE PROTEST &#127467;&#127479;&#127467;&#127479; ＃France ＃PassSanitaire                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://fxtwitter.com/Demo2020cracy/status/1421595172870234123?s=20">
+                                                    <div class="markdown">Anti Lockdown Alliance(GLOBAL)</div>
+                                                </a>
+                                        </div>
+
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="protests.html_Files/t9tFIAhHxBwuqM_h.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="protests.html_Files/t9tFIAhHxBwuqM_h.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="zomg" title="zomg" src="protests.html_Files/806258204089516092.png">
+                                <span class="chatlog__reaction-count">2</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="vote_yes" title="vote_yes" src="protests.html_Files/806258203574665223.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="protests.html_Files/9daca66f480d04fcd3b6de91aeb294a8.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon07#4800" data-user-id="622453000962834453" style="color: rgb(241,196,15)">mejon07</span>
+
+
+        <span class="chatlog__timestamp">01-Aug-21 01:35 AM</span>
+
+            <div class="chatlog__message " data-message-id="871174264890462289" id="message-871174264890462289">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://fxtwitter.com/EliseiNicole/status/1421579026616000518">https://fxtwitter.com/EliseiNicole/status/1421579026616000518</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(67,181,129,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+＃Italy Milan ＃NoGreenPass 31/07/2021                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://fxtwitter.com/EliseiNicole/status/1421579026616000518">
+                                                    <div class="markdown">Nicole Elisei</div>
+                                                </a>
+                                        </div>
+
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="protests.html_Files/WxDvt2NbxImYwLTN.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="protests.html_Files/WxDvt2NbxImYwLTN.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="871174341390401576" id="message-871174341390401576">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://fxtwitter.com/EliseiNicole/status/1421568828161597440">https://fxtwitter.com/EliseiNicole/status/1421568828161597440</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(67,181,129,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+＃France La Rochelle ＃NoGreenPass 31/07/2021                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://fxtwitter.com/EliseiNicole/status/1421568828161597440">
+                                                    <div class="markdown">Nicole Elisei</div>
+                                                </a>
+                                        </div>
+
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="protests.html_Files/tlLQyuw3wl3_vVcc.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="protests.html_Files/tlLQyuw3wl3_vVcc.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="871174422256566272" id="message-871174422256566272">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://fxtwitter.com/EliseiNicole/status/1421567367671394306">https://fxtwitter.com/EliseiNicole/status/1421567367671394306</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(67,181,129,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+＃France Rennes ＃NoGreenPass 31/07/2021                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://fxtwitter.com/EliseiNicole/status/1421567367671394306">
+                                                    <div class="markdown">Nicole Elisei</div>
+                                                </a>
+                                        </div>
+
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="protests.html_Files/vAa-HnrI6r81PAnw.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="protests.html_Files/vAa-HnrI6r81PAnw.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="871174491810697266" id="message-871174491810697266">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://fxtwitter.com/EliseiNicole/status/1421565618353016832">https://fxtwitter.com/EliseiNicole/status/1421565618353016832</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(67,181,129,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+＃Italy Aosta ＃NoGreenPass 31/07/2021                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://fxtwitter.com/EliseiNicole/status/1421565618353016832">
+                                                    <div class="markdown">Nicole Elisei</div>
+                                                </a>
+                                        </div>
+
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="protests.html_Files/yJMkPY6vxp-Dnzno.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="protests.html_Files/yJMkPY6vxp-Dnzno.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="871174556054872134" id="message-871174556054872134">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://fxtwitter.com/EliseiNicole/status/1421561199087525891">https://fxtwitter.com/EliseiNicole/status/1421561199087525891</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(67,181,129,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+＃France Paris ＃caregivers 31/07/2021                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://fxtwitter.com/EliseiNicole/status/1421561199087525891">
+                                                    <div class="markdown">Nicole Elisei</div>
+                                                </a>
+                                        </div>
+
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="protests.html_Files/f_mtiYmbnkUP4nyO.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="protests.html_Files/f_mtiYmbnkUP4nyO.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="871174618793246781" id="message-871174618793246781">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://fxtwitter.com/EliseiNicole/status/1421559250875265026">https://fxtwitter.com/EliseiNicole/status/1421559250875265026</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(67,181,129,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+＃Italy Catania ＃NoGreenPass 31/07/2021                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://fxtwitter.com/EliseiNicole/status/1421559250875265026">
+                                                    <div class="markdown">Nicole Elisei</div>
+                                                </a>
+                                        </div>
+
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="protests.html_Files/PzfcG3c51fmTofcv.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="protests.html_Files/PzfcG3c51fmTofcv.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="871174707360178226" id="message-871174707360178226">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://fxtwitter.com/EliseiNicole/status/1421549252854038531">https://fxtwitter.com/EliseiNicole/status/1421549252854038531</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(67,181,129,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+＃Italy Verona ＃NoGreenPass 31/07/2021                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://fxtwitter.com/EliseiNicole/status/1421549252854038531">
+                                                    <div class="markdown">Nicole Elisei</div>
+                                                </a>
+                                        </div>
+
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="protests.html_Files/daeNt0s06QcVpRY_.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="protests.html_Files/daeNt0s06QcVpRY_.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="871174845528948756" id="message-871174845528948756">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://fxtwitter.com/EliseiNicole/status/1421540975764246532">https://fxtwitter.com/EliseiNicole/status/1421540975764246532</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(67,181,129,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+＃France Reims ＃NoGreenPass 31/07/2021                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://fxtwitter.com/EliseiNicole/status/1421540975764246532">
+                                                    <div class="markdown">Nicole Elisei</div>
+                                                </a>
+                                        </div>
+
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="protests.html_Files/Dbm1wS3QQdZc7Dsi.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="protests.html_Files/Dbm1wS3QQdZc7Dsi.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="871174914340704267" id="message-871174914340704267">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://fxtwitter.com/EliseiNicole/status/1421533660784779273">https://fxtwitter.com/EliseiNicole/status/1421533660784779273</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(67,181,129,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+＃Italy Udine ＃NoGreenPass 31/07/2021                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://fxtwitter.com/EliseiNicole/status/1421533660784779273">
+                                                    <div class="markdown">Nicole Elisei</div>
+                                                </a>
+                                        </div>
+
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="protests.html_Files/tRd0sEMhawelkj2Z.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="protests.html_Files/tRd0sEMhawelkj2Z.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="871174985866162217" id="message-871174985866162217">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://fxtwitter.com/EliseiNicole/status/1421532764424314894">https://fxtwitter.com/EliseiNicole/status/1421532764424314894</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(67,181,129,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+＃Italy Livorno ＃NoGreenPass 31/07/2021                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://fxtwitter.com/EliseiNicole/status/1421532764424314894">
+                                                    <div class="markdown">Nicole Elisei</div>
+                                                </a>
+                                        </div>
+
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="protests.html_Files/fJhR3TcOzR1JJ2GC.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="protests.html_Files/fJhR3TcOzR1JJ2GC.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="871175040803168286" id="message-871175040803168286">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://fxtwitter.com/EliseiNicole/status/1421532117423558660">https://fxtwitter.com/EliseiNicole/status/1421532117423558660</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(67,181,129,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+＃Italy Bolzano ＃NoGreenPass 31/07/2021                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://fxtwitter.com/EliseiNicole/status/1421532117423558660">
+                                                    <div class="markdown">Nicole Elisei</div>
+                                                </a>
+                                        </div>
+
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="protests.html_Files/cRUXp2Faw7ZPrchm.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="protests.html_Files/cRUXp2Faw7ZPrchm.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="871175132725534730" id="message-871175132725534730">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://fxtwitter.com/EliseiNicole/status/1421527384810004482">https://fxtwitter.com/EliseiNicole/status/1421527384810004482</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(67,181,129,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+＃Italy Bari ＃NoGreenPass 31/07/2021                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://fxtwitter.com/EliseiNicole/status/1421527384810004482">
+                                                    <div class="markdown">Nicole Elisei</div>
+                                                </a>
+                                        </div>
+
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="protests.html_Files/550XTHqMpPryqcpj.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="protests.html_Files/550XTHqMpPryqcpj.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="871175196118241280" id="message-871175196118241280">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://fxtwitter.com/EliseiNicole/status/1421526826690678786">https://fxtwitter.com/EliseiNicole/status/1421526826690678786</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(67,181,129,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+＃Italy Padua ＃NoGreenPass 31/07/2021                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://fxtwitter.com/EliseiNicole/status/1421526826690678786">
+                                                    <div class="markdown">Nicole Elisei</div>
+                                                </a>
+                                        </div>
+
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="protests.html_Files/lB5b9DxdiTDQSl8F.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="protests.html_Files/lB5b9DxdiTDQSl8F.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="871175281514258484" id="message-871175281514258484">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://fxtwitter.com/EliseiNicole/status/1421524763894325248">https://fxtwitter.com/EliseiNicole/status/1421524763894325248</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(67,181,129,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+＃Italy Turin ＃NoGreenPass 31/07/2021                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://fxtwitter.com/EliseiNicole/status/1421524763894325248">
+                                                    <div class="markdown">Nicole Elisei</div>
+                                                </a>
+                                        </div>
+
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="protests.html_Files/OuvrwXh0J6II5Ose.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="protests.html_Files/OuvrwXh0J6II5Ose.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="871175398547939379" id="message-871175398547939379">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://fxtwitter.com/EliseiNicole/status/1421494702717739009">https://fxtwitter.com/EliseiNicole/status/1421494702717739009</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(67,181,129,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+＃France Montpellier ＃NoGreenPass 31/07/2021                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://fxtwitter.com/EliseiNicole/status/1421494702717739009">
+                                                    <div class="markdown">Nicole Elisei</div>
+                                                </a>
+                                        </div>
+
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="protests.html_Files/gO19h6jpjCHOkUxT.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="protests.html_Files/gO19h6jpjCHOkUxT.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="protests.html_Files/9bcca68278801417670c6a7113f020ba.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curbs#2663" data-user-id="754849491143753869" style="color: rgb(241,196,15)">CurbShifter</span>
+
+
+        <span class="chatlog__timestamp">01-Aug-21 09:34 AM</span>
+
+            <div class="chatlog__message " data-message-id="871294702685683782" id="message-871294702685683782">
+                <div class="chatlog__content">
+                    <div class="markdown"><img class="emoji emoji--large" alt="ooh" title="ooh" src="https://cdn.discordapp.com/emojis/806258203121287199.png"> </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="protests.html_Files/9bcca68278801417670c6a7113f020ba.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curbs#2663" data-user-id="754849491143753869" style="color: rgb(241,196,15)">CurbShifter</span>
+
+
+        <span class="chatlog__timestamp">01-Aug-21 11:39 PM</span>
+
+            <div class="chatlog__message " data-message-id="871507445766316062" id="message-871507445766316062">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://fxtwitter.com/disclosetv/status/1421783731166187522?s=20">https://fxtwitter.com/disclosetv/status/1421783731166187522?s=20</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(67,181,129,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+NOW - Thousands protest in ＃Berlin against Covid restrictions despite a ban by the authorities. The police try to regain control with punches, batons, and pepper spray. ＃b0108https://t.co/s3iuKbkFoa                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://fxtwitter.com/disclosetv/status/1421783731166187522?s=20">
+                                                    <div class="markdown">Disclose.tv <img class="emoji " alt="🚨" title="🚨" src="https://twemoji.maxcdn.com/2/72x72/1f6a8.png"></div>
+                                                </a>
+                                        </div>
+
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="protests.html_Files/UYlN2irmoAKFiC3I.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="protests.html_Files/UYlN2irmoAKFiC3I.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="pewpew" title="pewpew" src="protests.html_Files/806258203833794620.png">
+                                <span class="chatlog__reaction-count">3</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="protests.html_Files/9bcca68278801417670c6a7113f020ba.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curbs#2663" data-user-id="754849491143753869" style="color: rgb(241,196,15)">CurbShifter</span>
+
+
+        <span class="chatlog__timestamp">02-Aug-21 01:02 PM</span>
+
+            <div class="chatlog__message " data-message-id="871709556764454922" id="message-871709556764454922">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="http://twitter.com/disclosetv/status/1422133214613807105">http://twitter.com/disclosetv/status/1422133214613807105</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(29,161,242,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+                                                <img class="chatlog__embed-author-icon" src="protests.html_Files/OFVCkPfR_bigger.jpg" alt="Author icon">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/disclosetv">Disclose.tv &#128680; (@disclosetv)</a>
+                                                </span>
+                                        </div>
+
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">UPDATE - One protester in #Berlin collapsed &quot;in the course of an identity check&quot; by the police and subsequently died in a hospital.</div>
+                                        </div>
+
+                                        <div class="chatlog__embed-fields">
+                                                <div class="chatlog__embed-field chatlog__embed-field--inline">
+                                                        <div class="chatlog__embed-field-name">
+                                                            <div class="markdown">Retweets</div>
+                                                        </div>
+
+                                                        <div class="chatlog__embed-field-value">
+                                                            <div class="markdown">196</div>
+                                                        </div>
+                                                </div>
+                                                <div class="chatlog__embed-field chatlog__embed-field--inline">
+                                                        <div class="chatlog__embed-field-name">
+                                                            <div class="markdown">Likes</div>
+                                                        </div>
+
+                                                        <div class="chatlog__embed-field-value">
+                                                            <div class="markdown">539</div>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                </div>
+
+                            </div>
+
+
+                                <div class="chatlog__embed-footer">
+                                        <img class="chatlog__embed-footer-icon" src="protests.html_Files/apple-touch-icon-192x192.png" alt="Footer icon">
+
+                                        <span class="chatlog__embed-footer-text">
+Twitter
+ • 
+02-Aug-21 11:52 AM                                        </span>
+                                </div>
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="Fpepe" title="Fpepe" src="protests.html_Files/806258202719158292.png">
+                                <span class="chatlog__reaction-count">2</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="protests.html_Files/9daca66f480d04fcd3b6de91aeb294a8.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon07#4800" data-user-id="622453000962834453" style="color: rgb(241,196,15)">mejon07</span>
+
+
+        <span class="chatlog__timestamp">02-Aug-21 02:50 PM</span>
+
+            <div class="chatlog__message " data-message-id="871736834269524018" id="message-871736834269524018">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://fxtwitter.com/KaConfessor/status/1421514539380748292">https://fxtwitter.com/KaConfessor/status/1421514539380748292</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(67,181,129,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+Hungary freedom protest, mandatory v@cc!nes https://t.co/xlfKk7gQne                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://fxtwitter.com/KaConfessor/status/1421514539380748292">
+                                                    <div class="markdown">king of Confesssions Keith</div>
+                                                </a>
+                                        </div>
+
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="protests.html_Files/s3EcTwBqlYOlu7ZD.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="protests.html_Files/s3EcTwBqlYOlu7ZD.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="protests.html_Files/da12a52738e92e988d52e28dc36a42fa.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="alt-theories#7036" data-user-id="720810291943833683" style="color: rgb(54,117,255)">alt-theories</span>
+
+
+        <span class="chatlog__timestamp">02-Aug-21 09:00 PM</span>
+
+            <div class="chatlog__message " data-message-id="871829875353337978" id="message-871829875353337978">
+                <div class="chatlog__content">
+                    <div class="markdown"> </div>
+                </div>
+
+                    <div class="chatlog__attachment">
+                            <a href="protests.html_Files/video0.mp4">
+Attachment: video0.mp4 (4,94 MB)                            </a>
+                    </div>
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="protests.html_Files/9bcca68278801417670c6a7113f020ba.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curbs#2663" data-user-id="754849491143753869" style="color: rgb(241,196,15)">CurbShifter</span>
+
+
+        <span class="chatlog__timestamp">02-Aug-21 09:51 PM</span>
+
+            <div class="chatlog__message " data-message-id="871842619104296970" id="message-871842619104296970">
+                <div class="chatlog__content">
+                    <div class="markdown">more of this. it will scare the shit out of cops </div>
+                </div>
+
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="feelsgoodman" title="feelsgoodman" src="protests.html_Files/806258202605912195.png">
+                                <span class="chatlog__reaction-count">2</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="protests.html_Files/9bcca68278801417670c6a7113f020ba.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curbs#2663" data-user-id="754849491143753869" style="color: rgb(241,196,15)">CurbShifter</span>
+
+
+        <span class="chatlog__timestamp">03-Aug-21 01:02 AM</span>
+
+            <div class="chatlog__message " data-message-id="871890818099724349" id="message-871890818099724349">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://twitter.com/i/status/1421877935653355526">https://twitter.com/i/status/1421877935653355526</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(29,161,242,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+                                                <img class="chatlog__embed-author-icon" src="https://pbs.twimg.com/profile_images/1421869915255025664/ONwm-uW6_bigger.jpg" alt="Author icon">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/Alpha_Mind7">LADY AMINA (@Alpha_Mind7)</a>
+                                                </span>
+                                        </div>
+
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Berlin, this cop is hitting a little boy in the head &#39;cause he&#39;s worried about his mom <img class="emoji " alt="😔" title="😔" src="https://twemoji.maxcdn.com/2/72x72/1f614.png"> <a href="https://t.co/KSJ1NAYglr">https://t.co/KSJ1NAYglr</a></div>
+                                        </div>
+
+                                        <div class="chatlog__embed-fields">
+                                                <div class="chatlog__embed-field chatlog__embed-field--inline">
+                                                        <div class="chatlog__embed-field-name">
+                                                            <div class="markdown">Retweets</div>
+                                                        </div>
+
+                                                        <div class="chatlog__embed-field-value">
+                                                            <div class="markdown">525</div>
+                                                        </div>
+                                                </div>
+                                                <div class="chatlog__embed-field chatlog__embed-field--inline">
+                                                        <div class="chatlog__embed-field-name">
+                                                            <div class="markdown">Likes</div>
+                                                        </div>
+
+                                                        <div class="chatlog__embed-field-value">
+                                                            <div class="markdown">571</div>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                </div>
+
+                            </div>
+
+                                <div class="chatlog__embed-image-container">
+                                    <a class="chatlog__embed-image-link" href="protests.html_Files/Tkq5agDHXsNV8_c7.jpg">
+                                        <img class="chatlog__embed-image" src="protests.html_Files/Tkq5agDHXsNV8_c7.jpg" alt="Image">
+                                    </a>
+                                </div>
+
+                                <div class="chatlog__embed-footer">
+                                        <img class="chatlog__embed-footer-icon" src="protests.html_Files/apple-touch-icon-192x192.png" alt="Footer icon">
+
+                                        <span class="chatlog__embed-footer-text">
+Twitter
+ • 
+01-Aug-21 06:58 PM                                        </span>
+                                </div>
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="gulag" title="gulag" src="protests.html_Files/808835879694368849.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="pinkwojak" title="pinkwojak" src="protests.html_Files/806258203917942814.png">
+                                <span class="chatlog__reaction-count">2</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="protests.html_Files/9bcca68278801417670c6a7113f020ba.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curbs#2663" data-user-id="754849491143753869" style="color: rgb(241,196,15)">CurbShifter</span>
+
+
+        <span class="chatlog__timestamp">03-Aug-21 03:34 PM</span>
+
+            <div class="chatlog__message " data-message-id="872110120673345536" id="message-872110120673345536">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://fxtwitter.com/GiasNebra/status/1422000498807386127?s=20">https://fxtwitter.com/GiasNebra/status/1422000498807386127?s=20</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(67,181,129,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+The French Revolution happening right now &#128071; Viva Francia &#127467;&#127479;                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://fxtwitter.com/GiasNebra/status/1422000498807386127?s=20">
+                                                    <div class="markdown">Gimeta Nebtuno</div>
+                                                </a>
+                                        </div>
+
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="protests.html_Files/ZuKECHK02eEdPldR.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="protests.html_Files/ZuKECHK02eEdPldR.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="protests.html_Files/9bcca68278801417670c6a7113f020ba.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curbs#2663" data-user-id="754849491143753869" style="color: rgb(241,196,15)">CurbShifter</span>
+
+
+        <span class="chatlog__timestamp">04-Aug-21 03:32 PM</span>
+
+            <div class="chatlog__message " data-message-id="872472161116385280" id="message-872472161116385280">
+                <div class="chatlog__content">
+                    <div class="markdown">France keep going <img class="emoji " alt="hyperz" title="hyperz" src="https://cdn.discordapp.com/emojis/806258201737035795.png"> 
+<a href="https://fxtwitter.com/i/status/1422211007301226499">https://fxtwitter.com/i/status/1422211007301226499</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(67,181,129,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+The streets of France are laden once again with Protesters. 100,000s in Paris, Strasbourg, Marseille, Toulouse and many more towns, all demonstrating against mandatory vaccines and vaccine...                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://fxtwitter.com/i/status/1422211007301226499">
+                                                    <div class="markdown">Darren of Plymouth <img class="emoji " alt="🇬🇧" title="🇬🇧" src="https://twemoji.maxcdn.com/2/72x72/1f1ec-1f1e7.png"></div>
+                                                </a>
+                                        </div>
+
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="protests.html_Files/hRzVghj9z2-VY-s0.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="protests.html_Files/hRzVghj9z2-VY-s0.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="hyperz" title="hyperz" src="protests.html_Files/806258201737035795.png">
+                                <span class="chatlog__reaction-count">2</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="vote_yes" title="vote_yes" src="protests.html_Files/806258203574665223.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="protests.html_Files/9daca66f480d04fcd3b6de91aeb294a8.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon07#4800" data-user-id="622453000962834453" style="color: rgb(241,196,15)">mejon07</span>
+
+
+        <span class="chatlog__timestamp">06-Aug-21 04:01 AM</span>
+
+            <div class="chatlog__message " data-message-id="873022907163508766" id="message-873022907163508766">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://sociable.co/government-and-policy/citizens-against-vaccine-passports-lockdowns-medical-apartheid/">https://sociable.co/government-and-policy/citizens-against-vaccine-passports-lockdowns-medical-apartheid/</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://sociable.co/author/timmy/">Tim Hinchliffe</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://sociable.co/government-and-policy/citizens-against-vaccine-passports-lockdowns-medical-apartheid/">
+                                                    <div class="markdown">Citizens All Over the World Rise Up Against Vaccine Passports, Lock...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">A visual look at citizens all over the world who are rising up against vaccine passports, health passes &amp; lockdowns resulting in medical apartheid.</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="protests.html_Files/freedom.png">
+                                            <img class="chatlog__embed-thumbnail" src="protests.html_Files/freedom.png" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="hyperz" title="hyperz" src="protests.html_Files/806258201737035795.png">
+                                <span class="chatlog__reaction-count">2</span>
+                            </div>
+                    </div>
+            </div>
+            <div class="chatlog__message " data-message-id="873023862814695455" id="message-873023862814695455">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://fxtwitter.com/ElectionWiz/status/1423406410075889664">https://fxtwitter.com/ElectionWiz/status/1423406410075889664</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(67,181,129,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/ElectionWiz/status/1423406410075889664">French Protesters outside the Constitutional Council chant: &quot;Macron, your pass, we don&#39;t want it!&quot;</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://fxtwitter.com/ElectionWiz/status/1423406410075889664">
+                                                    <div class="markdown">Election Wizard</div>
+                                                </a>
+                                        </div>
+
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="protests.html_Files/qx_keZLtOiW89woi.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="protests.html_Files/qx_keZLtOiW89woi.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="873024099851575296" id="message-873024099851575296">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://fxtwitter.com/TheInsiderPaper/status/1423463901505724416">https://fxtwitter.com/TheInsiderPaper/status/1423463901505724416</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(67,181,129,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/TheInsiderPaper/status/1423463901505724416">BREAKING &#128680; St. Vincent Prime Minister badly injured during protests in country against the amendments to the public health bill and mandatory vaccination</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://fxtwitter.com/TheInsiderPaper/status/1423463901505724416">
+                                                    <div class="markdown">Insider Paper</div>
+                                                </a>
+                                        </div>
+
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="protests.html_Files/k3tS9a3-wk3RLuCu.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="protests.html_Files/k3tS9a3-wk3RLuCu.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="peep00" title="peep00" src="protests.html_Files/806258201850413107.png">
+                                <span class="chatlog__reaction-count">2</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="protests.html_Files/9bcca68278801417670c6a7113f020ba.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curbs#2663" data-user-id="754849491143753869" style="color: rgb(241,196,15)">CurbShifter</span>
+
+
+        <span class="chatlog__timestamp">06-Aug-21 12:57 PM</span>
+
+            <div class="chatlog__message " data-message-id="873157756029374465" id="message-873157756029374465">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://fxtwitter.com/DanielScoland/status/1423397166941446144?s=20">https://fxtwitter.com/DanielScoland/status/1423397166941446144?s=20</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(67,181,129,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/DanielScoland/status/1423397166941446144">The real power is in the ppl , watch the whole thing  &amp; never forget they are few we are manyyyyy</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://fxtwitter.com/DanielScoland/status/1423397166941446144?s=20">
+                                                    <div class="markdown">DanielScoland</div>
+                                                </a>
+                                        </div>
+
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="protests.html_Files/JzX3CHj8XYJm7tgK.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="protests.html_Files/JzX3CHj8XYJm7tgK.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="feelsgoodman" title="feelsgoodman" src="protests.html_Files/806258202605912195.png">
+                                <span class="chatlog__reaction-count">2</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="protests.html_Files/9bcca68278801417670c6a7113f020ba.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curbs#2663" data-user-id="754849491143753869" style="color: rgb(241,196,15)">CurbShifter</span>
+
+
+        <span class="chatlog__timestamp">06-Aug-21 02:01 PM</span>
+
+            <div class="chatlog__message " data-message-id="873173862102212651" id="message-873173862102212651">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://fxtwitter.com/NiemandsKnegt/status/1423611405752803342?s=20">https://fxtwitter.com/NiemandsKnegt/status/1423611405752803342?s=20</a>
+<div class="quote">Turin Flag of Italy , 5-8-2021
+</div>&gt; 
+<div class="quote"> Impressive protest against #GreenpassObbligatorio last night in Turin.
+</div>&gt; 
+<div class="quote"> Fortunately, mainstream media adhere to the Fairness Doctrine, so the worldwide protests against COVID-19 policy also receive full attention...</div> <span class="chatlog__edited-timestamp" title="06-Aug-21 02:01 PM">(edited)</span></div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(67,181,129,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/NiemandsKnegt/status/1423611405752803342">Turijn &#127470;&#127481;, 5-8-2021 Indrukwekkend protest tegen #GreenpassObbligatorio gisteravond in Turijn. Gelukkig houden reguliere media zich aan de Fairness Doctrine dus ook de wereldwijde protesten tegen...</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://fxtwitter.com/NiemandsKnegt/status/1423611405752803342?s=20">
+                                                    <div class="markdown">Niemands Knegt</div>
+                                                </a>
+                                        </div>
+
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="protests.html_Files/4EHdl-nl-fqnBGPV.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="protests.html_Files/4EHdl-nl-fqnBGPV.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="ooh" title="ooh" src="protests.html_Files/806258203121287199.png">
+                                <span class="chatlog__reaction-count">2</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="protests.html_Files/9bcca68278801417670c6a7113f020ba.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curbs#2663" data-user-id="754849491143753869" style="color: rgb(241,196,15)">CurbShifter</span>
+
+
+        <span class="chatlog__timestamp">07-Aug-21 09:39 AM</span>
+
+            <div class="chatlog__message " data-message-id="873470499525656587" id="message-873470499525656587">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://fxtwitter.com/INVESTMENTSHULK/status/1423837720732962819?s=19">https://fxtwitter.com/INVESTMENTSHULK/status/1423837720732962819?s=19</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(67,181,129,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/INVESTMENTSHULK/status/1423837720732962819">PROTEST ON ISLAND OF ST. VINCENT AGAINST MANDATORY VACCINATION.
+
+PRIME MINISTER HOSPITALIZED WITH HEAD INJURY.</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://fxtwitter.com/INVESTMENTSHULK/status/1423837720732962819?s=19">
+                                                    <div class="markdown">INVESTMENT HULK</div>
+                                                </a>
+                                        </div>
+
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="protests.html_Files/k3tS9a3-wk3RLuCu.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="protests.html_Files/k3tS9a3-wk3RLuCu.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="protests.html_Files/9daca66f480d04fcd3b6de91aeb294a8.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon07#4800" data-user-id="622453000962834453" style="color: rgb(241,196,15)">mejon07</span>
+
+
+        <span class="chatlog__timestamp">07-Aug-21 04:25 PM</span>
+
+            <div class="chatlog__message " data-message-id="873572503258279978" id="message-873572503258279978">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://fxtwitter.com/awareness_4all/status/1423993055288467459">https://fxtwitter.com/awareness_4all/status/1423993055288467459</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(67,181,129,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/awareness_4all/status/1423993055288467459">Large anti vaccine passport protests are underway in Paris and other French cities.  Not on BBC.</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://fxtwitter.com/awareness_4all/status/1423993055288467459">
+                                                    <div class="markdown">The_Awareness_Foundation</div>
+                                                </a>
+                                        </div>
+
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="protests.html_Files/d-4h-cGbqHcM_gtx.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="protests.html_Files/d-4h-cGbqHcM_gtx.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="hyperz" title="hyperz" src="protests.html_Files/806258201737035795.png">
+                                <span class="chatlog__reaction-count">3</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="protests.html_Files/fc9aacc4e168871a180a0a0c6a2c1e3f.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Lal#0817" data-user-id="721787996403400736" style="color: rgb(54,117,255)">Lal</span>
+
+
+        <span class="chatlog__timestamp">07-Aug-21 07:14 PM</span>
+
+            <div class="chatlog__message " data-message-id="873615007311593555" id="message-873615007311593555">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://twitter.com/Marco_cgr/status/1423974739471654925?s=09">https://twitter.com/Marco_cgr/status/1423974739471654925?s=09</a>  <img class="emoji " alt="hyperz" title="hyperz" src="https://cdn.discordapp.com/emojis/806258201737035795.png"> <span class="chatlog__edited-timestamp" title="07-Aug-21 07:15 PM">(edited)</span></div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(29,161,242,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+                                                <img class="chatlog__embed-author-icon" src="protests.html_Files/Zk-jq_PL_bigger.jpg" alt="Author icon">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/Marco_cgr">Marc-Olivier Chataignier (@Marco_cgr)</a>
+                                                </span>
+                                        </div>
+
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Paris - Entr&#233;e de la manifestation dans Paris.
+
+#Manifs7aout #PassSanitaire #ManifestationAntiPassSanitaire #manifestation7aout #Paris <a href="https://t.co/T6IjLG5zDb">https://t.co/T6IjLG5zDb</a></div>
+                                        </div>
+
+                                        <div class="chatlog__embed-fields">
+                                                <div class="chatlog__embed-field chatlog__embed-field--inline">
+                                                        <div class="chatlog__embed-field-name">
+                                                            <div class="markdown">Retweets</div>
+                                                        </div>
+
+                                                        <div class="chatlog__embed-field-value">
+                                                            <div class="markdown">403</div>
+                                                        </div>
+                                                </div>
+                                                <div class="chatlog__embed-field chatlog__embed-field--inline">
+                                                        <div class="chatlog__embed-field-name">
+                                                            <div class="markdown">Likes</div>
+                                                        </div>
+
+                                                        <div class="chatlog__embed-field-value">
+                                                            <div class="markdown">772</div>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                </div>
+
+                            </div>
+
+                                <div class="chatlog__embed-image-container">
+                                    <a class="chatlog__embed-image-link" href="protests.html_Files/WFJyJsWaSTxFziyx.jpg">
+                                        <img class="chatlog__embed-image" src="protests.html_Files/WFJyJsWaSTxFziyx.jpg" alt="Image">
+                                    </a>
+                                </div>
+
+                                <div class="chatlog__embed-footer">
+                                        <img class="chatlog__embed-footer-icon" src="protests.html_Files/apple-touch-icon-192x192.png" alt="Footer icon">
+
+                                        <span class="chatlog__embed-footer-text">
+Twitter
+ • 
+07-Aug-21 01:50 PM                                        </span>
+                                </div>
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="&#128077;" title="&#128077;" src="protests.html_Files/1f44d.png">
+                                <span class="chatlog__reaction-count">3</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="protests.html_Files/fc9aacc4e168871a180a0a0c6a2c1e3f.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Lal#0817" data-user-id="721787996403400736" style="color: rgb(54,117,255)">Lal</span>
+
+
+        <span class="chatlog__timestamp">07-Aug-21 07:23 PM</span>
+
+            <div class="chatlog__message " data-message-id="873617340699394109" id="message-873617340699394109">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://twitter.com/GillianMcKeith/status/1424010839502163971?s=09">https://twitter.com/GillianMcKeith/status/1424010839502163971?s=09</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(29,161,242,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+                                                <img class="chatlog__embed-author-icon" src="protests.html_Files/ZsXQlZ5c_bigger.png" alt="Author icon">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/GillianMcKeith">Gillian McKeith (@GillianMcKeith)</a>
+                                                </span>
+                                        </div>
+
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">It’s getting very tense in Toulouse, France .  The citizens demand freedom. They want it now. #EnoughIsEnough #manif7aout #france #NonAuPasseportSanitaire #NonAuPasseDeLaHonte #NoVaccinePassportsAnywhere <a href="https://t.co/eQLMHyVuu2">https://t.co/eQLMHyVuu2</a></div>
+                                        </div>
+
+                                        <div class="chatlog__embed-fields">
+                                                <div class="chatlog__embed-field chatlog__embed-field--inline">
+                                                        <div class="chatlog__embed-field-name">
+                                                            <div class="markdown">Retweets</div>
+                                                        </div>
+
+                                                        <div class="chatlog__embed-field-value">
+                                                            <div class="markdown">584</div>
+                                                        </div>
+                                                </div>
+                                                <div class="chatlog__embed-field chatlog__embed-field--inline">
+                                                        <div class="chatlog__embed-field-name">
+                                                            <div class="markdown">Likes</div>
+                                                        </div>
+
+                                                        <div class="chatlog__embed-field-value">
+                                                            <div class="markdown">1369</div>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                </div>
+
+                            </div>
+
+                                <div class="chatlog__embed-image-container">
+                                    <a class="chatlog__embed-image-link" href="protests.html_Files/oEtAm_-qckWhg0Yj.jpg">
+                                        <img class="chatlog__embed-image" src="protests.html_Files/oEtAm_-qckWhg0Yj.jpg" alt="Image">
+                                    </a>
+                                </div>
+
+                                <div class="chatlog__embed-footer">
+                                        <img class="chatlog__embed-footer-icon" src="protests.html_Files/apple-touch-icon-192x192.png" alt="Footer icon">
+
+                                        <span class="chatlog__embed-footer-text">
+Twitter
+ • 
+07-Aug-21 04:13 PM                                        </span>
+                                </div>
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="protests.html_Files/9daca66f480d04fcd3b6de91aeb294a8.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon07#4800" data-user-id="622453000962834453" style="color: rgb(241,196,15)">mejon07</span>
+
+
+        <span class="chatlog__timestamp">07-Aug-21 10:21 PM</span>
+
+            <div class="chatlog__message " data-message-id="873662032325513277" id="message-873662032325513277">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://fxtwitter.com/ElectionWiz/status/1424013111032430595">https://fxtwitter.com/ElectionWiz/status/1424013111032430595</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(67,181,129,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/ElectionWiz/status/1424013111032430595">Firefighters in Marseille, France are leading the procession against vaccine passports.</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://fxtwitter.com/ElectionWiz/status/1424013111032430595">
+                                                    <div class="markdown">Election Wizard</div>
+                                                </a>
+                                        </div>
+
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="protests.html_Files/ZCmich5olgoWT97f.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="protests.html_Files/ZCmich5olgoWT97f.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="protests.html_Files/9daca66f480d04fcd3b6de91aeb294a8.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon07#4800" data-user-id="622453000962834453" style="color: rgb(241,196,15)">mejon07</span>
+
+
+        <span class="chatlog__timestamp">07-Aug-21 10:39 PM</span>
+
+            <div class="chatlog__message " data-message-id="873666569354502224" id="message-873666569354502224">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://fxtwitter.com/BernieSpofforth/status/1423989841553985541">https://fxtwitter.com/BernieSpofforth/status/1423989841553985541</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(67,181,129,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/BernieSpofforth/status/1423989841553985541">Madrid marches. Against COVID regulations.
+
+Democracies of the world uniting to say no to Vaccine passports.
+
+Hold. Your. Line
+
+#NoVaccinePassports #COVID19 #Madrid</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://fxtwitter.com/BernieSpofforth/status/1423989841553985541">
+                                                    <div class="markdown">Bernie&#39;s Tweets</div>
+                                                </a>
+                                        </div>
+
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="protests.html_Files/4j9JpUOcm-4NmFtJ.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="protests.html_Files/4j9JpUOcm-4NmFtJ.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="ooh" title="ooh" src="protests.html_Files/806258203121287199.png">
+                                <span class="chatlog__reaction-count">3</span>
+                            </div>
+                    </div>
+            </div>
+            <div class="chatlog__message " data-message-id="873666841141198908" id="message-873666841141198908">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://fxtwitter.com/BernieSpofforth/status/1423958763007053824">https://fxtwitter.com/BernieSpofforth/status/1423958763007053824</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(67,181,129,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/BernieSpofforth/status/1423958763007053824">Italians burning their proof of vaccination passes. They refuse to comply with the creation of a two tier society, one that doesn’t protect anyone, it simply discriminates. #NoVaccinePassports...</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://fxtwitter.com/BernieSpofforth/status/1423958763007053824">
+                                                    <div class="markdown">Bernie&#39;s Tweets</div>
+                                                </a>
+                                        </div>
+
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="protests.html_Files/237DZKRO8I3Q20dj.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="protests.html_Files/237DZKRO8I3Q20dj.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="&#127379;" title="&#127379;" src="protests.html_Files/1f193.png">
+                                <span class="chatlog__reaction-count">2</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="hyperz" title="hyperz" src="protests.html_Files/806258201737035795.png">
+                                <span class="chatlog__reaction-count">2</span>
+                            </div>
+                    </div>
+            </div>
+            <div class="chatlog__message " data-message-id="873666855271817216" id="message-873666855271817216">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://fxtwitter.com/TruthSeeker1020/status/1424011760873398273">https://fxtwitter.com/TruthSeeker1020/status/1424011760873398273</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(67,181,129,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/TruthSeeker1020/status/1424011760873398273">August 6, 2021
+
+&#127470;&#127481;&#128170;
+❌&#128137;&#128683;
+
+#Italians in #Pesaro went to mayor Matteo Ricci&#39;s house to #protest against the #tyrannical #covidpassports .
+
+&#127470;&#127481;&#128170;
+#Italy
+#vaccine
+#antivaccine</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://fxtwitter.com/TruthSeeker1020/status/1424011760873398273">
+                                                    <div class="markdown">NO ❌<img class="emoji " alt="🚫" title="🚫" src="https://twemoji.maxcdn.com/2/72x72/1f6ab.png">mRNA VAX <img class="emoji " alt="🚫" title="🚫" src="https://twemoji.maxcdn.com/2/72x72/1f6ab.png">❌ <img class="emoji " alt="🇺🇸" title="🇺🇸" src="https://twemoji.maxcdn.com/2/72x72/1f1fa-1f1f8.png"> WakeUp America! <img class="emoji " alt="🇺🇸" title="🇺🇸" src="https://twemoji.maxcdn.com/2/72x72/1f1fa-1f1f8.png"></div>
+                                                </a>
+                                        </div>
+
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="protests.html_Files/GaOfGPTpPWTYzxWN.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="protests.html_Files/GaOfGPTpPWTYzxWN.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="protests.html_Files/9daca66f480d04fcd3b6de91aeb294a8.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon07#4800" data-user-id="622453000962834453" style="color: rgb(241,196,15)">mejon07</span>
+
+
+        <span class="chatlog__timestamp">07-Aug-21 10:47 PM</span>
+
+            <div class="chatlog__message " data-message-id="873668666267406397" id="message-873668666267406397">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://fxtwitter.com/BananaMediaQ/status/1424085340571189250">https://fxtwitter.com/BananaMediaQ/status/1424085340571189250</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(67,181,129,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/BananaMediaQ/status/1424085340571189250">&#127470;&#127481; Italy - Rome (Roma) In over 80 cities in Italy people gather to protest against the #GreenPass #NoGreenPass #NoVaccineApartheid #NoVaccinePassports #NonAuPassSanitaire #NoGreenPassObbligatorio...</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://fxtwitter.com/BananaMediaQ/status/1424085340571189250">
+                                                    <div class="markdown"><img class="emoji " alt="🍌" title="🍌" src="https://twemoji.maxcdn.com/2/72x72/1f34c.png"> BMedia <img class="emoji " alt="🇳🇱" title="🇳🇱" src="https://twemoji.maxcdn.com/2/72x72/1f1f3-1f1f1.png"></div>
+                                                </a>
+                                        </div>
+
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="protests.html_Files/LlHx091AvDcLK2_8.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="protests.html_Files/LlHx091AvDcLK2_8.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="hyperz" title="hyperz" src="protests.html_Files/806258201737035795.png">
+                                <span class="chatlog__reaction-count">2</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="protests.html_Files/9daca66f480d04fcd3b6de91aeb294a8.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon07#4800" data-user-id="622453000962834453" style="color: rgb(241,196,15)">mejon07</span>
+
+
+        <span class="chatlog__timestamp">08-Aug-21 11:10 AM</span>
+
+            <div class="chatlog__message " data-message-id="873855705243861004" id="message-873855705243861004">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://fxtwitter.com/ATLEASTDIETRYN/status/1424145364819472385">https://fxtwitter.com/ATLEASTDIETRYN/status/1424145364819472385</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(67,181,129,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/ATLEASTDIETRYN/status/1424145364819472385">Poland &#127477;&#127473; Anti WAX Passport Rally &#128165;</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://fxtwitter.com/ATLEASTDIETRYN/status/1424145364819472385">
+                                                    <div class="markdown"><img class="emoji " alt="𝙇" title="𝙇" src="https://twemoji.maxcdn.com/2/72x72/1d647.png"><img class="emoji " alt="𝙏" title="𝙏" src="https://twemoji.maxcdn.com/2/72x72/1d64f.png"><img class="emoji " alt="𝙍" title="𝙍" src="https://twemoji.maxcdn.com/2/72x72/1d64d.png"><img class="emoji " alt="𝙉" title="𝙉" src="https://twemoji.maxcdn.com/2/72x72/1d649.png">8 <img class="emoji " alt="𝙀" title="𝙀" src="https://twemoji.maxcdn.com/2/72x72/1d640.png"><img class="emoji " alt="𝙉" title="𝙉" src="https://twemoji.maxcdn.com/2/72x72/1d649.png"><img class="emoji " alt="𝘿" title="𝘿" src="https://twemoji.maxcdn.com/2/72x72/1d63f.png"><img class="emoji " alt="𝙉" title="𝙉" src="https://twemoji.maxcdn.com/2/72x72/1d649.png"></div>
+                                                </a>
+                                        </div>
+
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="protests.html_Files/F3gwsJqd145NeRB4.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="protests.html_Files/F3gwsJqd145NeRB4.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="hyperz" title="hyperz" src="protests.html_Files/806258201737035795.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+</div>
+
+<div class="postamble">
+    <div class="postamble__entry">Exported 40 message(s)</div>
+</div>
+
+</body>
+</html>
