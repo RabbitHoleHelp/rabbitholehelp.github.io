@@ -1,0 +1,2029 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>rabbithole.help part 2 - &#128250;-livestreams</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+
+    <style>
+        /* General */
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-300.woff);
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-400.woff);
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-500.woff);
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-600.woff);
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-700.woff);
+    font-weight: 700;
+}
+
+body {
+    font-family: "Whitney", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 17px;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+img {
+    object-fit: contain;
+}
+
+.markdown {
+    max-width: 100%;
+    white-space: pre-wrap;
+    line-height: 1.3;
+    overflow-wrap: break-word;
+}
+
+.spoiler {
+    width: fit-content;
+}
+
+.spoiler--hidden {
+    cursor: pointer;
+}
+
+.spoiler-text {
+    border-radius: 3px;
+}
+
+.spoiler--hidden .spoiler-text {
+    color: rgba(0, 0, 0, 0);
+}
+
+.spoiler--hidden .spoiler-text::selection {
+    color: rgba(0, 0, 0, 0);
+}
+
+.spoiler-image {
+    position: relative;
+    overflow: hidden;
+    border-radius: 3px;
+}
+
+.spoiler--hidden .spoiler-image {
+    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.spoiler--hidden .spoiler-image img {
+    filter: blur(44px);
+}
+
+.spoiler--hidden .spoiler-image:after {
+    content: "SPOILER";
+    color: #dcddde;
+    background-color: rgba(0, 0, 0, 0.6);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: 600;
+    padding: 0.5em 0.7em;
+    border-radius: 20px;
+    letter-spacing: 0.05em;
+    font-size: 0.9em;
+}
+
+.spoiler--hidden:hover .spoiler-image:after {
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.quote {
+    margin: 0.1em 0;
+    padding-left: 0.6em;
+    border-left: 4px solid;
+    border-radius: 3px;
+}
+
+.pre {
+    font-family: "Consolas", "Courier New", Courier, monospace;
+}
+
+.pre--multiline {
+    margin-top: 0.25em;
+    padding: 0.5em;
+    border: 2px solid;
+    border-radius: 5px;
+}
+
+.pre--inline {
+    padding: 2px;
+    border-radius: 3px;
+    font-size: 0.85em;
+}
+
+.mention {
+    border-radius: 3px;
+    padding: 0 2px;
+    color: #7289da;
+    background: rgba(114, 137, 218, .1);
+    font-weight: 500;
+}
+
+.emoji {
+    width: 1.25em;
+    height: 1.25em;
+    margin: 0 0.06em;
+    vertical-align: -0.4em;
+}
+
+.emoji--small {
+    width: 1em;
+    height: 1em;
+}
+
+.emoji--large {
+    width: 2.8em;
+    height: 2.8em;
+}
+
+/* Preamble */
+
+.preamble {
+    display: grid;
+    margin: 0 0.3em 0.6em 0.3em;
+    max-width: 100%;
+    grid-template-columns: auto 1fr;
+}
+
+.preamble__guild-icon-container {
+    grid-column: 1;
+}
+
+.preamble__guild-icon {
+    max-width: 88px;
+    max-height: 88px;
+}
+
+.preamble__entries-container {
+    grid-column: 2;
+    margin-left: 0.6em;
+}
+
+.preamble__entry {
+    font-size: 1.4em;
+}
+
+.preamble__entry--small {
+    font-size: 1em;
+}
+
+/* Chatlog */
+
+.chatlog {
+    max-width: 100%;
+}
+
+.chatlog__message-group {
+    display: grid;
+    margin: 0 0.6em;
+    padding: 0.9em 0;
+    border-top: 1px solid;
+    grid-template-columns: auto 1fr;
+}
+
+.chatlog__author-avatar-container {
+    grid-column: 1;
+    width: 40px;
+    height: 40px;
+}
+
+.chatlog__author-avatar {
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+}
+
+.chatlog__messages {
+    grid-column: 2;
+    margin-left: 1.2em;
+    min-width: 50%;
+}
+
+.chatlog__author-name {
+    font-weight: 500;
+}
+
+.chatlog__timestamp {
+    margin-left: 0.3em;
+    font-size: 0.75em;
+}
+
+.chatlog__message {
+    padding: 0.1em 0.3em;
+    margin: 0 -0.3em;
+    background-color: transparent;
+    transition: background-color 1s ease;
+}
+
+.chatlog__content {
+    font-size: 0.95em;
+    word-wrap: break-word;
+}
+
+.chatlog__edited-timestamp {
+    margin-left: 0.15em;
+    font-size: 0.8em;
+}
+
+.chatlog__attachment {
+    margin-top: 0.3em;
+}
+
+.chatlog__attachment-thumbnail {
+    vertical-align: top;
+    max-width: 45vw;
+    max-height: 500px;
+    border-radius: 3px;
+}
+
+.chatlog__embed {
+    display: flex;
+    margin-top: 0.3em;
+    max-width: 520px;
+}
+
+.chatlog__embed-color-pill {
+    flex-shrink: 0;
+    width: 0.25em;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
+.chatlog__embed-content-container {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5em 0.6em;
+    border: 1px solid;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+.chatlog__embed-content {
+    display: flex;
+    width: 100%;
+}
+
+.chatlog__embed-text {
+    flex: 1;
+}
+
+.chatlog__embed-author {
+    display: flex;
+    margin-bottom: 0.3em;
+    align-items: center;
+}
+
+.chatlog__embed-author-icon {
+    margin-right: 0.5em;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+.chatlog__embed-author-name {
+    font-size: 0.875em;
+    font-weight: 600;
+}
+
+.chatlog__embed-title {
+    margin-bottom: 0.2em;
+    font-size: 0.875em;
+    font-weight: 600;
+}
+
+.chatlog__embed-description {
+    font-weight: 500;
+    font-size: 0.85em;
+}
+
+.chatlog__embed-fields {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.chatlog__embed-field {
+    flex: 0;
+    min-width: 100%;
+    max-width: 506px;
+    padding-top: 0.6em;
+    font-size: 0.875em;
+}
+
+.chatlog__embed-field--inline {
+    flex: 1;
+    flex-basis: auto;
+    min-width: 150px;
+}
+
+.chatlog__embed-field-name {
+    margin-bottom: 0.2em;
+    font-weight: 600;
+}
+
+.chatlog__embed-field-value {
+    font-weight: 500;
+}
+
+.chatlog__embed-thumbnail {
+    flex: 0;
+    margin-left: 1.2em;
+    max-width: 80px;
+    max-height: 80px;
+    border-radius: 3px;
+}
+
+.chatlog__embed-image-container {
+    margin-top: 0.6em;
+}
+
+.chatlog__embed-image {
+    max-width: 500px;
+    max-height: 400px;
+    border-radius: 3px;
+}
+
+.chatlog__embed-footer {
+    margin-top: 0.6em;
+}
+
+.chatlog__embed-footer-icon {
+    margin-right: 0.2em;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+
+.chatlog__embed-footer-text {
+    font-size: 0.75em;
+    font-weight: 500;
+}
+
+.chatlog__reactions {
+    display: flex;
+}
+
+.chatlog__reaction {
+    display: flex;
+    align-items: center;
+    margin: 0.35em 0.1em 0.1em 0.1em;
+    padding: 0.2em 0.35em;
+    border-radius: 3px;
+}
+
+.chatlog__reaction-count {
+    min-width: 9px;
+    margin-left: 0.35em;
+    font-size: 0.875em;
+}
+
+.chatlog__bot-tag {
+    position: relative;
+    top: -.2em;
+    margin-left: 0.3em;
+    padding: 0.05em 0.3em;
+    border-radius: 3px;
+    vertical-align: middle;
+    line-height: 1.3;
+    background: #7289da;
+    color: #ffffff;
+    font-size: 0.625em;
+    font-weight: 500;
+}
+
+/* Postamble */
+
+.postamble {
+    margin: 1.4em 0.3em 0.6em 0.3em;
+    padding: 1em;
+    border-top: 1px solid;
+}
+    </style>
+    <style>
+        /* General */
+
+body {
+    background-color: #36393e;
+    color: #dcddde;
+}
+
+a {
+    color: #0096cf;
+}
+
+.spoiler-text {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.spoiler--hidden .spoiler-text {
+    background-color: #202225;
+}
+
+.spoiler--hidden:hover .spoiler-text {
+    background-color: rgba(32, 34, 37, 0.8);
+}
+
+.quote {
+    border-color: #4f545c;
+}
+
+.pre {
+    background-color: #2f3136 !important;
+}
+
+.pre--multiline {
+    border-color: #282b30 !important;
+    color: #b9bbbe !important;
+}
+
+/* === Preamble === */
+
+.preamble__entry {
+    color: #ffffff;
+}
+
+/* Chatlog */
+
+.chatlog__message-group {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.chatlog__author-name {
+    color: #ffffff;
+}
+
+.chatlog__timestamp {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.chatlog__message--highlighted {
+    background-color: rgba(114, 137, 218, 0.2) !important;
+}
+
+.chatlog__message--pinned {
+    background-color: rgba(249, 168, 37, 0.05);
+}
+
+.chatlog__edited-timestamp {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.chatlog__embed-color-pill--default {
+    background-color: rgba(79, 84, 92, 1);
+}
+
+.chatlog__embed-content-container {
+    background-color: rgba(46, 48, 54, 0.3);
+    border-color: rgba(46, 48, 54, 0.6);
+}
+
+.chatlog__embed-author-name {
+    color: #ffffff;
+}
+
+.chatlog__embed-author-name-link {
+    color: #ffffff;
+}
+
+.chatlog__embed-title {
+    color: #ffffff;
+}
+
+.chatlog__embed-description {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__embed-field-name {
+    color: #ffffff;
+}
+
+.chatlog__embed-field-value {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__embed-footer {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__reaction {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.chatlog__reaction-count {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+/* Postamble */
+
+.postamble {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.postamble__entry {
+    color: #ffffff;
+}
+    </style>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/solarized-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.pre--multiline').forEach(block => hljs.highlightBlock(block));
+        });
+    </script>
+
+    <script>
+        function scrollToMessage(event, id) {
+            var element = document.getElementById('message-' + id);
+
+            if (element) {
+                event.preventDefault();
+
+                element.classList.add('chatlog__message--highlighted');
+
+                window.scrollTo({
+                    top: element.getBoundingClientRect().top - document.body.getBoundingClientRect().top - (window.innerHeight / 2),
+                    behavior: 'smooth'
+                });
+
+                window.setTimeout(function() {
+                    element.classList.remove('chatlog__message--highlighted');
+                }, 2000);
+            }
+        }
+
+        function showSpoiler(event, element) {
+            if (element && element.classList.contains('spoiler--hidden')) {
+                event.preventDefault();
+                element.classList.remove('spoiler--hidden');
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="preamble">
+    <div class="preamble__guild-icon-container">
+        <img class="preamble__guild-icon" src="https://cdn.discordapp.com/icons/806245424394534953/95447a8568250a8fbeb474229185859a.png" alt="Guild icon">
+    </div>
+    <div class="preamble__entries-container">
+        <div class="preamble__entry">rabbithole.help part 2</div>
+        <div class="preamble__entry">Research sharing / &#128250;-livestreams</div>
+
+
+            <div class="preamble__entry preamble__entry--small">
+Between 01-Nov-21 12:00 AM and 01-Dec-21 12:00 AM            </div>
+    </div>
+</div>
+
+<div class="chatlog">
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/720810291943833683/e82688e1e002c89f702ce283776bb7b8.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="alt-theories#7036" data-user-id="720810291943833683" style="color: rgb(54,117,255)">alt-theories</span>
+
+
+        <span class="chatlog__timestamp">01-Nov-21 01:37 PM</span>
+
+            <div class="chatlog__message " data-message-id="904710731533008926" id="message-904710731533008926">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://youtu.be/oofxDQQKE7M">https://youtu.be/oofxDQQKE7M</a> <img class="emoji " alt="gulag" title="gulag" src="https://cdn.discordapp.com/emojis/808835879694368849.png"> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCuLEr-GWiwCBB6zBDX3elOQ">UN Climate Change</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=oofxDQQKE7M">
+                                                    <div class="markdown">COP26: Opening Ceremony - World Leaders Summit</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">World Leaders are invited to the Opening Ceremony, hosted by the UK Prime Minister Boris Johnson, welcoming them to the World Leaders Summit of the United Nations Climate Change Conference (COP26).
+
+UNFCCC on Twitter: twitter.com/UNFCCC
+UNFCCC on Instagram: instagram.com/UNclimatechange
+UNFCCC on Facebook: facebook.com/UNclimatechange
+Watch more...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://i.ytimg.com/vi/oofxDQQKE7M/maxresdefault_live.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="https://i.ytimg.com/vi/oofxDQQKE7M/maxresdefault_live.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="NWOpepe" title="NWOpepe" src="https://cdn.discordapp.com/emojis/806258202475364393.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/231478530381185025/706ac50391621375bb7e6fb613ccb1fd.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Proioxis#5218" data-user-id="231478530381185025" style="color: rgb(241,196,15)">Proioxis</span>
+
+
+        <span class="chatlog__timestamp">05-Nov-21 10:02 PM</span>
+
+            <div class="chatlog__message " data-message-id="906287462752604171" id="message-906287462752604171">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.youtube.com/watch?v=obIAj_sa98M">https://www.youtube.com/watch?v=obIAj_sa98M</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCnGBNHhhgXeTjmqM_C-drsg">Subject Access</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=obIAj_sa98M">
+                                                    <div class="markdown">Million Mask March - London l Camera 2</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Thanks for watching the video. If you really enjoyed it then hit the LIKE button, COMMENT your suggestions, SHARE it with your friends and don&#39;t forget to SUBSCRIBE the channel, Thanks!!
+
+
+The Million Mask March will be covered with 2 streams. This is the first time it&#39;s been done on this channel. check out &#39;One Man Reports&#39; who helped Make this...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://i.ytimg.com/vi/obIAj_sa98M/maxresdefault_live.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="https://i.ytimg.com/vi/obIAj_sa98M/maxresdefault_live.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="peep00" title="peep00" src="https://cdn.discordapp.com/emojis/806258201850413107.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/754849491143753869/9bcca68278801417670c6a7113f020ba.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curbs#2663" data-user-id="754849491143753869" style="color: rgb(241,196,15)">CurbShifter</span>
+
+
+        <span class="chatlog__timestamp">07-Nov-21 12:10 AM</span>
+
+            <div class="chatlog__message " data-message-id="906682009336836190" id="message-906682009336836190">
+                <div class="chatlog__content">
+                    <div class="markdown">meanwhile la palma still going
+<a href="https://www.youtube.com/watch?v=9mXdH7Zxauw">https://www.youtube.com/watch?v=9mXdH7Zxauw</a> </div>
+                </div>
+
+                    <div class="chatlog__attachment">
+                            <a href="https://cdn.discordapp.com/attachments/806246801186226216/906682009995325440/unknown.png">
+                                    <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/806246801186226216/906682009995325440/unknown.png" alt="Attachment">
+                            </a>
+                    </div>
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCaG0IHN1RMOZ4-U3wDXAkwA">afarTV</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=9mXdH7Zxauw">
+                                                    <div class="markdown"><img class="emoji " alt="🌎" title="🌎" src="https://twemoji.maxcdn.com/2/72x72/1f30e.png"> LIVE: La Palma Volcano Eruption, the Canary Islands (Feed #2)</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">A volcanic eruption began on Sunday, September 19th at the Cumbre Vieja de La Palma, in the Las Manchas area, after thousands of earthquakes have been registered in the area in recent days, where a huge column of volcanic materials can be seen.
+
+To help the people of La Palma who have lost their homes, you can make a donation here: <a href="https://www2">https://www2</a>....</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://i.ytimg.com/vi/9mXdH7Zxauw/maxresdefault_live.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="https://i.ytimg.com/vi/9mXdH7Zxauw/maxresdefault_live.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/231478530381185025/706ac50391621375bb7e6fb613ccb1fd.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Proioxis#5218" data-user-id="231478530381185025" style="color: rgb(241,196,15)">Proioxis</span>
+
+
+        <span class="chatlog__timestamp">07-Nov-21 03:20 PM</span>
+
+            <div class="chatlog__message " data-message-id="906911075335819274" id="message-906911075335819274">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.youtube.com/watch?v=PpHULop7Kls">https://www.youtube.com/watch?v=PpHULop7Kls</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCSzPcVLFQurkSPiDrTaSiDw">katja katja GELBWESTEN</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=PpHULop7Kls">
+                                                    <div class="markdown">Den Haag 3</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown"><a href="https://demo.stream/kanal/?id=170">https://demo.stream/kanal/?id=170</a>
+
+
+
+
+Katja auf Telegram
+<a href="https://t.me/Nederland_in_het_verzet">https://t.me/Nederland_in_het_verzet</a>
+<a href="https://t.me/katja_katja_gelbwesten">https://t.me/katja_katja_gelbwesten</a>
+
+&#220;ber eine kleine Schenkung w&#228;ren wir sehr gl&#252;cklich um weiter f&#252;r euch Vorort zu sein. Danke
+IBAN .
+NL14RABO0145028674
+DE67350800700252029100
+
+
+Paul de Hond TV ist eine NON PROFIT Produktion im Auftrag der Gelben Wes...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://i.ytimg.com/vi/PpHULop7Kls/sddefault_live.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="https://i.ytimg.com/vi/PpHULop7Kls/sddefault_live.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/432819332347592704/a_f4dc7cc98c47c6804637604c8bd2163d.gif" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Chronster#3549" data-user-id="432819332347592704" style="">Chronster</span>
+
+
+        <span class="chatlog__timestamp">11-Nov-21 07:40 AM</span>
+
+            <div class="chatlog__message " data-message-id="908244737138499584" id="message-908244737138499584">
+                <div class="chatlog__content">
+                    <div class="markdown"> </div>
+                </div>
+
+                    <div class="chatlog__attachment">
+                            <a href="https://cdn.discordapp.com/attachments/806246801186226216/908244736496791562/video_2021-11-11_17-08-59.mp4">
+Attachment: video_2021-11-11_17-08-59.mp4 (7.86 MB)                            </a>
+                    </div>
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="grabbler" title="grabbler" src="https://cdn.discordapp.com/emojis/806258203527610388.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="gulag" title="gulag" src="https://cdn.discordapp.com/emojis/808835879694368849.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="doom" title="doom" src="https://cdn.discordapp.com/emojis/882725597367918622.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="NWOpepe" title="NWOpepe" src="https://cdn.discordapp.com/emojis/806258202475364393.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/754849491143753869/9bcca68278801417670c6a7113f020ba.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curbs#2663" data-user-id="754849491143753869" style="color: rgb(241,196,15)">CurbShifter</span>
+
+
+        <span class="chatlog__timestamp">19-Nov-21 07:19 PM</span>
+
+            <div class="chatlog__message " data-message-id="911319876226916412" id="message-911319876226916412">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.youtube.com/watch?v=FrNrdTlyk4U">https://www.youtube.com/watch?v=FrNrdTlyk4U</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCpwvZwUam-URkxB7g4USKpg">RT</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=FrNrdTlyk4U">
+                                                    <div class="markdown">Live outside Kenosha County court as jury expected to reach verdict...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Live outside Kenosha County court as jury expected to reach verdict in Rittenhouse trial
+
+#news #trending #currentevents
+--------------------------------------------------------------------------------------------------
+Freedom over censorship, truth over narrative.
+Follow us on Facebook: <a href="https://www.facebook.com/RTnews">https://www.facebook.com/RTnews</a>
+Follow us on TikTok: http...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://i.ytimg.com/vi/FrNrdTlyk4U/maxresdefault_live.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="https://i.ytimg.com/vi/FrNrdTlyk4U/maxresdefault_live.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="911319945122562048" id="message-911319945122562048">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://twitter.com/disclosetv/status/1461759771619569670">https://twitter.com/disclosetv/status/1461759771619569670</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(29,161,242,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+                                                <img class="chatlog__embed-author-icon" src="https://pbs.twimg.com/profile_images/898153945721339904/OFVCkPfR_bigger.jpg" alt="Author icon">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/disclosetv">Disclose.tv (@disclosetv)</a>
+                                                </span>
+                                        </div>
+
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">JUST IN - Jury finds Kyle Rittenhouse NOT GUILTY on all counts.</div>
+                                        </div>
+
+                                </div>
+
+                            </div>
+
+                                <div class="chatlog__embed-image-container">
+                                    <a class="chatlog__embed-image-link" href="https://pbs.twimg.com/media/FEk2qCyWQAIm4ZP.jpg:large">
+                                        <img class="chatlog__embed-image" src="https://pbs.twimg.com/media/FEk2qCyWQAIm4ZP.jpg:large" alt="Image">
+                                    </a>
+                                </div>
+
+                                <div class="chatlog__embed-footer">
+                                        <img class="chatlog__embed-footer-icon" src="https://abs.twimg.com/icons/apple-touch-icon-192x192.png" alt="Footer icon">
+
+                                        <span class="chatlog__embed-footer-text">
+Twitter
+ • 
+19-Nov-21 07:14 PM                                        </span>
+                                </div>
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/0.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Didi#3750" data-user-id="408342581454569472" style="color: rgb(241,196,15)">Didi</span>
+
+
+        <span class="chatlog__timestamp">19-Nov-21 08:40 PM</span>
+
+            <div class="chatlog__message " data-message-id="911340246778654730" id="message-911340246778654730">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.facebook.com/VideoInVerzet/videos/1285687308614903">https://www.facebook.com/VideoInVerzet/videos/1285687308614903</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.facebook.com/VideoInVerzet/videos/1285687308614903">
+                                                    <div class="markdown">Video in Verzet on Facebook Watch</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Rotterdam - Koopgoot Live</div>
+                                        </div>
+
+                                </div>
+
+                            </div>
+
+
+                                <div class="chatlog__embed-footer">
+
+                                        <span class="chatlog__embed-footer-text">
+
+
+19-Nov-21 07:56 PM                                        </span>
+                                </div>
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/754849491143753869/9bcca68278801417670c6a7113f020ba.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curbs#2663" data-user-id="754849491143753869" style="color: rgb(241,196,15)">CurbShifter</span>
+
+
+        <span class="chatlog__timestamp">19-Nov-21 08:51 PM</span>
+
+            <div class="chatlog__message " data-message-id="911342829836587078" id="message-911342829836587078">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.youtube.com/watch?v=CqOckg_cJck">https://www.youtube.com/watch?v=CqOckg_cJck</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCHsFPA7jXz0DMr7c4TlfTFA">friends understand</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=CqOckg_cJck">
+                                                    <div class="markdown">Freedom demonstratie Rotterdam</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Rotterdam en elders, demos protesten en meer, ook wereldwijd
+This stream is created with #PRISMLiveStudio</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://i.ytimg.com/vi/CqOckg_cJck/maxresdefault_live.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="https://i.ytimg.com/vi/CqOckg_cJck/maxresdefault_live.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="911342897872371772" id="message-911342897872371772">
+                <div class="chatlog__content">
+                    <div class="markdown">shit going down cop car on fire </div>
+                </div>
+
+                    <div class="chatlog__attachment">
+                            <a href="https://cdn.discordapp.com/attachments/806246801186226216/911342897595580486/unknown.png">
+                                    <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/806246801186226216/911342897595580486/unknown.png" alt="Attachment">
+                            </a>
+                    </div>
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="911343823693688875" id="message-911343823693688875">
+                <div class="chatlog__content">
+                    <div class="markdown"> </div>
+                </div>
+
+                    <div class="chatlog__attachment">
+                            <a href="https://cdn.discordapp.com/attachments/806246801186226216/911343823844675645/image.png">
+                                    <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/806246801186226216/911343823844675645/image.png" alt="Attachment">
+                            </a>
+                    </div>
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/754849491143753869/9bcca68278801417670c6a7113f020ba.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curbs#2663" data-user-id="754849491143753869" style="color: rgb(241,196,15)">CurbShifter</span>
+
+
+        <span class="chatlog__timestamp">19-Nov-21 10:43 PM</span>
+
+            <div class="chatlog__message " data-message-id="911371057175347230" id="message-911371057175347230">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.youtube.com/watch?v=CsQheWIUB7k">https://www.youtube.com/watch?v=CsQheWIUB7k</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UC5aeU5hk31cLzq_sAExLVWg">Ruptly</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=CsQheWIUB7k">
+                                                    <div class="markdown">[LIVE] Live from Rotterdam as protesters demonstrate against COVID-...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Ruptly is live from Rotterdam on Friday, November 19 as protesters are taking to the streets to demonstrate against COVID-19 restrictions. 
+
+Protesters are demonstrating specifically against the 2G rule, a measure that would bar unvaccinated people from bars, restaurants, leisure and cultural events.</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://i.ytimg.com/vi/CsQheWIUB7k/maxresdefault_live.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="https://i.ytimg.com/vi/CsQheWIUB7k/maxresdefault_live.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/721787996403400736/fc9aacc4e168871a180a0a0c6a2c1e3f.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Lal#0817" data-user-id="721787996403400736" style="color: rgb(54,117,255)">Lal</span>
+
+
+        <span class="chatlog__timestamp">20-Nov-21 01:21 PM</span>
+
+            <div class="chatlog__message " data-message-id="911592009792360499" id="message-911592009792360499">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://youtu.be/oYqKG7vFdnI">https://youtu.be/oYqKG7vFdnI</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UC5aeU5hk31cLzq_sAExLVWg">Ruptly</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=oYqKG7vFdnI">
+                                                    <div class="markdown">LIVE: Protest against COVID restrictions in Vienna as Austria goes ...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Ruptly is live from Vienna on Saturday, November 20, as protesters opposed to coronavirus containment measures take to the streets of the Austrian capital to protest against the government&#39;s decision to impose a full nationwide lockdown starting Monday. 
+ 
+Austria introduced a lockdown for the unvaccinated on Monday, November 15, allowing only t...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://i.ytimg.com/vi/oYqKG7vFdnI/maxresdefault_live.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="https://i.ytimg.com/vi/oYqKG7vFdnI/maxresdefault_live.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="peep00" title="peep00" src="https://cdn.discordapp.com/emojis/806258201850413107.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/754849491143753869/9bcca68278801417670c6a7113f020ba.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curbs#2663" data-user-id="754849491143753869" style="color: rgb(241,196,15)">CurbShifter</span>
+
+
+        <span class="chatlog__timestamp">20-Nov-21 01:48 PM</span>
+
+            <div class="chatlog__message " data-message-id="911598757219553300" id="message-911598757219553300">
+                <div class="chatlog__content">
+                    <div class="markdown"><img class="emoji " alt="🇳🇱" title="🇳🇱" src="https://twemoji.maxcdn.com/2/72x72/1f1f3-1f1f1.png"> 
+<a href="https://www.youtube.com/watch?v=MqrLnA_xqTI">https://www.youtube.com/watch?v=MqrLnA_xqTI</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCHsFPA7jXz0DMr7c4TlfTFA">friends understand</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=MqrLnA_xqTI">
+                                                    <div class="markdown">Wereld wijde demo Div. lives en verse video. Chat, nieuws updates e...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">This stream is created with #PRISMLiveStudio</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://i.ytimg.com/vi/MqrLnA_xqTI/maxresdefault_live.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="https://i.ytimg.com/vi/MqrLnA_xqTI/maxresdefault_live.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/0.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Didi#3750" data-user-id="408342581454569472" style="color: rgb(241,196,15)">Didi</span>
+
+
+        <span class="chatlog__timestamp">20-Nov-21 02:56 PM</span>
+
+            <div class="chatlog__message " data-message-id="911616061600825344" id="message-911616061600825344">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.youtube.com/watch?v=urYvn2w9-gs">https://www.youtube.com/watch?v=urYvn2w9-gs</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCHenXVQHC5O5bv7E__ZfdQg">Donna van der Horst</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=urYvn2w9-gs">
+                                                    <div class="markdown">live De Dam Amsterdam 20-11-2021</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">#liveamsterdam
+#amsterdam
+#20-11-2021
+#20november
+#hartvoorvrijheid
+#dedamamsterdam
+#dedam
+#2g
+#geen2g
+#vrijheid
+#freedom
+#live
+
+
+This stream is created with #PRISMLiveStudio</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://i.ytimg.com/vi/urYvn2w9-gs/maxresdefault_live.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="https://i.ytimg.com/vi/urYvn2w9-gs/maxresdefault_live.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/754849491143753869/9bcca68278801417670c6a7113f020ba.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curbs#2663" data-user-id="754849491143753869" style="color: rgb(241,196,15)">CurbShifter</span>
+
+
+        <span class="chatlog__timestamp">20-Nov-21 03:03 PM</span>
+
+            <div class="chatlog__message " data-message-id="911617846889562154" id="message-911617846889562154">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.youtube.com/watch?v=t9zF2fjg5OM">https://www.youtube.com/watch?v=t9zF2fjg5OM</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCDzLOor54US_1P0LnID-mOA">Another Alternative</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=t9zF2fjg5OM">
+                                                    <div class="markdown">Anti Health Pass Protest - London 20/11/21</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">World Wide Rally For Freedom London, United Kingdom.
+
+Make sure to subscribe to our Telegram Channel:
+<a href="https://t.me/anotheralternative">https://t.me/anotheralternative</a>
+
+Telegram Chat: <a href="https://t.me/anotheralternativechat">https://t.me/anotheralternativechat</a>
+
+Odysee: <a href="https://odysee.com/@anotheralternative:8">https://odysee.com/@anotheralternative:8</a>
+
+Thanks for watching this video. If you enjoyed hit the LIKE button and leave suggestions in the comment sectio...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://i.ytimg.com/vi/t9zF2fjg5OM/sddefault_live.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="https://i.ytimg.com/vi/t9zF2fjg5OM/sddefault_live.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/231478530381185025/706ac50391621375bb7e6fb613ccb1fd.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Proioxis#5218" data-user-id="231478530381185025" style="color: rgb(241,196,15)">Proioxis</span>
+
+
+        <span class="chatlog__timestamp">20-Nov-21 03:03 PM</span>
+
+            <div class="chatlog__message " data-message-id="911617855009730590" id="message-911617855009730590">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.twitch.tv/barryhendelson?tt_content=twitch_logo&tt_medium=embed">https://www.twitch.tv/barryhendelson?tt_content=twitch_logo&amp;tt_medium=embed</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.twitch.tv/barryhendelson?tt_content=twitch_logo&amp;tt_medium=embed">
+                                                    <div class="markdown">barryhendelson - Twitch</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Wereld wijde demo Div. lives en verse video. Chat, nieuws updates en meer</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://static-cdn.jtvnw.net/jtv_user_pictures/71f95e65-ddfb-438b-a9af-7d6f9e466abd-profile_image-300x300.png">
+                                            <img class="chatlog__embed-thumbnail" src="https://static-cdn.jtvnw.net/jtv_user_pictures/71f95e65-ddfb-438b-a9af-7d6f9e466abd-profile_image-300x300.png" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/754849491143753869/9bcca68278801417670c6a7113f020ba.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curbs#2663" data-user-id="754849491143753869" style="color: rgb(241,196,15)">CurbShifter</span>
+
+
+        <span class="chatlog__timestamp">20-Nov-21 03:04 PM</span>
+
+            <div class="chatlog__message " data-message-id="911617902438940722" id="message-911617902438940722">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.youtube.com/watch?v=Lk_ghIzWBwg">https://www.youtube.com/watch?v=Lk_ghIzWBwg</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCS1EeBm6TeQmZXpdRaAzieg">Djemadine</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=Lk_ghIzWBwg">
+                                                    <div class="markdown">Un samedi de manifestation</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Pouce en haut pour contrer les haters !
+Financement participatif : <a href="https://bit.ly/3BCjXUn">https://bit.ly/3BCjXUn</a>
+Abonne-toi : <a href="https://bit.ly/3mN9iQf">https://bit.ly/3mN9iQf</a> et active les notifications stp !
+
+▼ SUIS-MOI ▼
+Telegram : <a href="https://bit.ly/3iZ2Pkm">https://bit.ly/3iZ2Pkm</a>
+Twitter : <a href="https://bit.ly/3AFG1Mm">https://bit.ly/3AFG1Mm</a>
+Instagram : <a href="https://bit.ly/3v4stsC">https://bit.ly/3v4stsC</a>
+Twitch : <a href="https://bit.ly/3lCNvvw">https://bit.ly/3lCNvvw</a>
+Discord : <a href="https://bit.ly/3iWLuIH">https://bit.ly/3iWLuIH</a> (Pour ...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://i.ytimg.com/vi/Lk_ghIzWBwg/sddefault_live.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="https://i.ytimg.com/vi/Lk_ghIzWBwg/sddefault_live.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="911617964351033425" id="message-911617964351033425">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.youtube.com/watch?v=5yP7NQA2aRI">https://www.youtube.com/watch?v=5yP7NQA2aRI</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UC_yjQfBPiWxHtvyZ-Qg_nOg">Sputnik France</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=5yP7NQA2aRI">
+                                                    <div class="markdown"><img class="emoji " alt="🔴" title="🔴" src="https://twemoji.maxcdn.com/2/72x72/1f534.png"> Manifestation des Gilets jaunes &#224; Bercy pour marquer le troisi&#232;me...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Manifestation des Gilets jaunes &#224; Bercy pour marquer le troisi&#232;me anniversaire du mouvement
+
+
+SUIVEZ-NOUS SUR :
+Facebook <a href="https://www.facebook.com/sputnik.france">https://www.facebook.com/sputnik.france</a>
+Twitter <a href="http://twitter.com/sputnik_fr">http://twitter.com/sputnik_fr</a>
+Soundcloud <a href="http://soundcloud.com/sputnik_fr">http://soundcloud.com/sputnik_fr</a>
+Instagram <a href="http://www.instagram.com/sputnik_france">http://www.instagram.com/sputnik_france</a>
+ 
+Sputnik est une nouvelle marque d&#39;information possed...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://i.ytimg.com/vi/5yP7NQA2aRI/maxresdefault_live.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="https://i.ytimg.com/vi/5yP7NQA2aRI/maxresdefault_live.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="911618137496100894" id="message-911618137496100894">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.youtube.com/watch?v=7d6-Fpk8524">https://www.youtube.com/watch?v=7d6-Fpk8524</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UC5aeU5hk31cLzq_sAExLVWg">Ruptly</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=7d6-Fpk8524">
+                                                    <div class="markdown">LIVE: Yellow Vests take to streets to mark movement&#39;s 3rd anniversary</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Ruptly is live from Paris on Saturday, November 20 as &#39;Yellow Vests&#39; activists gather for a new round of anti-government protests.
+
+For this rally in particular, they called on their supporters to protest against mandatory vaccinations, vaccinations of children and the proposed French health pass.
+
+The movement, which started in November 2018, h...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://i.ytimg.com/vi/7d6-Fpk8524/maxresdefault_live.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="https://i.ytimg.com/vi/7d6-Fpk8524/maxresdefault_live.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="911618201169842237" id="message-911618201169842237">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.youtube.com/watch?v=KTSoTrLilGI">https://www.youtube.com/watch?v=KTSoTrLilGI</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCku3hnjEHRZdjAinUTlpcIw">Resistance GB</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=KTSoTrLilGI">
+                                                    <div class="markdown">#Live 20th November London Worldwide Freedom Rally</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">----
+Thanks for watching the video. If you&#39;d like to show your support - please like and share, and feel free to leave your comments. Subscribe for more content, uploaded regularly - and hit the notification bell to be informed when new videos premiere so you can join in the live chat.
+
+We survive off of your donations. Fancy helping to support ...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://i.ytimg.com/vi/KTSoTrLilGI/sddefault_live.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="https://i.ytimg.com/vi/KTSoTrLilGI/sddefault_live.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/754849491143753869/9bcca68278801417670c6a7113f020ba.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curbs#2663" data-user-id="754849491143753869" style="color: rgb(241,196,15)">CurbShifter</span>
+
+
+        <span class="chatlog__timestamp">20-Nov-21 03:22 PM</span>
+
+            <div class="chatlog__message " data-message-id="911622519906242580" id="message-911622519906242580">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.youtube.com/watch?v=flBk4oRhKiU">https://www.youtube.com/watch?v=flBk4oRhKiU</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCKdfRYPC2lgfv5_4zHJ2Gdw">Atma</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=flBk4oRhKiU">
+                                                    <div class="markdown">UŽIVO ZAGREB: MASOVNI PROSVJED NARODA, 20.11.2021., ODREDIŠTE SVIH ...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Nekoliko masovnih povorki naroda kreću u 15h s raznih trgova u Zagrebu i susreću se na Trgu Bana Jelačića, gdje očekujemo glavni program!
+
+Povorka Dalmatinaca i ljudi iz Istre i Kvarnera kreće s Trga žrtava Fašizma, povorka ljudi sa sjevera Hrvatske kreće s Trga francuske republike, marš povorka muškaraca od 18-40 godina kreće s Trga kralja Tomi...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://i.ytimg.com/vi/flBk4oRhKiU/sddefault_live.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="https://i.ytimg.com/vi/flBk4oRhKiU/sddefault_live.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="911622564676272139" id="message-911622564676272139">
+                <div class="chatlog__content">
+                    <div class="markdown">CROATIA </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/656605941541896214/086130438b575b3be1b15ef375dffff9.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon07#9478" data-user-id="656605941541896214" style="color: rgb(241,196,15)">mejon07</span>
+
+
+        <span class="chatlog__timestamp">20-Nov-21 03:43 PM</span>
+
+            <div class="chatlog__message " data-message-id="911627819774279720" id="message-911627819774279720">
+                <div class="chatlog__content">
+                    <div class="markdown"><img class="emoji emoji--large" alt="peep00" title="peep00" src="https://cdn.discordapp.com/emojis/806258201850413107.png"> </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/754849491143753869/9bcca68278801417670c6a7113f020ba.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curbs#2663" data-user-id="754849491143753869" style="color: rgb(241,196,15)">CurbShifter</span>
+
+
+        <span class="chatlog__timestamp">20-Nov-21 10:41 PM</span>
+
+            <div class="chatlog__message " data-message-id="911733061933211699" id="message-911733061933211699">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.youtube.com/watch?v=Jk8jAV2pvJk">https://www.youtube.com/watch?v=Jk8jAV2pvJk</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCHsFPA7jXz0DMr7c4TlfTFA">friends understand</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=Jk8jAV2pvJk">
+                                                    <div class="markdown">Leiden staat op straat Wereld wijde demo Div. lives en verse video....</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">This stream is created with #PRISMLiveStudio</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://i.ytimg.com/vi/Jk8jAV2pvJk/maxresdefault_live.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="https://i.ytimg.com/vi/Jk8jAV2pvJk/maxresdefault_live.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="911733161304678460" id="message-911733161304678460">
+                <div class="chatlog__content">
+                    <div class="markdown">leiden NL riot (not protest it seems like....) </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/508418721333641237/49275cc5ab86b650fbc844857afbc717.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="nomanescio#3758" data-user-id="508418721333641237" style="color: rgb(241,196,15)">nomanescio</span>
+
+
+        <span class="chatlog__timestamp">20-Nov-21 10:49 PM</span>
+
+            <div class="chatlog__message " data-message-id="911734995591233566" id="message-911734995591233566">
+                <div class="chatlog__content">
+                    <div class="markdown">If we get told 3 times to move and we don&#39;t, the cops start using violence... </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/0.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Didi#3750" data-user-id="408342581454569472" style="color: rgb(241,196,15)">Didi</span>
+
+
+        <span class="chatlog__timestamp">20-Nov-21 11:19 PM</span>
+
+            <div class="chatlog__message " data-message-id="911742590431428608" id="message-911742590431428608">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.youtube.com/watch?v=sFZoRWqJlbI">https://www.youtube.com/watch?v=sFZoRWqJlbI</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UC5aeU5hk31cLzq_sAExLVWg">Ruptly</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=sFZoRWqJlbI">
+                                                    <div class="markdown">LIVE: Demonstrators protest against COVID-19 restrictions in the Hague</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Live from the Hague on Saturday, November 20, as protesters demonstrate against COVID-19 restrictions imposed by the Dutch government last week.
+
+On Saturday night, the Netherlands went into a three-week partial lockdown. The restrictions imply, among other measures, that bars, restaurants and supermarkets shut their doors at 20:00 and non-essen...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://i.ytimg.com/vi/sFZoRWqJlbI/maxresdefault_live.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="https://i.ytimg.com/vi/sFZoRWqJlbI/maxresdefault_live.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/754849491143753869/9bcca68278801417670c6a7113f020ba.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Curbs#2663" data-user-id="754849491143753869" style="color: rgb(241,196,15)">CurbShifter</span>
+
+
+        <span class="chatlog__timestamp">28-Nov-21 06:00 PM</span>
+
+            <div class="chatlog__message " data-message-id="914561313131339847" id="message-914561313131339847">
+                <div class="chatlog__content">
+                    <div class="markdown">good podcast (live)
+<a href="http://listen.noagendastream.com/noagenda">http://listen.noagendastream.com/noagenda</a> </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="914561780179664906" id="message-914561780179664906">
+                <div class="chatlog__content">
+                    <div class="markdown">preshow atm. starts in 5 </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+</div>
+
+<div class="postamble">
+    <div class="postamble__entry">Exported 30 message(s)</div>
+</div>
+
+</body>
+</html>
