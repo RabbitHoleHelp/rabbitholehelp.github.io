@@ -14,15 +14,14 @@ categories: Discord
 📏-rules
 
 **Welcome to Rabbithole.help**
-**part 2: The memoryhole**
-:pepehands: :hole:
+
 
 Rules:
 - listen to the admins and moderators
 - respect each other
 - no calls for violence
 - free chat in #💬-main-chat and #🗨-alt-chat 
-- admins can and will remove whoever needed :npc: 
+- admins can and will remove whoever needed
 
 The channels under the RESEARCH SHARING category:
 - we collect links relevant to each channel
@@ -35,9 +34,12 @@ Try to keep to the ethos of this server.
 
 ---
 
-In honor of our previous 2 servers that were deleted without warning:
-THX1138 (10 months) and rabbithole.help (5 months) 
-:Fpepe:
+In honor of our previous 2 servers that were deleted without warning: 
+THX1138 (10 months)
+rabbithole.help (5 months)
+rabbithole.help part 2 (1 year) 🏆
+rabbithole.help part 3 ...
+
 
 you may send invites. But please don't invite by unsolicited DMs (bots)
 
@@ -53,6 +55,10 @@ you may send invites. But please don't invite by unsolicited DMs (bots)
 🥳-fun
 
 🎶-music
+
+😷-covidiots
+
+💊-pillbox
 
 🤖-bot-feed
 
@@ -85,7 +91,7 @@ you may send invites. But please don't invite by unsolicited DMs (bots)
 
 🚪-gateways
 
-	links to places with sources. (post the main pages/entrance, specific videos or articles belong in the other channels). please tag topic/language where needed - posting invite links to other servers is allowed.
+⛺-survival
 
 
 ### admin
