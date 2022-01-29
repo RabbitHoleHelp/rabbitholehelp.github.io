@@ -1,0 +1,1584 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Rabbithole.help part 3 - &#128191;-tech-and-science</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+
+    <style>
+        /* General */
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-300.woff);
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-400.woff);
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-500.woff);
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-600.woff);
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-700.woff);
+    font-weight: 700;
+}
+
+body {
+    font-family: "Whitney", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 17px;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+img {
+    object-fit: contain;
+}
+
+.markdown {
+    max-width: 100%;
+    white-space: pre-wrap;
+    line-height: 1.3;
+    overflow-wrap: break-word;
+}
+
+.spoiler {
+    width: fit-content;
+}
+
+.spoiler--hidden {
+    cursor: pointer;
+}
+
+.spoiler-text {
+    border-radius: 3px;
+}
+
+.spoiler--hidden .spoiler-text {
+    color: rgba(0, 0, 0, 0);
+}
+
+.spoiler--hidden .spoiler-text::selection {
+    color: rgba(0, 0, 0, 0);
+}
+
+.spoiler-image {
+    position: relative;
+    overflow: hidden;
+    border-radius: 3px;
+}
+
+.spoiler--hidden .spoiler-image {
+    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.spoiler--hidden .spoiler-image img {
+    filter: blur(44px);
+}
+
+.spoiler--hidden .spoiler-image:after {
+    content: "SPOILER";
+    color: #dcddde;
+    background-color: rgba(0, 0, 0, 0.6);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: 600;
+    padding: 0.5em 0.7em;
+    border-radius: 20px;
+    letter-spacing: 0.05em;
+    font-size: 0.9em;
+}
+
+.spoiler--hidden:hover .spoiler-image:after {
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.quote {
+    margin: 0.1em 0;
+    padding-left: 0.6em;
+    border-left: 4px solid;
+    border-radius: 3px;
+}
+
+.pre {
+    font-family: "Consolas", "Courier New", Courier, monospace;
+}
+
+.pre--multiline {
+    margin-top: 0.25em;
+    padding: 0.5em;
+    border: 2px solid;
+    border-radius: 5px;
+}
+
+.pre--inline {
+    padding: 2px;
+    border-radius: 3px;
+    font-size: 0.85em;
+}
+
+.mention {
+    border-radius: 3px;
+    padding: 0 2px;
+    color: #7289da;
+    background: rgba(114, 137, 218, .1);
+    font-weight: 500;
+}
+
+.emoji {
+    width: 1.25em;
+    height: 1.25em;
+    margin: 0 0.06em;
+    vertical-align: -0.4em;
+}
+
+.emoji--small {
+    width: 1em;
+    height: 1em;
+}
+
+.emoji--large {
+    width: 2.8em;
+    height: 2.8em;
+}
+
+/* Preamble */
+
+.preamble {
+    display: grid;
+    margin: 0 0.3em 0.6em 0.3em;
+    max-width: 100%;
+    grid-template-columns: auto 1fr;
+}
+
+.preamble__guild-icon-container {
+    grid-column: 1;
+}
+
+.preamble__guild-icon {
+    max-width: 88px;
+    max-height: 88px;
+}
+
+.preamble__entries-container {
+    grid-column: 2;
+    margin-left: 0.6em;
+}
+
+.preamble__entry {
+    font-size: 1.4em;
+}
+
+.preamble__entry--small {
+    font-size: 1em;
+}
+
+/* Chatlog */
+
+.chatlog {
+    max-width: 100%;
+}
+
+.chatlog__message-group {
+    display: grid;
+    margin: 0 0.6em;
+    padding: 0.9em 0;
+    border-top: 1px solid;
+    grid-template-columns: auto 1fr;
+}
+
+.chatlog__author-avatar-container {
+    grid-column: 1;
+    width: 40px;
+    height: 40px;
+}
+
+.chatlog__author-avatar {
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+}
+
+.chatlog__messages {
+    grid-column: 2;
+    margin-left: 1.2em;
+    min-width: 50%;
+}
+
+.chatlog__author-name {
+    font-weight: 500;
+}
+
+.chatlog__timestamp {
+    margin-left: 0.3em;
+    font-size: 0.75em;
+}
+
+.chatlog__message {
+    padding: 0.1em 0.3em;
+    margin: 0 -0.3em;
+    background-color: transparent;
+    transition: background-color 1s ease;
+}
+
+.chatlog__content {
+    font-size: 0.95em;
+    word-wrap: break-word;
+}
+
+.chatlog__edited-timestamp {
+    margin-left: 0.15em;
+    font-size: 0.8em;
+}
+
+.chatlog__attachment {
+    margin-top: 0.3em;
+}
+
+.chatlog__attachment-thumbnail {
+    vertical-align: top;
+    max-width: 45vw;
+    max-height: 500px;
+    border-radius: 3px;
+}
+
+.chatlog__embed {
+    display: flex;
+    margin-top: 0.3em;
+    max-width: 520px;
+}
+
+.chatlog__embed-color-pill {
+    flex-shrink: 0;
+    width: 0.25em;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
+.chatlog__embed-content-container {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5em 0.6em;
+    border: 1px solid;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+.chatlog__embed-content {
+    display: flex;
+    width: 100%;
+}
+
+.chatlog__embed-text {
+    flex: 1;
+}
+
+.chatlog__embed-author {
+    display: flex;
+    margin-bottom: 0.3em;
+    align-items: center;
+}
+
+.chatlog__embed-author-icon {
+    margin-right: 0.5em;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+.chatlog__embed-author-name {
+    font-size: 0.875em;
+    font-weight: 600;
+}
+
+.chatlog__embed-title {
+    margin-bottom: 0.2em;
+    font-size: 0.875em;
+    font-weight: 600;
+}
+
+.chatlog__embed-description {
+    font-weight: 500;
+    font-size: 0.85em;
+}
+
+.chatlog__embed-fields {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.chatlog__embed-field {
+    flex: 0;
+    min-width: 100%;
+    max-width: 506px;
+    padding-top: 0.6em;
+    font-size: 0.875em;
+}
+
+.chatlog__embed-field--inline {
+    flex: 1;
+    flex-basis: auto;
+    min-width: 150px;
+}
+
+.chatlog__embed-field-name {
+    margin-bottom: 0.2em;
+    font-weight: 600;
+}
+
+.chatlog__embed-field-value {
+    font-weight: 500;
+}
+
+.chatlog__embed-thumbnail {
+    flex: 0;
+    margin-left: 1.2em;
+    max-width: 80px;
+    max-height: 80px;
+    border-radius: 3px;
+}
+
+.chatlog__embed-image-container {
+    margin-top: 0.6em;
+}
+
+.chatlog__embed-image {
+    max-width: 500px;
+    max-height: 400px;
+    border-radius: 3px;
+}
+
+.chatlog__embed-footer {
+    margin-top: 0.6em;
+}
+
+.chatlog__embed-footer-icon {
+    margin-right: 0.2em;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+
+.chatlog__embed-footer-text {
+    font-size: 0.75em;
+    font-weight: 500;
+}
+
+.chatlog__reactions {
+    display: flex;
+}
+
+.chatlog__reaction {
+    display: flex;
+    align-items: center;
+    margin: 0.35em 0.1em 0.1em 0.1em;
+    padding: 0.2em 0.35em;
+    border-radius: 3px;
+}
+
+.chatlog__reaction-count {
+    min-width: 9px;
+    margin-left: 0.35em;
+    font-size: 0.875em;
+}
+
+.chatlog__bot-tag {
+    position: relative;
+    top: -.2em;
+    margin-left: 0.3em;
+    padding: 0.05em 0.3em;
+    border-radius: 3px;
+    vertical-align: middle;
+    line-height: 1.3;
+    background: #7289da;
+    color: #ffffff;
+    font-size: 0.625em;
+    font-weight: 500;
+}
+
+/* Postamble */
+
+.postamble {
+    margin: 1.4em 0.3em 0.6em 0.3em;
+    padding: 1em;
+    border-top: 1px solid;
+}
+    </style>
+    <style>
+        /* General */
+
+body {
+    background-color: #36393e;
+    color: #dcddde;
+}
+
+a {
+    color: #0096cf;
+}
+
+.spoiler-text {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.spoiler--hidden .spoiler-text {
+    background-color: #202225;
+}
+
+.spoiler--hidden:hover .spoiler-text {
+    background-color: rgba(32, 34, 37, 0.8);
+}
+
+.quote {
+    border-color: #4f545c;
+}
+
+.pre {
+    background-color: #2f3136 !important;
+}
+
+.pre--multiline {
+    border-color: #282b30 !important;
+    color: #b9bbbe !important;
+}
+
+/* === Preamble === */
+
+.preamble__entry {
+    color: #ffffff;
+}
+
+/* Chatlog */
+
+.chatlog__message-group {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.chatlog__author-name {
+    color: #ffffff;
+}
+
+.chatlog__timestamp {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.chatlog__message--highlighted {
+    background-color: rgba(114, 137, 218, 0.2) !important;
+}
+
+.chatlog__message--pinned {
+    background-color: rgba(249, 168, 37, 0.05);
+}
+
+.chatlog__edited-timestamp {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.chatlog__embed-color-pill--default {
+    background-color: rgba(79, 84, 92, 1);
+}
+
+.chatlog__embed-content-container {
+    background-color: rgba(46, 48, 54, 0.3);
+    border-color: rgba(46, 48, 54, 0.6);
+}
+
+.chatlog__embed-author-name {
+    color: #ffffff;
+}
+
+.chatlog__embed-author-name-link {
+    color: #ffffff;
+}
+
+.chatlog__embed-title {
+    color: #ffffff;
+}
+
+.chatlog__embed-description {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__embed-field-name {
+    color: #ffffff;
+}
+
+.chatlog__embed-field-value {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__embed-footer {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__reaction {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.chatlog__reaction-count {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+/* Postamble */
+
+.postamble {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.postamble__entry {
+    color: #ffffff;
+}
+    </style>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/solarized-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.pre--multiline').forEach(block => hljs.highlightBlock(block));
+        });
+    </script>
+
+    <script>
+        function scrollToMessage(event, id) {
+            var element = document.getElementById('message-' + id);
+
+            if (element) {
+                event.preventDefault();
+
+                element.classList.add('chatlog__message--highlighted');
+
+                window.scrollTo({
+                    top: element.getBoundingClientRect().top - document.body.getBoundingClientRect().top - (window.innerHeight / 2),
+                    behavior: 'smooth'
+                });
+
+                window.setTimeout(function() {
+                    element.classList.remove('chatlog__message--highlighted');
+                }, 2000);
+            }
+        }
+
+        function showSpoiler(event, element) {
+            if (element && element.classList.contains('spoiler--hidden')) {
+                event.preventDefault();
+                element.classList.remove('spoiler--hidden');
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="preamble">
+    <div class="preamble__guild-icon-container">
+        <img class="preamble__guild-icon" src="https://cdn.discordapp.com/icons/930791563871813693/89ccc9d466d4055c98a4af46f144e403.png" alt="Guild icon">
+    </div>
+    <div class="preamble__entries-container">
+        <div class="preamble__entry">Rabbithole.help part 3</div>
+        <div class="preamble__entry">research / &#128191;-tech-and-science</div>
+
+
+            <div class="preamble__entry preamble__entry--small">
+Between 01-Jan-22 12:00 AM and 01-Feb-22 12:00 AM            </div>
+    </div>
+</div>
+
+<div class="chatlog">
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/709158982094159882/7baa43a8de40813808f0d8a9fc4d8100.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Rabbitholed#5246" data-user-id="709158982094159882" style="color: rgb(241,196,15)">Curb</span>
+
+
+        <span class="chatlog__timestamp">12-Jan-22 02:21 PM</span>
+
+            <div class="chatlog__message " data-message-id="930813728847437834" id="message-930813728847437834">
+                <div class="chatlog__content">
+                    <div class="markdown">part 2: <a href="https://rabbithole.help/archive/Discord-Dec-21/technology.html">https://rabbithole.help/archive/Discord-Dec-21/technology.html</a>
+<a href="https://archive.is/2TCYU">https://archive.is/2TCYU</a> <span class="chatlog__edited-timestamp" title="13-Jan-22 12:06 AM">(edited)</span></div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/709158982094159882/7baa43a8de40813808f0d8a9fc4d8100.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Rabbitholed#5246" data-user-id="709158982094159882" style="color: rgb(241,196,15)">Curb</span>
+
+
+        <span class="chatlog__timestamp">12-Jan-22 04:44 PM</span>
+
+            <div class="chatlog__message " data-message-id="930849623747227698" id="message-930849623747227698">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.zerohedge.com/technology/hacker-takes-control-25-teslas-worldwide">https://www.zerohedge.com/technology/hacker-takes-control-25-teslas-worldwide</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(34,34,34,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.zerohedge.com/technology/hacker-takes-control-25-teslas-worldwide">
+                                                    <div class="markdown">Hacker Claims To Have Taken Control Of 25 Tesla Cars Worldwide</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">&quot;So, I now have full remote control of over 20 Tesla&#39;s in 10 countries...&quot;</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://assets.zerohedge.com/s3fs-public/styles/16_9_max_700/public/2022-01/tesla.png?itok=E0fTJplZ">
+                                            <img class="chatlog__embed-thumbnail" src="https://assets.zerohedge.com/s3fs-public/styles/16_9_max_700/public/2022-01/tesla.png?itok=E0fTJplZ" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/720810291943833683/e82688e1e002c89f702ce283776bb7b8.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="alt-theories#7036" data-user-id="720810291943833683" style="color: rgb(52,152,219)">alt-theories</span>
+
+
+        <span class="chatlog__timestamp">13-Jan-22 10:02 AM</span>
+
+            <div class="chatlog__message " data-message-id="931111059044069466" id="message-931111059044069466">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.news-medical.net/news/20210916/Researchers-aim-to-develop-edible-plant-based-mRNA-vaccines.aspx">https://www.news-medical.net/news/20210916/Researchers-aim-to-develop-edible-plant-based-mRNA-vaccines.aspx</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.news-medical.net/news/20210916/Researchers-aim-to-develop-edible-plant-based-mRNA-vaccines.aspx">
+                                                    <div class="markdown">Researchers aim to develop edible plant-based mRNA vaccines</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">The future of vaccines may look more like eating a salad than getting a shot in the arm. UC Riverside scientists are studying whether they can turn edible plants like lettuce into mRNA vaccine factories.</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://d2jx2rerrg6sh3.cloudfront.net/image-handler/picture/2014/7/PLGA_nanoparticles_for_delivery_of_drugs-620x480.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="https://d2jx2rerrg6sh3.cloudfront.net/image-handler/picture/2014/7/PLGA_nanoparticles_for_delivery_of_drugs-620x480.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/461535989379366923/28960f0a88e531c405e3c81193840201.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Junkyard#5313" data-user-id="461535989379366923" style="color: rgb(46,204,113)">Junkyard</span>
+
+
+        <span class="chatlog__timestamp">13-Jan-22 03:33 PM</span>
+
+            <div class="chatlog__message " data-message-id="931194178304634910" id="message-931194178304634910">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://radiationdangers.com/2020/01/31/is-covid-19-a-cover-up-for-radiation-sickness/">https://radiationdangers.com/2020/01/31/is-covid-19-a-cover-up-for-radiation-sickness/</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://radiationdangers.com/author/admin/">admin</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://radiationdangers.com/2020/01/31/is-covid-19-a-cover-up-for-radiation-sickness/">
+                                                    <div class="markdown">Is “COVID-19” a Cover-Up for Radiation Sickness?</div>
+                                                </a>
+                                        </div>
+
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="931194207056576542" id="message-931194207056576542">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="http://www.radiationdangers.com/5g/study-shows-direct-correlation-between-5g-networks-and-coronavirus-outbreaks-2">http://www.radiationdangers.com/5g/study-shows-direct-correlation-between-5g-networks-and-coronavirus-outbreaks-2</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://radiationdangers.com/author/admin/">admin</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="http://www.radiationdangers.com/5g/study-shows-direct-correlation-between-5g-networks-and-coronavirus-outbreaks-2">
+                                                    <div class="markdown">Study Shows Direct Correlation between 5G Networks and “Coronavirus...</div>
+                                                </a>
+                                        </div>
+
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/709158982094159882/7baa43a8de40813808f0d8a9fc4d8100.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Rabbitholed#5246" data-user-id="709158982094159882" style="color: rgb(241,196,15)">Curb</span>
+
+
+        <span class="chatlog__timestamp">13-Jan-22 09:29 PM</span>
+
+            <div class="chatlog__message " data-message-id="931283737973489674" id="message-931283737973489674">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://youtu.be/MCq0x01Jmi0">https://youtu.be/MCq0x01Jmi0</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCbfYPyITQ-7l4upoX8nvctg">Two Minute Papers</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=MCq0x01Jmi0">
+                                                    <div class="markdown">New AI: Next Level Video Editing! <img class="emoji " alt="🤯" title="🤯" src="https://twemoji.maxcdn.com/2/72x72/1f92f.png"></div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">❤️ Train a neural network and track your experiments with Weights &amp; Biases here: <a href="http://wandb.me/paperintro">http://wandb.me/paperintro</a>
+
+<img class="emoji " alt="📝" title="📝" src="https://twemoji.maxcdn.com/2/72x72/1f4dd.png"> The paper &quot;Layered Neural Atlases for Consistent Video Editing&quot; is available here:
+<a href="https://layered-neural-atlases.github.io/">https://layered-neural-atlases.github.io/</a>
+
+<img class="emoji " alt="🙏" title="🙏" src="https://twemoji.maxcdn.com/2/72x72/1f64f.png"> We would like to thank our generous Patreon supporters who make Two Minute Papers possible:
+Aleksandr Mashra...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://i.ytimg.com/vi/MCq0x01Jmi0/maxresdefault.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="https://i.ytimg.com/vi/MCq0x01Jmi0/maxresdefault.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/830833164682526771/a38fd9c0681d2eb9026346ec7cf2cb45.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="SilasSpeaks#5811" data-user-id="830833164682526771" style="color: rgb(52,152,219)">SilasSpeaks</span>
+
+
+        <span class="chatlog__timestamp">14-Jan-22 01:01 PM</span>
+
+            <div class="chatlog__message " data-message-id="931518391699795979" id="message-931518391699795979">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://youtu.be/6JZcAoK11FM">https://youtu.be/6JZcAoK11FM</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCKgU6CTpvc2ZjWtJDj51VXA">Silas Speaks</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=6JZcAoK11FM">
+                                                    <div class="markdown">The Nano Patch (Part 1)</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">References:
+Controlled Offensive Weaponry - <a href="https://www.cia.gov/readingroom/docs/CIA-RDP96-00792R000500730002-1.pdf">https://www.cia.gov/readingroom/docs/CIA-RDP96-00792R000500730002-1.pdf</a>
+“Painless Flu needlecraft” - <a href="https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(17)30575-5/fulltext?elsca1=tlpr">https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(17)30575-5/fulltext?elsca1=tlpr</a>
+Microneedles: A New Generation Needlecraft Delivery System - <a href="https://www.researchgate.net/profile/Priyal-B">https://www.researchgate.net/profile/Priyal-B</a>...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://i.ytimg.com/vi/6JZcAoK11FM/maxresdefault.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="https://i.ytimg.com/vi/6JZcAoK11FM/maxresdefault.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/709158982094159882/7baa43a8de40813808f0d8a9fc4d8100.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Rabbitholed#5246" data-user-id="709158982094159882" style="color: rgb(241,196,15)">Curb</span>
+
+
+        <span class="chatlog__timestamp">14-Jan-22 10:17 PM</span>
+
+            <div class="chatlog__message " data-message-id="931658206990696548" id="message-931658206990696548">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://fxtwitter.com/i/status/1481508728335646722">https://fxtwitter.com/i/status/1481508728335646722</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(67,181,129,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/i/status/1481508728335646722">#armenianbreakingnews Military robots made in #Armenia will be mass-produced. One of its creators Vahan Isadzhanyan talked about the simplicity and ease of use. Even with heavy armour, the robot...</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://fxtwitter.com/i/status/1481508728335646722">
+                                                    <div class="markdown">ArmenianBreakingNews</div>
+                                                </a>
+                                        </div>
+
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="http://pbs.twimg.com/ext_tw_video_thumb/1481508678314438657/pu/img/v79l-TFA-CjbHBgy.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="http://pbs.twimg.com/ext_tw_video_thumb/1481508678314438657/pu/img/v79l-TFA-CjbHBgy.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="whatthehell" title="whatthehell" src="https://cdn.discordapp.com/emojis/931417820888190996.png">
+                                <span class="chatlog__reaction-count">2</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon#9623" data-user-id="639228327147601921" style="color: rgb(241,196,15)">mejon</span>
+
+
+        <span class="chatlog__timestamp">15-Jan-22 08:41 AM</span>
+
+            <div class="chatlog__message " data-message-id="931815383097290862" id="message-931815383097290862">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.zerohedge.com/technology/china-reveals-ai-news-anchor-almost-indistinguishable-real-human">https://www.zerohedge.com/technology/china-reveals-ai-news-anchor-almost-indistinguishable-real-human</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(34,34,34,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.zerohedge.com/technology/china-reveals-ai-news-anchor-almost-indistinguishable-real-human">
+                                                    <div class="markdown">China Reveals AI News Anchor, Almost Indistinguishable From Real Human</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">“Hello everyone, I am the artificial intelligence news anchor on National Business Daily. I am the virtual twin of the original host. I have been running—reporting the news—undetected for 70 days now,”</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://assets.zerohedge.com/s3fs-public/styles/16_9_max_700/public/2022-01/AI%20news%20anchor.jpg?itok=ko6xpRHi">
+                                            <img class="chatlog__embed-thumbnail" src="https://assets.zerohedge.com/s3fs-public/styles/16_9_max_700/public/2022-01/AI%20news%20anchor.jpg?itok=ko6xpRHi" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="peep00" title="peep00" src="https://cdn.discordapp.com/emojis/930817036597207100.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/578305700804034583/ca7397f6ff4f5609ff3a2ccf3c0c328b.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="BIGFOOT#5016" data-user-id="578305700804034583" style="color: rgb(52,152,219)">BIGFOOT</span>
+
+
+        <span class="chatlog__timestamp">15-Jan-22 12:28 PM</span>
+
+            <div class="chatlog__message " data-message-id="931872459194507305" id="message-931872459194507305">
+                <div class="chatlog__content">
+                    <div class="markdown">i want this shit for music videos </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon#9623" data-user-id="639228327147601921" style="color: rgb(241,196,15)">mejon</span>
+
+
+        <span class="chatlog__timestamp">16-Jan-22 07:08 AM</span>
+
+            <div class="chatlog__message " data-message-id="932154296798167100" id="message-932154296798167100">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.livescience.com/chinas-1-trillion-artificial-sun-fusion-reactor-just-got-five-times-hotter-than-the-sun">https://www.livescience.com/chinas-1-trillion-artificial-sun-fusion-reactor-just-got-five-times-hotter-than-the-sun</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(249,174,59,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.livescience.com/chinas-1-trillion-artificial-sun-fusion-reactor-just-got-five-times-hotter-than-the-sun">
+                                                    <div class="markdown">China&#39;s $1 trillion &#39;artificial sun&#39; fusion reactor just got five t...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">The experimental fusion reactor sustained the temperatures for a record-breaking 17 minutes.</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://cdn.mos.cms.futurecdn.net/9nmTNXeJnQZN4QEfHD9fEi-1200-80.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="https://cdn.mos.cms.futurecdn.net/9nmTNXeJnQZN4QEfHD9fEi-1200-80.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="peep00" title="peep00" src="https://cdn.discordapp.com/emojis/930817036597207100.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/720810291943833683/e82688e1e002c89f702ce283776bb7b8.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="alt-theories#7036" data-user-id="720810291943833683" style="color: rgb(52,152,219)">alt-theories</span>
+
+
+        <span class="chatlog__timestamp">18-Jan-22 01:01 PM</span>
+
+            <div class="chatlog__message " data-message-id="932967837260189738" id="message-932967837260189738">
+                <div class="chatlog__content">
+                    <div class="markdown">17 JANUARY 2022 - SCIENCE
+Inside the lab working to bring people back from the dead
+Cryonics is an experimental area of research in which the bodies of the clinically dead are frozen at -196C so they can later be resuscitated by future medical advances.
+
+People in the industry concede that there is no guarantee of future revival and the procedure itself has long faced scepticism from medical experts. But Cryonics devotees, including their many high-profile clients, are willing to take the gamble for a chance for life after death.
+<a href="https://www.bbc.com/reel/video/p0bhkdp7/inside-the-lab-working-to-bring-people-back-from-the-dead">https://www.bbc.com/reel/video/p0bhkdp7/inside-the-lab-working-to-bring-people-back-from-the-dead</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,255,255,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.bbc.com/reel/video/p0bhkdp7/inside-the-lab-working-to-bring-people-back-from-the-dead">
+                                                    <div class="markdown">Inside the lab working to bring people back from the dead - BBC Reel</div>
+                                                </a>
+                                        </div>
+
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://ychef.files.bbci.co.uk/1376x774/p0bhnvy8.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="https://ychef.files.bbci.co.uk/1376x774/p0bhnvy8.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="whatthehell" title="whatthehell" src="https://cdn.discordapp.com/emojis/931417820888190996.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="wizard" title="wizard" src="https://cdn.discordapp.com/emojis/930817036840480779.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/830833164682526771/a38fd9c0681d2eb9026346ec7cf2cb45.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="SilasSpeaks#5811" data-user-id="830833164682526771" style="color: rgb(52,152,219)">SilasSpeaks</span>
+
+
+        <span class="chatlog__timestamp">19-Jan-22 07:34 PM</span>
+
+            <div class="chatlog__message " data-message-id="933429251363962890" id="message-933429251363962890">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://youtu.be/lV-3Fe53bgI">https://youtu.be/lV-3Fe53bgI</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCKgU6CTpvc2ZjWtJDj51VXA">Silas Speaks</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=lV-3Fe53bgI">
+                                                    <div class="markdown">The Nano Patch (Part 2)</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">For a full list of references email me at silasspeaks@gmail.com.
+
+Grab my new Book here:
+
+Paperback - <a href="https://www.lulu.com/en/gb/shop/silas-gauthier/rise-and-fall-a-discourse-upon-the-phenomena-of-civilisation-and-decline/paperback/product-rqwqy7.html?page=1&pageSize=4">https://www.lulu.com/en/gb/shop/silas-gauthier/rise-and-fall-a-discourse-upon-the-phenomena-of-civilisation-and-decline/paperback/product-rqwqy7.html?page=1&amp;pageSize=4</a>
+
+Ebook - <a href="https://www.lulu.com/en/gb/shop/silas-gauthier/rise-and-fall/ebook/p">https://www.lulu.com/en/gb/shop/silas-gauthier/rise-and-fall/ebook/p</a>...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://i.ytimg.com/vi/lV-3Fe53bgI/maxresdefault.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="https://i.ytimg.com/vi/lV-3Fe53bgI/maxresdefault.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/720810291943833683/e82688e1e002c89f702ce283776bb7b8.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="alt-theories#7036" data-user-id="720810291943833683" style="color: rgb(52,152,219)">alt-theories</span>
+
+
+        <span class="chatlog__timestamp">20-Jan-22 10:02 PM</span>
+
+            <div class="chatlog__message " data-message-id="933828845801463880" id="message-933828845801463880">
+                <div class="chatlog__content">
+                    <div class="markdown">Remember the kill switch scene at the kingsman movie? Check this out. Article from 2017 
+
+“A predatory ‘hunter switch’ has been identified in mice after researchers implanted an optic fibre into their brains to beam lasers onto specific neurons.”
+
+<a href="https://www.wired.co.uk/article/mice-attack-inanimate-objects-when-kill-switch-is-stimulated">https://www.wired.co.uk/article/mice-attack-inanimate-objects-when-kill-switch-is-stimulated</a> </div>
+                </div>
+
+                    <div class="chatlog__attachment">
+                            <a href="https://cdn.discordapp.com/attachments/930792282909708320/933828846170550302/IMG_4477.jpg">
+                                    <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/930792282909708320/933828846170550302/IMG_4477.jpg" alt="Attachment">
+                            </a>
+                    </div>
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.wired.co.uk/article/mice-attack-inanimate-objects-when-kill-switch-is-stimulated">
+                                                    <div class="markdown">Scientists turn mice into fierce hunters by flicking a &#39;killer swit...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Optogenetics allowed researchers at Yale University to identify the neurons responsible for instigating predatory hunting behaviours in mice</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://media.wired.co.uk/photos/606da09f307b8f0b37c7270e/16:9/w_1280,c_limit/iStock-172267826.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="https://media.wired.co.uk/photos/606da09f307b8f0b37c7270e/16:9/w_1280,c_limit/iStock-172267826.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="popcorn" title="popcorn" src="https://cdn.discordapp.com/emojis/931418190502838302.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/2.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="ladiDi#5787" data-user-id="920703633396469800" style="color: rgb(52,152,219)">ladiDi</span>
+
+
+        <span class="chatlog__timestamp">21-Jan-22 02:05 PM</span>
+
+            <div class="chatlog__message " data-message-id="934071099354918942" id="message-934071099354918942">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.fastcompany.com/90160784/edible-graphene-is-here-and-electronics-in-your-food-are-coming">https://www.fastcompany.com/90160784/edible-graphene-is-here-and-electronics-in-your-food-are-coming</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,255,255,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.fastcompany.com/90160784/edible-graphene-is-here-and-electronics-in-your-food-are-coming">
+                                                    <div class="markdown">Edible Graphene Is Here, And Electronics In Your Food Are Coming</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Using a stock laser, researchers can carve edible circuits into food. Prepare for cuisine that can communicate.</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://images.fastcompany.net/image/upload/w_1280,f_auto,q_auto,fl_lossy/wp-cms/uploads/2018/02/p-1-tattooed-food-is-the-future-of-edible-electronics-1.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="https://images.fastcompany.net/image/upload/w_1280,f_auto,q_auto,fl_lossy/wp-cms/uploads/2018/02/p-1-tattooed-food-is-the-future-of-edible-electronics-1.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/709158982094159882/7baa43a8de40813808f0d8a9fc4d8100.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Rabbitholed#5246" data-user-id="709158982094159882" style="color: rgb(241,196,15)">Curb</span>
+
+
+        <span class="chatlog__timestamp">23-Jan-22 03:51 PM</span>
+
+            <div class="chatlog__message " data-message-id="934822625371385956" id="message-934822625371385956">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.cuimc.columbia.edu/news/crispr-gene-editing-can-cause-hundreds-unintended-mutations">https://www.cuimc.columbia.edu/news/crispr-gene-editing-can-cause-hundreds-unintended-mutations</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.cuimc.columbia.edu/news/crispr-gene-editing-can-cause-hundreds-unintended-mutations">
+                                                    <div class="markdown">CRISPR Gene Editing Can Cause Hundreds of Unintended Mutations</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Researchers report that CRISPR-Cas9 gene-editing technology can introduce hundreds of unintended mutations into the genome.</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://www.cuimc.columbia.edu/sites/default/files/styles/cola_media_1280_16_9/public/media/images/2020-02/cas9-structure_featured.jpeg?itok=bKQJM_yE">
+                                            <img class="chatlog__embed-thumbnail" src="https://www.cuimc.columbia.edu/sites/default/files/styles/cola_media_1280_16_9/public/media/images/2020-02/cas9-structure_featured.jpeg?itok=bKQJM_yE" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/720810291943833683/e82688e1e002c89f702ce283776bb7b8.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="alt-theories#7036" data-user-id="720810291943833683" style="color: rgb(52,152,219)">alt-theories</span>
+
+
+        <span class="chatlog__timestamp">26-Jan-22 04:41 PM</span>
+
+            <div class="chatlog__message " data-message-id="935922504906706964" id="message-935922504906706964">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.youtube.com/watch?v=rPLvj-GcfSU&list=WL&index=3">https://www.youtube.com/watch?v=rPLvj-GcfSU&amp;list=WL&amp;index=3</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCVEaFSr-jdTa_QE4PPSkVJw">Truthstream Media</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=rPLvj-GcfSU">
+                                                    <div class="markdown">Alan Turing, Cybernetics and the Secrets of Life</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">VIEW SOURCES &amp; CITATIONS BELOW -- Please help support us on Patreon, read our goals here: <a href="https://www.patreon.com/truthstreammedia">https://www.patreon.com/truthstreammedia</a>
+
+Quoted Sources &amp; Recommended Reading:
+-Brenner, S. (2012). Turing centenary: Lifes code script. Nature, 482(7386), 461-461. doi:10.1038/482461a
+-Copeland, J. (2004). The essential Turing. Oxford: Oxford University P...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://i.ytimg.com/vi/rPLvj-GcfSU/maxresdefault.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="https://i.ytimg.com/vi/rPLvj-GcfSU/maxresdefault.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="hmmm" title="hmmm" src="https://cdn.discordapp.com/emojis/930817037054402590.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="killuminati_klaus" title="killuminati_klaus" src="https://cdn.discordapp.com/emojis/930837965440188446.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="NWOpepe" title="NWOpepe" src="https://cdn.discordapp.com/emojis/930817036425252875.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/684328328613724160/daf907c0a53af1ba934e0404713e4e82.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="oak#7416" data-user-id="684328328613724160" style="color: rgb(46,204,113)">oak</span>
+
+
+        <span class="chatlog__timestamp">27-Jan-22 02:02 PM</span>
+
+            <div class="chatlog__message " data-message-id="936244860732715109" id="message-936244860732715109">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://youtu.be/-kVwbEH49z4">https://youtu.be/-kVwbEH49z4</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCqCdRwDXfbt5TbVfkPjubUg">Seegene 씨젠</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=-kVwbEH49z4">
+                                                    <div class="markdown">Seegene Vision Film (English) Full Version</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Imagine a world where everyone feels safe,
+with all kinds of diseases found early with molecular diagnostics.
+
+This is the future Seegene is creating right now.
+A healthier and happier tomorrow is closer than you think.
+
+See Ahead. Change Tomorrow.
+
+Seegene
+
+#seegene #moleculardiagnostics #diagnostics #mdx #pcr #future</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://i.ytimg.com/vi/-kVwbEH49z4/maxresdefault.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="https://i.ytimg.com/vi/-kVwbEH49z4/maxresdefault.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+</div>
+
+<div class="postamble">
+    <div class="postamble__entry">Exported 18 message(s)</div>
+</div>
+
+</body>
+</html>
