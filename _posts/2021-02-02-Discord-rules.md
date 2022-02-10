@@ -54,6 +54,8 @@ you may send invites. But please don't invite by unsolicited DMs (bots)
 
 🥳-fun
 
+🦔-wholesome
+
 🎶-music
 
 😷-covidiots
@@ -96,7 +98,11 @@ you may send invites. But please don't invite by unsolicited DMs (bots)
 
 ### admin
 
+📂-archive
+
 🤖-github
+
+🤖-bot-cmds
 
 admin-chat
 
@@ -104,6 +110,10 @@ admin-chat
 
 ## bots
 
+zapier
+	squawking 7700: https://twitter.com/ADSBX_Alerts
+	Quakes: https://twitter.com/EQAlerts_M4
+	
 IFTTT.com
 
 - Breaking911
