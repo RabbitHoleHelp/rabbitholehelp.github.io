@@ -1,0 +1,2867 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Rabbithole.help part 3 - &#128184;-economy</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+
+    <style>
+        /* General */
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-300.woff);
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-400.woff);
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-500.woff);
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-600.woff);
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-700.woff);
+    font-weight: 700;
+}
+
+body {
+    font-family: "Whitney", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 17px;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+img {
+    object-fit: contain;
+}
+
+.markdown {
+    max-width: 100%;
+    white-space: pre-wrap;
+    line-height: 1.3;
+    overflow-wrap: break-word;
+}
+
+.spoiler {
+    width: fit-content;
+}
+
+.spoiler--hidden {
+    cursor: pointer;
+}
+
+.spoiler-text {
+    border-radius: 3px;
+}
+
+.spoiler--hidden .spoiler-text {
+    color: rgba(0, 0, 0, 0);
+}
+
+.spoiler--hidden .spoiler-text::selection {
+    color: rgba(0, 0, 0, 0);
+}
+
+.spoiler-image {
+    position: relative;
+    overflow: hidden;
+    border-radius: 3px;
+}
+
+.spoiler--hidden .spoiler-image {
+    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.spoiler--hidden .spoiler-image img {
+    filter: blur(44px);
+}
+
+.spoiler--hidden .spoiler-image:after {
+    content: "SPOILER";
+    color: #dcddde;
+    background-color: rgba(0, 0, 0, 0.6);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: 600;
+    padding: 0.5em 0.7em;
+    border-radius: 20px;
+    letter-spacing: 0.05em;
+    font-size: 0.9em;
+}
+
+.spoiler--hidden:hover .spoiler-image:after {
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.quote {
+    margin: 0.1em 0;
+    padding-left: 0.6em;
+    border-left: 4px solid;
+    border-radius: 3px;
+}
+
+.pre {
+    font-family: "Consolas", "Courier New", Courier, monospace;
+}
+
+.pre--multiline {
+    margin-top: 0.25em;
+    padding: 0.5em;
+    border: 2px solid;
+    border-radius: 5px;
+}
+
+.pre--inline {
+    padding: 2px;
+    border-radius: 3px;
+    font-size: 0.85em;
+}
+
+.mention {
+    border-radius: 3px;
+    padding: 0 2px;
+    color: #7289da;
+    background: rgba(114, 137, 218, .1);
+    font-weight: 500;
+}
+
+.emoji {
+    width: 1.25em;
+    height: 1.25em;
+    margin: 0 0.06em;
+    vertical-align: -0.4em;
+}
+
+.emoji--small {
+    width: 1em;
+    height: 1em;
+}
+
+.emoji--large {
+    width: 2.8em;
+    height: 2.8em;
+}
+
+/* Preamble */
+
+.preamble {
+    display: grid;
+    margin: 0 0.3em 0.6em 0.3em;
+    max-width: 100%;
+    grid-template-columns: auto 1fr;
+}
+
+.preamble__guild-icon-container {
+    grid-column: 1;
+}
+
+.preamble__guild-icon {
+    max-width: 88px;
+    max-height: 88px;
+}
+
+.preamble__entries-container {
+    grid-column: 2;
+    margin-left: 0.6em;
+}
+
+.preamble__entry {
+    font-size: 1.4em;
+}
+
+.preamble__entry--small {
+    font-size: 1em;
+}
+
+/* Chatlog */
+
+.chatlog {
+    max-width: 100%;
+}
+
+.chatlog__message-group {
+    display: grid;
+    margin: 0 0.6em;
+    padding: 0.9em 0;
+    border-top: 1px solid;
+    grid-template-columns: auto 1fr;
+}
+
+.chatlog__author-avatar-container {
+    grid-column: 1;
+    width: 40px;
+    height: 40px;
+}
+
+.chatlog__author-avatar {
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+}
+
+.chatlog__messages {
+    grid-column: 2;
+    margin-left: 1.2em;
+    min-width: 50%;
+}
+
+.chatlog__author-name {
+    font-weight: 500;
+}
+
+.chatlog__timestamp {
+    margin-left: 0.3em;
+    font-size: 0.75em;
+}
+
+.chatlog__message {
+    padding: 0.1em 0.3em;
+    margin: 0 -0.3em;
+    background-color: transparent;
+    transition: background-color 1s ease;
+}
+
+.chatlog__content {
+    font-size: 0.95em;
+    word-wrap: break-word;
+}
+
+.chatlog__edited-timestamp {
+    margin-left: 0.15em;
+    font-size: 0.8em;
+}
+
+.chatlog__attachment {
+    margin-top: 0.3em;
+}
+
+.chatlog__attachment-thumbnail {
+    vertical-align: top;
+    max-width: 45vw;
+    max-height: 500px;
+    border-radius: 3px;
+}
+
+.chatlog__embed {
+    display: flex;
+    margin-top: 0.3em;
+    max-width: 520px;
+}
+
+.chatlog__embed-color-pill {
+    flex-shrink: 0;
+    width: 0.25em;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
+.chatlog__embed-content-container {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5em 0.6em;
+    border: 1px solid;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+.chatlog__embed-content {
+    display: flex;
+    width: 100%;
+}
+
+.chatlog__embed-text {
+    flex: 1;
+}
+
+.chatlog__embed-author {
+    display: flex;
+    margin-bottom: 0.3em;
+    align-items: center;
+}
+
+.chatlog__embed-author-icon {
+    margin-right: 0.5em;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+.chatlog__embed-author-name {
+    font-size: 0.875em;
+    font-weight: 600;
+}
+
+.chatlog__embed-title {
+    margin-bottom: 0.2em;
+    font-size: 0.875em;
+    font-weight: 600;
+}
+
+.chatlog__embed-description {
+    font-weight: 500;
+    font-size: 0.85em;
+}
+
+.chatlog__embed-fields {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.chatlog__embed-field {
+    flex: 0;
+    min-width: 100%;
+    max-width: 506px;
+    padding-top: 0.6em;
+    font-size: 0.875em;
+}
+
+.chatlog__embed-field--inline {
+    flex: 1;
+    flex-basis: auto;
+    min-width: 150px;
+}
+
+.chatlog__embed-field-name {
+    margin-bottom: 0.2em;
+    font-weight: 600;
+}
+
+.chatlog__embed-field-value {
+    font-weight: 500;
+}
+
+.chatlog__embed-thumbnail {
+    flex: 0;
+    margin-left: 1.2em;
+    max-width: 80px;
+    max-height: 80px;
+    border-radius: 3px;
+}
+
+.chatlog__embed-image-container {
+    margin-top: 0.6em;
+}
+
+.chatlog__embed-image {
+    max-width: 500px;
+    max-height: 400px;
+    border-radius: 3px;
+}
+
+.chatlog__embed-footer {
+    margin-top: 0.6em;
+}
+
+.chatlog__embed-footer-icon {
+    margin-right: 0.2em;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+
+.chatlog__embed-footer-text {
+    font-size: 0.75em;
+    font-weight: 500;
+}
+
+.chatlog__reactions {
+    display: flex;
+}
+
+.chatlog__reaction {
+    display: flex;
+    align-items: center;
+    margin: 0.35em 0.1em 0.1em 0.1em;
+    padding: 0.2em 0.35em;
+    border-radius: 3px;
+}
+
+.chatlog__reaction-count {
+    min-width: 9px;
+    margin-left: 0.35em;
+    font-size: 0.875em;
+}
+
+.chatlog__bot-tag {
+    position: relative;
+    top: -.2em;
+    margin-left: 0.3em;
+    padding: 0.05em 0.3em;
+    border-radius: 3px;
+    vertical-align: middle;
+    line-height: 1.3;
+    background: #7289da;
+    color: #ffffff;
+    font-size: 0.625em;
+    font-weight: 500;
+}
+
+/* Postamble */
+
+.postamble {
+    margin: 1.4em 0.3em 0.6em 0.3em;
+    padding: 1em;
+    border-top: 1px solid;
+}
+    </style>
+    <style>
+        /* General */
+
+body {
+    background-color: #36393e;
+    color: #dcddde;
+}
+
+a {
+    color: #0096cf;
+}
+
+.spoiler-text {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.spoiler--hidden .spoiler-text {
+    background-color: #202225;
+}
+
+.spoiler--hidden:hover .spoiler-text {
+    background-color: rgba(32, 34, 37, 0.8);
+}
+
+.quote {
+    border-color: #4f545c;
+}
+
+.pre {
+    background-color: #2f3136 !important;
+}
+
+.pre--multiline {
+    border-color: #282b30 !important;
+    color: #b9bbbe !important;
+}
+
+/* === Preamble === */
+
+.preamble__entry {
+    color: #ffffff;
+}
+
+/* Chatlog */
+
+.chatlog__message-group {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.chatlog__author-name {
+    color: #ffffff;
+}
+
+.chatlog__timestamp {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.chatlog__message--highlighted {
+    background-color: rgba(114, 137, 218, 0.2) !important;
+}
+
+.chatlog__message--pinned {
+    background-color: rgba(249, 168, 37, 0.05);
+}
+
+.chatlog__edited-timestamp {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.chatlog__embed-color-pill--default {
+    background-color: rgba(79, 84, 92, 1);
+}
+
+.chatlog__embed-content-container {
+    background-color: rgba(46, 48, 54, 0.3);
+    border-color: rgba(46, 48, 54, 0.6);
+}
+
+.chatlog__embed-author-name {
+    color: #ffffff;
+}
+
+.chatlog__embed-author-name-link {
+    color: #ffffff;
+}
+
+.chatlog__embed-title {
+    color: #ffffff;
+}
+
+.chatlog__embed-description {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__embed-field-name {
+    color: #ffffff;
+}
+
+.chatlog__embed-field-value {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__embed-footer {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__reaction {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.chatlog__reaction-count {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+/* Postamble */
+
+.postamble {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.postamble__entry {
+    color: #ffffff;
+}
+    </style>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/solarized-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.pre--multiline').forEach(block => hljs.highlightBlock(block));
+        });
+    </script>
+
+    <script>
+        function scrollToMessage(event, id) {
+            var element = document.getElementById('message-' + id);
+
+            if (element) {
+                event.preventDefault();
+
+                element.classList.add('chatlog__message--highlighted');
+
+                window.scrollTo({
+                    top: element.getBoundingClientRect().top - document.body.getBoundingClientRect().top - (window.innerHeight / 2),
+                    behavior: 'smooth'
+                });
+
+                window.setTimeout(function() {
+                    element.classList.remove('chatlog__message--highlighted');
+                }, 2000);
+            }
+        }
+
+        function showSpoiler(event, element) {
+            if (element && element.classList.contains('spoiler--hidden')) {
+                event.preventDefault();
+                element.classList.remove('spoiler--hidden');
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="preamble">
+    <div class="preamble__guild-icon-container">
+        <img class="preamble__guild-icon" src="https://cdn.discordapp.com/icons/930791563871813693/89ccc9d466d4055c98a4af46f144e403.png" alt="Guild icon">
+    </div>
+    <div class="preamble__entries-container">
+        <div class="preamble__entry">Rabbithole.help part 3</div>
+        <div class="preamble__entry">research / &#128184;-economy</div>
+
+
+            <div class="preamble__entry preamble__entry--small">
+Between 01-Apr-22 12:00 AM and 01-May-22 12:00 AM            </div>
+    </div>
+</div>
+
+<div class="chatlog">
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/288866462746017792/2f8c308f4c9341db9df8dba295cd4f09.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Onysfx#3702" data-user-id="288866462746017792" style="color: rgb(52,152,219)">Onysfx</span>
+
+
+        <span class="chatlog__timestamp">01-Apr-22 06:39 PM</span>
+
+            <div class="chatlog__message " data-message-id="959492304299786341" id="message-959492304299786341">
+                <div class="chatlog__content">
+                    <div class="markdown">Stop being so entitled you incels:
+<a href="https://archive.ph/3WCrI">https://archive.ph/3WCrI</a> <span class="chatlog__edited-timestamp" title="01-Apr-22 06:40 PM">(edited)</span></div>
+                </div>
+
+                    <div class="chatlog__attachment">
+                            <a href="https://cdn.discordapp.com/attachments/930792148855570432/959492304383660082/IMG_20220401_123749_059.jpg">
+                                    <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/930792148855570432/959492304383660082/IMG_20220401_123749_059.jpg" alt="Attachment">
+                            </a>
+                    </div>
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="pinkwojak" title="pinkwojak" src="https://cdn.discordapp.com/emojis/930817036932755546.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon#9623" data-user-id="639228327147601921" style="color: rgb(241,196,15)">mejon</span>
+
+
+        <span class="chatlog__timestamp">01-Apr-22 08:21 PM</span>
+
+            <div class="chatlog__message " data-message-id="959517895682039828" id="message-959517895682039828">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.numismaticnews.net/coin-market/u-s-mint-silver-shortages-explained">https://www.numismaticnews.net/coin-market/u-s-mint-silver-shortages-explained</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.numismaticnews.net/coin-market/u-s-mint-silver-shortages-explained">
+                                                    <div class="markdown">U.S. Mint Silver Shortages Explained</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Last week’s column about the U.S. Mint’s difficulty in sourcing sufficient physical silver to meet public demand for 2022-dated Morgan and Peace silver dollars</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://www.numismaticnews.net/.image/t_share/MTg4NDc4MDc4OTUzOTkwMDkx/usmintpa.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="https://www.numismaticnews.net/.image/t_share/MTg4NDc4MDc4OTUzOTkwMDkx/usmintpa.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/709158982094159882/7baa43a8de40813808f0d8a9fc4d8100.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Rabbitholed#5246" data-user-id="709158982094159882" style="color: rgb(241,196,15)">Curb</span>
+
+
+        <span class="chatlog__timestamp">02-Apr-22 06:37 PM</span>
+
+            <div class="chatlog__message " data-message-id="959854071957819392" id="message-959854071957819392">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.zerohedge.com/energy/gazprom-halts-gas-shipments-europe-critical-pipeline">https://www.zerohedge.com/energy/gazprom-halts-gas-shipments-europe-critical-pipeline</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(34,34,34,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.zerohedge.com/energy/gazprom-halts-gas-shipments-europe-critical-pipeline">
+                                                    <div class="markdown">Gazprom Halts Gas Shipments To Europe Via Critical Pipeline</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Gazprom has also cut off supplies to the UK in response to its sanctions regime...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://assets.zerohedge.com/s3fs-public/styles/16_9_max_700/public/2022-04/gas_0.jpg?itok=o5cT0AU9">
+                                            <img class="chatlog__embed-thumbnail" src="https://assets.zerohedge.com/s3fs-public/styles/16_9_max_700/public/2022-04/gas_0.jpg?itok=o5cT0AU9" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/709158982094159882/7baa43a8de40813808f0d8a9fc4d8100.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Rabbitholed#5246" data-user-id="709158982094159882" style="color: rgb(241,196,15)">Curb</span>
+
+
+        <span class="chatlog__timestamp">02-Apr-22 09:43 PM</span>
+
+            <div class="chatlog__message " data-message-id="959900914058149938" id="message-959900914058149938">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.zerohedge.com/geopolitical/imf-warns-sanctions-against-russia-threaten-weaken-dominance-dollar">https://www.zerohedge.com/geopolitical/imf-warns-sanctions-against-russia-threaten-weaken-dominance-dollar</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(34,34,34,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.zerohedge.com/geopolitical/imf-warns-sanctions-against-russia-threaten-weaken-dominance-dollar">
+                                                    <div class="markdown">IMF Warns That Sanctions Against Russia Threaten To Weaken The Domi...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">The sanctions may result in a more fragmented international monetary system...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://assets.zerohedge.com/s3fs-public/styles/16_9_max_700/public/2022-04/GettyImages-1229045941-700x420.jpg?itok=20xYEs1k">
+                                            <img class="chatlog__embed-thumbnail" src="https://assets.zerohedge.com/s3fs-public/styles/16_9_max_700/public/2022-04/GettyImages-1229045941-700x420.jpg?itok=20xYEs1k" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="surprised_pikachu" title="surprised_pikachu" src="https://cdn.discordapp.com/emojis/930817036899221544.png">
+                                <span class="chatlog__reaction-count">2</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon#9623" data-user-id="639228327147601921" style="color: rgb(241,196,15)">mejon</span>
+
+
+        <span class="chatlog__timestamp">03-Apr-22 08:40 PM</span>
+
+            <div class="chatlog__message " data-message-id="960247377036472431" id="message-960247377036472431">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://theprint.in/world/slovak-economy-minister-says-ready-to-pay-for-russian-gas-supplies-in-rubles/900847/">https://theprint.in/world/slovak-economy-minister-says-ready-to-pay-for-russian-gas-supplies-in-rubles/900847/</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://theprint.in/author/ani/">ANI</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://theprint.in/world/slovak-economy-minister-says-ready-to-pay-for-russian-gas-supplies-in-rubles/900847/">
+                                                    <div class="markdown">Slovak Economy Minister says ready to pay for Russian gas supplies ...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Bratislava [Slovakia], April 3 (ANI/Sputnik): Slovakia cannot give up Russian gas and will pay for supplies in rubles if needed, Slovak Economy Minister Richard Sulik said on Sunday. On Thursday, Russian President Vladimir Putin signed a decree stipulating that all contracts for gas supplies with companies registered in “unfriendly” countries be...</div>
+                                        </div>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="960247829262135437" id="message-960247829262135437">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.infobae.com/en/2022/04/03/latvia-estonia-and-lithuania-stopped-importing-russian-gas-in-retaliation-for-the-invasion-of-ukraine/">https://www.infobae.com/en/2022/04/03/latvia-estonia-and-lithuania-stopped-importing-russian-gas-in-retaliation-for-the-invasion-of-ukraine/</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.infobae.com/en/2022/04/03/latvia-estonia-and-lithuania-stopped-importing-russian-gas-in-retaliation-for-the-invasion-of-ukraine/">
+                                                    <div class="markdown">Latvia, Estonia and Lithuania stopped importing Russian gas in reta...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Lithuanian President Gypsies Nauseda asked the rest of the EU to follow the example of the Baltic countries and explained that steps have been taken for years not to depend on Russian supplies</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://www.infobae.com/new-resizer/E4KBwmEKzxwunfek6KFS7620MGI=/1024x512/filters:format(webp):quality(85)//cloudfront-us-east-1.images.arcpublishing.com/infobae/FRYWRTKVQBHIRMUUAOXW5NQG2Q.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="https://www.infobae.com/new-resizer/E4KBwmEKzxwunfek6KFS7620MGI=/1024x512/filters:format(webp):quality(85)//cloudfront-us-east-1.images.arcpublishing.com/infobae/FRYWRTKVQBHIRMUUAOXW5NQG2Q.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="&#129398;" title="&#129398;" src="https://twemoji.maxcdn.com/2/72x72/1f976.png">
+                                <span class="chatlog__reaction-count">2</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/709158982094159882/7baa43a8de40813808f0d8a9fc4d8100.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Rabbitholed#5246" data-user-id="709158982094159882" style="color: rgb(241,196,15)">Curb</span>
+
+
+        <span class="chatlog__timestamp">03-Apr-22 08:49 PM</span>
+
+            <div class="chatlog__message " data-message-id="960249679910699108" id="message-960249679910699108">
+                <div class="chatlog__content">
+                    <div class="markdown">gold up or oil down?
+<a href="https://www.youtube.com/watch?v=35x8N7Va8zg">https://www.youtube.com/watch?v=35x8N7Va8zg</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCpvyOqtEc86X8w8_Se0t4-w">George Gammon</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=35x8N7Va8zg">
+                                                    <div class="markdown">Expert Says GOLD Could Hit $100,000 Soon!! (Here&#39;s How)</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Peter Schiff, Brent Johnson and I discuss predictions for the dollar in 2022, (I explain Peter and Brent&#39;s view with exclusive whiteboard video!!) click this link to check it out!! <img class="emoji " alt="🔥" title="🔥" src="https://twemoji.maxcdn.com/2/72x72/1f525.png"> <a href="https://www.georgegammon.com/debate">https://www.georgegammon.com/debate</a>
+
+For more content that&#39;ll help you build wealth and thrive in a world of out of control central banks and big governments check ...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://i.ytimg.com/vi/35x8N7Va8zg/maxresdefault.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="https://i.ytimg.com/vi/35x8N7Va8zg/maxresdefault.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/709158982094159882/7baa43a8de40813808f0d8a9fc4d8100.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Rabbitholed#5246" data-user-id="709158982094159882" style="color: rgb(241,196,15)">Curb</span>
+
+
+        <span class="chatlog__timestamp">03-Apr-22 09:19 PM</span>
+
+            <div class="chatlog__message " data-message-id="960257359136051240" id="message-960257359136051240">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://twitter.com/disclosetv/status/1510686383261769735">https://twitter.com/disclosetv/status/1510686383261769735</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(29,161,242,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+                                                <img class="chatlog__embed-author-icon" src="https://pbs.twimg.com/profile_images/898153945721339904/OFVCkPfR_400x400.jpg" alt="Author icon">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/disclosetv">Disclose.tv (@disclosetv)</a>
+                                                </span>
+                                        </div>
+
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">MORE - According to information from the Funke Mediengruppe, #Aldi expects food purchase prices to rise by 20 to 50 percent over the next few weeks.</div>
+                                        </div>
+
+                                        <div class="chatlog__embed-fields">
+                                                <div class="chatlog__embed-field chatlog__embed-field--inline">
+                                                        <div class="chatlog__embed-field-name">
+                                                            <div class="markdown">Likes</div>
+                                                        </div>
+
+                                                        <div class="chatlog__embed-field-value">
+                                                            <div class="markdown">693</div>
+                                                        </div>
+                                                </div>
+                                                <div class="chatlog__embed-field chatlog__embed-field--inline">
+                                                        <div class="chatlog__embed-field-name">
+                                                            <div class="markdown">Retweets</div>
+                                                        </div>
+
+                                                        <div class="chatlog__embed-field-value">
+                                                            <div class="markdown">289</div>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                </div>
+
+                            </div>
+
+
+                                <div class="chatlog__embed-footer">
+                                        <img class="chatlog__embed-footer-icon" src="https://abs.twimg.com/icons/apple-touch-icon-192x192.png" alt="Footer icon">
+
+                                        <span class="chatlog__embed-footer-text">
+Twitter
+ • 
+03-Apr-22 08:31 PM                                        </span>
+                                </div>
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="&#128175;" title="&#128175;" src="https://twemoji.maxcdn.com/2/72x72/1f4af.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/709158982094159882/7baa43a8de40813808f0d8a9fc4d8100.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Rabbitholed#5246" data-user-id="709158982094159882" style="color: rgb(241,196,15)">Curb</span>
+
+
+        <span class="chatlog__timestamp">03-Apr-22 09:45 PM</span>
+
+            <div class="chatlog__message " data-message-id="960263795173883966" id="message-960263795173883966">
+                <div class="chatlog__content">
+                    <div class="markdown">this ofc means hit that ATM..
+<a href="https://www.reuters.com/business/finance/beware-wartime-fake-news-triggering-run-eu-banks-told-2022-04-01/">https://www.reuters.com/business/finance/beware-wartime-fake-news-triggering-run-eu-banks-told-2022-04-01/</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.reuters.com/business/finance/beware-wartime-fake-news-triggering-run-eu-banks-told-2022-04-01/">
+                                                    <div class="markdown">Beware of wartime fake news triggering a run, EU banks told</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Banks should beware of fake news that could trigger a run on their deposits, the European Union&#39;s banking watchdog said in a warning on Friday about potential fallout from the war in Ukraine.</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://www.reuters.com/resizer/ffAKT4_miW4UEDk8cc-PAeuzf1o=/1200x628/smart/filters:quality(80)/cloudfront-us-east-2.images.arcpublishing.com/reuters/BML5GX2RQ5NGVM36BO5K3JITRY.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="https://www.reuters.com/resizer/ffAKT4_miW4UEDk8cc-PAeuzf1o=/1200x628/smart/filters:quality(80)/cloudfront-us-east-2.images.arcpublishing.com/reuters/BML5GX2RQ5NGVM36BO5K3JITRY.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="960265075711701064" id="message-960265075711701064">
+                <div class="chatlog__content">
+                    <div class="markdown">how it started:
+<a href="https://twitter.com/nexta_tv/status/1507245694683254785">https://twitter.com/nexta_tv/status/1507245694683254785</a>
+how its going:
+<a href="https://theprint.in/world/slovak-economy-minister-says-ready-to-pay-for-russian-gas-supplies-in-rubles/900847/">https://theprint.in/world/slovak-economy-minister-says-ready-to-pay-for-russian-gas-supplies-in-rubles/900847/</a> <span class="chatlog__edited-timestamp" title="03-Apr-22 09:52 PM">(edited)</span></div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(29,161,242,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+                                                <img class="chatlog__embed-author-icon" src="https://pbs.twimg.com/profile_images/1509890868173549591/hEf2JOzo_400x400.jpg" alt="Author icon">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/nexta_tv">NEXTA (@nexta_tv)</a>
+                                                </span>
+                                        </div>
+
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">The #EU will not pay for #Russian gas in rubles.
+
+This was stated by the President of the European Commission Ursula von der #Leyen. According to her, Vladimir #Putin&#39;s order to transfer payments for fuel in Russian rubles is blackmail and an attempt to circumvent EU sanctions.</div>
+                                        </div>
+
+                                        <div class="chatlog__embed-fields">
+                                                <div class="chatlog__embed-field chatlog__embed-field--inline">
+                                                        <div class="chatlog__embed-field-name">
+                                                            <div class="markdown">Likes</div>
+                                                        </div>
+
+                                                        <div class="chatlog__embed-field-value">
+                                                            <div class="markdown">3824</div>
+                                                        </div>
+                                                </div>
+                                                <div class="chatlog__embed-field chatlog__embed-field--inline">
+                                                        <div class="chatlog__embed-field-name">
+                                                            <div class="markdown">Retweets</div>
+                                                        </div>
+
+                                                        <div class="chatlog__embed-field-value">
+                                                            <div class="markdown">626</div>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                </div>
+
+                            </div>
+
+                                <div class="chatlog__embed-image-container">
+                                    <a class="chatlog__embed-image-link" href="https://pbs.twimg.com/media/FOrP1FqWUBMNTgT.jpg">
+                                        <img class="chatlog__embed-image" src="https://pbs.twimg.com/media/FOrP1FqWUBMNTgT.jpg" alt="Image">
+                                    </a>
+                                </div>
+
+                                <div class="chatlog__embed-footer">
+                                        <img class="chatlog__embed-footer-icon" src="https://abs.twimg.com/icons/apple-touch-icon-192x192.png" alt="Footer icon">
+
+                                        <span class="chatlog__embed-footer-text">
+Twitter
+ • 
+25-Mar-22 07:39 AM                                        </span>
+                                </div>
+                        </div>
+                    </div>
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://theprint.in/author/ani/">ANI</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://theprint.in/world/slovak-economy-minister-says-ready-to-pay-for-russian-gas-supplies-in-rubles/900847/">
+                                                    <div class="markdown">Slovak Economy Minister says ready to pay for Russian gas supplies ...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Bratislava [Slovakia], April 3 (ANI/Sputnik): Slovakia cannot give up Russian gas and will pay for supplies in rubles if needed, Slovak Economy Minister Richard Sulik said on Sunday. On Thursday, Russian President Vladimir Putin signed a decree stipulating that all contracts for gas supplies with companies registered in “unfriendly” countries be...</div>
+                                        </div>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="popcorn" title="popcorn" src="https://cdn.discordapp.com/emojis/931418190502838302.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="dumpsterfire" title="dumpsterfire" src="https://cdn.discordapp.com/emojis/930817037016645682.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon#9623" data-user-id="639228327147601921" style="color: rgb(241,196,15)">mejon</span>
+
+
+        <span class="chatlog__timestamp">04-Apr-22 09:05 PM</span>
+
+            <div class="chatlog__message " data-message-id="960616014385655938" id="message-960616014385655938">
+                <div class="chatlog__content">
+                    <div class="markdown">EU breaking <a href="https://www.politico.eu/article/austria-rejects-sanctions-against-russian-oil-gas/">https://www.politico.eu/article/austria-rejects-sanctions-against-russian-oil-gas/</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(210,50,38,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.politico.eu/article/austria-rejects-sanctions-against-russian-oil-gas/">
+                                                    <div class="markdown">Austria rejects sanctions against Russian oil, gas</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Vienna is calling on the EU to keep a cool head despite reports of Russian atrocities in Ukraine.</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://www.politico.eu/cdn-cgi/image/width=1200,height=630,fit=crop,quality=80,onerror=redirect/wp-content/uploads/2022/04/04/GettyImages-1239206600-scaled.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="https://www.politico.eu/cdn-cgi/image/width=1200,height=630,fit=crop,quality=80,onerror=redirect/wp-content/uploads/2022/04/04/GettyImages-1239206600-scaled.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="ooh" title="ooh" src="https://cdn.discordapp.com/emojis/930817036920164442.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+            <div class="chatlog__message " data-message-id="960616186272448582" id="message-960616186272448582">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.reuters.com/world/europe/eu-must-end-all-economic-ties-russia-fast-possible-lindner-2022-04-04/">https://www.reuters.com/world/europe/eu-must-end-all-economic-ties-russia-fast-possible-lindner-2022-04-04/</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.reuters.com/world/europe/eu-must-end-all-economic-ties-russia-fast-possible-lindner-2022-04-04/">
+                                                    <div class="markdown">EU must end all economic ties to Russia as fast as possible, German...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">The European Union must work toward cutting all economic ties with Russia over its &quot;criminal&quot; war in Ukraine, German Finance Minister Christian Lindner said on Monday, but cast doubt over an immediate embargo on Russian gas imports.</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://www.reuters.com/resizer/wA91bCQfXQ8DQKVjc25-Qv1Klyw=/1200x628/smart/filters:quality(80)/cloudfront-us-east-2.images.arcpublishing.com/reuters/RRPIY6GJAVPOVPDUREJMOFXYHE.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="https://www.reuters.com/resizer/wA91bCQfXQ8DQKVjc25-Qv1Klyw=/1200x628/smart/filters:quality(80)/cloudfront-us-east-2.images.arcpublishing.com/reuters/RRPIY6GJAVPOVPDUREJMOFXYHE.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="NWOpepe" title="NWOpepe" src="https://cdn.discordapp.com/emojis/930817036425252875.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+            <div class="chatlog__message " data-message-id="960616419660296292" id="message-960616419660296292">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.aa.com.tr/en/middle-east/lebanon-goes-bankrupt-deputy-prime-minister/2554688">https://www.aa.com.tr/en/middle-east/lebanon-goes-bankrupt-deputy-prime-minister/2554688</a> </div>
+                </div>
+
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="peep00" title="peep00" src="https://cdn.discordapp.com/emojis/930817036597207100.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="pinkwojak" title="pinkwojak" src="https://cdn.discordapp.com/emojis/930817036932755546.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+            <div class="chatlog__message " data-message-id="960617739586764891" id="message-960617739586764891">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.kitco.com/news/2022-04-04/U-S-Mint-sees-strongest-gold-bullion-demand-in-23-years-sells-426k-ounces-in-Q1.html">https://www.kitco.com/news/2022-04-04/U-S-Mint-sees-strongest-gold-bullion-demand-in-23-years-sells-426k-ounces-in-Q1.html</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.kitco.com/news/2022-04-04/U-S-Mint-sees-strongest-gold-bullion-demand-in-23-years-sells-426k-ounces-in-Q1.html">
+                                                    <div class="markdown">U.S. Mint sees strongest gold bullion demand in 23 years, sells 426...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Kitco News&#39; general-interest stories takes a look at what is making headlines in the marketplace and how that is impacting precious metals prices</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://www.kitco.com/news/2022-04-04/images/Gold_coin.png">
+                                            <img class="chatlog__embed-thumbnail" src="https://www.kitco.com/news/2022-04-04/images/Gold_coin.png" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="ooh" title="ooh" src="https://cdn.discordapp.com/emojis/930817036920164442.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/899566489185693706/e82688e1e002c89f702ce283776bb7b8.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="alt_ theorist#1484" data-user-id="899566489185693706" style="color: rgb(52,152,219)">alt_ theorist</span>
+
+
+        <span class="chatlog__timestamp">04-Apr-22 10:29 PM</span>
+
+            <div class="chatlog__message " data-message-id="960637360935174184" id="message-960637360935174184">
+                <div class="chatlog__content">
+                    <div class="markdown">Biden Executive Order on Ensuring Responsible Development of Digital Assets 
+
+#CDBC prep for changeover <a href="https://www.whitehouse.gov/briefing-room/presidential-actions/2022/03/09/executive-order-on-ensuring-responsible-development-of-digital-assets/">https://www.whitehouse.gov/briefing-room/presidential-actions/2022/03/09/executive-order-on-ensuring-responsible-development-of-digital-assets/</a>
+
+<div class="quote">“US should ensure that safeguards are in place and promote the responsible development of digital assets to protect consumers, investors, and businesses; maintain privacy; and shield against arbitrary or unlawful surveillance, which can contribute to human rights abuses” lol <img class="emoji " alt="🤡" title="🤡" src="https://twemoji.maxcdn.com/2/72x72/1f921.png"></div> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.whitehouse.gov/briefing-room/presidential-actions/2022/03/09/executive-order-on-ensuring-responsible-development-of-digital-assets/">
+                                                    <div class="markdown">Executive Order on Ensuring Responsible Development of Digital Asse...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">By the authority vested in me as President by the Constitution and the laws of the United States of America, it is hereby ordered as follows:Section</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://www.whitehouse.gov/wp-content/uploads/2021/01/wh_social-share.png">
+                                            <img class="chatlog__embed-thumbnail" src="https://www.whitehouse.gov/wp-content/uploads/2021/01/wh_social-share.png" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="NWOpepe" title="NWOpepe" src="https://cdn.discordapp.com/emojis/930817036425252875.png">
+                                <span class="chatlog__reaction-count">2</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/709158982094159882/7baa43a8de40813808f0d8a9fc4d8100.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Rabbitholed#5246" data-user-id="709158982094159882" style="color: rgb(241,196,15)">Curb</span>
+
+
+        <span class="chatlog__timestamp">05-Apr-22 05:31 AM</span>
+
+            <div class="chatlog__message " data-message-id="960743498020184084" id="message-960743498020184084">
+                <div class="chatlog__content">
+                    <div class="markdown">some good macro insights in this interview. about halfway they discuss the current lockdown in china causing supply chain issues later on in the chain. as a double punch with Russia cutting off the gas for EUR and USD. shortages going to get real.
+<a href="https://www.youtube.com/watch?v=Sqz5ps7Smno">https://www.youtube.com/watch?v=Sqz5ps7Smno</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCpvyOqtEc86X8w8_Se0t4-w">George Gammon</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=Sqz5ps7Smno">
+                                                    <div class="markdown">Dave Collum (Deep Dive Into Motives/Plans Of Global Elite &amp; Russia/...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Check out the next Rebel Capitalist Live at <a href="https://www.rebelcapitalistlive.com">https://www.rebelcapitalistlive.com</a>
+
+#Inflation #Commodities #WEF</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://i.ytimg.com/vi/Sqz5ps7Smno/maxresdefault.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="https://i.ytimg.com/vi/Sqz5ps7Smno/maxresdefault.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="hmmm" title="hmmm" src="https://cdn.discordapp.com/emojis/930817037054402590.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon#9623" data-user-id="639228327147601921" style="color: rgb(241,196,15)">mejon</span>
+
+
+        <span class="chatlog__timestamp">05-Apr-22 10:27 PM</span>
+
+            <div class="chatlog__message " data-message-id="960999037354516480" id="message-960999037354516480">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.reddit.com/r/Wallstreetsilver/comments/tx1qon/europe_is_now_spending_almost_10_of_gdp_on_energy/">https://www.reddit.com/r/Wallstreetsilver/comments/tx1qon/europe_is_now_spending_almost_10_of_gdp_on_energy/</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,255,255,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.reddit.com/r/Wallstreetsilver/comments/tx1qon/europe_is_now_spending_almost_10_of_gdp_on_energy/">
+                                                    <div class="markdown">r/Wallstreetsilver - Europe is now spending almost 10% of GDP on en...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">0 votes and 8 comments so far on Reddit</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://preview.redd.it/zhc74ppo8rr81.jpg?auto=webp&amp;s=193e351f6fcda1f09d8824b324b458624a740a23">
+                                            <img class="chatlog__embed-thumbnail" src="https://preview.redd.it/zhc74ppo8rr81.jpg?auto=webp&amp;s=193e351f6fcda1f09d8824b324b458624a740a23" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="dumpsterfire" title="dumpsterfire" src="https://cdn.discordapp.com/emojis/930817037016645682.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+            <div class="chatlog__message " data-message-id="960999413914931230" id="message-960999413914931230">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.usatoday.com/story/news/education/2022/04/05/student-loans-biden-payment-pause-forgiveness/6991986001/">https://www.usatoday.com/story/news/education/2022/04/05/student-loans-biden-payment-pause-forgiveness/6991986001/</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(0,152,254,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.usatoday.com/story/news/education/2022/04/05/student-loans-biden-payment-pause-forgiveness/6991986001/">
+                                                    <div class="markdown">Biden to delay student loan repayment, again extending pause, as De...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Biden&#39;s extension of the pause in student loan payments would mark the fifth time the government has continued the freeze, without wide forgiveness.</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://www.gannett-cdn.com/presto/2022/03/09/USAT/11099755-507a-40ab-99c0-188808f5bd4a-GettyImages-1383087096.jpg?crop=5912,3326,x0,y127&amp;width=3200&amp;height=1801&amp;format=pjpg&amp;auto=webp">
+                                            <img class="chatlog__embed-thumbnail" src="https://www.gannett-cdn.com/presto/2022/03/09/USAT/11099755-507a-40ab-99c0-188808f5bd4a-GettyImages-1383087096.jpg?crop=5912,3326,x0,y127&amp;width=3200&amp;height=1801&amp;format=pjpg&amp;auto=webp" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="960999912634482729" id="message-960999912634482729">
+                <div class="chatlog__content">
+                    <div class="markdown">more economic pain <a href="https://www.reuters.com/world/europe/eu-propose-new-sweeping-sanctions-against-russia-worth-billions-euros-source-2022-04-05/">https://www.reuters.com/world/europe/eu-propose-new-sweeping-sanctions-against-russia-worth-billions-euros-source-2022-04-05/</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.reuters.com/world/europe/eu-propose-new-sweeping-sanctions-against-russia-worth-billions-euros-source-2022-04-05/">
+                                                    <div class="markdown">EU to propose import ban on Russia coal, chemicals, wood -source</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">The European Commission will propose on Tuesday to EU nations sweeping new sanctions against Russia, including banning imports of coal, wood, chemicals and other products worth about 9 billion euros ($9.86 billion) a year, an EU source told Reuters.</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://www.reuters.com/resizer/8gAigYnJwy2CEdYs6NF2EH0l1js=/1200x628/smart/filters:quality(80)/cloudfront-us-east-2.images.arcpublishing.com/reuters/EN6TZL6IMZORJAUKOPIKU2QAXI.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="https://www.reuters.com/resizer/8gAigYnJwy2CEdYs6NF2EH0l1js=/1200x628/smart/filters:quality(80)/cloudfront-us-east-2.images.arcpublishing.com/reuters/EN6TZL6IMZORJAUKOPIKU2QAXI.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="pinkwojak" title="pinkwojak" src="https://cdn.discordapp.com/emojis/930817036932755546.png">
+                                <span class="chatlog__reaction-count">3</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon#9623" data-user-id="639228327147601921" style="color: rgb(241,196,15)">mejon</span>
+
+
+        <span class="chatlog__timestamp">06-Apr-22 08:15 PM</span>
+
+            <div class="chatlog__message " data-message-id="961328233297637517" id="message-961328233297637517">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.rferl.org/a/hungary-russian-gas-rubles/31788899.html">https://www.rferl.org/a/hungary-russian-gas-rubles/31788899.html</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.rferl.org/a/hungary-russian-gas-rubles/31788899.html">
+                                                    <div class="markdown">Hungary Breaks With EU, Will Pay For Russian Gas In Rubles</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Hungary has broken ranks with the European Union, saying it will accept Moscow&#39;s demand that gas supplies be paid for in rubles.</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://gdb.rferl.org/049b0000-0aff-0242-3fb1-08da17d4a0ac_w1200_r1.png">
+                                            <img class="chatlog__embed-thumbnail" src="https://gdb.rferl.org/049b0000-0aff-0242-3fb1-08da17d4a0ac_w1200_r1.png" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="popcorn" title="popcorn" src="https://cdn.discordapp.com/emojis/931418190502838302.png">
+                                <span class="chatlog__reaction-count">2</span>
+                            </div>
+                    </div>
+            </div>
+            <div class="chatlog__message " data-message-id="961328530749268008" id="message-961328530749268008">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://fxtwitter.com/loganlinguist/status/1511702937902407681">https://fxtwitter.com/loganlinguist/status/1511702937902407681</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(67,181,129,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/loganlinguist/status/1511702937902407681">1st Quarter 2022 Inflation Headlines. SOUND ON &#128266;. ───────────── ♥ [0] ⤴ [0] ─────────────</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://fxtwitter.com/loganlinguist/status/1511702937902407681">
+                                                    <div class="markdown">The Loitering Linguist (@)</div>
+                                                </a>
+                                        </div>
+
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="pinkwojak" title="pinkwojak" src="https://cdn.discordapp.com/emojis/930817036932755546.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/709158982094159882/7baa43a8de40813808f0d8a9fc4d8100.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Rabbitholed#5246" data-user-id="709158982094159882" style="color: rgb(241,196,15)">Curb</span>
+
+
+        <span class="chatlog__timestamp">06-Apr-22 08:41 PM</span>
+
+            <div class="chatlog__message " data-message-id="961334959799410749" id="message-961334959799410749">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.zerohedge.com/markets/fed-repo-oracle-zoltan-poszar-explains-why-powell-must-crash-market">https://www.zerohedge.com/markets/fed-repo-oracle-zoltan-poszar-explains-why-powell-must-crash-market</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(34,34,34,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.zerohedge.com/markets/fed-repo-oracle-zoltan-poszar-explains-why-powell-must-crash-market">
+                                                    <div class="markdown">Shocker From Fed Repo Oracle Zoltan Pozsar: Powell Must Crash The M...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">&quot;Maybe to increase labor supply, we need lower asset prices… To improve labor supply, the Fed might try to put volatility in its service to engineer a correction in house prices and risk assets – equities, credit, and Bitcoin too…&quot;</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://assets.zerohedge.com/s3fs-public/styles/16_9_max_700/public/2022-02/pozsar%20teaser.jpg?itok=huBF4bP9">
+                                            <img class="chatlog__embed-thumbnail" src="https://assets.zerohedge.com/s3fs-public/styles/16_9_max_700/public/2022-02/pozsar%20teaser.jpg?itok=huBF4bP9" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="dumpsterfire" title="dumpsterfire" src="https://cdn.discordapp.com/emojis/930817037016645682.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+            <div class="chatlog__message " data-message-id="961335063151259689" id="message-961335063151259689">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://fortune.com/2022/01/21/bank-of-america-ceo-great-resignation-brian-moynihan/">https://fortune.com/2022/01/21/bank-of-america-ceo-great-resignation-brian-moynihan/</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,255,255,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://fortune.com/2022/01/21/bank-of-america-ceo-great-resignation-brian-moynihan/">
+                                                    <div class="markdown">Bank of America’s CEO gets real about the labor shortage: ‘We don’t...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Bank of America CEO Brian Moynihan cites rising job attrition rates and declining birth rates and as factors in the war for talent.</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://content.fortune.com/wp-content/uploads/2022/01/GettyImages-1195145845-e1642790069534.jpg?resize=1200,600">
+                                            <img class="chatlog__embed-thumbnail" src="https://content.fortune.com/wp-content/uploads/2022/01/GettyImages-1195145845-e1642790069534.jpg?resize=1200,600" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/709158982094159882/7baa43a8de40813808f0d8a9fc4d8100.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Rabbitholed#5246" data-user-id="709158982094159882" style="color: rgb(241,196,15)">Curb</span>
+
+
+        <span class="chatlog__timestamp">06-Apr-22 09:58 PM</span>
+
+            <div class="chatlog__message " data-message-id="961354155962794055" id="message-961354155962794055">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.cnbc.com/2022/04/06/fed-minutes-march-2022-meetings-.html">https://www.cnbc.com/2022/04/06/fed-minutes-march-2022-meetings-.html</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.cnbc.com/2022/04/06/fed-minutes-march-2022-meetings-.html">
+                                                    <div class="markdown">Fed officials plan to shrink the balance sheet by $95 billion a mon...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">The Federal Reserve on Wednesday released minutes from its March 15-16 policy meeting.</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://image.cnbcfm.com/api/v1/image/107007241-16432865542022-01-26t231111z_178009407_rc2b7s9qfbfi_rtrmadp_0_usa-fed.jpeg?v=1643287413&amp;w=1920&amp;h=1080">
+                                            <img class="chatlog__embed-thumbnail" src="https://image.cnbcfm.com/api/v1/image/107007241-16432865542022-01-26t231111z_178009407_rc2b7s9qfbfi_rtrmadp_0_usa-fed.jpeg?v=1643287413&amp;w=1920&amp;h=1080" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="pinkwojak" title="pinkwojak" src="https://cdn.discordapp.com/emojis/930817036932755546.png">
+                                <span class="chatlog__reaction-count">3</span>
+                            </div>
+                    </div>
+            </div>
+            <div class="chatlog__message " data-message-id="961354402810187806" id="message-961354402810187806">
+                <div class="chatlog__content">
+                    <div class="markdown">create a crash to reverse course as Zoltan says? </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon#9623" data-user-id="639228327147601921" style="color: rgb(241,196,15)">mejon</span>
+
+
+        <span class="chatlog__timestamp">06-Apr-22 10:41 PM</span>
+
+            <div class="chatlog__message " data-message-id="961365010049798234" id="message-961365010049798234">
+                <div class="chatlog__content">
+                    <div class="markdown">Seems like. not sure how long can they can keep things going on for </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="961365089267613747" id="message-961365089267613747">
+                <div class="chatlog__content">
+                    <div class="markdown">crash, print some more, inflate, repeat </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon#9623" data-user-id="639228327147601921" style="color: rgb(241,196,15)">mejon</span>
+
+
+        <span class="chatlog__timestamp">07-Apr-22 09:35 PM</span>
+
+            <div class="chatlog__message " data-message-id="961710736596402276" id="message-961710736596402276">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://twitter.com/wyattreed13/status/1511991680165105671">https://twitter.com/wyattreed13/status/1511991680165105671</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(29,161,242,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+                                                <img class="chatlog__embed-author-icon" src="https://pbs.twimg.com/profile_images/1397010148418273281/HlY1fzCY_400x400.jpg" alt="Author icon">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/wyattreed13">Wyatt Reed (@wyattreed13)</a>
+                                                </span>
+                                        </div>
+
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">The Russian ruble is officially worth more now than it was before military operations in Ukraine began.</div>
+                                        </div>
+
+                                        <div class="chatlog__embed-fields">
+                                                <div class="chatlog__embed-field chatlog__embed-field--inline">
+                                                        <div class="chatlog__embed-field-name">
+                                                            <div class="markdown">Likes</div>
+                                                        </div>
+
+                                                        <div class="chatlog__embed-field-value">
+                                                            <div class="markdown">2520</div>
+                                                        </div>
+                                                </div>
+                                                <div class="chatlog__embed-field chatlog__embed-field--inline">
+                                                        <div class="chatlog__embed-field-name">
+                                                            <div class="markdown">Retweets</div>
+                                                        </div>
+
+                                                        <div class="chatlog__embed-field-value">
+                                                            <div class="markdown">609</div>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                </div>
+
+                            </div>
+
+                                <div class="chatlog__embed-image-container">
+                                    <a class="chatlog__embed-image-link" href="https://pbs.twimg.com/media/FPusa1UXIAI9fmN.jpg">
+                                        <img class="chatlog__embed-image" src="https://pbs.twimg.com/media/FPusa1UXIAI9fmN.jpg" alt="Image">
+                                    </a>
+                                </div>
+
+                                <div class="chatlog__embed-footer">
+                                        <img class="chatlog__embed-footer-icon" src="https://abs.twimg.com/icons/apple-touch-icon-192x192.png" alt="Footer icon">
+
+                                        <span class="chatlog__embed-footer-text">
+Twitter
+ • 
+07-Apr-22 10:58 AM                                        </span>
+                                </div>
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon#9623" data-user-id="639228327147601921" style="color: rgb(241,196,15)">mejon</span>
+
+
+        <span class="chatlog__timestamp">07-Apr-22 09:46 PM</span>
+
+            <div class="chatlog__message " data-message-id="961713670998589460" id="message-961713670998589460">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.wsj.com/articles/walmart-raises-pay-to-attract-truck-drivers-11649336400">https://www.wsj.com/articles/walmart-raises-pay-to-attract-truck-drivers-11649336400</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.wsj.com/articles/walmart-raises-pay-to-attract-truck-drivers-11649336400">
+                                                    <div class="markdown">Walmart Dangles $110,000 Starting Pay to Lure Truck Drivers</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">To keep its supply chain humming, the retailer is raising starting salaries for truck drivers and expanding a training program that enables its employees to enter the field.</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://images.wsj.net/im-520049/social">
+                                            <img class="chatlog__embed-thumbnail" src="https://images.wsj.net/im-520049/social" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="dumpsterfire" title="dumpsterfire" src="https://cdn.discordapp.com/emojis/930817037016645682.png">
+                                <span class="chatlog__reaction-count">2</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="risitas" title="risitas" src="https://cdn.discordapp.com/emojis/930817037163429909.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+            <div class="chatlog__message " data-message-id="961714396080529509" id="message-961714396080529509">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://twitter.com/EP_President/status/1512018889672208392">https://twitter.com/EP_President/status/1512018889672208392</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(29,161,242,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+                                                <img class="chatlog__embed-author-icon" src="https://pbs.twimg.com/profile_images/1491161200230604801/POUXLvhi_400x400.jpg" alt="Author icon">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/EP_President">Roberta Metsola (@EP_President)</a>
+                                                </span>
+                                        </div>
+
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Stronger action called for by @Europarl_EN in strong resolution following war-crimes in #Ukraine:
+
+•immediate full embargo on Russian oil, coal, nuclear fuel &amp; gas
+•delivery of weapons to be stepped up
+•more &amp; harder sanctions reflecting level of atrocities
+
+#StandWithUkraine</div>
+                                        </div>
+
+                                        <div class="chatlog__embed-fields">
+                                                <div class="chatlog__embed-field chatlog__embed-field--inline">
+                                                        <div class="chatlog__embed-field-name">
+                                                            <div class="markdown">Likes</div>
+                                                        </div>
+
+                                                        <div class="chatlog__embed-field-value">
+                                                            <div class="markdown">3268</div>
+                                                        </div>
+                                                </div>
+                                                <div class="chatlog__embed-field chatlog__embed-field--inline">
+                                                        <div class="chatlog__embed-field-name">
+                                                            <div class="markdown">Retweets</div>
+                                                        </div>
+
+                                                        <div class="chatlog__embed-field-value">
+                                                            <div class="markdown">818</div>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                </div>
+
+                            </div>
+
+                                <div class="chatlog__embed-image-container">
+                                    <a class="chatlog__embed-image-link" href="https://pbs.twimg.com/media/FPvElhYXIAkAyz_.jpg">
+                                        <img class="chatlog__embed-image" src="https://pbs.twimg.com/media/FPvElhYXIAkAyz_.jpg" alt="Image">
+                                    </a>
+                                </div>
+
+                                <div class="chatlog__embed-footer">
+                                        <img class="chatlog__embed-footer-icon" src="https://abs.twimg.com/icons/apple-touch-icon-192x192.png" alt="Footer icon">
+
+                                        <span class="chatlog__embed-footer-text">
+Twitter
+ • 
+07-Apr-22 12:46 PM                                        </span>
+                                </div>
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/709158982094159882/7baa43a8de40813808f0d8a9fc4d8100.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Rabbitholed#5246" data-user-id="709158982094159882" style="color: rgb(241,196,15)">Curb</span>
+
+
+        <span class="chatlog__timestamp">10-Apr-22 12:27 AM</span>
+
+            <div class="chatlog__message " data-message-id="962478928675614801" id="message-962478928675614801">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.zerohedge.com/markets/cracks-appear-housing-market-sellers-begin-lower-asking-prices">https://www.zerohedge.com/markets/cracks-appear-housing-market-sellers-begin-lower-asking-prices</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(34,34,34,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.zerohedge.com/markets/cracks-appear-housing-market-sellers-begin-lower-asking-prices">
+                                                    <div class="markdown">Cracks Appear In Housing Market As Sellers Begin To Lower Asking Pr...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">This is &quot;one clear sign that the housing market is cooling.&quot;</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://assets.zerohedge.com/s3fs-public/styles/16_9_max_700/public/2022-04/crack.jpg?itok=Zifp3AWD">
+                                            <img class="chatlog__embed-thumbnail" src="https://assets.zerohedge.com/s3fs-public/styles/16_9_max_700/public/2022-04/crack.jpg?itok=Zifp3AWD" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="962478943145979935" id="message-962478943145979935">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://twitter.com/WallStreetSilv/status/1512892362665730054/photo/1">https://twitter.com/WallStreetSilv/status/1512892362665730054/photo/1</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(29,161,242,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+                                                <img class="chatlog__embed-author-icon" src="https://pbs.twimg.com/profile_images/1482179968083836928/7prxRZ4M_400x400.jpg" alt="Author icon">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/WallStreetSilv">Wall Street Silver (@WallStreetSilv)</a>
+                                                </span>
+                                        </div>
+
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Temporary ?</div>
+                                        </div>
+
+                                        <div class="chatlog__embed-fields">
+                                                <div class="chatlog__embed-field chatlog__embed-field--inline">
+                                                        <div class="chatlog__embed-field-name">
+                                                            <div class="markdown">Likes</div>
+                                                        </div>
+
+                                                        <div class="chatlog__embed-field-value">
+                                                            <div class="markdown">368</div>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                </div>
+
+                            </div>
+
+                                <div class="chatlog__embed-image-container">
+                                    <a class="chatlog__embed-image-link" href="https://pbs.twimg.com/media/FP7flPTXMAkaoRy.jpg">
+                                        <img class="chatlog__embed-image" src="https://pbs.twimg.com/media/FP7flPTXMAkaoRy.jpg" alt="Image">
+                                    </a>
+                                </div>
+
+                                <div class="chatlog__embed-footer">
+                                        <img class="chatlog__embed-footer-icon" src="https://abs.twimg.com/icons/apple-touch-icon-192x192.png" alt="Footer icon">
+
+                                        <span class="chatlog__embed-footer-text">
+Twitter
+ • 
+09-Apr-22 10:37 PM                                        </span>
+                                </div>
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="pinkwojak" title="pinkwojak" src="https://cdn.discordapp.com/emojis/930817036932755546.png">
+                                <span class="chatlog__reaction-count">3</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon#9623" data-user-id="639228327147601921" style="color: rgb(241,196,15)">mejon</span>
+
+
+        <span class="chatlog__timestamp">10-Apr-22 06:13 PM</span>
+
+            <div class="chatlog__message " data-message-id="962747280761430016" id="message-962747280761430016">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.brusselstimes.com/215878/40-of-belgian-food-producers-to-halt-or-reduce-activity">https://www.brusselstimes.com/215878/40-of-belgian-food-producers-to-halt-or-reduce-activity</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.brusselstimes.com/215878/40-of-belgian-food-producers-to-halt-or-reduce-activity">
+                                                    <div class="markdown">40% of Belgian food producers to halt or reduce activity</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Around 12% of the world’s calories come from Ukrainian and Russian wheat, but the war has affected the deliveries.</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://storage.googleapis.com/article-contents/media/2021/01/auction-c-reo.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="https://storage.googleapis.com/article-contents/media/2021/01/auction-c-reo.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="NWOpepe" title="NWOpepe" src="https://cdn.discordapp.com/emojis/930817036425252875.png">
+                                <span class="chatlog__reaction-count">3</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/709158982094159882/7baa43a8de40813808f0d8a9fc4d8100.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Rabbitholed#5246" data-user-id="709158982094159882" style="color: rgb(241,196,15)">Curb</span>
+
+
+        <span class="chatlog__timestamp">11-Apr-22 02:19 AM</span>
+
+            <div class="chatlog__message " data-message-id="962869577501528145" id="message-962869577501528145">
+                <div class="chatlog__content">
+                    <div class="markdown"> </div>
+                </div>
+
+                    <div class="chatlog__attachment">
+                            <a href="https://cdn.discordapp.com/attachments/930792148855570432/962869577300209714/unknown.png">
+                                    <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/930792148855570432/962869577300209714/unknown.png" alt="Attachment">
+                            </a>
+                    </div>
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="whatthehell" title="whatthehell" src="https://cdn.discordapp.com/emojis/931417820888190996.png">
+                                <span class="chatlog__reaction-count">2</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/709158982094159882/7baa43a8de40813808f0d8a9fc4d8100.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Rabbitholed#5246" data-user-id="709158982094159882" style="color: rgb(241,196,15)">Curb</span>
+
+
+        <span class="chatlog__timestamp">12-Apr-22 03:01 AM</span>
+
+            <div class="chatlog__message " data-message-id="963242418369626212" id="message-963242418369626212">
+                <div class="chatlog__content">
+                    <div class="markdown">tweet been deleted </div>
+                </div>
+
+                    <div class="chatlog__attachment">
+                            <a href="https://cdn.discordapp.com/attachments/930792148855570432/963242418143113236/unknown.png">
+                                    <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/930792148855570432/963242418143113236/unknown.png" alt="Attachment">
+                            </a>
+                    </div>
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/709158982094159882/7baa43a8de40813808f0d8a9fc4d8100.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Rabbitholed#5246" data-user-id="709158982094159882" style="color: rgb(241,196,15)">Curb</span>
+
+
+        <span class="chatlog__timestamp">12-Apr-22 04:18 AM</span>
+
+            <div class="chatlog__message " data-message-id="963261914073432104" id="message-963261914073432104">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.reuters.com/article/germany-banks-commerzbank-deutsche-bank/update-1-investor-sells-big-stakes-in-deutsche-bank-commerzbank-bookrunner-idUSL2N2W91KA">https://www.reuters.com/article/germany-banks-commerzbank-deutsche-bank/update-1-investor-sells-big-stakes-in-deutsche-bank-commerzbank-bookrunner-idUSL2N2W91KA</a>
+<div class="quote">FRANKFURT (Reuters) -An undisclosed investor is selling shares in Deutsche Bank and Commerzbank, a bookrunner said on Monday, stakes that amount to more than 5% in Germany’s top two lenders.</div> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,255,255,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.reuters.com/article/germany-banks-commerzbank-deutsche-bank/update-1-investor-sells-big-stakes-in-deutsche-bank-commerzbank-bookrunner-idUSL2N2W91KA">
+                                                    <div class="markdown">Investor sells big stakes in Deutsche Bank, Commerzbank -bookrunner</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">An undisclosed investor is selling shares in Deutsche Bank and Commerzbank, a bookrunner said on Monday, stakes that amount to more than 5% in Germany&#39;s top two lenders.</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://static.reuters.com/resources/r/?m=02&amp;d=20220411&amp;t=2&amp;i=1596966854&amp;r=LYNXNPEI3A0OZ&amp;w=800">
+                                            <img class="chatlog__embed-thumbnail" src="https://static.reuters.com/resources/r/?m=02&amp;d=20220411&amp;t=2&amp;i=1596966854&amp;r=LYNXNPEI3A0OZ&amp;w=800" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="whatthehell" title="whatthehell" src="https://cdn.discordapp.com/emojis/931417820888190996.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/709158982094159882/7baa43a8de40813808f0d8a9fc4d8100.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Rabbitholed#5246" data-user-id="709158982094159882" style="color: rgb(241,196,15)">Curb</span>
+
+
+        <span class="chatlog__timestamp">12-Apr-22 07:17 PM</span>
+
+            <div class="chatlog__message " data-message-id="963488018180747404" id="message-963488018180747404">
+                <div class="chatlog__content">
+                    <div class="markdown">this is going to suck globally
+<a href="https://www.zerohedge.com/economics/another-supply-chain-shock-deck-cargo-backlog-ripples-beyond-shanghai-lockdown-stops">https://www.zerohedge.com/economics/another-supply-chain-shock-deck-cargo-backlog-ripples-beyond-shanghai-lockdown-stops</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(34,34,34,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.zerohedge.com/economics/another-supply-chain-shock-deck-cargo-backlog-ripples-beyond-shanghai-lockdown-stops">
+                                                    <div class="markdown">Another Supply Chain Shock On Deck: Cargo Backlog Ripples Beyond Sh...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">&quot;If the situation does not improve soon it may be necessary to abandon the voyage and advise you from where your container may be collected.&quot;</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://assets.zerohedge.com/s3fs-public/styles/16_9_max_700/public/2022-04/Medical%20workers%20in%20hazmat%20suits%20on%20the%20streets%20of%20Shanghai%2C%20China.jpg?itok=gXV4zr8y">
+                                            <img class="chatlog__embed-thumbnail" src="https://assets.zerohedge.com/s3fs-public/styles/16_9_max_700/public/2022-04/Medical%20workers%20in%20hazmat%20suits%20on%20the%20streets%20of%20Shanghai%2C%20China.jpg?itok=gXV4zr8y" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/709158982094159882/7baa43a8de40813808f0d8a9fc4d8100.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Rabbitholed#5246" data-user-id="709158982094159882" style="color: rgb(241,196,15)">Curb</span>
+
+
+        <span class="chatlog__timestamp">12-Apr-22 08:25 PM</span>
+
+            <div class="chatlog__message " data-message-id="963505204286881852" id="message-963505204286881852">
+                <div class="chatlog__content">
+                    <div class="markdown">Putin predicts more migration to Europe due to food shortages
+<a href="https://odysee.com/@RT:fd/Putin-on-food-prices:9">https://odysee.com/@RT:fd/Putin-on-food-prices:9</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://odysee.com/@RT:fd">RT</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://odysee.com/@RT:fd/Putin-on-food-prices:9">
+                                                    <div class="markdown">Food prices are growing, and they did so even before the special op...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Russian President takes on global market price hikes, saying that if Russia’s partners in the West worsen the situation in financial terms, things will get worse - including for them.
+
+---------------...</div>
+                                        </div>
+
+                                </div>
+
+                            </div>
+
+
+                                <div class="chatlog__embed-footer">
+
+                                        <span class="chatlog__embed-footer-text">
+
+
+12-Apr-22 03:51 PM                                        </span>
+                                </div>
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="stoned" title="stoned" src="https://cdn.discordapp.com/emojis/930917341741584425.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/709158982094159882/7baa43a8de40813808f0d8a9fc4d8100.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Rabbitholed#5246" data-user-id="709158982094159882" style="color: rgb(241,196,15)">Curb</span>
+
+
+        <span class="chatlog__timestamp">12-Apr-22 09:52 PM</span>
+
+            <div class="chatlog__message " data-message-id="963527025363148860" id="message-963527025363148860">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://fxtwitter.com/WallStreetSilv/status/1511921482275999754">https://fxtwitter.com/WallStreetSilv/status/1511921482275999754</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(67,181,129,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/WallStreetSilv/status/1511921482275999754">The upcoming FOOD crisis explained by Astrophysicist David Friedberg &#128680; 15% of global calories are going to be removed from the system. Sound ON (must watch) ───────────── ♥ [0] ⤴ [0] ─────────────</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://fxtwitter.com/WallStreetSilv/status/1511921482275999754">
+                                                    <div class="markdown">Wall Street Silver (@)</div>
+                                                </a>
+                                        </div>
+
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/709158982094159882/7baa43a8de40813808f0d8a9fc4d8100.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Rabbitholed#5246" data-user-id="709158982094159882" style="color: rgb(241,196,15)">Curb</span>
+
+
+        <span class="chatlog__timestamp">13-Apr-22 06:46 PM</span>
+
+            <div class="chatlog__message " data-message-id="963842589709172807" id="message-963842589709172807">
+                <div class="chatlog__content">
+                    <div class="markdown">The valid case against Proof of Stake consensus models. 
+As its vulnerable to takeovers and central control.
+<a href="https://odysee.com/@TraderUniversity:a/will-blackrock-take-over-ethereum:0">https://odysee.com/@TraderUniversity:a/will-blackrock-take-over-ethereum:0</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://odysee.com/@TraderUniversity:a">Trader University</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://odysee.com/@TraderUniversity:a/will-blackrock-take-over-ethereum:0">
+                                                    <div class="markdown">Will BlackRock Take Over Ethereum?</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Get the &quot;Ultimate Guide to Bitcoin&quot; course:
+<a href="https://www.trader.university/courses/38824-the-ultimate-guide-to-bitcoin">https://www.trader.university/courses/38824-the-ultimate-guide-to-bitcoin</a>
+Use the discount code YT99 to get the best price.
+
+Get my best-selling Bitcoin boo...</div>
+                                        </div>
+
+                                </div>
+
+                            </div>
+
+
+                                <div class="chatlog__embed-footer">
+
+                                        <span class="chatlog__embed-footer-text">
+
+
+13-Apr-22 04:21 PM                                        </span>
+                                </div>
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="&#128175;" title="&#128175;" src="https://twemoji.maxcdn.com/2/72x72/1f4af.png">
+                                <span class="chatlog__reaction-count">2</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="&#128077;" title="&#128077;" src="https://twemoji.maxcdn.com/2/72x72/1f44d.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/941885251871973386/622a50f3cfcc60940fcdb31726736bfc.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="TergiversatorRebels#3173" data-user-id="941885251871973386" style="color: rgb(52,152,219)">TergiversatorRebels</span>
+
+
+        <span class="chatlog__timestamp">14-Apr-22 03:40 AM</span>
+
+            <div class="chatlog__message " data-message-id="963977025633271878" id="message-963977025633271878">
+                <div class="chatlog__content">
+                    <div class="markdown">Where do you see the digital economy ending up? I saw something, maybe here, which said there would be three layers, the store of value, the underlying settlements, and the commerce transactions. This matches the conclusion I was approaching on my own with bitcoin being the store of value, ethereum on the smart contract commerce transactions and xrp? or similar on the underlying settlements.
+
+Will one overtake them all, is it a multi-part system, or will we hang out with CBDC equivalents of national currency for an extended period of time? </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/709158982094159882/7baa43a8de40813808f0d8a9fc4d8100.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Rabbitholed#5246" data-user-id="709158982094159882" style="color: rgb(241,196,15)">Curb</span>
+
+
+        <span class="chatlog__timestamp">14-Apr-22 05:08 AM</span>
+
+            <div class="chatlog__message " data-message-id="963999099957415997" id="message-963999099957415997">
+                <div class="chatlog__content">
+                    <div class="markdown">none of the systems can scale enough to take over on its own. all outcomes might become true but some more than others depending on location. A game of probabilities that  changes over time. The layers you describe exist already, so yes a &quot;digital transformation&quot; of the current power structure does indeed seem the most logical unfortunately. I&#39;m hedging my bets. </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon#9623" data-user-id="639228327147601921" style="color: rgb(241,196,15)">mejon</span>
+
+
+        <span class="chatlog__timestamp">15-Apr-22 12:07 AM</span>
+
+            <div class="chatlog__message " data-message-id="964285792727990272" id="message-964285792727990272">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://pbs.twimg.com/media/FQVVZ70XoBMZ2c9?format=png&name=900x900">https://pbs.twimg.com/media/FQVVZ70XoBMZ2c9?format=png&amp;name=900x900</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://pbs.twimg.com/media/FQVVZ70XoBMZ2c9?format=png&amp;name=900x900">
+                                            <img class="chatlog__embed-thumbnail" src="https://pbs.twimg.com/media/FQVVZ70XoBMZ2c9?format=png&amp;name=900x900" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="964285981404569610" id="message-964285981404569610">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://markets.businessinsider.com/news/commodities/putin-europe-alternative-oil-russian-gas-sanctions-ukraine-war-exports-2022-4">https://markets.businessinsider.com/news/commodities/putin-europe-alternative-oil-russian-gas-sanctions-ukraine-war-exports-2022-4</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(1,78,146,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://markets.businessinsider.com/news/commodities/putin-europe-alternative-oil-russian-gas-sanctions-ukraine-war-exports-2022-4">
+                                                    <div class="markdown">Putin says Europe has no energy alternatives to Russian gas, and we...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">&quot;A reasonable replacement for Europe simply does not exist,&quot; Putin said Thursday during a televised statement.</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://i.insider.com/62583a4f1ab402001927b340?width=1200&amp;format=jpeg">
+                                            <img class="chatlog__embed-thumbnail" src="https://i.insider.com/62583a4f1ab402001927b340?width=1200&amp;format=jpeg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                                <div class="chatlog__embed-footer">
+
+                                        <span class="chatlog__embed-footer-text">
+
+
+14-Apr-22 06:01 PM                                        </span>
+                                </div>
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="964286245830287360" id="message-964286245830287360">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.wsj.com/articles/tsmc-warns-of-tight-production-capacity-prolonging-chip-shortage-11649935181">https://www.wsj.com/articles/tsmc-warns-of-tight-production-capacity-prolonging-chip-shortage-11649935181</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.wsj.com/articles/tsmc-warns-of-tight-production-capacity-prolonging-chip-shortage-11649935181">
+                                                    <div class="markdown">TSMC Warns of Tight Production Capacity, Prolonged Chip Shortage</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">TSMC expects manufacturers to stock up more than usual on chips and other components after recent events disrupted the global supply chain.</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://images.wsj.net/im-524746/social">
+                                            <img class="chatlog__embed-thumbnail" src="https://images.wsj.net/im-524746/social" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon#9623" data-user-id="639228327147601921" style="color: rgb(241,196,15)">mejon</span>
+
+
+        <span class="chatlog__timestamp">15-Apr-22 12:18 AM</span>
+
+            <div class="chatlog__message " data-message-id="964288611526787133" id="message-964288611526787133">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://twitter.com/TheLastDegree/status/1514592823722577924">https://twitter.com/TheLastDegree/status/1514592823722577924</a> </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+</div>
+
+<div class="postamble">
+    <div class="postamble__entry">Exported 46 message(s)</div>
+</div>
+
+</body>
+</html>
