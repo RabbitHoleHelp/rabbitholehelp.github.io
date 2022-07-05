@@ -1,0 +1,1315 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Rabbithole.help part 3 - &#129516;-covid19</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+
+    <style>
+        /* General */
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-300.woff);
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-400.woff);
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-500.woff);
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-600.woff);
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-700.woff);
+    font-weight: 700;
+}
+
+body {
+    font-family: "Whitney", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 17px;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+img {
+    object-fit: contain;
+}
+
+.markdown {
+    max-width: 100%;
+    white-space: pre-wrap;
+    line-height: 1.3;
+    overflow-wrap: break-word;
+}
+
+.spoiler {
+    width: fit-content;
+}
+
+.spoiler--hidden {
+    cursor: pointer;
+}
+
+.spoiler-text {
+    border-radius: 3px;
+}
+
+.spoiler--hidden .spoiler-text {
+    color: rgba(0, 0, 0, 0);
+}
+
+.spoiler--hidden .spoiler-text::selection {
+    color: rgba(0, 0, 0, 0);
+}
+
+.spoiler-image {
+    position: relative;
+    overflow: hidden;
+    border-radius: 3px;
+}
+
+.spoiler--hidden .spoiler-image {
+    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.spoiler--hidden .spoiler-image img {
+    filter: blur(44px);
+}
+
+.spoiler--hidden .spoiler-image:after {
+    content: "SPOILER";
+    color: #dcddde;
+    background-color: rgba(0, 0, 0, 0.6);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: 600;
+    padding: 0.5em 0.7em;
+    border-radius: 20px;
+    letter-spacing: 0.05em;
+    font-size: 0.9em;
+}
+
+.spoiler--hidden:hover .spoiler-image:after {
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.quote {
+    margin: 0.1em 0;
+    padding-left: 0.6em;
+    border-left: 4px solid;
+    border-radius: 3px;
+}
+
+.pre {
+    font-family: "Consolas", "Courier New", Courier, monospace;
+}
+
+.pre--multiline {
+    margin-top: 0.25em;
+    padding: 0.5em;
+    border: 2px solid;
+    border-radius: 5px;
+}
+
+.pre--inline {
+    padding: 2px;
+    border-radius: 3px;
+    font-size: 0.85em;
+}
+
+.mention {
+    border-radius: 3px;
+    padding: 0 2px;
+    color: #7289da;
+    background: rgba(114, 137, 218, .1);
+    font-weight: 500;
+}
+
+.emoji {
+    width: 1.25em;
+    height: 1.25em;
+    margin: 0 0.06em;
+    vertical-align: -0.4em;
+}
+
+.emoji--small {
+    width: 1em;
+    height: 1em;
+}
+
+.emoji--large {
+    width: 2.8em;
+    height: 2.8em;
+}
+
+/* Preamble */
+
+.preamble {
+    display: grid;
+    margin: 0 0.3em 0.6em 0.3em;
+    max-width: 100%;
+    grid-template-columns: auto 1fr;
+}
+
+.preamble__guild-icon-container {
+    grid-column: 1;
+}
+
+.preamble__guild-icon {
+    max-width: 88px;
+    max-height: 88px;
+}
+
+.preamble__entries-container {
+    grid-column: 2;
+    margin-left: 0.6em;
+}
+
+.preamble__entry {
+    font-size: 1.4em;
+}
+
+.preamble__entry--small {
+    font-size: 1em;
+}
+
+/* Chatlog */
+
+.chatlog {
+    max-width: 100%;
+}
+
+.chatlog__message-group {
+    display: grid;
+    margin: 0 0.6em;
+    padding: 0.9em 0;
+    border-top: 1px solid;
+    grid-template-columns: auto 1fr;
+}
+
+.chatlog__author-avatar-container {
+    grid-column: 1;
+    width: 40px;
+    height: 40px;
+}
+
+.chatlog__author-avatar {
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+}
+
+.chatlog__messages {
+    grid-column: 2;
+    margin-left: 1.2em;
+    min-width: 50%;
+}
+
+.chatlog__author-name {
+    font-weight: 500;
+}
+
+.chatlog__timestamp {
+    margin-left: 0.3em;
+    font-size: 0.75em;
+}
+
+.chatlog__message {
+    padding: 0.1em 0.3em;
+    margin: 0 -0.3em;
+    background-color: transparent;
+    transition: background-color 1s ease;
+}
+
+.chatlog__content {
+    font-size: 0.95em;
+    word-wrap: break-word;
+}
+
+.chatlog__edited-timestamp {
+    margin-left: 0.15em;
+    font-size: 0.8em;
+}
+
+.chatlog__attachment {
+    margin-top: 0.3em;
+}
+
+.chatlog__attachment-thumbnail {
+    vertical-align: top;
+    max-width: 45vw;
+    max-height: 500px;
+    border-radius: 3px;
+}
+
+.chatlog__embed {
+    display: flex;
+    margin-top: 0.3em;
+    max-width: 520px;
+}
+
+.chatlog__embed-color-pill {
+    flex-shrink: 0;
+    width: 0.25em;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
+.chatlog__embed-content-container {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5em 0.6em;
+    border: 1px solid;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+.chatlog__embed-content {
+    display: flex;
+    width: 100%;
+}
+
+.chatlog__embed-text {
+    flex: 1;
+}
+
+.chatlog__embed-author {
+    display: flex;
+    margin-bottom: 0.3em;
+    align-items: center;
+}
+
+.chatlog__embed-author-icon {
+    margin-right: 0.5em;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+.chatlog__embed-author-name {
+    font-size: 0.875em;
+    font-weight: 600;
+}
+
+.chatlog__embed-title {
+    margin-bottom: 0.2em;
+    font-size: 0.875em;
+    font-weight: 600;
+}
+
+.chatlog__embed-description {
+    font-weight: 500;
+    font-size: 0.85em;
+}
+
+.chatlog__embed-fields {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.chatlog__embed-field {
+    flex: 0;
+    min-width: 100%;
+    max-width: 506px;
+    padding-top: 0.6em;
+    font-size: 0.875em;
+}
+
+.chatlog__embed-field--inline {
+    flex: 1;
+    flex-basis: auto;
+    min-width: 150px;
+}
+
+.chatlog__embed-field-name {
+    margin-bottom: 0.2em;
+    font-weight: 600;
+}
+
+.chatlog__embed-field-value {
+    font-weight: 500;
+}
+
+.chatlog__embed-thumbnail {
+    flex: 0;
+    margin-left: 1.2em;
+    max-width: 80px;
+    max-height: 80px;
+    border-radius: 3px;
+}
+
+.chatlog__embed-image-container {
+    margin-top: 0.6em;
+}
+
+.chatlog__embed-image {
+    max-width: 500px;
+    max-height: 400px;
+    border-radius: 3px;
+}
+
+.chatlog__embed-footer {
+    margin-top: 0.6em;
+}
+
+.chatlog__embed-footer-icon {
+    margin-right: 0.2em;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+
+.chatlog__embed-footer-text {
+    font-size: 0.75em;
+    font-weight: 500;
+}
+
+.chatlog__reactions {
+    display: flex;
+}
+
+.chatlog__reaction {
+    display: flex;
+    align-items: center;
+    margin: 0.35em 0.1em 0.1em 0.1em;
+    padding: 0.2em 0.35em;
+    border-radius: 3px;
+}
+
+.chatlog__reaction-count {
+    min-width: 9px;
+    margin-left: 0.35em;
+    font-size: 0.875em;
+}
+
+.chatlog__bot-tag {
+    position: relative;
+    top: -.2em;
+    margin-left: 0.3em;
+    padding: 0.05em 0.3em;
+    border-radius: 3px;
+    vertical-align: middle;
+    line-height: 1.3;
+    background: #7289da;
+    color: #ffffff;
+    font-size: 0.625em;
+    font-weight: 500;
+}
+
+/* Postamble */
+
+.postamble {
+    margin: 1.4em 0.3em 0.6em 0.3em;
+    padding: 1em;
+    border-top: 1px solid;
+}
+    </style>
+    <style>
+        /* General */
+
+body {
+    background-color: #36393e;
+    color: #dcddde;
+}
+
+a {
+    color: #0096cf;
+}
+
+.spoiler-text {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.spoiler--hidden .spoiler-text {
+    background-color: #202225;
+}
+
+.spoiler--hidden:hover .spoiler-text {
+    background-color: rgba(32, 34, 37, 0.8);
+}
+
+.quote {
+    border-color: #4f545c;
+}
+
+.pre {
+    background-color: #2f3136 !important;
+}
+
+.pre--multiline {
+    border-color: #282b30 !important;
+    color: #b9bbbe !important;
+}
+
+/* === Preamble === */
+
+.preamble__entry {
+    color: #ffffff;
+}
+
+/* Chatlog */
+
+.chatlog__message-group {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.chatlog__author-name {
+    color: #ffffff;
+}
+
+.chatlog__timestamp {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.chatlog__message--highlighted {
+    background-color: rgba(114, 137, 218, 0.2) !important;
+}
+
+.chatlog__message--pinned {
+    background-color: rgba(249, 168, 37, 0.05);
+}
+
+.chatlog__edited-timestamp {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.chatlog__embed-color-pill--default {
+    background-color: rgba(79, 84, 92, 1);
+}
+
+.chatlog__embed-content-container {
+    background-color: rgba(46, 48, 54, 0.3);
+    border-color: rgba(46, 48, 54, 0.6);
+}
+
+.chatlog__embed-author-name {
+    color: #ffffff;
+}
+
+.chatlog__embed-author-name-link {
+    color: #ffffff;
+}
+
+.chatlog__embed-title {
+    color: #ffffff;
+}
+
+.chatlog__embed-description {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__embed-field-name {
+    color: #ffffff;
+}
+
+.chatlog__embed-field-value {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__embed-footer {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__reaction {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.chatlog__reaction-count {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+/* Postamble */
+
+.postamble {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.postamble__entry {
+    color: #ffffff;
+}
+    </style>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/solarized-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.pre--multiline').forEach(block => hljs.highlightBlock(block));
+        });
+    </script>
+
+    <script>
+        function scrollToMessage(event, id) {
+            var element = document.getElementById('message-' + id);
+
+            if (element) {
+                event.preventDefault();
+
+                element.classList.add('chatlog__message--highlighted');
+
+                window.scrollTo({
+                    top: element.getBoundingClientRect().top - document.body.getBoundingClientRect().top - (window.innerHeight / 2),
+                    behavior: 'smooth'
+                });
+
+                window.setTimeout(function() {
+                    element.classList.remove('chatlog__message--highlighted');
+                }, 2000);
+            }
+        }
+
+        function showSpoiler(event, element) {
+            if (element && element.classList.contains('spoiler--hidden')) {
+                event.preventDefault();
+                element.classList.remove('spoiler--hidden');
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="preamble">
+    <div class="preamble__guild-icon-container">
+        <img class="preamble__guild-icon" src="https://cdn.discordapp.com/icons/930791563871813693/89ccc9d466d4055c98a4af46f144e403.png" alt="Guild icon">
+    </div>
+    <div class="preamble__entries-container">
+        <div class="preamble__entry">Rabbithole.help part 3</div>
+        <div class="preamble__entry">research / &#129516;-covid19</div>
+
+
+            <div class="preamble__entry preamble__entry--small">
+Between 01-Jul-22 12:00 AM and 01-Aug-22 12:00 AM            </div>
+    </div>
+</div>
+
+<div class="chatlog">
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/966364574704087060/3de51c2c5c51a94145472a3fe8e82016.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="zeca#2652" data-user-id="966364574704087060" style="color: rgb(52,152,219)">zeca</span>
+
+
+        <span class="chatlog__timestamp">01-Jul-22 02:41 AM</span>
+
+            <div class="chatlog__message " data-message-id="992228308790038558" id="message-992228308790038558">
+                <div class="chatlog__content">
+                    <div class="markdown">What&#39;s the point of using bars when the Y axis doesn&#39;t start at 0? </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/709158982094159882/7baa43a8de40813808f0d8a9fc4d8100.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Rabbitholed#5246" data-user-id="709158982094159882" style="color: rgb(241,196,15)">Curb</span>
+
+
+        <span class="chatlog__timestamp">01-Jul-22 02:42 AM</span>
+
+            <div class="chatlog__message " data-message-id="992228583022022717" id="message-992228583022022717">
+                <div class="chatlog__content">
+                    <div class="markdown">yeah its a common trick. </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/966364574704087060/3de51c2c5c51a94145472a3fe8e82016.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="zeca#2652" data-user-id="966364574704087060" style="color: rgb(52,152,219)">zeca</span>
+
+
+        <span class="chatlog__timestamp">01-Jul-22 02:43 AM</span>
+
+            <div class="chatlog__message " data-message-id="992228857899909151" id="message-992228857899909151">
+                <div class="chatlog__content">
+                    <div class="markdown">I don&#39;t trust anyone who uses that trick. Prove your data is not random using proper statistics or go home! <span class="chatlog__edited-timestamp" title="01-Jul-22 02:43 AM">(edited)</span></div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="992229280215990382" id="message-992229280215990382">
+                <div class="chatlog__content">
+                    <div class="markdown">Anyways, there is a 20k drop of natalities. Is that significant? Can it be explained outside esterelity shots? </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="992229401158766632" id="message-992229401158766632">
+                <div class="chatlog__content">
+                    <div class="markdown">Can we see the data before 2019? Is this happening in other countries? </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="992229444234252397" id="message-992229444234252397">
+                <div class="chatlog__content">
+                    <div class="markdown">What&#39;s the data for the other Qs? </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="992229534189506580" id="message-992229534189506580">
+                <div class="chatlog__content">
+                    <div class="markdown">So many questions... </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/709158982094159882/7baa43a8de40813808f0d8a9fc4d8100.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Rabbitholed#5246" data-user-id="709158982094159882" style="color: rgb(241,196,15)">Curb</span>
+
+
+        <span class="chatlog__timestamp">01-Jul-22 02:46 AM</span>
+
+            <div class="chatlog__message " data-message-id="992229748497448970" id="message-992229748497448970">
+                <div class="chatlog__content">
+                    <div class="markdown">yeah just collecting the info. we will have to see. good to stay skeptical with anything. lets see if this is an actual trend or it will disappear like the &quot;magnet arms&quot; ect. <span class="chatlog__edited-timestamp" title="01-Jul-22 02:46 AM">(edited)</span></div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/966364574704087060/3de51c2c5c51a94145472a3fe8e82016.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="zeca#2652" data-user-id="966364574704087060" style="color: rgb(52,152,219)">zeca</span>
+
+
+        <span class="chatlog__timestamp">01-Jul-22 02:47 AM</span>
+
+            <div class="chatlog__message " data-message-id="992229985144295535" id="message-992229985144295535">
+                <div class="chatlog__content">
+                    <div class="markdown">Live births diminished 20k. Has %of stillbirths increased? </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="992230158067040306" id="message-992230158067040306">
+                <div class="chatlog__content">
+                    <div class="markdown">I agree with the pingpong method. Let&#39;s wait and see if this comes up again. </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="992230592265601104" id="message-992230592265601104">
+                <div class="chatlog__content">
+                    <div class="markdown">Still, I worry of course. Sterility shots have been used in the past in Africa and even in the US. I wouldn&#39;t be surprised if this shots made women infertile. There is evidence it makes sperm worse, btw. </div>
+                </div>
+
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="ShutItDown" title="ShutItDown" src="https://cdn.discordapp.com/emojis/958109598617833542.png">
+                                <span class="chatlog__reaction-count">2</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/899566489185693706/e82688e1e002c89f702ce283776bb7b8.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="alt_ theorist#1484" data-user-id="899566489185693706" style="color: rgb(52,152,219)">alt_ theorist</span>
+
+
+        <span class="chatlog__timestamp">01-Jul-22 09:08 AM</span>
+
+            <div class="chatlog__message " data-message-id="992325862164803666" id="message-992325862164803666">
+                <div class="chatlog__content">
+                    <div class="markdown"> </div>
+                </div>
+
+                    <div class="chatlog__attachment">
+                            <a href="https://cdn.discordapp.com/attachments/930792194166648862/992325861871206470/IMG_5710.jpg">
+                                    <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/930792194166648862/992325861871206470/IMG_5710.jpg" alt="Attachment">
+                            </a>
+                    </div>
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="Fpepe" title="Fpepe" src="https://cdn.discordapp.com/emojis/930817036823715850.png">
+                                <span class="chatlog__reaction-count">2</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon#9623" data-user-id="639228327147601921" style="color: rgb(241,196,15)">mejon</span>
+
+
+        <span class="chatlog__timestamp">01-Jul-22 09:01 PM</span>
+
+            <div class="chatlog__message " data-message-id="992505274738933770" id="message-992505274738933770">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.reuters.com/business/healthcare-pharmaceuticals/fda-will-not-require-clinical-trial-data-authorize-redesigned-covid-boosters-2022-06-30/">https://www.reuters.com/business/healthcare-pharmaceuticals/fda-will-not-require-clinical-trial-data-authorize-redesigned-covid-boosters-2022-06-30/</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.reuters.com/business/healthcare-pharmaceuticals/fda-will-not-require-clinical-trial-data-authorize-redesigned-covid-boosters-2022-06-30/">
+                                                    <div class="markdown">U.S. FDA to use existing Omicron booster data to review shots targe...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">U.S. health regulators will not require companies to submit new clinical trial data on COVID-19 vaccines that target the now dominant BA.4 and BA.5 Omicron subvariants to authorize those shots, but will instead rely on studies showing the efficacy of targeting the earlier BA.1 subvariant, a top official said on Thursday.</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://www.reuters.com/resizer/N-uzRLXT7bxkFCCGTuSbPWmN7hg=/1200x628/smart/filters:quality(80)/cloudfront-us-east-2.images.arcpublishing.com/reuters/HYZQFANFPFPXJDYFU7YX35WQFQ.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="https://www.reuters.com/resizer/N-uzRLXT7bxkFCCGTuSbPWmN7hg=/1200x628/smart/filters:quality(80)/cloudfront-us-east-2.images.arcpublishing.com/reuters/HYZQFANFPFPXJDYFU7YX35WQFQ.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="honkler" title="honkler" src="https://cdn.discordapp.com/emojis/930817037146669186.png">
+                                <span class="chatlog__reaction-count">2</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="grabbler" title="grabbler" src="https://cdn.discordapp.com/emojis/930817037054390293.png">
+                                <span class="chatlog__reaction-count">2</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/709158982094159882/7baa43a8de40813808f0d8a9fc4d8100.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Rabbitholed#5246" data-user-id="709158982094159882" style="color: rgb(241,196,15)">Curb</span>
+
+
+        <span class="chatlog__timestamp">02-Jul-22 02:31 AM</span>
+
+            <div class="chatlog__message " data-message-id="992588191884398652" id="message-992588191884398652">
+                <div class="chatlog__content">
+                    <div class="markdown"><img class="emoji emoji--large" alt="surprised_pikachu" title="surprised_pikachu" src="https://cdn.discordapp.com/emojis/930817036899221544.png"> </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="992588219965259836" id="message-992588219965259836">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://vxtwitter.com/Red_Pill_Led/status/1542584224393310209">https://vxtwitter.com/Red_Pill_Led/status/1542584224393310209</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(127,255,212,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/Red_Pill_Led/status/1542584224393310209">EU warns boosters may destroy immune system</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://vxtwitter.com/Red_Pill_Led/status/1542584224393310209">
+                                                    <div class="markdown">ЯΞD ᕈILL LΞD <img class="emoji " alt="🔎" title="🔎" src="https://twemoji.maxcdn.com/2/72x72/1f50e.png"> (@Red_Pill_Led)</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">EU warns boosters may destroy immune system</div>
+                                        </div>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="surprised_pikachu" title="surprised_pikachu" src="https://cdn.discordapp.com/emojis/930817036899221544.png">
+                                <span class="chatlog__reaction-count">2</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/709158982094159882/7baa43a8de40813808f0d8a9fc4d8100.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Rabbitholed#5246" data-user-id="709158982094159882" style="color: rgb(241,196,15)">Curb</span>
+
+
+        <span class="chatlog__timestamp">02-Jul-22 10:14 PM</span>
+
+            <div class="chatlog__message " data-message-id="992885991301972078" id="message-992885991301972078">
+                <div class="chatlog__content">
+                    <div class="markdown"><div class="quote">Hungarian MP links dramatic drop in birth rate to mass vaccinations against Covid19. 
+The number of births in Hungary has decreased this year by 20% compared to the same period of the previous year.</div> </div>
+                </div>
+
+                    <div class="chatlog__attachment">
+                            <a href="https://cdn.discordapp.com/attachments/930792194166648862/992885990819631184/video_2022-07-02_22-12-40-small.mp4">
+Attachment: video_2022-07-02_22-12-40-small.mp4 (3,98 MB)                            </a>
+                    </div>
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="dumpsterfire" title="dumpsterfire" src="https://cdn.discordapp.com/emojis/930817037016645682.png">
+                                <span class="chatlog__reaction-count">2</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/709158982094159882/7baa43a8de40813808f0d8a9fc4d8100.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Rabbitholed#5246" data-user-id="709158982094159882" style="color: rgb(241,196,15)">Curb</span>
+
+
+        <span class="chatlog__timestamp">03-Jul-22 12:30 PM</span>
+
+            <div class="chatlog__message " data-message-id="993101420691734578" id="message-993101420691734578">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.dailymail.co.uk/news/article-10958689/Covid-19-Australia-Pandemic-babies-no-immunity-viruses-ending-ICU.html">https://www.dailymail.co.uk/news/article-10958689/Covid-19-Australia-Pandemic-babies-no-immunity-viruses-ending-ICU.html</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.dailymail.co.uk/news/article-10958689/Covid-19-Australia-Pandemic-babies-no-immunity-viruses-ending-ICU.html">
+                                                    <div class="markdown">Worrying number of &#39;pandemic babies&#39; with no immunity ending up in ICU</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Doctors have revealed babies born during the Covid-19 pandemic are becoming seriously ill after contracting viruses they haven&#39;t encountered before.</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://i.dailymail.co.uk/1s/2022/06/28/01/59600137-0-image-a-2_1656376438893.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="https://i.dailymail.co.uk/1s/2022/06/28/01/59600137-0-image-a-2_1656376438893.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="feelsbadman" title="feelsbadman" src="https://cdn.discordapp.com/emojis/930817036244906025.png">
+                                <span class="chatlog__reaction-count">2</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="surprised_pikachu" title="surprised_pikachu" src="https://cdn.discordapp.com/emojis/930817036899221544.png">
+                                <span class="chatlog__reaction-count">2</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/578305700804034583/ca7397f6ff4f5609ff3a2ccf3c0c328b.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="BIGFOOT#5016" data-user-id="578305700804034583" style="color: rgb(52,152,219)">Bigfoot He/Him</span>
+
+
+        <span class="chatlog__timestamp">03-Jul-22 12:34 PM</span>
+
+            <div class="chatlog__message " data-message-id="993102389152321566" id="message-993102389152321566">
+                <div class="chatlog__content">
+                    <div class="markdown">&quot;The children had been born and raised when there were virtually no other viruses circulating in Australia, other than Covid-19&quot; </div>
+                </div>
+
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="honkler" title="honkler" src="https://cdn.discordapp.com/emojis/930817037146669186.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+            <div class="chatlog__message " data-message-id="993102436501823528" id="message-993102436501823528">
+                <div class="chatlog__content">
+                    <div class="markdown"><img class="emoji emoji--large" alt="🤡" title="🤡" src="https://twemoji.maxcdn.com/2/72x72/1f921.png"> </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/438419151178956801/b5e9b27495060d3a30fc2130a91e228b.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="haram#9005" data-user-id="438419151178956801" style="color: rgb(52,152,219)">haram</span>
+
+
+        <span class="chatlog__timestamp">03-Jul-22 03:19 PM</span>
+
+            <div class="chatlog__message " data-message-id="993143939748085811" id="message-993143939748085811">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://twitter.com/MdBreathe/status/1543317865075458051">https://twitter.com/MdBreathe/status/1543317865075458051</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(29,161,242,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+                                                <img class="chatlog__embed-author-icon" src="https://pbs.twimg.com/profile_images/1415520516887171075/w9MYkcBf_400x400.jpg" alt="Author icon">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/MdBreathe">Mary Talley Bowden MD (@MdBreathe)</a>
+                                                </span>
+                                        </div>
+
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Medical Center Hospital in Odessa TX bagged COVID patients to protect their staff.  This went on for over year while doctors turned a blind eye. Powerful testimony from Dr Richard Bartlett in front of @Texas_Senate</div>
+                                        </div>
+
+                                        <div class="chatlog__embed-fields">
+                                                <div class="chatlog__embed-field chatlog__embed-field--inline">
+                                                        <div class="chatlog__embed-field-name">
+                                                            <div class="markdown">Likes</div>
+                                                        </div>
+
+                                                        <div class="chatlog__embed-field-value">
+                                                            <div class="markdown">5460</div>
+                                                        </div>
+                                                </div>
+                                                <div class="chatlog__embed-field chatlog__embed-field--inline">
+                                                        <div class="chatlog__embed-field-name">
+                                                            <div class="markdown">Retweets</div>
+                                                        </div>
+
+                                                        <div class="chatlog__embed-field-value">
+                                                            <div class="markdown">3556</div>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://pbs.twimg.com/ext_tw_video_thumb/1543317748129857537/pu/img/UtRwUDTCC4gn-ya8.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="https://pbs.twimg.com/ext_tw_video_thumb/1543317748129857537/pu/img/UtRwUDTCC4gn-ya8.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                                <div class="chatlog__embed-footer">
+                                        <img class="chatlog__embed-footer-icon" src="https://abs.twimg.com/icons/apple-touch-icon-192x192.png" alt="Footer icon">
+
+                                        <span class="chatlog__embed-footer-text">
+Twitter
+ • 
+02-Jul-22 09:37 PM                                        </span>
+                                </div>
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="993144444687757413" id="message-993144444687757413">
+                <div class="chatlog__content">
+                    <div class="markdown"> </div>
+                </div>
+
+                    <div class="chatlog__attachment">
+                            <a href="https://cdn.discordapp.com/attachments/930792194166648862/993144444482224158/unknown.png">
+                                    <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/930792194166648862/993144444482224158/unknown.png" alt="Attachment">
+                            </a>
+                    </div>
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/966364574704087060/3de51c2c5c51a94145472a3fe8e82016.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="zeca#2652" data-user-id="966364574704087060" style="color: rgb(52,152,219)">zeca</span>
+
+
+        <span class="chatlog__timestamp">04-Jul-22 08:55 AM</span>
+
+            <div class="chatlog__message " data-message-id="993409727658741810" id="message-993409727658741810">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://vaccineimpact.com/2022/birth-rates-drop-worldwide-following-mass-covid-19-vaccination-in-2021/">https://vaccineimpact.com/2022/birth-rates-drop-worldwide-following-mass-covid-19-vaccination-in-2021/</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://vaccineimpact.com/author/melissa/">AdminM</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://vaccineimpact.com/2022/birth-rates-drop-worldwide-following-mass-covid-19-vaccination-in-2021/">
+                                                    <div class="markdown">Birth Rates Drop Worldwide Following Mass COVID-19 Vaccination in 2...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">More evidence that the COVID-19 mass vaccination programs were specifically designed to reduce the world&#39;s population to fit the &quot;Green Agenda&quot; that the earth can no longer support current population levels continues to be reported, as now statistics show declining birthrates worldwide following the COVID-19 vaccine roll outs in 2021. As we have...</div>
+                                        </div>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="993409752862306335" id="message-993409752862306335">
+                <div class="chatlog__content">
+                    <div class="markdown">Pong!!! </div>
+                </div>
+
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="&#127955;" title="&#127955;" src="https://twemoji.maxcdn.com/2/72x72/1f3d3.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/438419151178956801/b5e9b27495060d3a30fc2130a91e228b.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="haram#9005" data-user-id="438419151178956801" style="color: rgb(52,152,219)">haram</span>
+
+
+        <span class="chatlog__timestamp">04-Jul-22 11:08 PM</span>
+
+            <div class="chatlog__message " data-message-id="993624414572777552" id="message-993624414572777552">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://t.co/wfcgFpEfxW">https://t.co/wfcgFpEfxW</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,255,255,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://t.co/wfcgFpEfxW">
+                                                    <div class="markdown">Juez intim&#243; al gobierno y a Pfizer a que presenten en 48 horas toda...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Juez civil intim&#243; al gobierno y a Pfizer a que presenten en 48 horas toda la informaci&#243;n sobre las vacunas contra el covid-19; entre otras cosas pretende saber si las &quot;llamadas vacunas&quot; contienen &quot;elementos nanotecnol&#243;gicos&quot;</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://media.cdnp.elobservador.com.uy/102021/1635363462482/_LCM0370.JPG?&amp;cw=600&amp;ch=365">
+                                            <img class="chatlog__embed-thumbnail" src="https://media.cdnp.elobservador.com.uy/102021/1635363462482/_LCM0370.JPG?&amp;cw=600&amp;ch=365" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="993624483204186223" id="message-993624483204186223">
+                <div class="chatlog__content">
+                    <div class="markdown">Judge orders #Pfizer to provide &quot;extensive detail&quot; on the biochemical composition and evidence of efficacy and safety of its COVID vaccine within 48 hours in Uruguay. </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/709158982094159882/7baa43a8de40813808f0d8a9fc4d8100.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Rabbitholed#5246" data-user-id="709158982094159882" style="color: rgb(241,196,15)">Curb</span>
+
+
+        <span class="chatlog__timestamp">05-Jul-22 12:20 PM</span>
+
+            <div class="chatlog__message " data-message-id="993823732491624478" id="message-993823732491624478">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://brandnewtube.com/watch/john-o-039-looney-shows-blockages-removed-from-blood-vessels-of-young-man-who-died-suddenly-quot_8JdPDfVEHHAxOvs.html">https://brandnewtube.com/watch/john-o-039-looney-shows-blockages-removed-from-blood-vessels-of-young-man-who-died-suddenly-quot_8JdPDfVEHHAxOvs.html</a> </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+</div>
+
+<div class="postamble">
+    <div class="postamble__entry">Exported 26 message(s)</div>
+</div>
+
+</body>
+</html>
