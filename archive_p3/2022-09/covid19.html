@@ -1,0 +1,1662 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Rabbithole.help part 3 - &#129516;-covid19</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+
+    <style>
+        /* General */
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-300.woff);
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-400.woff);
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-500.woff);
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-600.woff);
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-700.woff);
+    font-weight: 700;
+}
+
+body {
+    font-family: "Whitney", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 17px;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+img {
+    object-fit: contain;
+}
+
+.markdown {
+    max-width: 100%;
+    white-space: pre-wrap;
+    line-height: 1.3;
+    overflow-wrap: break-word;
+}
+
+.spoiler {
+    width: fit-content;
+}
+
+.spoiler--hidden {
+    cursor: pointer;
+}
+
+.spoiler-text {
+    border-radius: 3px;
+}
+
+.spoiler--hidden .spoiler-text {
+    color: rgba(0, 0, 0, 0);
+}
+
+.spoiler--hidden .spoiler-text::selection {
+    color: rgba(0, 0, 0, 0);
+}
+
+.spoiler-image {
+    position: relative;
+    overflow: hidden;
+    border-radius: 3px;
+}
+
+.spoiler--hidden .spoiler-image {
+    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.spoiler--hidden .spoiler-image img {
+    filter: blur(44px);
+}
+
+.spoiler--hidden .spoiler-image:after {
+    content: "SPOILER";
+    color: #dcddde;
+    background-color: rgba(0, 0, 0, 0.6);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: 600;
+    padding: 0.5em 0.7em;
+    border-radius: 20px;
+    letter-spacing: 0.05em;
+    font-size: 0.9em;
+}
+
+.spoiler--hidden:hover .spoiler-image:after {
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.quote {
+    margin: 0.1em 0;
+    padding-left: 0.6em;
+    border-left: 4px solid;
+    border-radius: 3px;
+}
+
+.pre {
+    font-family: "Consolas", "Courier New", Courier, monospace;
+}
+
+.pre--multiline {
+    margin-top: 0.25em;
+    padding: 0.5em;
+    border: 2px solid;
+    border-radius: 5px;
+}
+
+.pre--inline {
+    padding: 2px;
+    border-radius: 3px;
+    font-size: 0.85em;
+}
+
+.mention {
+    border-radius: 3px;
+    padding: 0 2px;
+    color: #7289da;
+    background: rgba(114, 137, 218, .1);
+    font-weight: 500;
+}
+
+.emoji {
+    width: 1.25em;
+    height: 1.25em;
+    margin: 0 0.06em;
+    vertical-align: -0.4em;
+}
+
+.emoji--small {
+    width: 1em;
+    height: 1em;
+}
+
+.emoji--large {
+    width: 2.8em;
+    height: 2.8em;
+}
+
+/* Preamble */
+
+.preamble {
+    display: grid;
+    margin: 0 0.3em 0.6em 0.3em;
+    max-width: 100%;
+    grid-template-columns: auto 1fr;
+}
+
+.preamble__guild-icon-container {
+    grid-column: 1;
+}
+
+.preamble__guild-icon {
+    max-width: 88px;
+    max-height: 88px;
+}
+
+.preamble__entries-container {
+    grid-column: 2;
+    margin-left: 0.6em;
+}
+
+.preamble__entry {
+    font-size: 1.4em;
+}
+
+.preamble__entry--small {
+    font-size: 1em;
+}
+
+/* Chatlog */
+
+.chatlog {
+    max-width: 100%;
+}
+
+.chatlog__message-group {
+    display: grid;
+    margin: 0 0.6em;
+    padding: 0.9em 0;
+    border-top: 1px solid;
+    grid-template-columns: auto 1fr;
+}
+
+.chatlog__author-avatar-container {
+    grid-column: 1;
+    width: 40px;
+    height: 40px;
+}
+
+.chatlog__author-avatar {
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+}
+
+.chatlog__messages {
+    grid-column: 2;
+    margin-left: 1.2em;
+    min-width: 50%;
+}
+
+.chatlog__author-name {
+    font-weight: 500;
+}
+
+.chatlog__timestamp {
+    margin-left: 0.3em;
+    font-size: 0.75em;
+}
+
+.chatlog__message {
+    padding: 0.1em 0.3em;
+    margin: 0 -0.3em;
+    background-color: transparent;
+    transition: background-color 1s ease;
+}
+
+.chatlog__content {
+    font-size: 0.95em;
+    word-wrap: break-word;
+}
+
+.chatlog__edited-timestamp {
+    margin-left: 0.15em;
+    font-size: 0.8em;
+}
+
+.chatlog__attachment {
+    margin-top: 0.3em;
+}
+
+.chatlog__attachment-thumbnail {
+    vertical-align: top;
+    max-width: 45vw;
+    max-height: 500px;
+    border-radius: 3px;
+}
+
+.chatlog__embed {
+    display: flex;
+    margin-top: 0.3em;
+    max-width: 520px;
+}
+
+.chatlog__embed-color-pill {
+    flex-shrink: 0;
+    width: 0.25em;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
+.chatlog__embed-content-container {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5em 0.6em;
+    border: 1px solid;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+.chatlog__embed-content {
+    display: flex;
+    width: 100%;
+}
+
+.chatlog__embed-text {
+    flex: 1;
+}
+
+.chatlog__embed-author {
+    display: flex;
+    margin-bottom: 0.3em;
+    align-items: center;
+}
+
+.chatlog__embed-author-icon {
+    margin-right: 0.5em;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+.chatlog__embed-author-name {
+    font-size: 0.875em;
+    font-weight: 600;
+}
+
+.chatlog__embed-title {
+    margin-bottom: 0.2em;
+    font-size: 0.875em;
+    font-weight: 600;
+}
+
+.chatlog__embed-description {
+    font-weight: 500;
+    font-size: 0.85em;
+}
+
+.chatlog__embed-fields {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.chatlog__embed-field {
+    flex: 0;
+    min-width: 100%;
+    max-width: 506px;
+    padding-top: 0.6em;
+    font-size: 0.875em;
+}
+
+.chatlog__embed-field--inline {
+    flex: 1;
+    flex-basis: auto;
+    min-width: 150px;
+}
+
+.chatlog__embed-field-name {
+    margin-bottom: 0.2em;
+    font-weight: 600;
+}
+
+.chatlog__embed-field-value {
+    font-weight: 500;
+}
+
+.chatlog__embed-thumbnail {
+    flex: 0;
+    margin-left: 1.2em;
+    max-width: 80px;
+    max-height: 80px;
+    border-radius: 3px;
+}
+
+.chatlog__embed-image-container {
+    margin-top: 0.6em;
+}
+
+.chatlog__embed-image {
+    max-width: 500px;
+    max-height: 400px;
+    border-radius: 3px;
+}
+
+.chatlog__embed-footer {
+    margin-top: 0.6em;
+}
+
+.chatlog__embed-footer-icon {
+    margin-right: 0.2em;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+
+.chatlog__embed-footer-text {
+    font-size: 0.75em;
+    font-weight: 500;
+}
+
+.chatlog__reactions {
+    display: flex;
+}
+
+.chatlog__reaction {
+    display: flex;
+    align-items: center;
+    margin: 0.35em 0.1em 0.1em 0.1em;
+    padding: 0.2em 0.35em;
+    border-radius: 3px;
+}
+
+.chatlog__reaction-count {
+    min-width: 9px;
+    margin-left: 0.35em;
+    font-size: 0.875em;
+}
+
+.chatlog__bot-tag {
+    position: relative;
+    top: -.2em;
+    margin-left: 0.3em;
+    padding: 0.05em 0.3em;
+    border-radius: 3px;
+    vertical-align: middle;
+    line-height: 1.3;
+    background: #7289da;
+    color: #ffffff;
+    font-size: 0.625em;
+    font-weight: 500;
+}
+
+/* Postamble */
+
+.postamble {
+    margin: 1.4em 0.3em 0.6em 0.3em;
+    padding: 1em;
+    border-top: 1px solid;
+}
+    </style>
+    <style>
+        /* General */
+
+body {
+    background-color: #36393e;
+    color: #dcddde;
+}
+
+a {
+    color: #0096cf;
+}
+
+.spoiler-text {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.spoiler--hidden .spoiler-text {
+    background-color: #202225;
+}
+
+.spoiler--hidden:hover .spoiler-text {
+    background-color: rgba(32, 34, 37, 0.8);
+}
+
+.quote {
+    border-color: #4f545c;
+}
+
+.pre {
+    background-color: #2f3136 !important;
+}
+
+.pre--multiline {
+    border-color: #282b30 !important;
+    color: #b9bbbe !important;
+}
+
+/* === Preamble === */
+
+.preamble__entry {
+    color: #ffffff;
+}
+
+/* Chatlog */
+
+.chatlog__message-group {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.chatlog__author-name {
+    color: #ffffff;
+}
+
+.chatlog__timestamp {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.chatlog__message--highlighted {
+    background-color: rgba(114, 137, 218, 0.2) !important;
+}
+
+.chatlog__message--pinned {
+    background-color: rgba(249, 168, 37, 0.05);
+}
+
+.chatlog__edited-timestamp {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.chatlog__embed-color-pill--default {
+    background-color: rgba(79, 84, 92, 1);
+}
+
+.chatlog__embed-content-container {
+    background-color: rgba(46, 48, 54, 0.3);
+    border-color: rgba(46, 48, 54, 0.6);
+}
+
+.chatlog__embed-author-name {
+    color: #ffffff;
+}
+
+.chatlog__embed-author-name-link {
+    color: #ffffff;
+}
+
+.chatlog__embed-title {
+    color: #ffffff;
+}
+
+.chatlog__embed-description {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__embed-field-name {
+    color: #ffffff;
+}
+
+.chatlog__embed-field-value {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__embed-footer {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__reaction {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.chatlog__reaction-count {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+/* Postamble */
+
+.postamble {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.postamble__entry {
+    color: #ffffff;
+}
+    </style>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/solarized-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.pre--multiline').forEach(block => hljs.highlightBlock(block));
+        });
+    </script>
+
+    <script>
+        function scrollToMessage(event, id) {
+            var element = document.getElementById('message-' + id);
+
+            if (element) {
+                event.preventDefault();
+
+                element.classList.add('chatlog__message--highlighted');
+
+                window.scrollTo({
+                    top: element.getBoundingClientRect().top - document.body.getBoundingClientRect().top - (window.innerHeight / 2),
+                    behavior: 'smooth'
+                });
+
+                window.setTimeout(function() {
+                    element.classList.remove('chatlog__message--highlighted');
+                }, 2000);
+            }
+        }
+
+        function showSpoiler(event, element) {
+            if (element && element.classList.contains('spoiler--hidden')) {
+                event.preventDefault();
+                element.classList.remove('spoiler--hidden');
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="preamble">
+    <div class="preamble__guild-icon-container">
+        <img class="preamble__guild-icon" src="https://cdn.discordapp.com/icons/930791563871813693/89ccc9d466d4055c98a4af46f144e403.png" alt="Guild icon">
+    </div>
+    <div class="preamble__entries-container">
+        <div class="preamble__entry">Rabbithole.help part 3</div>
+        <div class="preamble__entry">research / &#129516;-covid19</div>
+
+
+            <div class="preamble__entry preamble__entry--small">
+Between 01-Sep-22 12:00 AM and 01-Oct-22 12:00 AM            </div>
+    </div>
+</div>
+
+<div class="chatlog">
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon#9623" data-user-id="639228327147601921" style="color: rgb(241,196,15)">mejon</span>
+
+
+        <span class="chatlog__timestamp">01-Sep-22 02:48 PM</span>
+
+            <div class="chatlog__message " data-message-id="1014879481476939866" id="message-1014879481476939866">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.sciencedirect.com/science/article/pii/S0264410X22010283">https://www.sciencedirect.com/science/article/pii/S0264410X22010283</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.sciencedirect.com/science/article/pii/S0264410X22010283">
+                                                    <div class="markdown">Serious adverse events of special interest following mRNA COVID-19 ...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">In 2020, prior to COVID-19 vaccine rollout, the Brighton Collaboration created a priority list, endorsed by the World Health Organization, of potentia…</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://ars.els-cdn.com/content/image/1-s2.0-S0264410X22X00352-cov150h.gif">
+                                            <img class="chatlog__embed-thumbnail" src="https://ars.els-cdn.com/content/image/1-s2.0-S0264410X22X00352-cov150h.gif" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/752852735312920626/fdf249df9da50c3c5dbf70dc1c4688fd.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="jDawganator#8925" data-user-id="752852735312920626" style="color: rgb(52,152,219)">jDawganator</span>
+
+
+        <span class="chatlog__timestamp">01-Sep-22 07:50 PM</span>
+
+            <div class="chatlog__message " data-message-id="1014955524246208596" id="message-1014955524246208596">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://rumble.com/v1huyrn-ivermectin-the-truth.html?utm_source=substack&utm_medium=email">https://rumble.com/v1huyrn-ivermectin-the-truth.html?utm_source=substack&amp;utm_medium=email</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://rumble.com/v1huyrn-ivermectin-the-truth.html?utm_source=substack&amp;utm_medium=email">
+                                                    <div class="markdown">Ivermectin: The Truth</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Plandemicseries.com</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://sp.rmbl.ws/s8/1/d/c/g/z/dcgzf.qR4e-small-Ivermectin-The-Truth.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="https://sp.rmbl.ws/s8/1/d/c/g/z/dcgzf.qR4e-small-Ivermectin-The-Truth.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon#9623" data-user-id="639228327147601921" style="color: rgb(241,196,15)">mejon</span>
+
+
+        <span class="chatlog__timestamp">01-Sep-22 08:13 PM</span>
+
+            <div class="chatlog__message " data-message-id="1014961174699311144" id="message-1014961174699311144">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.thestar.com/news/canada/2022/09/01/duclos-to-make-vaccine-announcement-as-health-canada-reviews-omicron-booster.html">https://www.thestar.com/news/canada/2022/09/01/duclos-to-make-vaccine-announcement-as-health-canada-reviews-omicron-booster.html</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.thestar.com/news/canada/2022/09/01/duclos-to-make-vaccine-announcement-as-health-canada-reviews-omicron-booster.html">
+                                                    <div class="markdown">Health Canada approves Moderna’s Omicron booster vaccine</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Health officials are expected to make an announcement on the ongoing fight against COVID-19 today as provincial health systems eagerly await the approval of a vaccine that targets the Omicron variant of the virus.</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://images.thestar.com/W1isfFuk-IPv7uyCBlapOPfJry0=/1280x1024/smart/filters:cb(1662052250242):format(webp)/https://www.thestar.com/content/dam/thestar/news/canada/2022/09/01/health-canada-approves-modernas-omicron-booster-vaccine/20220831170828-f3e643851faf7f558e63d539bd1fbb9d9293c2002f80f87d8c9afb3688a02061.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="https://images.thestar.com/W1isfFuk-IPv7uyCBlapOPfJry0=/1280x1024/smart/filters:cb(1662052250242):format(webp)/https://www.thestar.com/content/dam/thestar/news/canada/2022/09/01/health-canada-approves-modernas-omicron-booster-vaccine/20220831170828-f3e643851faf7f558e63d539bd1fbb9d9293c2002f80f87d8c9afb3688a02061.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon#9623" data-user-id="639228327147601921" style="color: rgb(241,196,15)">mejon</span>
+
+
+        <span class="chatlog__timestamp">02-Sep-22 03:45 PM</span>
+
+            <div class="chatlog__message " data-message-id="1015256175102664794" id="message-1015256175102664794">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.livemint.com/news/world/who-warns-of-more-dangerous-covid-variants-in-coming-days-read-here-11662042824791.html">https://www.livemint.com/news/world/who-warns-of-more-dangerous-covid-variants-in-coming-days-read-here-11662042824791.html</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,255,255,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.livemint.com/news/world/who-warns-of-more-dangerous-covid-variants-in-coming-days-read-here-11662042824791.html">
+                                                    <div class="markdown">WHO warns of more ‘dangerous COVID variants’ in coming days. Read h...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">The risk of even more transmissible and more dangerous COVID variants remains, WHO chief said</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://images.livemint.com/img/2022/09/01/600x338/WHO_1662045093473_1662045093719_1662045093719.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="https://images.livemint.com/img/2022/09/01/600x338/WHO_1662045093473_1662045093719_1662045093719.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="SoyPoint" title="SoyPoint" src="https://cdn.discordapp.com/emojis/965690012052127854.png">
+                                <span class="chatlog__reaction-count">2</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="honkler" title="honkler" src="https://cdn.discordapp.com/emojis/930817037146669186.png">
+                                <span class="chatlog__reaction-count">2</span>
+                            </div>
+                    </div>
+            </div>
+            <div class="chatlog__message " data-message-id="1015256715006070874" id="message-1015256715006070874">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://datadashboard.health.gov.il/COVID-19/general?tileName=vaccinatedByAge">https://datadashboard.health.gov.il/COVID-19/general?tileName=vaccinatedByAge</a> </div>
+                </div>
+
+                    <div class="chatlog__attachment">
+                            <a href="https://cdn.discordapp.com/attachments/930792194166648862/1015256715316437072/FbpWZqPWIAQngYZ.jpg">
+                                    <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/930792194166648862/1015256715316437072/FbpWZqPWIAQngYZ.jpg" alt="Attachment">
+                            </a>
+                    </div>
+                    <div class="chatlog__attachment">
+                            <a href="https://cdn.discordapp.com/attachments/930792194166648862/1015256715689738260/FbpWZVDXoAAiFRx.jpg">
+                                    <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/930792194166648862/1015256715689738260/FbpWZVDXoAAiFRx.jpg" alt="Attachment">
+                            </a>
+                    </div>
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://datadashboard.health.gov.il/COVID-19/general?tileName=vaccinatedByAge">
+                                                    <div class="markdown">קורונה - לוח בקרה</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">דשבורד נתוני וירוס הקורונה בישראל מטעם משרד הבריאות הישראלי</div>
+                                        </div>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="1015256779690618950" id="message-1015256779690618950">
+                <div class="chatlog__content">
+                    <div class="markdown"><div class="quote">Israel <img class="emoji " alt="🇮🇱" title="🇮🇱" src="https://twemoji.maxcdn.com/2/72x72/1f1ee-1f1f1.png">: As of today only 2.4% of the population is considered vaccinated by the Ministry of Health</div> </div>
+                </div>
+
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="ShutItDown" title="ShutItDown" src="https://cdn.discordapp.com/emojis/958109598617833542.png">
+                                <span class="chatlog__reaction-count">2</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/709158982094159882/7baa43a8de40813808f0d8a9fc4d8100.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Rabbitholed#5246" data-user-id="709158982094159882" style="color: rgb(241,196,15)">Curb</span>
+
+
+        <span class="chatlog__timestamp">02-Sep-22 09:28 PM</span>
+
+            <div class="chatlog__message " data-message-id="1015342460706234418" id="message-1015342460706234418">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://vxtwitter.com/Rob_Roos/status/1565630549011664896">https://vxtwitter.com/Rob_Roos/status/1565630549011664896</a>
+<div class="quote"><img class="emoji " alt="🎙" title="🎙" src="https://twemoji.maxcdn.com/2/72x72/1f399.png">️ &quot;In the end the truth always comes out&quot;
+</div>&gt; 
+<div class="quote">Ursula von der Leyen refuses to publish her secret text messages with the #Pfizer director.
+</div>&gt; 
+<div class="quote">My urgent questions are not answered.
+</div>&gt; 
+<div class="quote">In the #COVID committee I therefore ask Ms. Gallina, chief negotiator for the #vaccin contracts</div> <span class="chatlog__edited-timestamp" title="02-Sep-22 09:30 PM">(edited)</span></div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(127,255,212,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/Rob_Roos/status/1565630549011664896">&#127897;️&quot;Uiteindelijk komt de waarheid altijd uit&quot; Ursula von der Leyen weigert haar geheime sms&#39;jes met de #Pfizer-directeur te publiceren. Mijn spoedvragen worden niet beantwoord. In de #COVID-commissie bevraag ik daarom...</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://vxtwitter.com/Rob_Roos/status/1565630549011664896">
+                                                    <div class="markdown">Rob Roos MEP <img class="emoji " alt="🇳🇱" title="🇳🇱" src="https://twemoji.maxcdn.com/2/72x72/1f1f3-1f1f1.png"> (@Rob_Roos)</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown"><img class="emoji " alt="🎙" title="🎙" src="https://twemoji.maxcdn.com/2/72x72/1f399.png">️&quot;Uiteindelijk komt de waarheid altijd uit&quot;
+
+Ursula von der Leyen weigert haar geheime sms&#39;jes met de #Pfizer-directeur te publiceren.
+
+Mijn spoedvragen worden niet beantwoord.
+
+In de #COVID-commissie bevraag ik daarom mw. Gallina, hoofdonderhandelaar voor de #vaccin-contracten:</div>
+                                        </div>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="ShutItDown" title="ShutItDown" src="https://cdn.discordapp.com/emojis/958109598617833542.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="dumpsterfire" title="dumpsterfire" src="https://cdn.discordapp.com/emojis/930817037016645682.png">
+                                <span class="chatlog__reaction-count">2</span>
+                            </div>
+                    </div>
+            </div>
+            <div class="chatlog__message " data-message-id="1015342531225075772" id="message-1015342531225075772">
+                <div class="chatlog__content">
+                    <div class="markdown">Dutch. switches to English 2 minutes in <span class="chatlog__edited-timestamp" title="02-Sep-22 09:30 PM">(edited)</span></div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon#9623" data-user-id="639228327147601921" style="color: rgb(241,196,15)">mejon</span>
+
+
+        <span class="chatlog__timestamp">03-Sep-22 09:04 PM</span>
+
+            <div class="chatlog__message " data-message-id="1015698759377764463" id="message-1015698759377764463">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://torontosun.com/news/national/naci-now-suggests-canadians-consider-a-covid-19-booster-every-90-days">https://torontosun.com/news/national/naci-now-suggests-canadians-consider-a-covid-19-booster-every-90-days</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://torontosun.com/news/national/naci-now-suggests-canadians-consider-a-covid-19-booster-every-90-days">
+                                                    <div class="markdown">NACI now suggests Canadians consider a COVID-19 booster every 90 days</div>
+                                                </a>
+                                        </div>
+
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://smartcdn.gprod.postmedia.digital/torontosun/wp-content/uploads/2022/01/GettyImages-1334441038-scaled-e1643139429612.jpg?quality=100&amp;strip=all">
+                                            <img class="chatlog__embed-thumbnail" src="https://smartcdn.gprod.postmedia.digital/torontosun/wp-content/uploads/2022/01/GettyImages-1334441038-scaled-e1643139429612.jpg?quality=100&amp;strip=all" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/709158982094159882/7baa43a8de40813808f0d8a9fc4d8100.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Rabbitholed#5246" data-user-id="709158982094159882" style="color: rgb(241,196,15)">Curb</span>
+
+
+        <span class="chatlog__timestamp">04-Sep-22 01:23 AM</span>
+
+            <div class="chatlog__message " data-message-id="1015763923544309880" id="message-1015763923544309880">
+                <div class="chatlog__content">
+                    <div class="markdown">found this. so for what its worth. (always be cautious with self medication ) <span class="chatlog__edited-timestamp" title="04-Sep-22 01:23 AM">(edited)</span></div>
+                </div>
+
+                    <div class="chatlog__attachment">
+                            <a href="https://cdn.discordapp.com/attachments/930792194166648862/1015763923368153119/unknown.png">
+                                    <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/930792194166648862/1015763923368153119/unknown.png" alt="Attachment">
+                            </a>
+                    </div>
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="hmmm" title="hmmm" src="https://cdn.discordapp.com/emojis/930817037054402590.png">
+                                <span class="chatlog__reaction-count">2</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/709158982094159882/7baa43a8de40813808f0d8a9fc4d8100.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Rabbitholed#5246" data-user-id="709158982094159882" style="color: rgb(241,196,15)">Curb</span>
+
+
+        <span class="chatlog__timestamp">04-Sep-22 12:24 PM</span>
+
+            <div class="chatlog__message " data-message-id="1015930283993866240" id="message-1015930283993866240">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.lifesitenews.com/opinion/statistics-indicate-covid-jab-is-the-elephant-in-the-room-when-it-comes-to-excess-mortality-rates/">https://www.lifesitenews.com/opinion/statistics-indicate-covid-jab-is-the-elephant-in-the-room-when-it-comes-to-excess-mortality-rates/</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.lifesitenews.com/opinion/statistics-indicate-covid-jab-is-the-elephant-in-the-room-when-it-comes-to-excess-mortality-rates/">
+                                                    <div class="markdown">Statistics indicate COVID jab is the &#39;elephant in the room&#39; when it...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">&#39;Far more people died in 2021, after the rollout of the COVID shots, and in 2022, than during the height of the COVID pandemic in 2020.&#39;</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://www.lifesitenews.com/wp-content/uploads/2021/09/Booster-jab.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="https://www.lifesitenews.com/wp-content/uploads/2021/09/Booster-jab.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="ShutItDown" title="ShutItDown" src="https://cdn.discordapp.com/emojis/958109598617833542.png">
+                                <span class="chatlog__reaction-count">2</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="surprised_pikachu" title="surprised_pikachu" src="https://cdn.discordapp.com/emojis/930817036899221544.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon#9623" data-user-id="639228327147601921" style="color: rgb(241,196,15)">mejon</span>
+
+
+        <span class="chatlog__timestamp">04-Sep-22 05:55 PM</span>
+
+            <div class="chatlog__message " data-message-id="1016013761003409540" id="message-1016013761003409540">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://greatgameindia.com/notice-bill-gates-vaccine-death/">https://greatgameindia.com/notice-bill-gates-vaccine-death/</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://greatgameindia.com/notice-bill-gates-vaccine-death/">
+                                                    <div class="markdown">Bombay HC Issues Notice To Bill Gates Over Plea On Vaccine Death - ...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">After a plea on vaccine death was raised by petitioner Dilip Lunwat after the death of his daughter, a Bombay HC division bench of Justices S V Gangapurwala and Madhav Jamdar, a notice was issued to Bill Gates and all other respondents in the petition.</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://i0.wp.com/greatgameindia.com/wp-content/uploads/2022/09/Featured-image-30.jpg?fit=1600%2C900&amp;ssl=1">
+                                            <img class="chatlog__embed-thumbnail" src="https://i0.wp.com/greatgameindia.com/wp-content/uploads/2022/09/Featured-image-30.jpg?fit=1600%2C900&amp;ssl=1" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/709158982094159882/7baa43a8de40813808f0d8a9fc4d8100.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Rabbitholed#5246" data-user-id="709158982094159882" style="color: rgb(241,196,15)">Curb</span>
+
+
+        <span class="chatlog__timestamp">05-Sep-22 03:10 PM</span>
+
+            <div class="chatlog__message " data-message-id="1016334608800952390" id="message-1016334608800952390">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://insiderpaper.com/china-approves-worlds-first-inhalable-covid-19-vaccine/">https://insiderpaper.com/china-approves-worlds-first-inhalable-covid-19-vaccine/</a>
+<div class="quote">Chinese drug regulators have approved the world’s first inhalable Covid-19 vaccine, 
+...
+The National Medical Products Administration gave the go-ahead for the vaccine for emergency use as a booster
+...
+There is no publicly available verified or peer-reviewed data on the efficacy of the new vaccine.</div> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,255,255,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://insiderpaper.com/china-approves-worlds-first-inhalable-covid-19-vaccine/">
+                                                    <div class="markdown">China approves world&#39;s first inhalable Covid-19 vaccine - Insider P...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Chinese drug regulators have approved the world&#39;s first inhalable Covid-19 vaccine, made by Tianjin-based&#160;manufacturer CanSino Biologics,.</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://insiderpaper.com/wp-content/uploads/2021/03/vaccine-5926664_1280.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="https://insiderpaper.com/wp-content/uploads/2021/03/vaccine-5926664_1280.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="stoned" title="stoned" src="https://cdn.discordapp.com/emojis/930917341741584425.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon#9623" data-user-id="639228327147601921" style="color: rgb(241,196,15)">mejon</span>
+
+
+        <span class="chatlog__timestamp">05-Sep-22 06:52 PM</span>
+
+            <div class="chatlog__message " data-message-id="1016390375428079796" id="message-1016390375428079796">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.thetimes.co.uk/article/moderna-aims-to-give-investors-extra-boost-with-6-in-1-superjab-ztbz39lp6">https://www.thetimes.co.uk/article/moderna-aims-to-give-investors-extra-boost-with-6-in-1-superjab-ztbz39lp6</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.thetimes.co.uk/article/moderna-aims-to-give-investors-extra-boost-with-6-in-1-superjab-ztbz39lp6">
+                                                    <div class="markdown">Moderna aims to give investors extra boost with 6-in-1 superjab</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">A six-in-one super jab that will protect against strains of Covid-19, flu and respiratory syncytial virus — similar to a cold — could be introduced by winter 2</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://www.thetimes.co.uk/imageserver/image/%2Fmethode%2Fsundaytimes%2Fprod%2Fweb%2Fbin%2Fd2e32ce8-2b92-11ed-a4d5-afa440292fae.jpg?crop=3952%2C2223%2C0%2C206&amp;resize=1200">
+                                            <img class="chatlog__embed-thumbnail" src="https://www.thetimes.co.uk/imageserver/image/%2Fmethode%2Fsundaytimes%2Fprod%2Fweb%2Fbin%2Fd2e32ce8-2b92-11ed-a4d5-afa440292fae.jpg?crop=3952%2C2223%2C0%2C206&amp;resize=1200" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="honkler" title="honkler" src="https://cdn.discordapp.com/emojis/930817037146669186.png">
+                                <span class="chatlog__reaction-count">2</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="grabbler" title="grabbler" src="https://cdn.discordapp.com/emojis/930817037054390293.png">
+                                <span class="chatlog__reaction-count">2</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon#9623" data-user-id="639228327147601921" style="color: rgb(241,196,15)">mejon</span>
+
+
+        <span class="chatlog__timestamp">05-Sep-22 09:23 PM</span>
+
+            <div class="chatlog__message " data-message-id="1016428423238926377" id="message-1016428423238926377">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://news.sky.com/story/covid-app-that-detects-virus-in-your-voice-more-accurate-than-lateral-flow-tests-12690450">https://news.sky.com/story/covid-app-that-detects-virus-in-your-voice-more-accurate-than-lateral-flow-tests-12690450</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://news.sky.com/story/covid-app-that-detects-virus-in-your-voice-more-accurate-than-lateral-flow-tests-12690450">
+                                                    <div class="markdown">COVID app that detects virus in your voice &#39;more accurate than late...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Users will be required to give information about their medical history, smoking status and demographics and record some respiratory sounds, such as coughing and reading a short sentence.</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://e3.365dm.com/22/09/768x432/skynews-covid-19-covid-mobile-phone_5888029.jpg?20220905085016">
+                                            <img class="chatlog__embed-thumbnail" src="https://e3.365dm.com/22/09/768x432/skynews-covid-19-covid-mobile-phone_5888029.jpg?20220905085016" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="honkler" title="honkler" src="https://cdn.discordapp.com/emojis/930817037146669186.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="ugh" title="ugh" src="https://cdn.discordapp.com/emojis/930817036316200962.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon#9623" data-user-id="639228327147601921" style="color: rgb(241,196,15)">mejon</span>
+
+
+        <span class="chatlog__timestamp">05-Sep-22 09:40 PM</span>
+
+            <div class="chatlog__message " data-message-id="1016432713336623135" id="message-1016432713336623135">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://fxtwitter.com/ryangerritsen/status/1566558147497574406">https://fxtwitter.com/ryangerritsen/status/1566558147497574406</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(227,204,191,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/ryangerritsen/status/1566558147497574406">What you are watching is not an old video of our PM pushing vaccines, this is from 3 days ago pushing people to get “up to date” with the new vaccines. It seems as if he is threatening more restrictio</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://fxtwitter.com/ryangerritsen/status/1566558147497574406">
+                                                    <div class="markdown">Ryan Gerritsen<img class="emoji " alt="🇨🇦" title="🇨🇦" src="https://twemoji.maxcdn.com/2/72x72/1f1e8-1f1e6.png"><img class="emoji " alt="🇳🇱" title="🇳🇱" src="https://twemoji.maxcdn.com/2/72x72/1f1f3-1f1f1.png"> (@ryangerritsen)</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">What you are watching is not an old video of our PM pushing vaccines, this is from 3 days ago pushing people to get “up to date” with the new vaccines. It seems as if he is threatening more restrictions if we don’t comply. And I don’t want him to keep me safe. Leave me alone.</div>
+                                        </div>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/709158982094159882/7baa43a8de40813808f0d8a9fc4d8100.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Rabbitholed#5246" data-user-id="709158982094159882" style="color: rgb(241,196,15)">Curb</span>
+
+
+        <span class="chatlog__timestamp">05-Sep-22 10:12 PM</span>
+
+            <div class="chatlog__message " data-message-id="1016440696854548480" id="message-1016440696854548480">
+                <div class="chatlog__content">
+                    <div class="markdown">as it will help reduce (energy/food) demand.. <span class="chatlog__edited-timestamp" title="05-Sep-22 10:12 PM">(edited)</span></div>
+                </div>
+
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="klaus" title="klaus" src="https://cdn.discordapp.com/emojis/930834804683976704.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon#9623" data-user-id="639228327147601921" style="color: rgb(241,196,15)">mejon</span>
+
+
+        <span class="chatlog__timestamp">05-Sep-22 10:49 PM</span>
+
+            <div class="chatlog__message " data-message-id="1016450129517101128" id="message-1016450129517101128">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.usnews.com/news/health-news/articles/2022-09-05/monkeypox-can-harm-the-heart">https://www.usnews.com/news/health-news/articles/2022-09-05/monkeypox-can-harm-the-heart</a> </div>
+                </div>
+
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="honkler" title="honkler" src="https://cdn.discordapp.com/emojis/930817037146669186.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/709158982094159882/7baa43a8de40813808f0d8a9fc4d8100.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Rabbitholed#5246" data-user-id="709158982094159882" style="color: rgb(241,196,15)">Curb</span>
+
+
+        <span class="chatlog__timestamp">05-Sep-22 11:48 PM</span>
+
+            <div class="chatlog__message " data-message-id="1016464771924639825" id="message-1016464771924639825">
+                <div class="chatlog__content">
+                    <div class="markdown"><div class="quote">Many embalmers across the world are reporting massive clots never seen before appearing in young people with sudden death. CDC, FDA, NHS, KAISER all agencies should be studying these to see if related to Covid, vaccine, or both.  Why are we not rushing to find answers?!
+</div><span class="spoiler spoiler--hidden" onclick="showSpoiler(event, this)"><span class="spoiler-text"> <a href="https://twitter.com/afshineemrani/status/1566459737855516672">https://twitter.com/afshineemrani/status/1566459737855516672</a> </span></span> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(29,161,242,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+                                                <img class="chatlog__embed-author-icon" src="https://pbs.twimg.com/profile_images/654494643292213248/wJaJoHrF_400x400.png" alt="Author icon">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/afshineemrani">Afshine Emrani  MD FACC (@afshineemrani)</a>
+                                                </span>
+                                        </div>
+
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Many embalmers across the world are reporting massive clots never seen before appearing in young people with sudden death. CDC, FDA, NHS, KAISER all agencies should be studying these to see if related to Covid, vaccine, or both.  Why are we not rushing to find answers?!</div>
+                                        </div>
+
+                                        <div class="chatlog__embed-fields">
+                                                <div class="chatlog__embed-field chatlog__embed-field--inline">
+                                                        <div class="chatlog__embed-field-name">
+                                                            <div class="markdown">Likes</div>
+                                                        </div>
+
+                                                        <div class="chatlog__embed-field-value">
+                                                            <div class="markdown">9058</div>
+                                                        </div>
+                                                </div>
+                                                <div class="chatlog__embed-field chatlog__embed-field--inline">
+                                                        <div class="chatlog__embed-field-name">
+                                                            <div class="markdown">Retweets</div>
+                                                        </div>
+
+                                                        <div class="chatlog__embed-field-value">
+                                                            <div class="markdown">4535</div>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                </div>
+
+                            </div>
+
+                                <div class="chatlog__embed-image-container">
+                                    <a class="chatlog__embed-image-link" href="https://pbs.twimg.com/media/Fb0u1FHUcAI6o_8.jpg">
+                                        <img class="chatlog__embed-image" src="https://pbs.twimg.com/media/Fb0u1FHUcAI6o_8.jpg" alt="Image">
+                                    </a>
+                                </div>
+
+                                <div class="chatlog__embed-footer">
+                                        <img class="chatlog__embed-footer-icon" src="https://abs.twimg.com/icons/apple-touch-icon-192x192.png" alt="Footer icon">
+
+                                        <span class="chatlog__embed-footer-text">
+Twitter
+ • 
+04-Sep-22 06:14 PM                                        </span>
+                                </div>
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="stoned" title="stoned" src="https://cdn.discordapp.com/emojis/930917341741584425.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="doomer" title="doomer" src="https://cdn.discordapp.com/emojis/930832751664435210.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/709158982094159882/7baa43a8de40813808f0d8a9fc4d8100.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Rabbitholed#5246" data-user-id="709158982094159882" style="color: rgb(241,196,15)">Curb</span>
+
+
+        <span class="chatlog__timestamp">06-Sep-22 02:36 AM</span>
+
+            <div class="chatlog__message " data-message-id="1016507259263664269" id="message-1016507259263664269">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.theepochtimes.com/embalmers-have-been-finding-numerous-long-fibrous-clots-that-lack-post-mortem-characteristics_4696015.html">https://www.theepochtimes.com/embalmers-have-been-finding-numerous-long-fibrous-clots-that-lack-post-mortem-characteristics_4696015.html</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.theepochtimes.com/embalmers-have-been-finding-numerous-long-fibrous-clots-that-lack-post-mortem-characteristics_4696015.html">
+                                                    <div class="markdown">Embalmers Have Been Finding Numerous Long, Fibrous Clots That Lack ...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Several embalmers across the country have been observing many large, and sometimes very long, &quot;fibrous&quot; and rubbery&#160;clots inside ...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://img.theepochtimes.com/assets/uploads/2022/08/31/Resized_20220707_145045-1200x675.jpeg">
+                                            <img class="chatlog__embed-thumbnail" src="https://img.theepochtimes.com/assets/uploads/2022/08/31/Resized_20220707_145045-1200x675.jpeg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon#9623" data-user-id="639228327147601921" style="color: rgb(241,196,15)">mejon</span>
+
+
+        <span class="chatlog__timestamp">06-Sep-22 07:51 AM</span>
+
+            <div class="chatlog__message " data-message-id="1016586488412123196" id="message-1016586488412123196">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://margaretannaalice.substack.com/p/50-reasons-to-give-your-child-the">https://margaretannaalice.substack.com/p/50-reasons-to-give-your-child-the</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,255,255,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://margaretannaalice.substack.com/p/50-reasons-to-give-your-child-the">
+                                                    <div class="markdown">50 Reasons to Give Your Child the COVID Shot</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Are you wondering if it’s a good idea to give your kid the COVID shot? I know there’s an ocean of mis/dis/mal/information out there to navigate, so I’ve compiled this handy list of reasons you’ll want to rush your child to the nearest injection site stat.</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://substackcdn.com/image/fetch/w_1200,h_600,c_fill,f_jpg,q_auto:good,fl_progressive:steep,g_auto/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F32175878-e842-4197-a82f-9af2f362a556_1200x1800.jpeg">
+                                            <img class="chatlog__embed-thumbnail" src="https://substackcdn.com/image/fetch/w_1200,h_600,c_fill,f_jpg,q_auto:good,fl_progressive:steep,g_auto/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F32175878-e842-4197-a82f-9af2f362a556_1200x1800.jpeg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="dumpsterfire" title="dumpsterfire" src="https://cdn.discordapp.com/emojis/930817037016645682.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="NWOpepe" title="NWOpepe" src="https://cdn.discordapp.com/emojis/930817036425252875.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+</div>
+
+<div class="postamble">
+    <div class="postamble__entry">Exported 21 message(s)</div>
+</div>
+
+</body>
+</html>
