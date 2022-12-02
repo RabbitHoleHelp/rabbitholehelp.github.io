@@ -1,0 +1,2285 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Rabbithole.help part 3 - &#128562;-happenings</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+
+    <style>
+        /* General */
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-300.woff);
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-400.woff);
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-500.woff);
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-600.woff);
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-700.woff);
+    font-weight: 700;
+}
+
+body {
+    font-family: "Whitney", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 17px;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+img {
+    object-fit: contain;
+}
+
+.markdown {
+    max-width: 100%;
+    white-space: pre-wrap;
+    line-height: 1.3;
+    overflow-wrap: break-word;
+}
+
+.spoiler {
+    width: fit-content;
+}
+
+.spoiler--hidden {
+    cursor: pointer;
+}
+
+.spoiler-text {
+    border-radius: 3px;
+}
+
+.spoiler--hidden .spoiler-text {
+    color: rgba(0, 0, 0, 0);
+}
+
+.spoiler--hidden .spoiler-text::selection {
+    color: rgba(0, 0, 0, 0);
+}
+
+.spoiler-image {
+    position: relative;
+    overflow: hidden;
+    border-radius: 3px;
+}
+
+.spoiler--hidden .spoiler-image {
+    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.spoiler--hidden .spoiler-image img {
+    filter: blur(44px);
+}
+
+.spoiler--hidden .spoiler-image:after {
+    content: "SPOILER";
+    color: #dcddde;
+    background-color: rgba(0, 0, 0, 0.6);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: 600;
+    padding: 0.5em 0.7em;
+    border-radius: 20px;
+    letter-spacing: 0.05em;
+    font-size: 0.9em;
+}
+
+.spoiler--hidden:hover .spoiler-image:after {
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.quote {
+    margin: 0.1em 0;
+    padding-left: 0.6em;
+    border-left: 4px solid;
+    border-radius: 3px;
+}
+
+.pre {
+    font-family: "Consolas", "Courier New", Courier, monospace;
+}
+
+.pre--multiline {
+    margin-top: 0.25em;
+    padding: 0.5em;
+    border: 2px solid;
+    border-radius: 5px;
+}
+
+.pre--inline {
+    padding: 2px;
+    border-radius: 3px;
+    font-size: 0.85em;
+}
+
+.mention {
+    border-radius: 3px;
+    padding: 0 2px;
+    color: #7289da;
+    background: rgba(114, 137, 218, .1);
+    font-weight: 500;
+}
+
+.emoji {
+    width: 1.25em;
+    height: 1.25em;
+    margin: 0 0.06em;
+    vertical-align: -0.4em;
+}
+
+.emoji--small {
+    width: 1em;
+    height: 1em;
+}
+
+.emoji--large {
+    width: 2.8em;
+    height: 2.8em;
+}
+
+/* Preamble */
+
+.preamble {
+    display: grid;
+    margin: 0 0.3em 0.6em 0.3em;
+    max-width: 100%;
+    grid-template-columns: auto 1fr;
+}
+
+.preamble__guild-icon-container {
+    grid-column: 1;
+}
+
+.preamble__guild-icon {
+    max-width: 88px;
+    max-height: 88px;
+}
+
+.preamble__entries-container {
+    grid-column: 2;
+    margin-left: 0.6em;
+}
+
+.preamble__entry {
+    font-size: 1.4em;
+}
+
+.preamble__entry--small {
+    font-size: 1em;
+}
+
+/* Chatlog */
+
+.chatlog {
+    max-width: 100%;
+}
+
+.chatlog__message-group {
+    display: grid;
+    margin: 0 0.6em;
+    padding: 0.9em 0;
+    border-top: 1px solid;
+    grid-template-columns: auto 1fr;
+}
+
+.chatlog__author-avatar-container {
+    grid-column: 1;
+    width: 40px;
+    height: 40px;
+}
+
+.chatlog__author-avatar {
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+}
+
+.chatlog__messages {
+    grid-column: 2;
+    margin-left: 1.2em;
+    min-width: 50%;
+}
+
+.chatlog__author-name {
+    font-weight: 500;
+}
+
+.chatlog__timestamp {
+    margin-left: 0.3em;
+    font-size: 0.75em;
+}
+
+.chatlog__message {
+    padding: 0.1em 0.3em;
+    margin: 0 -0.3em;
+    background-color: transparent;
+    transition: background-color 1s ease;
+}
+
+.chatlog__content {
+    font-size: 0.95em;
+    word-wrap: break-word;
+}
+
+.chatlog__edited-timestamp {
+    margin-left: 0.15em;
+    font-size: 0.8em;
+}
+
+.chatlog__attachment {
+    margin-top: 0.3em;
+}
+
+.chatlog__attachment-thumbnail {
+    vertical-align: top;
+    max-width: 45vw;
+    max-height: 500px;
+    border-radius: 3px;
+}
+
+.chatlog__embed {
+    display: flex;
+    margin-top: 0.3em;
+    max-width: 520px;
+}
+
+.chatlog__embed-color-pill {
+    flex-shrink: 0;
+    width: 0.25em;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
+.chatlog__embed-content-container {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5em 0.6em;
+    border: 1px solid;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+.chatlog__embed-content {
+    display: flex;
+    width: 100%;
+}
+
+.chatlog__embed-text {
+    flex: 1;
+}
+
+.chatlog__embed-author {
+    display: flex;
+    margin-bottom: 0.3em;
+    align-items: center;
+}
+
+.chatlog__embed-author-icon {
+    margin-right: 0.5em;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+.chatlog__embed-author-name {
+    font-size: 0.875em;
+    font-weight: 600;
+}
+
+.chatlog__embed-title {
+    margin-bottom: 0.2em;
+    font-size: 0.875em;
+    font-weight: 600;
+}
+
+.chatlog__embed-description {
+    font-weight: 500;
+    font-size: 0.85em;
+}
+
+.chatlog__embed-fields {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.chatlog__embed-field {
+    flex: 0;
+    min-width: 100%;
+    max-width: 506px;
+    padding-top: 0.6em;
+    font-size: 0.875em;
+}
+
+.chatlog__embed-field--inline {
+    flex: 1;
+    flex-basis: auto;
+    min-width: 150px;
+}
+
+.chatlog__embed-field-name {
+    margin-bottom: 0.2em;
+    font-weight: 600;
+}
+
+.chatlog__embed-field-value {
+    font-weight: 500;
+}
+
+.chatlog__embed-thumbnail {
+    flex: 0;
+    margin-left: 1.2em;
+    max-width: 80px;
+    max-height: 80px;
+    border-radius: 3px;
+}
+
+.chatlog__embed-image-container {
+    margin-top: 0.6em;
+}
+
+.chatlog__embed-image {
+    max-width: 500px;
+    max-height: 400px;
+    border-radius: 3px;
+}
+
+.chatlog__embed-footer {
+    margin-top: 0.6em;
+}
+
+.chatlog__embed-footer-icon {
+    margin-right: 0.2em;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+
+.chatlog__embed-footer-text {
+    font-size: 0.75em;
+    font-weight: 500;
+}
+
+.chatlog__reactions {
+    display: flex;
+}
+
+.chatlog__reaction {
+    display: flex;
+    align-items: center;
+    margin: 0.35em 0.1em 0.1em 0.1em;
+    padding: 0.2em 0.35em;
+    border-radius: 3px;
+}
+
+.chatlog__reaction-count {
+    min-width: 9px;
+    margin-left: 0.35em;
+    font-size: 0.875em;
+}
+
+.chatlog__bot-tag {
+    position: relative;
+    top: -.2em;
+    margin-left: 0.3em;
+    padding: 0.05em 0.3em;
+    border-radius: 3px;
+    vertical-align: middle;
+    line-height: 1.3;
+    background: #7289da;
+    color: #ffffff;
+    font-size: 0.625em;
+    font-weight: 500;
+}
+
+/* Postamble */
+
+.postamble {
+    margin: 1.4em 0.3em 0.6em 0.3em;
+    padding: 1em;
+    border-top: 1px solid;
+}
+    </style>
+    <style>
+        /* General */
+
+body {
+    background-color: #36393e;
+    color: #dcddde;
+}
+
+a {
+    color: #0096cf;
+}
+
+.spoiler-text {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.spoiler--hidden .spoiler-text {
+    background-color: #202225;
+}
+
+.spoiler--hidden:hover .spoiler-text {
+    background-color: rgba(32, 34, 37, 0.8);
+}
+
+.quote {
+    border-color: #4f545c;
+}
+
+.pre {
+    background-color: #2f3136 !important;
+}
+
+.pre--multiline {
+    border-color: #282b30 !important;
+    color: #b9bbbe !important;
+}
+
+/* === Preamble === */
+
+.preamble__entry {
+    color: #ffffff;
+}
+
+/* Chatlog */
+
+.chatlog__message-group {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.chatlog__author-name {
+    color: #ffffff;
+}
+
+.chatlog__timestamp {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.chatlog__message--highlighted {
+    background-color: rgba(114, 137, 218, 0.2) !important;
+}
+
+.chatlog__message--pinned {
+    background-color: rgba(249, 168, 37, 0.05);
+}
+
+.chatlog__edited-timestamp {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.chatlog__embed-color-pill--default {
+    background-color: rgba(79, 84, 92, 1);
+}
+
+.chatlog__embed-content-container {
+    background-color: rgba(46, 48, 54, 0.3);
+    border-color: rgba(46, 48, 54, 0.6);
+}
+
+.chatlog__embed-author-name {
+    color: #ffffff;
+}
+
+.chatlog__embed-author-name-link {
+    color: #ffffff;
+}
+
+.chatlog__embed-title {
+    color: #ffffff;
+}
+
+.chatlog__embed-description {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__embed-field-name {
+    color: #ffffff;
+}
+
+.chatlog__embed-field-value {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__embed-footer {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__reaction {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.chatlog__reaction-count {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+/* Postamble */
+
+.postamble {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.postamble__entry {
+    color: #ffffff;
+}
+    </style>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/solarized-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.pre--multiline').forEach(block => hljs.highlightBlock(block));
+        });
+    </script>
+
+    <script>
+        function scrollToMessage(event, id) {
+            var element = document.getElementById('message-' + id);
+
+            if (element) {
+                event.preventDefault();
+
+                element.classList.add('chatlog__message--highlighted');
+
+                window.scrollTo({
+                    top: element.getBoundingClientRect().top - document.body.getBoundingClientRect().top - (window.innerHeight / 2),
+                    behavior: 'smooth'
+                });
+
+                window.setTimeout(function() {
+                    element.classList.remove('chatlog__message--highlighted');
+                }, 2000);
+            }
+        }
+
+        function showSpoiler(event, element) {
+            if (element && element.classList.contains('spoiler--hidden')) {
+                event.preventDefault();
+                element.classList.remove('spoiler--hidden');
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="preamble">
+    <div class="preamble__guild-icon-container">
+        <img class="preamble__guild-icon" src="https://cdn.discordapp.com/icons/930791563871813693/89ccc9d466d4055c98a4af46f144e403.png" alt="Guild icon">
+    </div>
+    <div class="preamble__entries-container">
+        <div class="preamble__entry">Rabbithole.help part 3</div>
+        <div class="preamble__entry">research / &#128562;-happenings</div>
+
+
+            <div class="preamble__entry preamble__entry--small">
+Between 01-Nov-22 12:00 AM and 01-Dec-22 12:00 AM            </div>
+    </div>
+</div>
+
+<div class="chatlog">
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/578305700804034583/ca7397f6ff4f5609ff3a2ccf3c0c328b.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="BIGFOOT#5016" data-user-id="578305700804034583" style="">BIGFOOT</span>
+
+
+        <span class="chatlog__timestamp">01-Nov-22 07:31 AM</span>
+
+            <div class="chatlog__message " data-message-id="1036890249546182657" id="message-1036890249546182657">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.reddit.com/r/conspiracy/comments/yirap1/founder_of_makerdao_crypto_found_dead_one_day/">https://www.reddit.com/r/conspiracy/comments/yirap1/founder_of_makerdao_crypto_found_dead_one_day/</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,255,255,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.reddit.com/r/conspiracy/comments/yirap1/founder_of_makerdao_crypto_found_dead_one_day/">
+                                                    <div class="markdown">r/conspiracy - Founder of MakerDao Crypto Found dead one day after ...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">242 votes and 36 comments so far on Reddit</div>
+                                        </div>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="peep00" title="peep00" src="https://cdn.discordapp.com/emojis/930817036597207100.png">
+                                <span class="chatlog__reaction-count">2</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/578305700804034583/ca7397f6ff4f5609ff3a2ccf3c0c328b.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="BIGFOOT#5016" data-user-id="578305700804034583" style="">BIGFOOT</span>
+
+
+        <span class="chatlog__timestamp">01-Nov-22 11:11 AM</span>
+
+            <div class="chatlog__message " data-message-id="1036945567516999710" id="message-1036945567516999710">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.youtube.com/watch?v=ZqZJzCgkNrE">https://www.youtube.com/watch?v=ZqZJzCgkNrE</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UC_vFLohxs5PkAxlk7Y6jEtw">ABC 7 Chicago</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=ZqZJzCgkNrE">
+                                                    <div class="markdown">College wrestlers recount near-death fight with grizzly bear</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Four college wrestlers say they are grateful to be alive -- and for each other -- after going toe-to-toe with a grizzly bear in Wyoming over the weekend.
+
+Full story: <a href="https://abc7chicago.com/wyoming-wrestlers-bear-attack-college-grizzly-ussuri-brown-attacked-by/12342831/">https://abc7chicago.com/wyoming-wrestlers-bear-attack-college-grizzly-ussuri-brown-attacked-by/12342831/</a></div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://i.ytimg.com/vi/ZqZJzCgkNrE/maxresdefault.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="https://i.ytimg.com/vi/ZqZJzCgkNrE/maxresdefault.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="&#128064;" title="&#128064;" src="https://twemoji.maxcdn.com/2/72x72/1f440.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="peep00" title="peep00" src="https://cdn.discordapp.com/emojis/930817036597207100.png">
+                                <span class="chatlog__reaction-count">2</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon#9623" data-user-id="639228327147601921" style="color: rgb(241,196,15)">mejon</span>
+
+
+        <span class="chatlog__timestamp">01-Nov-22 01:37 PM</span>
+
+            <div class="chatlog__message " data-message-id="1036982373872582666" id="message-1036982373872582666">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://fxtwitter.com/TheInsiderPaper/status/1587318583750705152">https://fxtwitter.com/TheInsiderPaper/status/1587318583750705152</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(71,36,37,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/TheInsiderPaper/status/1587318583750705152">ALERT &#128680; Supporters of president Bolsonaro, unhappy with the election’s results, blocked roads around the country and restricted access to Sao Paulo international airport, Reports of multiple flights</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://fxtwitter.com/TheInsiderPaper/status/1587318583750705152">
+                                                    <div class="markdown">Insider Paper (@TheInsiderPaper)</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">ALERT <img class="emoji " alt="🚨" title="🚨" src="https://twemoji.maxcdn.com/2/72x72/1f6a8.png"> Supporters of president Bolsonaro, unhappy with the election’s results, blocked roads around the country and restricted access to Sao Paulo international airport, Reports of multiple flights being canceled</div>
+                                        </div>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/709158982094159882/9f0c8bdf0b7ca232015b9172b971e073.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Rabbitholed#5246" data-user-id="709158982094159882" style="color: rgb(241,196,15)">Curb</span>
+
+
+        <span class="chatlog__timestamp">01-Nov-22 09:14 PM</span>
+
+            <div class="chatlog__message " data-message-id="1037097199944863754" id="message-1037097199944863754">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://fxtwitter.com/i/status/1587252279379636225">https://fxtwitter.com/i/status/1587252279379636225</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(153,143,140,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/stillgray/status/1587252279379636225">Anarchy in Brazil.</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://fxtwitter.com/i/status/1587252279379636225">
+                                                    <div class="markdown">Ian Miles Cheong (@stillgray)</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Anarchy in Brazil.</div>
+                                        </div>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="peep00" title="peep00" src="https://cdn.discordapp.com/emojis/930817036597207100.png">
+                                <span class="chatlog__reaction-count">2</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="hyperz" title="hyperz" src="https://cdn.discordapp.com/emojis/930817036454596698.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon#9623" data-user-id="639228327147601921" style="color: rgb(241,196,15)">mejon</span>
+
+
+        <span class="chatlog__timestamp">01-Nov-22 09:37 PM</span>
+
+            <div class="chatlog__message " data-message-id="1037103000734421073" id="message-1037103000734421073">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://fxtwitter.com/WallStreetSilv/status/1587530357011881987">https://fxtwitter.com/WallStreetSilv/status/1587530357011881987</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(74,77,72,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/WallStreetSilv/status/1587530357011881987">BREAKING: Truckers and farmers in Brazil are working together to oppose the election results &#128680;
+
+&#128266;sound ...&#128293;&#128293;&#128293;
+#Brazil #Brazilelections</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://fxtwitter.com/WallStreetSilv/status/1587530357011881987">
+                                                    <div class="markdown">Wall Street Silver (@WallStreetSilv)</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">BREAKING: Truckers and farmers in Brazil are working together to oppose the election results <img class="emoji " alt="🚨" title="🚨" src="https://twemoji.maxcdn.com/2/72x72/1f6a8.png">
+
+<img class="emoji " alt="🔊" title="🔊" src="https://twemoji.maxcdn.com/2/72x72/1f50a.png">sound ...<img class="emoji " alt="🔥" title="🔥" src="https://twemoji.maxcdn.com/2/72x72/1f525.png"><img class="emoji " alt="🔥" title="🔥" src="https://twemoji.maxcdn.com/2/72x72/1f525.png"><img class="emoji " alt="🔥" title="🔥" src="https://twemoji.maxcdn.com/2/72x72/1f525.png">
+#Brazil #Brazilelections</div>
+                                        </div>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="peep00" title="peep00" src="https://cdn.discordapp.com/emojis/930817036597207100.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/578305700804034583/ca7397f6ff4f5609ff3a2ccf3c0c328b.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="BIGFOOT#5016" data-user-id="578305700804034583" style="">BIGFOOT</span>
+
+
+        <span class="chatlog__timestamp">02-Nov-22 10:44 AM</span>
+
+            <div class="chatlog__message " data-message-id="1037301152347336735" id="message-1037301152347336735">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://twitter.com/katyperry/status/1587732358790144000?s=20&t=36NhuZ2j1dmZxOOgLaoS8A">https://twitter.com/katyperry/status/1587732358790144000?s=20&amp;t=36NhuZ2j1dmZxOOgLaoS8A</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(29,161,242,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+                                                <img class="chatlog__embed-author-icon" src="https://pbs.twimg.com/profile_images/1392465354622791687/w_KwtKcE_400x400.jpg" alt="Author icon">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/katyperry">KATY PERRY (@katyperry)</a>
+                                                </span>
+                                        </div>
+
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">this is so tragic. my heart breaks for his family and my friends @Migos rest in peace <img class="emoji " alt="💔" title="💔" src="https://twemoji.maxcdn.com/2/72x72/1f494.png"></div>
+                                        </div>
+
+                                        <div class="chatlog__embed-fields">
+                                                <div class="chatlog__embed-field chatlog__embed-field--inline">
+                                                        <div class="chatlog__embed-field-name">
+                                                            <div class="markdown">Likes</div>
+                                                        </div>
+
+                                                        <div class="chatlog__embed-field-value">
+                                                            <div class="markdown">1677</div>
+                                                        </div>
+                                                </div>
+                                                <div class="chatlog__embed-field chatlog__embed-field--inline">
+                                                        <div class="chatlog__embed-field-name">
+                                                            <div class="markdown">Retweets</div>
+                                                        </div>
+
+                                                        <div class="chatlog__embed-field-value">
+                                                            <div class="markdown">181</div>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://pbs.twimg.com/amplify_video_thumb/1587599532568629248/img/sryfFZrBmou43c0i.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="https://pbs.twimg.com/amplify_video_thumb/1587599532568629248/img/sryfFZrBmou43c0i.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                                <div class="chatlog__embed-footer">
+                                        <img class="chatlog__embed-footer-icon" src="https://abs.twimg.com/icons/apple-touch-icon-192x192.png" alt="Footer icon">
+
+                                        <span class="chatlog__embed-footer-text">
+Twitter
+ • 
+02-Nov-22 10:04 AM                                        </span>
+                                </div>
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon#9623" data-user-id="639228327147601921" style="color: rgb(241,196,15)">mejon</span>
+
+
+        <span class="chatlog__timestamp">02-Nov-22 07:44 PM</span>
+
+            <div class="chatlog__message " data-message-id="1037437164205645935" id="message-1037437164205645935">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://fxtwitter.com/forumpandlr/status/1587830702489362432">https://fxtwitter.com/forumpandlr/status/1587830702489362432</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(42,41,45,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/forumpandlr/status/1587830702489362432">Absurdo! Bolsonaristas fazendo sauda&#231;&#227;o nazista em prol do Bolsonaro, em S&#227;o Miguel do Oeste/SC. &#129326;</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://fxtwitter.com/forumpandlr/status/1587830702489362432">
+                                                    <div class="markdown">PAN (@forumpandlr)</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Absurdo! Bolsonaristas fazendo sauda&#231;&#227;o nazista em prol do Bolsonaro, em S&#227;o Miguel do Oeste/SC. <img class="emoji " alt="🤮" title="🤮" src="https://twemoji.maxcdn.com/2/72x72/1f92e.png"></div>
+                                        </div>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="peep00" title="peep00" src="https://cdn.discordapp.com/emojis/930817036597207100.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon#9623" data-user-id="639228327147601921" style="color: rgb(241,196,15)">mejon</span>
+
+
+        <span class="chatlog__timestamp">04-Nov-22 01:42 PM</span>
+
+            <div class="chatlog__message " data-message-id="1038070791482384457" id="message-1038070791482384457">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://fxtwitter.com/JosBtrigga/status/1588336878310375424">https://fxtwitter.com/JosBtrigga/status/1588336878310375424</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(190,169,152,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/JosBtrigga/status/1588336878310375424">So @Noggatone Ben smith &amp; I confronted Mike “murder” Pompeo @SecPompeo on his insane Foreign policy decisions as Secretary of State. He’s responsible for the deaths of thousands and a big part in why</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://fxtwitter.com/JosBtrigga/status/1588336878310375424">
+                                                    <div class="markdown">Jose Vega — Vote Diane Sare! (@JosBtrigga)</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">So @Noggatone Ben smith &amp; I confronted Mike “murder” Pompeo @SecPompeo on his insane Foreign policy decisions as Secretary of State. He’s responsible for the deaths of thousands and a big part in why we’re in the situation we’re in today. Watch him lie to us. @yaf @Yale @AOC</div>
+                                        </div>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/848063531928387616/f5bb46163b220a04e6da326617557bca.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Fraudbear#3781" data-user-id="848063531928387616" style="color: rgb(46,204,113)">Fraudbear</span>
+
+
+        <span class="chatlog__timestamp">04-Nov-22 02:05 PM</span>
+
+            <div class="chatlog__message " data-message-id="1038076577164038214" id="message-1038076577164038214">
+                <div class="chatlog__content">
+                    <div class="markdown">God he must have the shittiest security </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon#9623" data-user-id="639228327147601921" style="color: rgb(241,196,15)">mejon</span>
+
+
+        <span class="chatlog__timestamp">04-Nov-22 09:57 PM</span>
+
+            <div class="chatlog__message " data-message-id="1038195362164375612" id="message-1038195362164375612">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://fxtwitter.com/PresstvExtra/status/1588486015249190912">https://fxtwitter.com/PresstvExtra/status/1588486015249190912</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(49,50,42,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/PresstvExtra/status/1588486015249190912">Aerial footage shows massive crowd attending rally in the city of Qom on the anniversary of the US embassy takeover.</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://fxtwitter.com/PresstvExtra/status/1588486015249190912">
+                                                    <div class="markdown">PressTV Extra (@PresstvExtra)</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Aerial footage shows massive crowd attending rally in the city of Qom on the anniversary of the US embassy takeover.</div>
+                                        </div>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="peep00" title="peep00" src="https://cdn.discordapp.com/emojis/930817036597207100.png">
+                                <span class="chatlog__reaction-count">2</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/709158982094159882/9f0c8bdf0b7ca232015b9172b971e073.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Rabbitholed#5246" data-user-id="709158982094159882" style="color: rgb(241,196,15)">Curb</span>
+
+
+        <span class="chatlog__timestamp">05-Nov-22 11:48 AM</span>
+
+            <div class="chatlog__message " data-message-id="1038404476966543390" id="message-1038404476966543390">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://youtu.be/qogqQyrfj1I">https://youtu.be/qogqQyrfj1I</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCPgLNge0xqQHWM5B5EFH9Cg">The Telegraph</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=qogqQyrfj1I">
+                                                    <div class="markdown">Cars dodge massive baubles rolling down central London street</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Outsized baubles from an art installation have caused chaos on London&#39;s Tottenham Court Road and rolled into the traffic.
+
+In a video posted on social media, the balls are shown rolling down the street because of high winds, as passing cars attempt to avoid them.
+
+The footage, believed to have been captured in the early hours of Monday, shows si...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://i.ytimg.com/vi/qogqQyrfj1I/maxresdefault.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="https://i.ytimg.com/vi/qogqQyrfj1I/maxresdefault.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon#9623" data-user-id="639228327147601921" style="color: rgb(241,196,15)">mejon</span>
+
+
+        <span class="chatlog__timestamp">05-Nov-22 10:09 PM</span>
+
+            <div class="chatlog__message " data-message-id="1038560679239614585" id="message-1038560679239614585">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://fxtwitter.com/disclosetv/status/1588931070258720768">https://fxtwitter.com/disclosetv/status/1588931070258720768</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(52,43,44,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/disclosetv/status/1588931070258720768">NOW - Fetterman says he is &quot;ready to serve Pennsylvania&quot; while American flags are being blown away in the background.</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://fxtwitter.com/disclosetv/status/1588931070258720768">
+                                                    <div class="markdown">Disclose.tv (@disclosetv)</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">NOW - Fetterman says he is &quot;ready to serve Pennsylvania&quot; while American flags are being blown away in the background.</div>
+                                        </div>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/709158982094159882/9f0c8bdf0b7ca232015b9172b971e073.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Rabbitholed#5246" data-user-id="709158982094159882" style="color: rgb(241,196,15)">Curb</span>
+
+
+        <span class="chatlog__timestamp">06-Nov-22 03:13 PM</span>
+
+            <div class="chatlog__message " data-message-id="1038818371258548334" id="message-1038818371258548334">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://fxtwitter.com/TheInsiderPaper/status/1589225166588235776">https://fxtwitter.com/TheInsiderPaper/status/1589225166588235776</a>
+<a href="https://insiderpaper.com/search-for-survivors-after-plane-plunges-into-lake-victoria-in-tanzania/">https://insiderpaper.com/search-for-survivors-after-plane-plunges-into-lake-victoria-in-tanzania/</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(175,176,170,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/TheInsiderPaper/status/1589225166588235776">WATCH &#128680; Passenger plane crashes into Lake Victoria in Tanzania: police</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://fxtwitter.com/TheInsiderPaper/status/1589225166588235776">
+                                                    <div class="markdown">Insider Paper (@TheInsiderPaper)</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">WATCH <img class="emoji " alt="🚨" title="🚨" src="https://twemoji.maxcdn.com/2/72x72/1f6a8.png"> Passenger plane crashes into Lake Victoria in Tanzania: police</div>
+                                        </div>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,255,255,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://insiderpaper.com/search-for-survivors-after-plane-plunges-into-lake-victoria-in-tanzania/">
+                                                    <div class="markdown">Search for survivors after plane plunges into Lake Victoria in Tanz...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">A plane carrying 43 people plunged into Lake Victoria in Tanzania early on Sunday due to bad weather shortly before it was due to land in the.</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://insiderpaper.com/wp-content/uploads/2022/11/image-9.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="https://insiderpaper.com/wp-content/uploads/2022/11/image-9.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon#9623" data-user-id="639228327147601921" style="color: rgb(241,196,15)">mejon</span>
+
+
+        <span class="chatlog__timestamp">10-Nov-22 08:20 PM</span>
+
+            <div class="chatlog__message " data-message-id="1040345240097275914" id="message-1040345240097275914">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://theconsciousresistance.com/john-brennan-confrontation/">https://theconsciousresistance.com/john-brennan-confrontation/</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://theconsciousresistance.com/author/derrick/">Derrick Broze</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://theconsciousresistance.com/john-brennan-confrontation/">
+                                                    <div class="markdown">Former CIA Director John Brennan Confronted on Torture, Drone Bombi...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Watch on Odysee / Rokfin On Wednesday November 9, 2022, former CIA director John Brennan spoke in Houston, Texas. Following Brennan’s talk journalist Derrick Broze confronted him on his support of torture, drone bombings, and mass surveillance of Americans. Sources: The Seven Deadly Sins of John Brennan By Nominating John Brennan, Obama Is Ignor...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://theconsciousresistance.com/wp-content/uploads/2022/11/Screenshot-from-2022-11-09-21-45-07.png">
+                                            <img class="chatlog__embed-thumbnail" src="https://theconsciousresistance.com/wp-content/uploads/2022/11/Screenshot-from-2022-11-09-21-45-07.png" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="1040345645132828774" id="message-1040345645132828774">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://fxtwitter.com/DBrozeLiveFree/status/1590730282873032705">https://fxtwitter.com/DBrozeLiveFree/status/1590730282873032705</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(164,77,14,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/DBrozeLiveFree/status/1590730282873032705">Ok twitter, I am giving the confrontation with @JohnBrennan to you first. The full clip will be on my website later today. Do what you do best with this. #BrennanExposed #BrennanIsALiar</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://fxtwitter.com/DBrozeLiveFree/status/1590730282873032705">
+                                                    <div class="markdown">Derrick Broze (@DBrozeLiveFree)</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Ok twitter, I am giving the confrontation with @JohnBrennan to you first. The full clip will be on my website later today. Do what you do best with this. #BrennanExposed #BrennanIsALiar</div>
+                                        </div>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/709158982094159882/9f0c8bdf0b7ca232015b9172b971e073.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Rabbitholed#5246" data-user-id="709158982094159882" style="color: rgb(241,196,15)">Curb</span>
+
+
+        <span class="chatlog__timestamp">12-Nov-22 09:53 PM</span>
+
+            <div class="chatlog__message " data-message-id="1041093410125258822" id="message-1041093410125258822">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://fxtwitter.com/i/status/1591525803602460675">https://fxtwitter.com/i/status/1591525803602460675</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(16,86,176,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/IntelPointAlert/status/1591525803602460675">WATCH: More disturbing footage shows mid-air collision at Wings Over Dallas air show; number of injuries still unknown</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://fxtwitter.com/i/status/1591525803602460675">
+                                                    <div class="markdown">Intel Point ALERT (@IntelPointAlert)</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">WATCH: More disturbing footage shows mid-air collision at Wings Over Dallas air show; number of injuries still unknown</div>
+                                        </div>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="1041093733619343360" id="message-1041093733619343360">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://fxtwitter.com/i/status/1591522833121021952">https://fxtwitter.com/i/status/1591522833121021952</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(152,155,167,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/IntelPointAlert/status/1591522833121021952">DEVELOPING: Disturbing footage emerges showing mid-air collision involving B-17 at Wings Over Dallas air show</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://fxtwitter.com/i/status/1591522833121021952">
+                                                    <div class="markdown">Intel Point ALERT (@IntelPointAlert)</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">DEVELOPING: Disturbing footage emerges showing mid-air collision involving B-17 at Wings Over Dallas air show</div>
+                                        </div>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/709158982094159882/9f0c8bdf0b7ca232015b9172b971e073.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Rabbitholed#5246" data-user-id="709158982094159882" style="color: rgb(241,196,15)">Curb</span>
+
+
+        <span class="chatlog__timestamp">12-Nov-22 10:02 PM</span>
+
+            <div class="chatlog__message " data-message-id="1041095546229772420" id="message-1041095546229772420">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://fxtwitter.com/i/status/1591526249406812162">https://fxtwitter.com/i/status/1591526249406812162</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(169,167,172,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/runews/status/1591526249406812162">✈️ A mid-air collision involving two planes near the Dallas Executive Airport, today. The accident took place during the Wings Over Dallas WWII Airshow at 1:25 p.m., according to Dallas Fire-Rescue.</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://fxtwitter.com/i/status/1591526249406812162">
+                                                    <div class="markdown">Russian Market (@runews)</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">✈️ A mid-air collision involving two planes near the Dallas Executive Airport, today. The accident took place during the Wings Over Dallas WWII Airshow at 1:25 p.m., according to Dallas Fire-Rescue.</div>
+                                        </div>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="peep00" title="peep00" src="https://cdn.discordapp.com/emojis/930817036597207100.png">
+                                <span class="chatlog__reaction-count">2</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="Fpepe" title="Fpepe" src="https://cdn.discordapp.com/emojis/930817036823715850.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/709158982094159882/9f0c8bdf0b7ca232015b9172b971e073.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Rabbitholed#5246" data-user-id="709158982094159882" style="color: rgb(241,196,15)">Curb</span>
+
+
+        <span class="chatlog__timestamp">12-Nov-22 10:49 PM</span>
+
+            <div class="chatlog__message " data-message-id="1041107617696718928" id="message-1041107617696718928">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.zerohedge.com/markets/shocking-video-shows-plane-collides-b-17-bomber-dallas-airshow">https://www.zerohedge.com/markets/shocking-video-shows-plane-collides-b-17-bomber-dallas-airshow</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(34,34,34,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.zerohedge.com/markets/shocking-video-shows-plane-collides-b-17-bomber-dallas-airshow">
+                                                    <div class="markdown">Shocking Video Shows Plane Collides With B-17 Bomber At Dallas Airshow</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Wow.</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://assets.zerohedge.com/s3fs-public/styles/16_9_max_700/public/2022-11/2022-11-12_16-09-29.png?itok=O1A8gqaI">
+                                            <img class="chatlog__embed-thumbnail" src="https://assets.zerohedge.com/s3fs-public/styles/16_9_max_700/public/2022-11/2022-11-12_16-09-29.png?itok=O1A8gqaI" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/709158982094159882/9f0c8bdf0b7ca232015b9172b971e073.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Rabbitholed#5246" data-user-id="709158982094159882" style="color: rgb(241,196,15)">Curb</span>
+
+
+        <span class="chatlog__timestamp">15-Nov-22 05:46 PM</span>
+
+            <div class="chatlog__message " data-message-id="1042118446705557615" id="message-1042118446705557615">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://fxtwitter.com/i/status/1592533987914022912">https://fxtwitter.com/i/status/1592533987914022912</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(180,190,200,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/runews/status/1592533987914022912">Kiev under massive attack</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://fxtwitter.com/i/status/1592533987914022912">
+                                                    <div class="markdown">Russian Market (@runews)</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Kiev under massive attack</div>
+                                        </div>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="1042118733180710962" id="message-1042118733180710962">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://fxtwitter.com/TeodoroSampai12/status/1592558591374155777">https://fxtwitter.com/TeodoroSampai12/status/1592558591374155777</a>
+<div class="quote">Kiev residents and guests of the capital were forced to wait for the alarm in the subway</div> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(238,233,229,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/TeodoroSampai12/status/1592558591374155777">Residentes de Kiev e convidados da capital foram for&#231;ados a esperar pelo alarme no metr&#244;</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://fxtwitter.com/TeodoroSampai12/status/1592558591374155777">
+                                                    <div class="markdown">Soldado <img class="emoji " alt="🇷🇺" title="🇷🇺" src="https://twemoji.maxcdn.com/2/72x72/1f1f7-1f1fa.png"><img class="emoji " alt="🇺🇦" title="🇺🇦" src="https://twemoji.maxcdn.com/2/72x72/1f1fa-1f1e6.png"><img class="emoji " alt="🇸🇾" title="🇸🇾" src="https://twemoji.maxcdn.com/2/72x72/1f1f8-1f1fe.png"><img class="emoji " alt="🇸🇦" title="🇸🇦" src="https://twemoji.maxcdn.com/2/72x72/1f1f8-1f1e6.png"><img class="emoji " alt="🇷🇸" title="🇷🇸" src="https://twemoji.maxcdn.com/2/72x72/1f1f7-1f1f8.png"><img class="emoji " alt="🇦🇱" title="🇦🇱" src="https://twemoji.maxcdn.com/2/72x72/1f1e6-1f1f1.png"><img class="emoji " alt="🇵🇸" title="🇵🇸" src="https://twemoji.maxcdn.com/2/72x72/1f1f5-1f1f8.png"> (@TeodoroSampai12)</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Residentes de Kiev e convidados da capital foram for&#231;ados a esperar pelo alarme no metr&#244;</div>
+                                        </div>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="1042118868858052658" id="message-1042118868858052658">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://fxtwitter.com/runews/status/1592539735045836800">https://fxtwitter.com/runews/status/1592539735045836800</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(105,111,112,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/runews/status/1592539735045836800">Kiev now</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://fxtwitter.com/runews/status/1592539735045836800">
+                                                    <div class="markdown">Russian Market (@runews)</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Kiev now</div>
+                                        </div>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="1042119241861709848" id="message-1042119241861709848">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://twitter.com/abc_es/status/1592538578831261703">https://twitter.com/abc_es/status/1592538578831261703</a>
+<div class="quote">Russia bombs Kiev and other Ukrainian cities with missiles after Zelensky intervened in the G-20</div> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(29,161,242,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+                                                <img class="chatlog__embed-author-icon" src="https://pbs.twimg.com/profile_images/1582988536952852480/eRByIUCP_400x400.jpg" alt="Author icon">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/abc_es">ABC.es (@abc_es)</a>
+                                                </span>
+                                        </div>
+
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown"><img class="emoji " alt="🔴" title="🔴" src="https://twemoji.maxcdn.com/2/72x72/1f534.png"> Rusia bombardea con misiles Kiev y otras ciudades ucranianas despu&#233;s de que Zelenski interviniera en el G-20 <a href="https://t.co/pIlJYxcpmQ">https://t.co/pIlJYxcpmQ</a></div>
+                                        </div>
+
+                                </div>
+
+                            </div>
+
+
+                                <div class="chatlog__embed-footer">
+                                        <img class="chatlog__embed-footer-icon" src="https://abs.twimg.com/icons/apple-touch-icon-192x192.png" alt="Footer icon">
+
+                                        <span class="chatlog__embed-footer-text">
+Twitter
+ • 
+15-Nov-22 04:22 PM                                        </span>
+                                </div>
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="1042119401983455272" id="message-1042119401983455272">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://fxtwitter.com/CarlosAJimnez4/status/1592521859949535232">https://fxtwitter.com/CarlosAJimnez4/status/1592521859949535232</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(100,111,130,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/CarlosAJimnez4/status/1592521859949535232">16 &#128172;    169 &#128257;    395 ❤️</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://fxtwitter.com/CarlosAJimnez4/status/1592521859949535232">
+                                                    <div class="markdown">CARLOS AGUIAR.geopol&#237;tica <img class="emoji " alt="🌐" title="🌐" src="https://twemoji.maxcdn.com/2/72x72/1f310.png">™️&#174;️! (@CarlosAJimnez4)</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">#URGENTE 
+Se reportan ataques masivos a ODESSA y KIEV desde el mar negro y con bombarderos estrat&#233;gicos rusos… <a href="https://twitter.com/i/web/status/1592521859949535232">https://twitter.com/i/web/status/1592521859949535232</a></div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://pbs.twimg.com/media/FhnGKwrXgAIGexJ.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="https://pbs.twimg.com/media/FhnGKwrXgAIGexJ.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="1042120535766741013" id="message-1042120535766741013">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://fxtwitter.com/UkraineRussia2/status/1592511549624631296">https://fxtwitter.com/UkraineRussia2/status/1592511549624631296</a>
+<a href="https://fxtwitter.com/i/status/1592544195486810114">https://fxtwitter.com/i/status/1592544195486810114</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(91,147,206,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/UkraineRussia2/status/1592511549624631296">The moment the Russian Kh-101 cruise missile was shot down by the German Iris-T complex over Kyiv
+#Iris #Kyiv #Ukraine #UkrainianArmy #Kherson #german</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://fxtwitter.com/UkraineRussia2/status/1592511549624631296">
+                                                    <div class="markdown">Ukraine-Russia war (@UkraineRussia2)</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">The moment the Russian Kh-101 cruise missile was shot down by the German Iris-T complex over Kyiv
+#Iris #Kyiv #Ukraine #UkrainianArmy #Kherson #german</div>
+                                        </div>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(142,156,173,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/AZgeopolitics/status/1592544195486810114">&#127479;&#127482;&#128640;&#127482;&#127462;Another angle of the Ukrainian air defense system hitting a Russian cruise missile in the Kiev region.
+
+As can be seen from the new footage, after a close blast, the Russian rocket calmly co</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://fxtwitter.com/i/status/1592544195486810114">
+                                                    <div class="markdown">AZ <img class="emoji " alt="🛰" title="🛰" src="https://twemoji.maxcdn.com/2/72x72/1f6f0.png"><img class="emoji " alt="🌏" title="🌏" src="https://twemoji.maxcdn.com/2/72x72/1f30f.png"><img class="emoji " alt="🌍" title="🌍" src="https://twemoji.maxcdn.com/2/72x72/1f30d.png"><img class="emoji " alt="🌎" title="🌎" src="https://twemoji.maxcdn.com/2/72x72/1f30e.png"> (@AZgeopolitics)</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown"><img class="emoji " alt="🇷🇺" title="🇷🇺" src="https://twemoji.maxcdn.com/2/72x72/1f1f7-1f1fa.png"><img class="emoji " alt="🚀" title="🚀" src="https://twemoji.maxcdn.com/2/72x72/1f680.png"><img class="emoji " alt="🇺🇦" title="🇺🇦" src="https://twemoji.maxcdn.com/2/72x72/1f1fa-1f1e6.png">Another angle of the Ukrainian air defense system hitting a Russian cruise missile in the Kiev region.
+
+As can be seen from the new footage, after a close blast, the Russian rocket calmly continued its flight to the target.</div>
+                                        </div>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="1042121335918309517" id="message-1042121335918309517">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://twitter.com/i/status/1592561427629629447">https://twitter.com/i/status/1592561427629629447</a>
+<div class="quote">Volodimir Zelensky asks the residents of #Kiev to stay in the shelters.
+</div>&gt; 
+<div class="quote">He accused #Rusia of having attacked the city with at least 85 missiles.</div> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(29,161,242,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+                                                <img class="chatlog__embed-author-icon" src="https://pbs.twimg.com/profile_images/1481504583759319042/dT8FwXuW_400x400.jpg" alt="Author icon">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/juanpadeleo">Juan Pablo de Leo Sp&#237;nola (@juanpadeleo)</a>
+                                                </span>
+                                        </div>
+
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown"><img class="emoji " alt="🇺🇦" title="🇺🇦" src="https://twemoji.maxcdn.com/2/72x72/1f1fa-1f1e6.png">Volodimir Zelensky pide a los residentes de #Kiev que se mantengan en los refugios.
+
+Acus&#243; a #Rusia de haber atacado la ciudad con al menos 85 misiles.</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://pbs.twimg.com/ext_tw_video_thumb/1592561324831264770/pu/img/5A_B7zMhNEkGDSVz.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="https://pbs.twimg.com/ext_tw_video_thumb/1592561324831264770/pu/img/5A_B7zMhNEkGDSVz.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                                <div class="chatlog__embed-footer">
+                                        <img class="chatlog__embed-footer-icon" src="https://abs.twimg.com/icons/apple-touch-icon-192x192.png" alt="Footer icon">
+
+                                        <span class="chatlog__embed-footer-text">
+Twitter
+ • 
+15-Nov-22 05:53 PM                                        </span>
+                                </div>
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="1042123076978102342" id="message-1042123076978102342">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://fxtwitter.com/i/status/1592560349793816578">https://fxtwitter.com/i/status/1592560349793816578</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(117,118,110,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/ErnestKavol4/status/1592560349793816578">Putin, mwanangu, nashuka na bia na nyama choma leo wewe endelea kupiga mzigo Kiev</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://fxtwitter.com/i/status/1592560349793816578">
+                                                    <div class="markdown">James agent (@ErnestKavol4)</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Putin, mwanangu, nashuka na bia na nyama choma leo wewe endelea kupiga mzigo Kiev</div>
+                                        </div>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon#9623" data-user-id="639228327147601921" style="color: rgb(241,196,15)">mejon</span>
+
+
+        <span class="chatlog__timestamp">15-Nov-22 08:19 PM</span>
+
+            <div class="chatlog__message " data-message-id="1042157004032057355" id="message-1042157004032057355">
+                <div class="chatlog__content">
+                    <div class="markdown"><img class="emoji emoji--large" alt="peep00" title="peep00" src="https://cdn.discordapp.com/emojis/930817036597207100.png"> </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon#9623" data-user-id="639228327147601921" style="color: rgb(241,196,15)">mejon</span>
+
+
+        <span class="chatlog__timestamp">22-Nov-22 08:10 PM</span>
+
+            <div class="chatlog__message " data-message-id="1044691415134912612" id="message-1044691415134912612">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://fxtwitter.com/ElysiusThor/status/1594431321316950016">https://fxtwitter.com/ElysiusThor/status/1594431321316950016</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(164,168,169,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/ElysiusThor/status/1594431321316950016">BREAKING: Macron gets another slapping from a member of the public.</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://fxtwitter.com/ElysiusThor/status/1594431321316950016">
+                                                    <div class="markdown">Yes, it&#39;s me (@ElysiusThor)</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">BREAKING: Macron gets another slapping from a member of the public.</div>
+                                        </div>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/709158982094159882/9f0c8bdf0b7ca232015b9172b971e073.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Rabbitholed#5246" data-user-id="709158982094159882" style="color: rgb(241,196,15)">Curb</span>
+
+
+        <span class="chatlog__timestamp">23-Nov-22 01:06 AM</span>
+
+            <div class="chatlog__message " data-message-id="1044765917726380102" id="message-1044765917726380102">
+                <div class="chatlog__content">
+                    <div class="markdown">isnt this old? its the same guy iirc </div>
+                </div>
+
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="hmmm" title="hmmm" src="https://cdn.discordapp.com/emojis/930817037054402590.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="peep00" title="peep00" src="https://cdn.discordapp.com/emojis/930817036597207100.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+            <div class="chatlog__message " data-message-id="1044766293045280820" id="message-1044766293045280820">
+                <div class="chatlog__content">
+                    <div class="markdown">oct 24 2021
+<a href="https://fxtwitter.com/i/status/1452126328191283200">https://fxtwitter.com/i/status/1452126328191283200</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(170,172,171,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/DistroDr/status/1452126328191283200">I slap you Macron</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://fxtwitter.com/i/status/1452126328191283200">
+                                                    <div class="markdown">Dr.Justice.Distro (@DistroDr)</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">I slap you Macron</div>
+                                        </div>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="peep00" title="peep00" src="https://cdn.discordapp.com/emojis/930817036597207100.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="ShutItDown" title="ShutItDown" src="https://cdn.discordapp.com/emojis/958109598617833542.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/709158982094159882/9f0c8bdf0b7ca232015b9172b971e073.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Rabbitholed#5246" data-user-id="709158982094159882" style="color: rgb(241,196,15)">Curb</span>
+
+
+        <span class="chatlog__timestamp">28-Nov-22 06:28 PM</span>
+
+            <div class="chatlog__message " data-message-id="1046840101180809296" id="message-1046840101180809296">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://fxtwitter.com/i/status/1597009982016585728">https://fxtwitter.com/i/status/1597009982016585728</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(125,113,89,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/rawsalerts/status/1597009982016585728">&#128680;#BREAKING: A small plane has crashed into a high voltage powerlines
+
+&#128204;#Montgomery | #Maryland
+ 
+Dozens of emergency crews are responding to a small aircraft that has crashed into high voltage power</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://fxtwitter.com/i/status/1597009982016585728">
+                                                    <div class="markdown">R A W S A L E R T S (@rawsalerts)</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown"><img class="emoji " alt="🚨" title="🚨" src="https://twemoji.maxcdn.com/2/72x72/1f6a8.png">#BREAKING: A small plane has crashed into a high voltage powerlines
+
+<img class="emoji " alt="📌" title="📌" src="https://twemoji.maxcdn.com/2/72x72/1f4cc.png">#Montgomery | #Maryland
+ 
+Dozens of emergency crews are responding to a small aircraft that has crashed into high voltage powerlines, causing massive power outages too 80,000 people in Montgomery county MD</div>
+                                        </div>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="wtf" title="wtf" src="https://cdn.discordapp.com/emojis/930817037041799208.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+</div>
+
+<div class="postamble">
+    <div class="postamble__entry">Exported 32 message(s)</div>
+</div>
+
+</body>
+</html>
