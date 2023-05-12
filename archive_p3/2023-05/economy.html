@@ -1,0 +1,2593 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Rabbithole.help part 4 - &#128184;-economy</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+
+    <style>
+        /* General */
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-300.woff);
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-400.woff);
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-500.woff);
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-600.woff);
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-700.woff);
+    font-weight: 700;
+}
+
+body {
+    font-family: "Whitney", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 17px;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+img {
+    object-fit: contain;
+}
+
+.markdown {
+    max-width: 100%;
+    white-space: pre-wrap;
+    line-height: 1.3;
+    overflow-wrap: break-word;
+}
+
+.spoiler {
+    width: fit-content;
+}
+
+.spoiler--hidden {
+    cursor: pointer;
+}
+
+.spoiler-text {
+    border-radius: 3px;
+}
+
+.spoiler--hidden .spoiler-text {
+    color: rgba(0, 0, 0, 0);
+}
+
+.spoiler--hidden .spoiler-text::selection {
+    color: rgba(0, 0, 0, 0);
+}
+
+.spoiler-image {
+    position: relative;
+    overflow: hidden;
+    border-radius: 3px;
+}
+
+.spoiler--hidden .spoiler-image {
+    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.spoiler--hidden .spoiler-image img {
+    filter: blur(44px);
+}
+
+.spoiler--hidden .spoiler-image:after {
+    content: "SPOILER";
+    color: #dcddde;
+    background-color: rgba(0, 0, 0, 0.6);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: 600;
+    padding: 0.5em 0.7em;
+    border-radius: 20px;
+    letter-spacing: 0.05em;
+    font-size: 0.9em;
+}
+
+.spoiler--hidden:hover .spoiler-image:after {
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.quote {
+    margin: 0.1em 0;
+    padding-left: 0.6em;
+    border-left: 4px solid;
+    border-radius: 3px;
+}
+
+.pre {
+    font-family: "Consolas", "Courier New", Courier, monospace;
+}
+
+.pre--multiline {
+    margin-top: 0.25em;
+    padding: 0.5em;
+    border: 2px solid;
+    border-radius: 5px;
+}
+
+.pre--inline {
+    padding: 2px;
+    border-radius: 3px;
+    font-size: 0.85em;
+}
+
+.mention {
+    border-radius: 3px;
+    padding: 0 2px;
+    color: #7289da;
+    background: rgba(114, 137, 218, .1);
+    font-weight: 500;
+}
+
+.emoji {
+    width: 1.25em;
+    height: 1.25em;
+    margin: 0 0.06em;
+    vertical-align: -0.4em;
+}
+
+.emoji--small {
+    width: 1em;
+    height: 1em;
+}
+
+.emoji--large {
+    width: 2.8em;
+    height: 2.8em;
+}
+
+/* Preamble */
+
+.preamble {
+    display: grid;
+    margin: 0 0.3em 0.6em 0.3em;
+    max-width: 100%;
+    grid-template-columns: auto 1fr;
+}
+
+.preamble__guild-icon-container {
+    grid-column: 1;
+}
+
+.preamble__guild-icon {
+    max-width: 88px;
+    max-height: 88px;
+}
+
+.preamble__entries-container {
+    grid-column: 2;
+    margin-left: 0.6em;
+}
+
+.preamble__entry {
+    font-size: 1.4em;
+}
+
+.preamble__entry--small {
+    font-size: 1em;
+}
+
+/* Chatlog */
+
+.chatlog {
+    max-width: 100%;
+}
+
+.chatlog__message-group {
+    display: grid;
+    margin: 0 0.6em;
+    padding: 0.9em 0;
+    border-top: 1px solid;
+    grid-template-columns: auto 1fr;
+}
+
+.chatlog__author-avatar-container {
+    grid-column: 1;
+    width: 40px;
+    height: 40px;
+}
+
+.chatlog__author-avatar {
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+}
+
+.chatlog__messages {
+    grid-column: 2;
+    margin-left: 1.2em;
+    min-width: 50%;
+}
+
+.chatlog__author-name {
+    font-weight: 500;
+}
+
+.chatlog__timestamp {
+    margin-left: 0.3em;
+    font-size: 0.75em;
+}
+
+.chatlog__message {
+    padding: 0.1em 0.3em;
+    margin: 0 -0.3em;
+    background-color: transparent;
+    transition: background-color 1s ease;
+}
+
+.chatlog__content {
+    font-size: 0.95em;
+    word-wrap: break-word;
+}
+
+.chatlog__edited-timestamp {
+    margin-left: 0.15em;
+    font-size: 0.8em;
+}
+
+.chatlog__attachment {
+    margin-top: 0.3em;
+}
+
+.chatlog__attachment-thumbnail {
+    vertical-align: top;
+    max-width: 45vw;
+    max-height: 500px;
+    border-radius: 3px;
+}
+
+.chatlog__embed {
+    display: flex;
+    margin-top: 0.3em;
+    max-width: 520px;
+}
+
+.chatlog__embed-color-pill {
+    flex-shrink: 0;
+    width: 0.25em;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
+.chatlog__embed-content-container {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5em 0.6em;
+    border: 1px solid;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+.chatlog__embed-content {
+    display: flex;
+    width: 100%;
+}
+
+.chatlog__embed-text {
+    flex: 1;
+}
+
+.chatlog__embed-author {
+    display: flex;
+    margin-bottom: 0.3em;
+    align-items: center;
+}
+
+.chatlog__embed-author-icon {
+    margin-right: 0.5em;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+.chatlog__embed-author-name {
+    font-size: 0.875em;
+    font-weight: 600;
+}
+
+.chatlog__embed-title {
+    margin-bottom: 0.2em;
+    font-size: 0.875em;
+    font-weight: 600;
+}
+
+.chatlog__embed-description {
+    font-weight: 500;
+    font-size: 0.85em;
+}
+
+.chatlog__embed-fields {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.chatlog__embed-field {
+    flex: 0;
+    min-width: 100%;
+    max-width: 506px;
+    padding-top: 0.6em;
+    font-size: 0.875em;
+}
+
+.chatlog__embed-field--inline {
+    flex: 1;
+    flex-basis: auto;
+    min-width: 150px;
+}
+
+.chatlog__embed-field-name {
+    margin-bottom: 0.2em;
+    font-weight: 600;
+}
+
+.chatlog__embed-field-value {
+    font-weight: 500;
+}
+
+.chatlog__embed-thumbnail {
+    flex: 0;
+    margin-left: 1.2em;
+    max-width: 80px;
+    max-height: 80px;
+    border-radius: 3px;
+}
+
+.chatlog__embed-image-container {
+    margin-top: 0.6em;
+}
+
+.chatlog__embed-image {
+    max-width: 500px;
+    max-height: 400px;
+    border-radius: 3px;
+}
+
+.chatlog__embed-footer {
+    margin-top: 0.6em;
+}
+
+.chatlog__embed-footer-icon {
+    margin-right: 0.2em;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+
+.chatlog__embed-footer-text {
+    font-size: 0.75em;
+    font-weight: 500;
+}
+
+.chatlog__reactions {
+    display: flex;
+}
+
+.chatlog__reaction {
+    display: flex;
+    align-items: center;
+    margin: 0.35em 0.1em 0.1em 0.1em;
+    padding: 0.2em 0.35em;
+    border-radius: 3px;
+}
+
+.chatlog__reaction-count {
+    min-width: 9px;
+    margin-left: 0.35em;
+    font-size: 0.875em;
+}
+
+.chatlog__bot-tag {
+    position: relative;
+    top: -.2em;
+    margin-left: 0.3em;
+    padding: 0.05em 0.3em;
+    border-radius: 3px;
+    vertical-align: middle;
+    line-height: 1.3;
+    background: #7289da;
+    color: #ffffff;
+    font-size: 0.625em;
+    font-weight: 500;
+}
+
+/* Postamble */
+
+.postamble {
+    margin: 1.4em 0.3em 0.6em 0.3em;
+    padding: 1em;
+    border-top: 1px solid;
+}
+    </style>
+    <style>
+        /* General */
+
+body {
+    background-color: #36393e;
+    color: #dcddde;
+}
+
+a {
+    color: #0096cf;
+}
+
+.spoiler-text {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.spoiler--hidden .spoiler-text {
+    background-color: #202225;
+}
+
+.spoiler--hidden:hover .spoiler-text {
+    background-color: rgba(32, 34, 37, 0.8);
+}
+
+.quote {
+    border-color: #4f545c;
+}
+
+.pre {
+    background-color: #2f3136 !important;
+}
+
+.pre--multiline {
+    border-color: #282b30 !important;
+    color: #b9bbbe !important;
+}
+
+/* === Preamble === */
+
+.preamble__entry {
+    color: #ffffff;
+}
+
+/* Chatlog */
+
+.chatlog__message-group {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.chatlog__author-name {
+    color: #ffffff;
+}
+
+.chatlog__timestamp {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.chatlog__message--highlighted {
+    background-color: rgba(114, 137, 218, 0.2) !important;
+}
+
+.chatlog__message--pinned {
+    background-color: rgba(249, 168, 37, 0.05);
+}
+
+.chatlog__edited-timestamp {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.chatlog__embed-color-pill--default {
+    background-color: rgba(79, 84, 92, 1);
+}
+
+.chatlog__embed-content-container {
+    background-color: rgba(46, 48, 54, 0.3);
+    border-color: rgba(46, 48, 54, 0.6);
+}
+
+.chatlog__embed-author-name {
+    color: #ffffff;
+}
+
+.chatlog__embed-author-name-link {
+    color: #ffffff;
+}
+
+.chatlog__embed-title {
+    color: #ffffff;
+}
+
+.chatlog__embed-description {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__embed-field-name {
+    color: #ffffff;
+}
+
+.chatlog__embed-field-value {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__embed-footer {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__reaction {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.chatlog__reaction-count {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+/* Postamble */
+
+.postamble {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.postamble__entry {
+    color: #ffffff;
+}
+    </style>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/solarized-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.pre--multiline').forEach(block => hljs.highlightBlock(block));
+        });
+    </script>
+
+    <script>
+        function scrollToMessage(event, id) {
+            var element = document.getElementById('message-' + id);
+
+            if (element) {
+                event.preventDefault();
+
+                element.classList.add('chatlog__message--highlighted');
+
+                window.scrollTo({
+                    top: element.getBoundingClientRect().top - document.body.getBoundingClientRect().top - (window.innerHeight / 2),
+                    behavior: 'smooth'
+                });
+
+                window.setTimeout(function() {
+                    element.classList.remove('chatlog__message--highlighted');
+                }, 2000);
+            }
+        }
+
+        function showSpoiler(event, element) {
+            if (element && element.classList.contains('spoiler--hidden')) {
+                event.preventDefault();
+                element.classList.remove('spoiler--hidden');
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="preamble">
+    <div class="preamble__guild-icon-container">
+        <img class="preamble__guild-icon" src="https://cdn.discordapp.com/icons/953452853031219252/89ccc9d466d4055c98a4af46f144e403.png" alt="Guild icon">
+    </div>
+    <div class="preamble__entries-container">
+        <div class="preamble__entry">Rabbithole.help part 4</div>
+        <div class="preamble__entry">Research / &#128184;-economy</div>
+
+
+            <div class="preamble__entry preamble__entry--small">
+Between 01-May-23 12:00 AM and 01-Jun-23 12:00 AM            </div>
+    </div>
+</div>
+
+<div class="chatlog">
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/953449439761154129/e6776aecb8b088d62cd2233997dd22aa.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="CurbS#5089" data-user-id="953449439761154129" style="color: rgb(241,196,15)">CurbS</span>
+
+
+        <span class="chatlog__timestamp">01-May-23 11:35 AM</span>
+
+            <div class="chatlog__message " data-message-id="1102528647161708544" id="message-1102528647161708544">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://twitter.com/spectatorindex/status/1652941369655320576">https://twitter.com/spectatorindex/status/1652941369655320576</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(29,161,242,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+                                                <img class="chatlog__embed-author-icon" src="https://pbs.twimg.com/profile_images/1145865652533547008/XBahoZmX_400x400.png" alt="Author icon">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/spectatorindex">The Spectator Index (@spectatorindex)</a>
+                                                </span>
+                                        </div>
+
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">BREAKING: First Republic Bank has officially been closed by regulators, making it the second biggest bank failure in US history, as JPMorgan buys its assets.</div>
+                                        </div>
+
+                                        <div class="chatlog__embed-fields">
+                                                <div class="chatlog__embed-field chatlog__embed-field--inline">
+                                                        <div class="chatlog__embed-field-name">
+                                                            <div class="markdown">Likes</div>
+                                                        </div>
+
+                                                        <div class="chatlog__embed-field-value">
+                                                            <div class="markdown">2232</div>
+                                                        </div>
+                                                </div>
+                                                <div class="chatlog__embed-field chatlog__embed-field--inline">
+                                                        <div class="chatlog__embed-field-name">
+                                                            <div class="markdown">Retweets</div>
+                                                        </div>
+
+                                                        <div class="chatlog__embed-field-value">
+                                                            <div class="markdown">878</div>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                </div>
+
+                            </div>
+
+
+                                <div class="chatlog__embed-footer">
+                                        <img class="chatlog__embed-footer-icon" src="https://abs.twimg.com/icons/apple-touch-icon-192x192.png" alt="Footer icon">
+
+                                        <span class="chatlog__embed-footer-text">
+Twitter
+ • 
+01-May-23 09:41 AM                                        </span>
+                                </div>
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/956642831643070484/f94d348c5d977bbdac9b65f4fa9d4b9a.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon07#4571" data-user-id="956642831643070484" style="color: rgb(241,196,15)">mejon07</span>
+
+
+        <span class="chatlog__timestamp">01-May-23 10:32 PM</span>
+
+            <div class="chatlog__message " data-message-id="1102693952672510043" id="message-1102693952672510043">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://money.usnews.com/investing/news/articles/2023-05-01/u-s-treasury-encouraged-by-first-republic-resolution-says-banking-system-remains-sound">https://money.usnews.com/investing/news/articles/2023-05-01/u-s-treasury-encouraged-by-first-republic-resolution-says-banking-system-remains-sound</a> </div>
+                </div>
+
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="itsfine" title="itsfine" src="https://cdn.discordapp.com/emojis/1088567329123741726.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/956642831643070484/f94d348c5d977bbdac9b65f4fa9d4b9a.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon07#4571" data-user-id="956642831643070484" style="color: rgb(241,196,15)">mejon07</span>
+
+
+        <span class="chatlog__timestamp">02-May-23 06:31 PM</span>
+
+            <div class="chatlog__message " data-message-id="1102995837556117674" id="message-1102995837556117674">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://apnews.com/article/x-date-debt-ceiling-yellen-treasury-borrowing-f726fd88a9bb7f72e50f0b948731ac57">https://apnews.com/article/x-date-debt-ceiling-yellen-treasury-borrowing-f726fd88a9bb7f72e50f0b948731ac57</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(222,222,222,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://apnews.com/article/x-date-debt-ceiling-yellen-treasury-borrowing-f726fd88a9bb7f72e50f0b948731ac57">
+                                                    <div class="markdown">Treasury&#39;s Yellen says US could default as soon as June 1</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Treasury Secretary Janet Yellen has notified Congress that the U.S. could default on its debt as early as June 1, if legislators do not raise or suspend the nation’s borrowing authority before then and avert what could potentially become a global financial crisis. In a letter Monday to House and Senate leaders, Yellen urged congressional leaders...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://storage.googleapis.com/afs-prod/media/c012d2f6081541e19bd455e0f248e9c5/3000.webp">
+                                            <img class="chatlog__embed-thumbnail" src="https://storage.googleapis.com/afs-prod/media/c012d2f6081541e19bd455e0f248e9c5/3000.webp" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="1102995851007242310" id="message-1102995851007242310">
+                <div class="chatlog__content">
+                    <div class="markdown"><img class="emoji emoji--large" alt="itsfine" title="itsfine" src="https://cdn.discordapp.com/emojis/1088567329123741726.png"> </div>
+                </div>
+
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="dumpsterfire" title="dumpsterfire" src="https://cdn.discordapp.com/emojis/956286776773853194.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/956642831643070484/f94d348c5d977bbdac9b65f4fa9d4b9a.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon07#4571" data-user-id="956642831643070484" style="color: rgb(241,196,15)">mejon07</span>
+
+
+        <span class="chatlog__timestamp">02-May-23 09:06 PM</span>
+
+            <div class="chatlog__message " data-message-id="1103034894050938960" id="message-1103034894050938960">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://insiderpaper.com/pakistan-inflation-hits-record-high-36-42/">https://insiderpaper.com/pakistan-inflation-hits-record-high-36-42/</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,255,255,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://insiderpaper.com/pakistan-inflation-hits-record-high-36-42/">
+                                                    <div class="markdown">Pakistan inflation hits record-high&#160;36.42% - Insider Paper</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Pakistan&#39;s year-on-year inflation hit its highest-ever level of 36.42 percent in April, after the government introduced new taxes and raised</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://insiderpaper.com/wp-content/uploads/2023/05/bazaar-g2b2b92773_1280.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="https://insiderpaper.com/wp-content/uploads/2023/05/bazaar-g2b2b92773_1280.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/953449439761154129/e6776aecb8b088d62cd2233997dd22aa.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="CurbS#5089" data-user-id="953449439761154129" style="color: rgb(241,196,15)">CurbS</span>
+
+
+        <span class="chatlog__timestamp">02-May-23 11:21 PM</span>
+
+            <div class="chatlog__message " data-message-id="1103068730403065928" id="message-1103068730403065928">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://finance.yahoo.com/news/half-america-banks-already-insolvent-133000968.html">https://finance.yahoo.com/news/half-america-banks-already-insolvent-133000968.html</a>
+<div class="quote">The horrible truth is that the world’s superpower central bank has made such a mess of affairs that it has to pick between two poisons: either it capitulates on inflation; or it lets a banking crisis reach systemic proportions. It has chosen a banking crisis.</div> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://finance.yahoo.com/news/half-america-banks-already-insolvent-133000968.html">
+                                                    <div class="markdown">Half of America’s banks are potentially insolvent – this is how a c...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">The twin crashes in US commercial real estate and the US bond market have collided with $9 trillion uninsured deposits in the American banking system. Such deposits can vanish in an afternoon in the cyber age.</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://s.yimg.com/ny/api/res/1.2/FHs4qC3P6qZQcRH.gs1aVQ--/YXBwaWQ9aGlnaGxhbmRlcjt3PTEyMDA7aD03NTA-/https://media.zenfs.com/en/the_telegraph_258/ba4f0124142e6fd9ad635534926ed9b1">
+                                            <img class="chatlog__embed-thumbnail" src="https://s.yimg.com/ny/api/res/1.2/FHs4qC3P6qZQcRH.gs1aVQ--/YXBwaWQ9aGlnaGxhbmRlcjt3PTEyMDA7aD03NTA-/https://media.zenfs.com/en/the_telegraph_258/ba4f0124142e6fd9ad635534926ed9b1" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/953449439761154129/e6776aecb8b088d62cd2233997dd22aa.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="CurbS#5089" data-user-id="953449439761154129" style="color: rgb(241,196,15)">CurbS</span>
+
+
+        <span class="chatlog__timestamp">03-May-23 11:02 AM</span>
+
+            <div class="chatlog__message " data-message-id="1103245279660101672" id="message-1103245279660101672">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.bloomberg.com/news/articles/2023-04-18/de-dollarization-is-happening-at-a-stunning-pace-jen-says">https://www.bloomberg.com/news/articles/2023-04-18/de-dollarization-is-happening-at-a-stunning-pace-jen-says</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.bloomberg.com/news/articles/2023-04-18/de-dollarization-is-happening-at-a-stunning-pace-jen-says">
+                                                    <div class="markdown">De-Dollarization Is Happening at a ‘Stunning’ Pace, Jen Says</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">The dollar is losing its reserve status at a faster pace than generally accepted as many analysts have failed to account for last year’s wild exchange rate moves, according to Stephen Jen.</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://assets.bwbx.io/images/users/iqjWHBFdfxIU/iTCHuLoc7csE/v0/1200x800.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="https://assets.bwbx.io/images/users/iqjWHBFdfxIU/iTCHuLoc7csE/v0/1200x800.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                                <div class="chatlog__embed-footer">
+
+                                        <span class="chatlog__embed-footer-text">
+
+
+18-Apr-23 10:21 AM                                        </span>
+                                </div>
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/956642831643070484/f94d348c5d977bbdac9b65f4fa9d4b9a.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon07#4571" data-user-id="956642831643070484" style="color: rgb(241,196,15)">mejon07</span>
+
+
+        <span class="chatlog__timestamp">03-May-23 05:30 PM</span>
+
+            <div class="chatlog__message " data-message-id="1103342949523267675" id="message-1103342949523267675">
+                <div class="chatlog__content">
+                    <div class="markdown">pretty big when you consider the US practically own SK <a href="https://www.rt.com/business/575693-south-korea-indonesia-dollar-trade/">https://www.rt.com/business/575693-south-korea-indonesia-dollar-trade/</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.rt.com/business/575693-south-korea-indonesia-dollar-trade/">
+                                                    <div class="markdown">Key US ally reduces role of dollar in trade</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Seoul and Jakarta have agreed to use national currencies in trade instead of the US dollar</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://mf.b37mrtl.ru/files/2023.05/article/645234aa2030275e811af0b2.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="https://mf.b37mrtl.ru/files/2023.05/article/645234aa2030275e811af0b2.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="ShutItDown" title="ShutItDown" src="https://cdn.discordapp.com/emojis/1054410377229774910.png">
+                                <span class="chatlog__reaction-count">2</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/953449439761154129/e6776aecb8b088d62cd2233997dd22aa.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="CurbS#5089" data-user-id="953449439761154129" style="color: rgb(241,196,15)">CurbS</span>
+
+
+        <span class="chatlog__timestamp">03-May-23 11:51 PM</span>
+
+            <div class="chatlog__message " data-message-id="1103438637233881218" id="message-1103438637233881218">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://twitter.com/JackFarley96/status/1653869877680123907">https://twitter.com/JackFarley96/status/1653869877680123907</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(29,161,242,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+                                                <img class="chatlog__embed-author-icon" src="https://pbs.twimg.com/profile_images/1623370806175666218/Vkwyvj-s_400x400.jpg" alt="Author icon">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/JackFarley96">Jack Farley (@JackFarley96)</a>
+                                                </span>
+                                        </div>
+
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">BREAKING: Bank PacWest teeters as its stock $PACW crashes over 50% 
+
+This occurred two hours after Fed Chair Powell noted that &quot;conditions in the banking sector have broadly improved&quot;</div>
+                                        </div>
+
+                                        <div class="chatlog__embed-fields">
+                                                <div class="chatlog__embed-field chatlog__embed-field--inline">
+                                                        <div class="chatlog__embed-field-name">
+                                                            <div class="markdown">Likes</div>
+                                                        </div>
+
+                                                        <div class="chatlog__embed-field-value">
+                                                            <div class="markdown">128</div>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                </div>
+
+                            </div>
+
+                                <div class="chatlog__embed-image-container">
+                                    <a class="chatlog__embed-image-link" href="https://pbs.twimg.com/media/FvO5g1aWAAE3Gat.jpg">
+                                        <img class="chatlog__embed-image" src="https://pbs.twimg.com/media/FvO5g1aWAAE3Gat.jpg" alt="Image">
+                                    </a>
+                                </div>
+
+                                <div class="chatlog__embed-footer">
+                                        <img class="chatlog__embed-footer-icon" src="https://abs.twimg.com/icons/apple-touch-icon-192x192.png" alt="Footer icon">
+
+                                        <span class="chatlog__embed-footer-text">
+Twitter
+ • 
+03-May-23 11:11 PM                                        </span>
+                                </div>
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/953449439761154129/e6776aecb8b088d62cd2233997dd22aa.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="CurbS#5089" data-user-id="953449439761154129" style="color: rgb(241,196,15)">CurbS</span>
+
+
+        <span class="chatlog__timestamp">04-May-23 05:02 PM</span>
+
+            <div class="chatlog__message " data-message-id="1103698179561623572" id="message-1103698179561623572">
+                <div class="chatlog__content">
+                    <div class="markdown"><div class="quote">Things are getting serious. $USB holds the fifth largest bank in the U.S. If it collapses, then  we&#39;re in a confirmed financial crisis.</div> </div>
+                </div>
+
+                    <div class="chatlog__attachment">
+                            <a href="https://cdn.discordapp.com/attachments/956277297739071518/1103698179217707179/image.png">
+                                    <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/956277297739071518/1103698179217707179/image.png" alt="Attachment">
+                            </a>
+                    </div>
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="hyperz" title="hyperz" src="https://cdn.discordapp.com/emojis/956286776295719063.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="dumpsterfire" title="dumpsterfire" src="https://cdn.discordapp.com/emojis/956286776773853194.png">
+                                <span class="chatlog__reaction-count">2</span>
+                            </div>
+                    </div>
+            </div>
+            <div class="chatlog__message " data-message-id="1103699302435520603" id="message-1103699302435520603">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://twitter.com/zerohedge/status/1654137968095899651">https://twitter.com/zerohedge/status/1654137968095899651</a> </div>
+                </div>
+
+                    <div class="chatlog__attachment">
+                            <a href="https://cdn.discordapp.com/attachments/956277297739071518/1103699302632656990/image.png">
+                                    <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/956277297739071518/1103699302632656990/image.png" alt="Attachment">
+                            </a>
+                    </div>
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(29,161,242,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+                                                <img class="chatlog__embed-author-icon" src="https://pbs.twimg.com/profile_images/72647502/tyler_400x400.jpg" alt="Author icon">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/zerohedge">zerohedge (@zerohedge)</a>
+                                                </span>
+                                        </div>
+
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">*WESTERN ALLIANCE HALTED FOR NEWS PENDING</div>
+                                        </div>
+
+                                </div>
+
+                            </div>
+
+
+                                <div class="chatlog__embed-footer">
+                                        <img class="chatlog__embed-footer-icon" src="https://abs.twimg.com/icons/apple-touch-icon-192x192.png" alt="Footer icon">
+
+                                        <span class="chatlog__embed-footer-text">
+Twitter
+ • 
+04-May-23 04:56 PM                                        </span>
+                                </div>
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="1103699465535225866" id="message-1103699465535225866">
+                <div class="chatlog__content">
+                    <div class="markdown"><img class="emoji emoji--large" alt="itsfine" title="itsfine" src="https://cdn.discordapp.com/emojis/1088567329123741726.png"> </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/953449439761154129/e6776aecb8b088d62cd2233997dd22aa.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="CurbS#5089" data-user-id="953449439761154129" style="color: rgb(241,196,15)">CurbS</span>
+
+
+        <span class="chatlog__timestamp">04-May-23 07:52 PM</span>
+
+            <div class="chatlog__message " data-message-id="1103741029569531914" id="message-1103741029569531914">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.zerohedge.com/markets/regional-bank-crisis-spreads-big-banks-usb-tumbles-stocks-dump-amid-widespread-liquidations">https://www.zerohedge.com/markets/regional-bank-crisis-spreads-big-banks-usb-tumbles-stocks-dump-amid-widespread-liquidations</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(34,34,34,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.zerohedge.com/markets/regional-bank-crisis-spreads-big-banks-usb-tumbles-stocks-dump-amid-widespread-liquidations">
+                                                    <div class="markdown">Regional Bank Crisis Spreads To Big Banks As PacWest, US Bancorp Tu...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">&quot;The Fed&#39;s new policy of &quot;monetary tightening by bank failure&quot; is certain to have a very happy ending&quot;</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://assets.zerohedge.com/s3fs-public/styles/16_9_max_700/public/2023-05/trader%20hand%20on%20face%208.jpg?h=418b187d&amp;itok=YVz8WJEn">
+                                            <img class="chatlog__embed-thumbnail" src="https://assets.zerohedge.com/s3fs-public/styles/16_9_max_700/public/2023-05/trader%20hand%20on%20face%208.jpg?h=418b187d&amp;itok=YVz8WJEn" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/956642831643070484/f94d348c5d977bbdac9b65f4fa9d4b9a.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon07#4571" data-user-id="956642831643070484" style="color: rgb(241,196,15)">mejon07</span>
+
+
+        <span class="chatlog__timestamp">04-May-23 08:01 PM</span>
+
+            <div class="chatlog__message " data-message-id="1103743148666138724" id="message-1103743148666138724">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.kitco.com/news/2023-05-04/Gold-hits-record-high-more-upside-likely.html">https://www.kitco.com/news/2023-05-04/Gold-hits-record-high-more-upside-likely.html</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.kitco.com/news/2023-05-04/Gold-hits-record-high-more-upside-likely.html">
+                                                    <div class="markdown">Gold hits record high; more upside likely</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Senior Technical Analyst Jim Wyckoff prepares investors with an overview of how the markets opened and closed. What moved metal prices? How do the technicals look? By looking at important developments</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://www.kitco.com/news/2023-05-04/images/goldchart_0504_pm.png">
+                                            <img class="chatlog__embed-thumbnail" src="https://www.kitco.com/news/2023-05-04/images/goldchart_0504_pm.png" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="bogged" title="bogged" src="https://cdn.discordapp.com/emojis/1054825649400971334.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/953449439761154129/e6776aecb8b088d62cd2233997dd22aa.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="CurbS#5089" data-user-id="953449439761154129" style="color: rgb(241,196,15)">CurbS</span>
+
+
+        <span class="chatlog__timestamp">05-May-23 11:20 AM</span>
+
+            <div class="chatlog__message " data-message-id="1103974565534765057" id="message-1103974565534765057">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.bitchute.com/video/Diy2iUy4Knz4/">https://www.bitchute.com/video/Diy2iUy4Knz4/</a> </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="1103974761073213481" id="message-1103974761073213481">
+                <div class="chatlog__content">
+                    <div class="markdown"><div class="quote">FDIC talking about financial crisis and their lack of faith in our banking system and how to keep the public from freaking out.</div> </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/953449439761154129/e6776aecb8b088d62cd2233997dd22aa.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="CurbS#5089" data-user-id="953449439761154129" style="color: rgb(241,196,15)">CurbS</span>
+
+
+        <span class="chatlog__timestamp">05-May-23 07:08 PM</span>
+
+            <div class="chatlog__message " data-message-id="1104092215573221416" id="message-1104092215573221416">
+                <div class="chatlog__content">
+                    <div class="markdown">crypto things
+<a href="https://twitter.com/0xCuteSocks/status/1654519048338833408">https://twitter.com/0xCuteSocks/status/1654519048338833408</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(29,161,242,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+                                                <img class="chatlog__embed-author-icon" src="https://pbs.twimg.com/profile_images/1638097011093409792/Lt1xrZQa_400x400.jpg" alt="Author icon">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/0xCuteSocks">0xCuteSocks (@0xCuteSocks)</a>
+                                                </span>
+                                        </div>
+
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">someone accidently sending 1.5 mil dollar worth wbtc and weth to jaredfromsubway.eth
+
+you can&#39;t make this shid up<img class="emoji " alt="😂" title="😂" src="https://twemoji.maxcdn.com/2/72x72/1f602.png"></div>
+                                        </div>
+
+                                        <div class="chatlog__embed-fields">
+                                                <div class="chatlog__embed-field chatlog__embed-field--inline">
+                                                        <div class="chatlog__embed-field-name">
+                                                            <div class="markdown">Likes</div>
+                                                        </div>
+
+                                                        <div class="chatlog__embed-field-value">
+                                                            <div class="markdown">341</div>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                </div>
+
+                            </div>
+
+                                <div class="chatlog__embed-image-container">
+                                    <a class="chatlog__embed-image-link" href="https://pbs.twimg.com/media/FvYHL6JaUAAg3sE.png">
+                                        <img class="chatlog__embed-image" src="https://pbs.twimg.com/media/FvYHL6JaUAAg3sE.png" alt="Image">
+                                    </a>
+                                </div>
+
+                                <div class="chatlog__embed-footer">
+                                        <img class="chatlog__embed-footer-icon" src="https://abs.twimg.com/icons/apple-touch-icon-192x192.png" alt="Footer icon">
+
+                                        <span class="chatlog__embed-footer-text">
+Twitter
+ • 
+05-May-23 06:10 PM                                        </span>
+                                </div>
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="brainlet" title="brainlet" src="https://cdn.discordapp.com/emojis/1054463980762042409.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/953449439761154129/e6776aecb8b088d62cd2233997dd22aa.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="CurbS#5089" data-user-id="953449439761154129" style="color: rgb(241,196,15)">CurbS</span>
+
+
+        <span class="chatlog__timestamp">05-May-23 09:42 PM</span>
+
+            <div class="chatlog__message " data-message-id="1104131006874779678" id="message-1104131006874779678">
+                <div class="chatlog__content">
+                    <div class="markdown">weird signal, who knows this could be the friday night they pull the rug as they mentioned in the prev video...
+<a href="https://www.youtube.com/watch?v=2HIZ9gnJBrU">https://www.youtube.com/watch?v=2HIZ9gnJBrU</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCNjyEXSvYUUCzagFAKmaJ1Q">Rebel Capitalist</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=2HIZ9gnJBrU">
+                                                    <div class="markdown">Ok...Now Things Are Really Getting Scary</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">✅Get your tickets for Rebel Capitalist Live!! Speakers include Peter Schiff, Mike Maloney, Lyn Alden and many more. <a href="https://rebelcapitalistlive.com">https://rebelcapitalistlive.com</a>
+
+✅Check out my private, online investment community (Rebel Capitalist Pro) with Chris MacIntosh, Lyn Alden and many more for $1!! click here <a href="https://georgegammon.com/pro">https://georgegammon.com/pro</a>
+
+✅Rebel capitalist merchandis...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://i.ytimg.com/vi/2HIZ9gnJBrU/maxresdefault.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="https://i.ytimg.com/vi/2HIZ9gnJBrU/maxresdefault.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/953449439761154129/e6776aecb8b088d62cd2233997dd22aa.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="CurbS#5089" data-user-id="953449439761154129" style="color: rgb(241,196,15)">CurbS</span>
+
+
+        <span class="chatlog__timestamp">06-May-23 01:05 AM</span>
+
+            <div class="chatlog__message " data-message-id="1104182229271326849" id="message-1104182229271326849">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://twitter.com/PUKACharts/status/1654488797541810176">https://twitter.com/PUKACharts/status/1654488797541810176</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(29,161,242,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+                                                <img class="chatlog__embed-author-icon" src="https://pbs.twimg.com/profile_images/1624183499606437889/w8rnjCOQ_400x400.jpg" alt="Author icon">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/PUKACharts">PUKACharts (@PUKACharts)</a>
+                                                </span>
+                                        </div>
+
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">@NorthstarCharts Just letting you guys know that there is a Tea Party and you are all invited #GOLD</div>
+                                        </div>
+
+                                </div>
+
+                            </div>
+
+                                <div class="chatlog__embed-image-container">
+                                    <a class="chatlog__embed-image-link" href="https://pbs.twimg.com/media/FvXspRnWwAYQsTS.jpg">
+                                        <img class="chatlog__embed-image" src="https://pbs.twimg.com/media/FvXspRnWwAYQsTS.jpg" alt="Image">
+                                    </a>
+                                </div>
+
+                                <div class="chatlog__embed-footer">
+                                        <img class="chatlog__embed-footer-icon" src="https://abs.twimg.com/icons/apple-touch-icon-192x192.png" alt="Footer icon">
+
+                                        <span class="chatlog__embed-footer-text">
+Twitter
+ • 
+05-May-23 04:10 PM                                        </span>
+                                </div>
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="based" title="based" src="https://cdn.discordapp.com/emojis/1054410525083193355.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/953449439761154129/e6776aecb8b088d62cd2233997dd22aa.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="CurbS#5089" data-user-id="953449439761154129" style="color: rgb(241,196,15)">CurbS</span>
+
+
+        <span class="chatlog__timestamp">06-May-23 02:27 PM</span>
+
+            <div class="chatlog__message " data-message-id="1104383891986448415" id="message-1104383891986448415">
+                <div class="chatlog__content">
+                    <div class="markdown">Way i see things atm, governments are going to spend like crazy coming years (fiscal spending) to create more debt and solve created problems. (more than normal)
+big businesses will be scoring government contracts and employing the new class of unemployed.
+per example (its about the subject not the gaff it is hidden in)
+<a href="https://fxtwitter.com/Breaking911/status/1654674853759205376">https://fxtwitter.com/Breaking911/status/1654674853759205376</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(133,95,70,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/Breaking911/status/1654674853759205376">BIDEN: “We’re gonna see railroads going from Syracuse to down all the way down to New York — upstate New York — anyway, to the city.”</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://fxtwitter.com/Breaking911/status/1654674853759205376">
+                                                    <div class="markdown">Breaking911 (@Breaking911)</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">BIDEN: “We’re gonna see railroads going from Syracuse to down all the way down to New York — upstate New York — anyway, to the city.”</div>
+                                        </div>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="&#128077;" title="&#128077;" src="https://twemoji.maxcdn.com/2/72x72/1f44d.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/956642831643070484/f94d348c5d977bbdac9b65f4fa9d4b9a.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon07#4571" data-user-id="956642831643070484" style="color: rgb(241,196,15)">mejon07</span>
+
+
+        <span class="chatlog__timestamp">06-May-23 07:06 PM</span>
+
+            <div class="chatlog__message " data-message-id="1104454062243590294" id="message-1104454062243590294">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.rt.com/business/575878-half-us-banks-insolvent/">https://www.rt.com/business/575878-half-us-banks-insolvent/</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.rt.com/business/575878-half-us-banks-insolvent/">
+                                                    <div class="markdown">Over 2,000 US banks are insolvent – Telegraph</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Almost half of the 4,800 lenders in the US are on the brink of insolvency, as their assets are worth less than their liabilities</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://mf.b37mrtl.ru/files/2023.05/article/645616b985f540234c424304.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="https://mf.b37mrtl.ru/files/2023.05/article/645616b985f540234c424304.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="pinkwojak" title="pinkwojak" src="https://cdn.discordapp.com/emojis/956286777340076153.png">
+                                <span class="chatlog__reaction-count">2</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/956642831643070484/f94d348c5d977bbdac9b65f4fa9d4b9a.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon07#4571" data-user-id="956642831643070484" style="color: rgb(241,196,15)">mejon07</span>
+
+
+        <span class="chatlog__timestamp">07-May-23 10:41 PM</span>
+
+            <div class="chatlog__message " data-message-id="1104870729989771325" id="message-1104870729989771325">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.zerohedge.com/geopolitical/escobar-global-de-dollarization-nearing-crossroads-moment">https://www.zerohedge.com/geopolitical/escobar-global-de-dollarization-nearing-crossroads-moment</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(34,34,34,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.zerohedge.com/geopolitical/escobar-global-de-dollarization-nearing-crossroads-moment">
+                                                    <div class="markdown">Escobar: Global De-Dollarization Nearing &quot;Crossroads Moment&quot;</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">De-dollarization is heading for a breakthrough due to rising global discontent with US &#39;casino capitalism&#39;...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://assets.zerohedge.com/s3fs-public/styles/16_9_max_700/public/2023-05/2023-05-06_08-37-02.jpg?itok=OsSkhH_O">
+                                            <img class="chatlog__embed-thumbnail" src="https://assets.zerohedge.com/s3fs-public/styles/16_9_max_700/public/2023-05/2023-05-06_08-37-02.jpg?itok=OsSkhH_O" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="1104870796901486713" id="message-1104870796901486713">
+                <div class="chatlog__content">
+                    <div class="markdown"><div class="quote">The house mostly always wins because the house is the one who prints the currency. It&#39;s backed by nothing, literally, by a country that owes $30 trillion [in national debt] now and it will never be able to repay it.</div> </div>
+                </div>
+
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="grabbler" title="grabbler" src="https://cdn.discordapp.com/emojis/956286777289769070.png">
+                                <span class="chatlog__reaction-count">2</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/953449439761154129/e6776aecb8b088d62cd2233997dd22aa.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="CurbS#5089" data-user-id="953449439761154129" style="color: rgb(241,196,15)">CurbS</span>
+
+
+        <span class="chatlog__timestamp">08-May-23 03:27 AM</span>
+
+            <div class="chatlog__message " data-message-id="1104942733099024394" id="message-1104942733099024394">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://twitter.com/financialjuice/status/1655360649352888320">https://twitter.com/financialjuice/status/1655360649352888320</a>
+#japan <span class="chatlog__edited-timestamp" title="08-May-23 03:28 AM">(edited)</span></div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(29,161,242,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+                                                <img class="chatlog__embed-author-icon" src="https://pbs.twimg.com/profile_images/1488180719927103488/86tGu27D_400x400.png" alt="Author icon">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/financialjuice">Breaking Market News (@financialjuice)</a>
+                                                </span>
+                                        </div>
+
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">BOJ MEETING: MANY MEMBERS EXPRESSED CONCERN THAT INFLATION MAY GROW FASTER THAN PREDICTED.</div>
+                                        </div>
+
+                                </div>
+
+                            </div>
+
+
+                                <div class="chatlog__embed-footer">
+                                        <img class="chatlog__embed-footer-icon" src="https://abs.twimg.com/icons/apple-touch-icon-192x192.png" alt="Footer icon">
+
+                                        <span class="chatlog__embed-footer-text">
+Twitter
+ • 
+08-May-23 01:55 AM                                        </span>
+                                </div>
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/953449439761154129/e6776aecb8b088d62cd2233997dd22aa.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="CurbS#5089" data-user-id="953449439761154129" style="color: rgb(241,196,15)">CurbS</span>
+
+
+        <span class="chatlog__timestamp">08-May-23 03:39 AM</span>
+
+            <div class="chatlog__message " data-message-id="1104945678322499614" id="message-1104945678322499614">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.telegraph.co.uk/business/2023/05/07/hmrc-hold-bitcoin-seize-crypto-tax-dodgers/">https://www.telegraph.co.uk/business/2023/05/07/hmrc-hold-bitcoin-seize-crypto-tax-dodgers/</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(7,42,58,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.telegraph.co.uk/business/2023/05/07/hmrc-hold-bitcoin-seize-crypto-tax-dodgers/">
+                                                    <div class="markdown">HMRC to hold Bitcoin under plans to seize crypto from tax dodgers</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">New government proposals signal latest crackdown on the sector</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://www.telegraph.co.uk/content/dam/business/2023/05/07/TELEMMGLPICT000314320137_trans_NvBQzQNjv4BqYOMNV6fdmZn54PDCMcTdzKfMKtHkhZvc_aO-Z7BcCt0.jpeg?impolicy=logo-overlay">
+                                            <img class="chatlog__embed-thumbnail" src="https://www.telegraph.co.uk/content/dam/business/2023/05/07/TELEMMGLPICT000314320137_trans_NvBQzQNjv4BqYOMNV6fdmZn54PDCMcTdzKfMKtHkhZvc_aO-Z7BcCt0.jpeg?impolicy=logo-overlay" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="1104945811491659848" id="message-1104945811491659848">
+                <div class="chatlog__content">
+                    <div class="markdown"><div class="quote">HMRC is considering introducing rules that would enable it to seize cryptocurrency from businesses that fail to pay their taxes.</div> </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/956642831643070484/f94d348c5d977bbdac9b65f4fa9d4b9a.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon07#4571" data-user-id="956642831643070484" style="color: rgb(241,196,15)">mejon07</span>
+
+
+        <span class="chatlog__timestamp">08-May-23 04:21 PM</span>
+
+            <div class="chatlog__message " data-message-id="1105137408737034242" id="message-1105137408737034242">
+                <div class="chatlog__content">
+                    <div class="markdown">fairly straightforward breakdown of the US banking situation
+<a href="https://www.youtube.com/watch?v=v_W3foZMNOA">https://www.youtube.com/watch?v=v_W3foZMNOA</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UC9ZM3N0ybRtp44-WLqsW3iQ">Mark Moss</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=v_W3foZMNOA">
+                                                    <div class="markdown">How The Banking Collapse Is Part Of The Plan</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">The second largest banking collapse in history just happened with First Republic Bank, and it’s right behind the single largest bank collapse that happened in 2008 with Washington Mutual. While that sounds bad, and it is, it’s really just the tip of the iceberg that shows us many important indicators we need to be watching! This signals a rapid ...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://i.ytimg.com/vi/v_W3foZMNOA/maxresdefault.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="https://i.ytimg.com/vi/v_W3foZMNOA/maxresdefault.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/953449439761154129/e6776aecb8b088d62cd2233997dd22aa.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="CurbS#5089" data-user-id="953449439761154129" style="color: rgb(241,196,15)">CurbS</span>
+
+
+        <span class="chatlog__timestamp">08-May-23 06:47 PM</span>
+
+            <div class="chatlog__message " data-message-id="1105174037463830540" id="message-1105174037463830540">
+                <div class="chatlog__content">
+                    <div class="markdown">explains how JPM is becoming the last bank standing and creating the centralized environment <img class="emoji " alt="marx" title="marx" src="https://cdn.discordapp.com/emojis/1058141065456136222.png">  for a CBDC 
+<a href="https://www.youtube.com/watch?v=BEkguQJr86w">https://www.youtube.com/watch?v=BEkguQJr86w</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCNjyEXSvYUUCzagFAKmaJ1Q">Rebel Capitalist</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=BEkguQJr86w">
+                                                    <div class="markdown">Holy Sh*t...I Was Wrong About CBDCs</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">✅Get your tickets for Rebel Capitalist Live!! Speakers include Peter Schiff, Mike Maloney, Lyn Alden and many more. <a href="https://rebelcapitalistlive.com">https://rebelcapitalistlive.com</a>
+
+✅Check out my private, online investment community (Rebel Capitalist Pro) with Chris MacIntosh, Lyn Alden and many more for $1!! click here <a href="https://georgegammon.com/pro">https://georgegammon.com/pro</a>
+
+✅Rebel capitalist merchandis...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://i.ytimg.com/vi/BEkguQJr86w/maxresdefault.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="https://i.ytimg.com/vi/BEkguQJr86w/maxresdefault.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/953449439761154129/e6776aecb8b088d62cd2233997dd22aa.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="CurbS#5089" data-user-id="953449439761154129" style="color: rgb(241,196,15)">CurbS</span>
+
+
+        <span class="chatlog__timestamp">09-May-23 11:57 AM</span>
+
+            <div class="chatlog__message " data-message-id="1105433305240830002" id="message-1105433305240830002">
+                <div class="chatlog__content">
+                    <div class="markdown"><div class="quote"><strong>@financialjuice</strong> RT @BreakingStocks_: GOLDMAN, MICROSOFT, CBOE AND OTHERS TO LAUNCH BLOCKCHAIN NETWORK. $GS $MSFT</div> </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/953449439761154129/e6776aecb8b088d62cd2233997dd22aa.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="CurbS#5089" data-user-id="953449439761154129" style="color: rgb(241,196,15)">CurbS</span>
+
+
+        <span class="chatlog__timestamp">09-May-23 01:51 PM</span>
+
+            <div class="chatlog__message " data-message-id="1105462062282461184" id="message-1105462062282461184">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://archive.is/uwzER">https://archive.is/uwzER</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://archive.is/uwzER">
+                                                    <div class="markdown">Goldman Sachs, Microsoft, Deloitte, Cboe and Others to Launch Block...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">archived 9 May 2023 08:42:58 UTC</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://archive.is/uwzER/48e1f29f2067d2a2e1dfb4435da72e084736dcc4/scr.png">
+                                            <img class="chatlog__embed-thumbnail" src="https://archive.is/uwzER/48e1f29f2067d2a2e1dfb4435da72e084736dcc4/scr.png" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="1105462311059214337" id="message-1105462311059214337">
+                <div class="chatlog__content">
+                    <div class="markdown"><div class="quote"> to link up various institutional applications</div> </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="1105462396480389140" id="message-1105462396480389140">
+                <div class="chatlog__content">
+                    <div class="markdown">sounds like CBDC rails to me </div>
+                </div>
+
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="ShutItDown" title="ShutItDown" src="https://cdn.discordapp.com/emojis/1054410377229774910.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/953449439761154129/e6776aecb8b088d62cd2233997dd22aa.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="CurbS#5089" data-user-id="953449439761154129" style="color: rgb(241,196,15)">CurbS</span>
+
+
+        <span class="chatlog__timestamp">09-May-23 05:10 PM</span>
+
+            <div class="chatlog__message " data-message-id="1105512248438435920" id="message-1105512248438435920">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://twitter.com/zerohedge/status/1655949626665746434">https://twitter.com/zerohedge/status/1655949626665746434</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(29,161,242,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+                                                <img class="chatlog__embed-author-icon" src="https://pbs.twimg.com/profile_images/72647502/tyler_400x400.jpg" alt="Author icon">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/zerohedge">zerohedge (@zerohedge)</a>
+                                                </span>
+                                        </div>
+
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">IMF WARNS ZIMBABWE AGAINST PLAN FOR GOLD-BACKED DIGITAL MONEY</div>
+                                        </div>
+
+                                </div>
+
+                            </div>
+
+
+                                <div class="chatlog__embed-footer">
+                                        <img class="chatlog__embed-footer-icon" src="https://abs.twimg.com/icons/apple-touch-icon-192x192.png" alt="Footer icon">
+
+                                        <span class="chatlog__embed-footer-text">
+Twitter
+ • 
+09-May-23 04:55 PM                                        </span>
+                                </div>
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="1105512266771730482" id="message-1105512266771730482">
+                <div class="chatlog__content">
+                    <div class="markdown"><img class="emoji emoji--large" alt="ShutItDown" title="ShutItDown" src="https://cdn.discordapp.com/emojis/1054410377229774910.png"> </div>
+                </div>
+
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="ShutItDown" title="ShutItDown" src="https://cdn.discordapp.com/emojis/1054410377229774910.png">
+                                <span class="chatlog__reaction-count">2</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/953449439761154129/e6776aecb8b088d62cd2233997dd22aa.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="CurbS#5089" data-user-id="953449439761154129" style="color: rgb(241,196,15)">CurbS</span>
+
+
+        <span class="chatlog__timestamp">10-May-23 12:46 PM</span>
+
+            <div class="chatlog__message " data-message-id="1105808125807833109" id="message-1105808125807833109">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.kitco.com/news/2023-04-06/Texas-moves-to-create-gold-backed-digital-currency.html">https://www.kitco.com/news/2023-04-06/Texas-moves-to-create-gold-backed-digital-currency.html</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.kitco.com/news/2023-04-06/Texas-moves-to-create-gold-backed-digital-currency.html">
+                                                    <div class="markdown">Texas moves to create gold-backed digital currency</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Lawmakers in Texas have introduced a pair of bills that would approve the creation of a state-issued, gold-backed digital currency.</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://www.kitco.com/news/2023-04-06/images/Texas%20gold%20btc.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="https://www.kitco.com/news/2023-04-06/images/Texas%20gold%20btc.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="1105808187241799750" id="message-1105808187241799750">
+                <div class="chatlog__content">
+                    <div class="markdown"><div class="quote">“This ACT takes effect September 1, 2023.” At the time of writing, neither bill had been assigned to a committee. In order to become official law, they must first get a committee hearing, pass by a majority vote, and then be approved in a full vote by the state Senate and House.</div> </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/956642831643070484/f94d348c5d977bbdac9b65f4fa9d4b9a.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon07#4571" data-user-id="956642831643070484" style="color: rgb(241,196,15)">mejon07</span>
+
+
+        <span class="chatlog__timestamp">10-May-23 09:55 PM</span>
+
+            <div class="chatlog__message " data-message-id="1105946133232111667" id="message-1105946133232111667">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://fxtwitter.com/CoinDesk/status/1656372051035209728">https://fxtwitter.com/CoinDesk/status/1656372051035209728</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(103,61,57,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/CoinDesk/status/1656372051035209728">&quot;Crypto bros ... made over a trillion dollars out of thin air,&quot; @BradSherman says at a U.S. House hearing today. 
+
+&quot;They&#39;ll accuse the U.S. government of making money out of thin air. Maybe we do, but</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://fxtwitter.com/CoinDesk/status/1656372051035209728">
+                                                    <div class="markdown">CoinDesk (@CoinDesk)</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">&quot;Crypto bros ... made over a trillion dollars out of thin air,&quot; @BradSherman says at a U.S. House hearing today. 
+
+&quot;They&#39;ll accuse the U.S. government of making money out of thin air. Maybe we do, but we&#39;re the U.S. government.&quot;
+
+Watch the hearing: <a href="https://youtube.com/live/axdrK4ImXAY?feature=share">https://youtube.com/live/axdrK4ImXAY?feature=share</a></div>
+                                        </div>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="honkler_end_times" title="honkler_end_times" src="https://cdn.discordapp.com/emojis/1054462988658155590.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/953449439761154129/e6776aecb8b088d62cd2233997dd22aa.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="CurbS#5089" data-user-id="953449439761154129" style="color: rgb(241,196,15)">CurbS</span>
+
+
+        <span class="chatlog__timestamp">10-May-23 10:00 PM</span>
+
+            <div class="chatlog__message " data-message-id="1105947459718496316" id="message-1105947459718496316">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.zerohedge.com/personal-finance/us-city-roll-out-guaranteed-basic-income">https://www.zerohedge.com/personal-finance/us-city-roll-out-guaranteed-basic-income</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(34,34,34,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.zerohedge.com/personal-finance/us-city-roll-out-guaranteed-basic-income">
+                                                    <div class="markdown">US City To Roll Out Guaranteed Basic Income</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">The American Rescue plan was not marketed as a guaranteed basic income initiative. Siddiqui is buying votes with Federal funds...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://assets.zerohedge.com/s3fs-public/styles/16_9_max_700/public/2023-05/2023-05-10_08-26-33.jpg?itok=ZPQWwjpY">
+                                            <img class="chatlog__embed-thumbnail" src="https://assets.zerohedge.com/s3fs-public/styles/16_9_max_700/public/2023-05/2023-05-10_08-26-33.jpg?itok=ZPQWwjpY" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="SoyPoint" title="SoyPoint" src="https://cdn.discordapp.com/emojis/1054462013176299560.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="pinkwojak" title="pinkwojak" src="https://cdn.discordapp.com/emojis/956286777340076153.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/953449439761154129/e6776aecb8b088d62cd2233997dd22aa.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="CurbS#5089" data-user-id="953449439761154129" style="color: rgb(241,196,15)">CurbS</span>
+
+
+        <span class="chatlog__timestamp">11-May-23 02:38 AM</span>
+
+            <div class="chatlog__message " data-message-id="1106017372395032666" id="message-1106017372395032666">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://twitter.com/Bitfinexed/status/1656441581879144449">https://twitter.com/Bitfinexed/status/1656441581879144449</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(29,161,242,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+                                                <img class="chatlog__embed-author-icon" src="https://pbs.twimg.com/profile_images/1598863944319320064/8oTsqma5_400x400.jpg" alt="Author icon">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/Bitfinexed">Bitfinex’ed &#128293;&#128039; Κασσάνδρα &#127994; (@Bitfinexed)</a>
+                                                </span>
+                                        </div>
+
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">FTX owes the IRS $44 billion dollars.</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://pbs.twimg.com/amplify_video_thumb/1656438347579940864/img/BjpJZqR4Z1HYW730.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="https://pbs.twimg.com/amplify_video_thumb/1656438347579940864/img/BjpJZqR4Z1HYW730.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                                <div class="chatlog__embed-footer">
+                                        <img class="chatlog__embed-footer-icon" src="https://abs.twimg.com/icons/apple-touch-icon-192x192.png" alt="Footer icon">
+
+                                        <span class="chatlog__embed-footer-text">
+Twitter
+ • 
+11-May-23 01:30 AM                                        </span>
+                                </div>
+                        </div>
+                    </div>
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+
+
+                                </div>
+
+                            </div>
+
+                                <div class="chatlog__embed-image-container">
+                                    <a class="chatlog__embed-image-link" href="https://pbs.twimg.com/media/FvzZF4wWcAU-s_S.jpg">
+                                        <img class="chatlog__embed-image" src="https://pbs.twimg.com/media/FvzZF4wWcAU-s_S.jpg" alt="Image">
+                                    </a>
+                                </div>
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="1106017605829009418" id="message-1106017605829009418">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.coindesk.com/business/2023/05/10/us-internal-revenue-service-files-claims-worth-44-billion-against-ftx-bankruptcy/">https://www.coindesk.com/business/2023/05/10/us-internal-revenue-service-files-claims-worth-44-billion-against-ftx-bankruptcy/</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.coindesk.com/business/2023/05/10/us-internal-revenue-service-files-claims-worth-44-billion-against-ftx-bankruptcy/">
+                                                    <div class="markdown">U.S. Internal Revenue Service Files Claims Worth $44 Billion Agains...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">The largest of the claims includes a $20.4 billion claim against Alameda Research LLC, which details nearly $20 billion in unpaid partnership taxes.</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://www.coindesk.com/resizer/llOzazRQkVeIt1YAz3A9SxiWk9k=/1200x628/center/middle/cloudfront-us-east-1.images.arcpublishing.com/coindesk/IPTJIMKLR5FVLFK5YY2JEHRMWM">
+                                            <img class="chatlog__embed-thumbnail" src="https://www.coindesk.com/resizer/llOzazRQkVeIt1YAz3A9SxiWk9k=/1200x628/center/middle/cloudfront-us-east-1.images.arcpublishing.com/coindesk/IPTJIMKLR5FVLFK5YY2JEHRMWM" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/953449439761154129/e6776aecb8b088d62cd2233997dd22aa.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="CurbS#5089" data-user-id="953449439761154129" style="color: rgb(241,196,15)">CurbS</span>
+
+
+        <span class="chatlog__timestamp">11-May-23 03:55 PM</span>
+
+            <div class="chatlog__message " data-message-id="1106218063692562492" id="message-1106218063692562492">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://twitter.com/financialjuice/status/1656657359458951169">https://twitter.com/financialjuice/status/1656657359458951169</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(29,161,242,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+                                                <img class="chatlog__embed-author-icon" src="https://pbs.twimg.com/profile_images/1488180719927103488/86tGu27D_400x400.png" alt="Author icon">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/financialjuice">Breaking Market News (@financialjuice)</a>
+                                                </span>
+                                        </div>
+
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">PACWEST HALTED AGAIN AFTER TRIMMING INTRADAY LOSS TO 24%.</div>
+                                        </div>
+
+                                </div>
+
+                            </div>
+
+
+                                <div class="chatlog__embed-footer">
+                                        <img class="chatlog__embed-footer-icon" src="https://abs.twimg.com/icons/apple-touch-icon-192x192.png" alt="Footer icon">
+
+                                        <span class="chatlog__embed-footer-text">
+Twitter
+ • 
+11-May-23 03:47 PM                                        </span>
+                                </div>
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/953449439761154129/e6776aecb8b088d62cd2233997dd22aa.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="CurbS#5089" data-user-id="953449439761154129" style="color: rgb(241,196,15)">CurbS</span>
+
+
+        <span class="chatlog__timestamp">12-May-23 01:03 PM</span>
+
+            <div class="chatlog__message " data-message-id="1106537195982049323" id="message-1106537195982049323">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.msn.com/en-gb/money/other/britain-edging-closer-to-digital-pound-decision-says-minister/ar-AA1aYT9k">https://www.msn.com/en-gb/money/other/britain-edging-closer-to-digital-pound-decision-says-minister/ar-AA1aYT9k</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.msn.com/en-gb/money/other/britain-edging-closer-to-digital-pound-decision-says-minister/ar-AA1aYT9k">
+                                                    <div class="markdown">Britain edging closer to digital pound decision, says minister</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">LONDON (Reuters) - Britain must not be left behind in rapid financial innovation and it was getting closer to deciding &quot;when, rather than if&quot; it would issue a digital version of sterling, its financial services minister said on Wednesday. &quot;I don&#39;t want the UK to be left behind,&quot; Andrew Griffith told an event held by OMFIF think tank. &quot;We need to...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA1aZccY.img?h=315&amp;w=600&amp;m=6&amp;q=60&amp;o=t&amp;l=f&amp;f=jpg&amp;x=376&amp;y=108">
+                                            <img class="chatlog__embed-thumbnail" src="https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA1aZccY.img?h=315&amp;w=600&amp;m=6&amp;q=60&amp;o=t&amp;l=f&amp;f=jpg&amp;x=376&amp;y=108" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/953449439761154129/e6776aecb8b088d62cd2233997dd22aa.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="CurbS#5089" data-user-id="953449439761154129" style="color: rgb(241,196,15)">CurbS</span>
+
+
+        <span class="chatlog__timestamp">12-May-23 02:42 PM</span>
+
+            <div class="chatlog__message " data-message-id="1106561997253902357" id="message-1106561997253902357">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://twitter.com/BitcoinMagazine/status/1656706653801136132">https://twitter.com/BitcoinMagazine/status/1656706653801136132</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(29,161,242,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+                                                <img class="chatlog__embed-author-icon" src="https://pbs.twimg.com/profile_images/1444022922377576453/AzvXYXGr_400x400.jpg" alt="Author icon">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/BitcoinMagazine">Bitcoin Magazine (@BitcoinMagazine)</a>
+                                                </span>
+                                        </div>
+
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">JUST IN: <img class="emoji " alt="🇺🇸" title="🇺🇸" src="https://twemoji.maxcdn.com/2/72x72/1f1fa-1f1f8.png"> Judge rules that BlockFi users gave up legal rights to their BTC by using the platform and all the $300 million of crypto deposits are now property of BlockFi.
+
+Take your #bitcoin off exchanges!</div>
+                                        </div>
+
+                                        <div class="chatlog__embed-fields">
+                                                <div class="chatlog__embed-field chatlog__embed-field--inline">
+                                                        <div class="chatlog__embed-field-name">
+                                                            <div class="markdown">Likes</div>
+                                                        </div>
+
+                                                        <div class="chatlog__embed-field-value">
+                                                            <div class="markdown">4286</div>
+                                                        </div>
+                                                </div>
+                                                <div class="chatlog__embed-field chatlog__embed-field--inline">
+                                                        <div class="chatlog__embed-field-name">
+                                                            <div class="markdown">Retweets</div>
+                                                        </div>
+
+                                                        <div class="chatlog__embed-field-value">
+                                                            <div class="markdown">1296</div>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                </div>
+
+                            </div>
+
+
+                                <div class="chatlog__embed-footer">
+                                        <img class="chatlog__embed-footer-icon" src="https://abs.twimg.com/icons/apple-touch-icon-192x192.png" alt="Footer icon">
+
+                                        <span class="chatlog__embed-footer-text">
+Twitter
+ • 
+11-May-23 07:03 PM                                        </span>
+                                </div>
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+</div>
+
+<div class="postamble">
+    <div class="postamble__entry">Exported 43 message(s)</div>
+</div>
+
+</body>
+</html>
