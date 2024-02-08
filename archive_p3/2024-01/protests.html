@@ -1,0 +1,1522 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Rabbithole.help part 4 - &#129324;-protests</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+
+    <style>
+        /* General */
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-300.woff);
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-400.woff);
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-500.woff);
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-600.woff);
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-700.woff);
+    font-weight: 700;
+}
+
+body {
+    font-family: "Whitney", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 17px;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+img {
+    object-fit: contain;
+}
+
+.markdown {
+    max-width: 100%;
+    white-space: pre-wrap;
+    line-height: 1.3;
+    overflow-wrap: break-word;
+}
+
+.spoiler {
+    width: fit-content;
+}
+
+.spoiler--hidden {
+    cursor: pointer;
+}
+
+.spoiler-text {
+    border-radius: 3px;
+}
+
+.spoiler--hidden .spoiler-text {
+    color: rgba(0, 0, 0, 0);
+}
+
+.spoiler--hidden .spoiler-text::selection {
+    color: rgba(0, 0, 0, 0);
+}
+
+.spoiler-image {
+    position: relative;
+    overflow: hidden;
+    border-radius: 3px;
+}
+
+.spoiler--hidden .spoiler-image {
+    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.spoiler--hidden .spoiler-image img {
+    filter: blur(44px);
+}
+
+.spoiler--hidden .spoiler-image:after {
+    content: "SPOILER";
+    color: #dcddde;
+    background-color: rgba(0, 0, 0, 0.6);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: 600;
+    padding: 0.5em 0.7em;
+    border-radius: 20px;
+    letter-spacing: 0.05em;
+    font-size: 0.9em;
+}
+
+.spoiler--hidden:hover .spoiler-image:after {
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.quote {
+    margin: 0.1em 0;
+    padding-left: 0.6em;
+    border-left: 4px solid;
+    border-radius: 3px;
+}
+
+.pre {
+    font-family: "Consolas", "Courier New", Courier, monospace;
+}
+
+.pre--multiline {
+    margin-top: 0.25em;
+    padding: 0.5em;
+    border: 2px solid;
+    border-radius: 5px;
+}
+
+.pre--inline {
+    padding: 2px;
+    border-radius: 3px;
+    font-size: 0.85em;
+}
+
+.mention {
+    border-radius: 3px;
+    padding: 0 2px;
+    color: #7289da;
+    background: rgba(114, 137, 218, .1);
+    font-weight: 500;
+}
+
+.emoji {
+    width: 1.25em;
+    height: 1.25em;
+    margin: 0 0.06em;
+    vertical-align: -0.4em;
+}
+
+.emoji--small {
+    width: 1em;
+    height: 1em;
+}
+
+.emoji--large {
+    width: 2.8em;
+    height: 2.8em;
+}
+
+/* Preamble */
+
+.preamble {
+    display: grid;
+    margin: 0 0.3em 0.6em 0.3em;
+    max-width: 100%;
+    grid-template-columns: auto 1fr;
+}
+
+.preamble__guild-icon-container {
+    grid-column: 1;
+}
+
+.preamble__guild-icon {
+    max-width: 88px;
+    max-height: 88px;
+}
+
+.preamble__entries-container {
+    grid-column: 2;
+    margin-left: 0.6em;
+}
+
+.preamble__entry {
+    font-size: 1.4em;
+}
+
+.preamble__entry--small {
+    font-size: 1em;
+}
+
+/* Chatlog */
+
+.chatlog {
+    max-width: 100%;
+}
+
+.chatlog__message-group {
+    display: grid;
+    margin: 0 0.6em;
+    padding: 0.9em 0;
+    border-top: 1px solid;
+    grid-template-columns: auto 1fr;
+}
+
+.chatlog__author-avatar-container {
+    grid-column: 1;
+    width: 40px;
+    height: 40px;
+}
+
+.chatlog__author-avatar {
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+}
+
+.chatlog__messages {
+    grid-column: 2;
+    margin-left: 1.2em;
+    min-width: 50%;
+}
+
+.chatlog__author-name {
+    font-weight: 500;
+}
+
+.chatlog__timestamp {
+    margin-left: 0.3em;
+    font-size: 0.75em;
+}
+
+.chatlog__message {
+    padding: 0.1em 0.3em;
+    margin: 0 -0.3em;
+    background-color: transparent;
+    transition: background-color 1s ease;
+}
+
+.chatlog__content {
+    font-size: 0.95em;
+    word-wrap: break-word;
+}
+
+.chatlog__edited-timestamp {
+    margin-left: 0.15em;
+    font-size: 0.8em;
+}
+
+.chatlog__attachment {
+    margin-top: 0.3em;
+}
+
+.chatlog__attachment-thumbnail {
+    vertical-align: top;
+    max-width: 45vw;
+    max-height: 500px;
+    border-radius: 3px;
+}
+
+.chatlog__embed {
+    display: flex;
+    margin-top: 0.3em;
+    max-width: 520px;
+}
+
+.chatlog__embed-color-pill {
+    flex-shrink: 0;
+    width: 0.25em;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
+.chatlog__embed-content-container {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5em 0.6em;
+    border: 1px solid;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+.chatlog__embed-content {
+    display: flex;
+    width: 100%;
+}
+
+.chatlog__embed-text {
+    flex: 1;
+}
+
+.chatlog__embed-author {
+    display: flex;
+    margin-bottom: 0.3em;
+    align-items: center;
+}
+
+.chatlog__embed-author-icon {
+    margin-right: 0.5em;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+.chatlog__embed-author-name {
+    font-size: 0.875em;
+    font-weight: 600;
+}
+
+.chatlog__embed-title {
+    margin-bottom: 0.2em;
+    font-size: 0.875em;
+    font-weight: 600;
+}
+
+.chatlog__embed-description {
+    font-weight: 500;
+    font-size: 0.85em;
+}
+
+.chatlog__embed-fields {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.chatlog__embed-field {
+    flex: 0;
+    min-width: 100%;
+    max-width: 506px;
+    padding-top: 0.6em;
+    font-size: 0.875em;
+}
+
+.chatlog__embed-field--inline {
+    flex: 1;
+    flex-basis: auto;
+    min-width: 150px;
+}
+
+.chatlog__embed-field-name {
+    margin-bottom: 0.2em;
+    font-weight: 600;
+}
+
+.chatlog__embed-field-value {
+    font-weight: 500;
+}
+
+.chatlog__embed-thumbnail {
+    flex: 0;
+    margin-left: 1.2em;
+    max-width: 80px;
+    max-height: 80px;
+    border-radius: 3px;
+}
+
+.chatlog__embed-image-container {
+    margin-top: 0.6em;
+}
+
+.chatlog__embed-image {
+    max-width: 500px;
+    max-height: 400px;
+    border-radius: 3px;
+}
+
+.chatlog__embed-footer {
+    margin-top: 0.6em;
+}
+
+.chatlog__embed-footer-icon {
+    margin-right: 0.2em;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+
+.chatlog__embed-footer-text {
+    font-size: 0.75em;
+    font-weight: 500;
+}
+
+.chatlog__reactions {
+    display: flex;
+}
+
+.chatlog__reaction {
+    display: flex;
+    align-items: center;
+    margin: 0.35em 0.1em 0.1em 0.1em;
+    padding: 0.2em 0.35em;
+    border-radius: 3px;
+}
+
+.chatlog__reaction-count {
+    min-width: 9px;
+    margin-left: 0.35em;
+    font-size: 0.875em;
+}
+
+.chatlog__bot-tag {
+    position: relative;
+    top: -.2em;
+    margin-left: 0.3em;
+    padding: 0.05em 0.3em;
+    border-radius: 3px;
+    vertical-align: middle;
+    line-height: 1.3;
+    background: #7289da;
+    color: #ffffff;
+    font-size: 0.625em;
+    font-weight: 500;
+}
+
+/* Postamble */
+
+.postamble {
+    margin: 1.4em 0.3em 0.6em 0.3em;
+    padding: 1em;
+    border-top: 1px solid;
+}
+    </style>
+    <style>
+        /* General */
+
+body {
+    background-color: #36393e;
+    color: #dcddde;
+}
+
+a {
+    color: #0096cf;
+}
+
+.spoiler-text {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.spoiler--hidden .spoiler-text {
+    background-color: #202225;
+}
+
+.spoiler--hidden:hover .spoiler-text {
+    background-color: rgba(32, 34, 37, 0.8);
+}
+
+.quote {
+    border-color: #4f545c;
+}
+
+.pre {
+    background-color: #2f3136 !important;
+}
+
+.pre--multiline {
+    border-color: #282b30 !important;
+    color: #b9bbbe !important;
+}
+
+/* === Preamble === */
+
+.preamble__entry {
+    color: #ffffff;
+}
+
+/* Chatlog */
+
+.chatlog__message-group {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.chatlog__author-name {
+    color: #ffffff;
+}
+
+.chatlog__timestamp {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.chatlog__message--highlighted {
+    background-color: rgba(114, 137, 218, 0.2) !important;
+}
+
+.chatlog__message--pinned {
+    background-color: rgba(249, 168, 37, 0.05);
+}
+
+.chatlog__edited-timestamp {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.chatlog__embed-color-pill--default {
+    background-color: rgba(79, 84, 92, 1);
+}
+
+.chatlog__embed-content-container {
+    background-color: rgba(46, 48, 54, 0.3);
+    border-color: rgba(46, 48, 54, 0.6);
+}
+
+.chatlog__embed-author-name {
+    color: #ffffff;
+}
+
+.chatlog__embed-author-name-link {
+    color: #ffffff;
+}
+
+.chatlog__embed-title {
+    color: #ffffff;
+}
+
+.chatlog__embed-description {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__embed-field-name {
+    color: #ffffff;
+}
+
+.chatlog__embed-field-value {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__embed-footer {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__reaction {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.chatlog__reaction-count {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+/* Postamble */
+
+.postamble {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.postamble__entry {
+    color: #ffffff;
+}
+    </style>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/solarized-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.pre--multiline').forEach(block => hljs.highlightBlock(block));
+        });
+    </script>
+
+    <script>
+        function scrollToMessage(event, id) {
+            var element = document.getElementById('message-' + id);
+
+            if (element) {
+                event.preventDefault();
+
+                element.classList.add('chatlog__message--highlighted');
+
+                window.scrollTo({
+                    top: element.getBoundingClientRect().top - document.body.getBoundingClientRect().top - (window.innerHeight / 2),
+                    behavior: 'smooth'
+                });
+
+                window.setTimeout(function() {
+                    element.classList.remove('chatlog__message--highlighted');
+                }, 2000);
+            }
+        }
+
+        function showSpoiler(event, element) {
+            if (element && element.classList.contains('spoiler--hidden')) {
+                event.preventDefault();
+                element.classList.remove('spoiler--hidden');
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="preamble">
+    <div class="preamble__guild-icon-container">
+        <img class="preamble__guild-icon" src="https://cdn.discordapp.com/icons/953452853031219252/89ccc9d466d4055c98a4af46f144e403.png" alt="Guild icon">
+    </div>
+    <div class="preamble__entries-container">
+        <div class="preamble__entry">Rabbithole.help part 4</div>
+        <div class="preamble__entry">Research / &#129324;-protests</div>
+
+
+            <div class="preamble__entry preamble__entry--small">
+Between 01-Jan-24 12:00 AM and 01-Feb-24 12:00 AM            </div>
+    </div>
+</div>
+
+<div class="chatlog">
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/953449439761154129/b85657e5ebc5337b03c7c4aca81a3770.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="curbshifter#0000" data-user-id="953449439761154129" style="color: rgb(241,196,15)">curbshifter</span>
+
+
+        <span class="chatlog__timestamp">04-Jan-24 11:43 PM</span>
+
+            <div class="chatlog__message " data-message-id="1192599221111619665" id="message-1192599221111619665">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://fxtwitter.com/i/status/1743019718393630751">https://fxtwitter.com/i/status/1743019718393630751</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(0,168,252,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/TheRealKeean/status/1743019718393630751">BREAKING: German Farmers recommit to their planned protests after the German government shows signs of weakness. Left-wing administration agreed to implement farm destroying policy slowly, instead of all at once. Farmers rise up.</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://fxtwitter.com/i/status/1743019718393630751">
+                                                    <div class="markdown">Keean Bexte (@TheRealKeean)</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">BREAKING: German Farmers recommit to their planned protests after the German government shows signs of weakness. Left-wing administration agreed to implement farm destroying policy slowly, instead of all at once. Farmers rise up.</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://pbs.twimg.com/amplify_video_thumb/1743017595907784704/img/OhkYaZNFaMjRbm5F.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="https://pbs.twimg.com/amplify_video_thumb/1743017595907784704/img/OhkYaZNFaMjRbm5F.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/953449439761154129/b85657e5ebc5337b03c7c4aca81a3770.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="curbshifter#0000" data-user-id="953449439761154129" style="color: rgb(241,196,15)">curbshifter</span>
+
+
+        <span class="chatlog__timestamp">07-Jan-24 06:51 PM</span>
+
+            <div class="chatlog__message " data-message-id="1193612793782468618" id="message-1193612793782468618">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://fxtwitter.com/i/status/1744005757568233607">https://fxtwitter.com/i/status/1744005757568233607</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(0,168,252,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/ryangerritsen/status/1744005757568233607">Polish truckers uniting to express their solidarity with the German farmers. Tomorrow will be epic. &#127477;&#127473;&#127465;&#127466;&#128074;&#127995;</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://fxtwitter.com/i/status/1744005757568233607">
+                                                    <div class="markdown">Ryan Gerritsen<img class="emoji " alt="🇨🇦" title="🇨🇦" src="https://twemoji.maxcdn.com/2/72x72/1f1e8-1f1e6.png"><img class="emoji " alt="🇳🇱" title="🇳🇱" src="https://twemoji.maxcdn.com/2/72x72/1f1f3-1f1f1.png"> (@ryangerritsen)</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Polish truckers uniting to express their solidarity with the German farmers. Tomorrow will be epic. <img class="emoji " alt="🇵🇱" title="🇵🇱" src="https://twemoji.maxcdn.com/2/72x72/1f1f5-1f1f1.png"><img class="emoji " alt="🇩🇪" title="🇩🇪" src="https://twemoji.maxcdn.com/2/72x72/1f1e9-1f1ea.png"><img class="emoji " alt="👊" title="👊" src="https://twemoji.maxcdn.com/2/72x72/1f44a.png"><img class="emoji " alt="🏻" title="🏻" src="https://twemoji.maxcdn.com/2/72x72/1f3fb.png"></div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://pbs.twimg.com/ext_tw_video_thumb/1743984698349563904/pu/img/i0ZwPw2Cd8IF3uAY.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="https://pbs.twimg.com/ext_tw_video_thumb/1743984698349563904/pu/img/i0ZwPw2Cd8IF3uAY.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/953449439761154129/b85657e5ebc5337b03c7c4aca81a3770.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="curbshifter#0000" data-user-id="953449439761154129" style="color: rgb(241,196,15)">curbshifter</span>
+
+
+        <span class="chatlog__timestamp">08-Jan-24 12:07 PM</span>
+
+            <div class="chatlog__message " data-message-id="1193873514307014766" id="message-1193873514307014766">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://m.youtube.com/watch?v=hEKfoEJMBHE">https://m.youtube.com/watch?v=hEKfoEJMBHE</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCyGoNw4yPsUo2yXX_UplHKQ">Der liebe Kevin live</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=hEKfoEJMBHE">
+                                                    <div class="markdown">8.01.2024 - Live Full HD (<img class="emoji " alt="☁" title="☁" src="https://twemoji.maxcdn.com/2/72x72/2601.png">️ - 8 Grad) - Bauerndemo in Berlin - Bun...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">This stream is created with #PRISMLiveStudio</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://i.ytimg.com/vi/hEKfoEJMBHE/maxresdefault_live.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="https://i.ytimg.com/vi/hEKfoEJMBHE/maxresdefault_live.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/953449439761154129/b85657e5ebc5337b03c7c4aca81a3770.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="curbshifter#0000" data-user-id="953449439761154129" style="color: rgb(241,196,15)">curbshifter</span>
+
+
+        <span class="chatlog__timestamp">11-Jan-24 06:59 PM</span>
+
+            <div class="chatlog__message " data-message-id="1195064568200843295" id="message-1195064568200843295">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://fxtwitter.com/i/status/1745503405848559667">https://fxtwitter.com/i/status/1745503405848559667</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(0,168,252,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/disclosetv/status/1745503405848559667">NOW - Large protest against the Tusk government in Warsaw, Poland.</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://fxtwitter.com/i/status/1745503405848559667">
+                                                    <div class="markdown">Disclose.tv (@disclosetv)</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">NOW - Large protest against the Tusk government in Warsaw, Poland.</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://pbs.twimg.com/ext_tw_video_thumb/1745491933697339392/pu/img/u5yRe8-9RsoZO1YT.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="https://pbs.twimg.com/ext_tw_video_thumb/1745491933697339392/pu/img/u5yRe8-9RsoZO1YT.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="ShutItDown" title="ShutItDown" src="https://cdn.discordapp.com/emojis/1054410377229774910.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/953449439761154129/b85657e5ebc5337b03c7c4aca81a3770.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="curbshifter#0000" data-user-id="953449439761154129" style="color: rgb(241,196,15)">curbshifter</span>
+
+
+        <span class="chatlog__timestamp">12-Jan-24 02:16 PM</span>
+
+            <div class="chatlog__message " data-message-id="1195355623823515718" id="message-1195355623823515718">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.youtube.com/watch?v=7JUHgCXt0XY">https://www.youtube.com/watch?v=7JUHgCXt0XY</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UC52X5wxOL_s5yw0dQk7NtgA">Associated Press</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=7JUHgCXt0XY">
+                                                    <div class="markdown">LIVE: Demonstration in Yemen in support of Palestinians and against...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Thousands of people demonstrate in Sanaa, Yemen, in support of Palestinians and against Israel in the Israel-Hamas war.
+#LIVE #Yemen #israelhamaswar</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://i.ytimg.com/vi/7JUHgCXt0XY/maxresdefault.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="https://i.ytimg.com/vi/7JUHgCXt0XY/maxresdefault.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="dumpsterfire" title="dumpsterfire" src="https://cdn.discordapp.com/emojis/956286776773853194.png">
+                                <span class="chatlog__reaction-count">2</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/953449439761154129/b85657e5ebc5337b03c7c4aca81a3770.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="curbshifter#0000" data-user-id="953449439761154129" style="color: rgb(241,196,15)">curbshifter</span>
+
+
+        <span class="chatlog__timestamp">12-Jan-24 05:49 PM</span>
+
+            <div class="chatlog__message " data-message-id="1195409234226069665" id="message-1195409234226069665">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://fxtwitter.com/i/status/1745831072791662844">https://fxtwitter.com/i/status/1745831072791662844</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(0,168,252,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/disclosetv/status/1745831072791662844">NEW - Large protest in Yemen after US/UK airstrikes.</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://fxtwitter.com/i/status/1745831072791662844">
+                                                    <div class="markdown">Disclose.tv (@disclosetv)</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">NEW - Large protest in Yemen after US/UK airstrikes.</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://pbs.twimg.com/ext_tw_video_thumb/1745830212745486336/pu/img/StzYgaqgjSt2pSYx.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="https://pbs.twimg.com/ext_tw_video_thumb/1745830212745486336/pu/img/StzYgaqgjSt2pSYx.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/953449439761154129/b85657e5ebc5337b03c7c4aca81a3770.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="curbshifter#0000" data-user-id="953449439761154129" style="color: rgb(241,196,15)">curbshifter</span>
+
+
+        <span class="chatlog__timestamp">13-Jan-24 10:42 AM</span>
+
+            <div class="chatlog__message " data-message-id="1195664137842343966" id="message-1195664137842343966">
+                <div class="chatlog__content">
+                    <div class="markdown">Apparently chanting: 
+<div class="quote">&quot;We do not care (3x): Make it a world war!&quot;</div> </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/953449439761154129/b85657e5ebc5337b03c7c4aca81a3770.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="curbshifter#0000" data-user-id="953449439761154129" style="color: rgb(241,196,15)">curbshifter</span>
+
+
+        <span class="chatlog__timestamp">13-Jan-24 03:19 PM</span>
+
+            <div class="chatlog__message " data-message-id="1195733890564890625" id="message-1195733890564890625">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://fxtwitter.com/i/status/1746137448860602679">https://fxtwitter.com/i/status/1746137448860602679</a>
+<div class="quote">The 6th day in <img class="emoji " alt="🇩🇪" title="🇩🇪" src="https://twemoji.maxcdn.com/2/72x72/1f1e9-1f1ea.png"> Germany <img class="emoji " alt="💪" title="💪" src="https://twemoji.maxcdn.com/2/72x72/1f4aa.png"><img class="emoji " alt="🚜" title="🚜" src="https://twemoji.maxcdn.com/2/72x72/1f69c.png"><img class="emoji " alt="🚜" title="🚜" src="https://twemoji.maxcdn.com/2/72x72/1f69c.png"><img class="emoji " alt="🚜" title="🚜" src="https://twemoji.maxcdn.com/2/72x72/1f69c.png"><img class="emoji " alt="🚚" title="🚚" src="https://twemoji.maxcdn.com/2/72x72/1f69a.png"><img class="emoji " alt="🚚" title="🚚" src="https://twemoji.maxcdn.com/2/72x72/1f69a.png"><img class="emoji " alt="🚚" title="🚚" src="https://twemoji.maxcdn.com/2/72x72/1f69a.png">
+</div>&gt; 
+<div class="quote">in compilation of 89 places from A to Z:
+A2, A3, A63, A81, Aachen, Altenburg, Alzey, Ansbach, Augsburg, Bad D&#252;rkheim, Bad Griesbach, Bad Homburg, Bamberg, Bergen auf R&#252;gen, Berlin, Bonn, Bottrop, Bremen, B&#252;rgel, Darmstadt/Mainz, Detmold, Dieburg , Dierdorf, Dortmund, Dresden, D&#252;sseldorf, Enschede, Erfurt, Erkelenz, Erzgebirge, Euskirchen, Frankfurt (Oder), Gie&#223;en, Grabow, Gr&#252;nstadt, G&#252;tersloh, G&#246;ppingen, Halle (Saale), Hamburg, Hanover, Hemmoor, Herford, Herrenberg, Horb on the Neckar, Kaiserslautern, Kehl, Kirchheimbolanden, Koblenz, Cologne, Langenbruck, Langenselbold, L&#252;neburg, L&#246;wenstein, Merseburg, Minden, M&#252;hlberg ad Elbe, Munich, Neubrandenburg, Neuwied, Oberkirch, Offenburg, Paderborn, Potsdam, Quickborn, Ravensburg, Rostock, R&#252;sselsheim , Schaumburg, Schrobenhausen, Sonneberg, Steinberg, Stralsund, Stuttgart, S&#252;derbrarup, Saarbr&#252;cken, Taching am See, Traunstein, Trier, Unna, Vacha, Waldenburg, Walsrode, Weichenried, Weimar, Wiesbaden, Willroth, Wittenberge, Worms, Zwickau</div> <span class="chatlog__edited-timestamp" title="13-Jan-24 03:19 PM">(edited)</span></div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(0,168,252,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/VelzenRemco/status/1746137448860602679">De 6e dag in &#127465;&#127466;Duitsland &#128170;&#128668;&#128668;&#128668;&#128666;&#128666;&#128666;
+
+en compilatie van 89 Plaatsen van A tot Z:
+A2, A3, A63, A81, Aachen, Altenburg, Alzey, Ansbach, Augsburg, Bad D&#252;rkheim, Bad Griesbach, Bad Homburg, Bamberg, Bergen auf R&#252;gen, Berlin, Bonn, Bottrop, Bremen, B&#252;rgel…</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://fxtwitter.com/i/status/1746137448860602679">
+                                                    <div class="markdown">Remco Van Velzen (@VelzenRemco)</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">De 6e dag in <img class="emoji " alt="🇩🇪" title="🇩🇪" src="https://twemoji.maxcdn.com/2/72x72/1f1e9-1f1ea.png">Duitsland <img class="emoji " alt="💪" title="💪" src="https://twemoji.maxcdn.com/2/72x72/1f4aa.png"><img class="emoji " alt="🚜" title="🚜" src="https://twemoji.maxcdn.com/2/72x72/1f69c.png"><img class="emoji " alt="🚜" title="🚜" src="https://twemoji.maxcdn.com/2/72x72/1f69c.png"><img class="emoji " alt="🚜" title="🚜" src="https://twemoji.maxcdn.com/2/72x72/1f69c.png"><img class="emoji " alt="🚚" title="🚚" src="https://twemoji.maxcdn.com/2/72x72/1f69a.png"><img class="emoji " alt="🚚" title="🚚" src="https://twemoji.maxcdn.com/2/72x72/1f69a.png"><img class="emoji " alt="🚚" title="🚚" src="https://twemoji.maxcdn.com/2/72x72/1f69a.png">
+
+en compilatie van 89 Plaatsen van A tot Z:
+A2, A3, A63, A81, Aachen, Altenburg, Alzey, Ansbach, Augsburg, Bad D&#252;rkheim, Bad Griesbach, Bad Homburg, Bamberg, Bergen auf R&#252;gen, Berlin, Bonn, Bottrop, Bremen, B&#252;rgel, Darmstadt/Mainz, Detmold, Dieburg, Dierdorf, Dortmund, Dresden, D&#252;sseldorf, Enschede, Erfurt, Erkel...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://pbs.twimg.com/ext_tw_video_thumb/1746136652957773824/pu/img/i-OyazyVvLJ-SYoE.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="https://pbs.twimg.com/ext_tw_video_thumb/1746136652957773824/pu/img/i-OyazyVvLJ-SYoE.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/953449439761154129/b85657e5ebc5337b03c7c4aca81a3770.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="curbshifter#0000" data-user-id="953449439761154129" style="color: rgb(241,196,15)">curbshifter</span>
+
+
+        <span class="chatlog__timestamp">14-Jan-24 01:01 AM</span>
+
+            <div class="chatlog__message " data-message-id="1195880457460518952" id="message-1195880457460518952">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://fxtwitter.com/i/status/1746317266969342061">https://fxtwitter.com/i/status/1746317266969342061</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(0,168,252,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/ImMeme0/status/1746317266969342061">German farmers spell out &quot;We Are Fed Up&quot; with their tractors in protest against their government. &#128293;&#128293;&#128293;</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://fxtwitter.com/i/status/1746317266969342061">
+                                                    <div class="markdown">I Meme Therefore I Am <img class="emoji " alt="🇺🇸" title="🇺🇸" src="https://twemoji.maxcdn.com/2/72x72/1f1fa-1f1f8.png"> (@ImMeme0)</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">German farmers spell out &quot;We Are Fed Up&quot; with their tractors in protest against their government. <img class="emoji " alt="🔥" title="🔥" src="https://twemoji.maxcdn.com/2/72x72/1f525.png"><img class="emoji " alt="🔥" title="🔥" src="https://twemoji.maxcdn.com/2/72x72/1f525.png"><img class="emoji " alt="🔥" title="🔥" src="https://twemoji.maxcdn.com/2/72x72/1f525.png"></div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://pbs.twimg.com/ext_tw_video_thumb/1746259550833987584/pu/img/oBAQ15ZJX_E-Evi3.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="https://pbs.twimg.com/ext_tw_video_thumb/1746259550833987584/pu/img/oBAQ15ZJX_E-Evi3.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/953449439761154129/b85657e5ebc5337b03c7c4aca81a3770.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="curbshifter#0000" data-user-id="953449439761154129" style="color: rgb(241,196,15)">curbshifter</span>
+
+
+        <span class="chatlog__timestamp">15-Jan-24 02:39 AM</span>
+
+            <div class="chatlog__message " data-message-id="1196267295694127285" id="message-1196267295694127285">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://fxtwitter.com/i/status/1746448621904580968">https://fxtwitter.com/i/status/1746448621904580968</a>
+<div class="quote">The people&#39;s army is rolling again. She is rolling towards Berlin to support our farmers. <img class="emoji " alt="👍" title="👍" src="https://twemoji.maxcdn.com/2/72x72/1f44d.png"><img class="emoji " alt="😄" title="😄" src="https://twemoji.maxcdn.com/2/72x72/1f604.png">
+</div>Germany notching it up (with old trucks) <span class="chatlog__edited-timestamp" title="15-Jan-24 02:40 AM">(edited)</span></div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(0,168,252,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/HightowerPower1/status/1746448621904580968">Die Volksarmee rollt wieder. Sie rollt in Richtung Berlin um unsere Bauern zu unterst&#252;tzen. &#128077;&#128516;
+#B1501
+#Bauernprotest 
+#Bauerndemo
+#Bauernaufstand 
+#wirsindmehr</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://fxtwitter.com/i/status/1746448621904580968">
+                                                    <div class="markdown">K&#228;pt&#39;n Blaub&#228;r<img class="emoji " alt="🏹" title="🏹" src="https://twemoji.maxcdn.com/2/72x72/1f3f9.png"> ♀️♂️=<img class="emoji " alt="👨" title="👨" src="https://twemoji.maxcdn.com/2/72x72/1f468.png">‍<img class="emoji " alt="👩" title="👩" src="https://twemoji.maxcdn.com/2/72x72/1f469.png">‍<img class="emoji " alt="👧" title="👧" src="https://twemoji.maxcdn.com/2/72x72/1f467.png">‍<img class="emoji " alt="👦" title="👦" src="https://twemoji.maxcdn.com/2/72x72/1f466.png"> <img class="emoji " alt="🇩🇪" title="🇩🇪" src="https://twemoji.maxcdn.com/2/72x72/1f1e9-1f1ea.png"> <img class="emoji " alt="💙" title="💙" src="https://twemoji.maxcdn.com/2/72x72/1f499.png"> (@HightowerPower1)</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Die Volksarmee rollt wieder. Sie rollt in Richtung Berlin um unsere Bauern zu unterst&#252;tzen. <img class="emoji " alt="👍" title="👍" src="https://twemoji.maxcdn.com/2/72x72/1f44d.png"><img class="emoji " alt="😄" title="😄" src="https://twemoji.maxcdn.com/2/72x72/1f604.png">
+#B1501
+#Bauernprotest 
+#Bauerndemo
+#Bauernaufstand 
+#wirsindmehr</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://pbs.twimg.com/ext_tw_video_thumb/1746448559740772352/pu/img/rMH9FI8Jy2dbZEr_.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="https://pbs.twimg.com/ext_tw_video_thumb/1746448559740772352/pu/img/rMH9FI8Jy2dbZEr_.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/953449439761154129/b85657e5ebc5337b03c7c4aca81a3770.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="curbshifter#0000" data-user-id="953449439761154129" style="color: rgb(241,196,15)">curbshifter</span>
+
+
+        <span class="chatlog__timestamp">25-Jan-24 05:35 PM</span>
+
+            <div class="chatlog__message " data-message-id="1200116643041378324" id="message-1200116643041378324">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://fxtwitter.com/NiemandsKnegt/status/1750504579446329549">https://fxtwitter.com/NiemandsKnegt/status/1750504579446329549</a>
+<div class="quote">N&#238;mes <img class="emoji " alt="🇫🇷" title="🇫🇷" src="https://twemoji.maxcdn.com/2/72x72/1f1eb-1f1f7.png"> , 25-1-2024 #AgriculteursEnCol&#232;re
+</div>&gt; 
+<div class="quote">Blockade of the A9 and A54 motorways near N&#238;mes. The fire brigade extinguishes the fire started by farmers at the roundabout to the highways.
+</div>&gt; 
+<div class="quote">The protests spread across France and harden.</div> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(0,168,252,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/NiemandsKnegt/status/1750504579446329549">N&#238;mes &#127467;&#127479;, 25-1-2024 #AgriculteursEnCol&#232;re
+
+Blokkade van de snelwegen A9 en A54 bij N&#238;mes. De brandweer blust de brand aangestoken door boeren bij de rotonde naar de snelwegen.
+
+De protesten verspreiden zich over Frankrijk en verharden.
+
+&#128253;️ @infoccitani…</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://fxtwitter.com/NiemandsKnegt/status/1750504579446329549">
+                                                    <div class="markdown">Niemands Knegt (@NiemandsKnegt)</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">N&#238;mes <img class="emoji " alt="🇫🇷" title="🇫🇷" src="https://twemoji.maxcdn.com/2/72x72/1f1eb-1f1f7.png">, 25-1-2024 #AgriculteursEnCol&#232;re
+
+Blokkade van de snelwegen A9 en A54 bij N&#238;mes. De brandweer blust de brand aangestoken door boeren bij de rotonde naar de snelwegen.
+
+De protesten verspreiden zich over Frankrijk en verharden.
+
+<img class="emoji " alt="📽" title="📽" src="https://twemoji.maxcdn.com/2/72x72/1f4fd.png">️ @infoccitanie</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://pbs.twimg.com/amplify_video_thumb/1750459928865611776/img/zkiT6AprirASsY2i.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="https://pbs.twimg.com/amplify_video_thumb/1750459928865611776/img/zkiT6AprirASsY2i.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/953449439761154129/b85657e5ebc5337b03c7c4aca81a3770.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="curbshifter#0000" data-user-id="953449439761154129" style="color: rgb(241,196,15)">curbshifter</span>
+
+
+        <span class="chatlog__timestamp">28-Jan-24 03:56 PM</span>
+
+            <div class="chatlog__message " data-message-id="1201179073913823232" id="message-1201179073913823232">
+                <div class="chatlog__content">
+                    <div class="markdown"><div class="quote">French farmers tearing up highways into Paris to disrupt the city&#39;s supply chain.</div> </div>
+                </div>
+
+                    <div class="chatlog__attachment">
+                            <a href="https://cdn.discordapp.com/attachments/956277368815767573/1201179073616040049/1706409263968476.webm?ex=65d21aaf&amp;is=65bfa5af&amp;hm=0f94d3348d7d7c5ffc22db41546a3627ac4333d685b5a9e4bef4e1b6de6215dd&amp;">
+Attachment: 1706409263968476.webm (1,79 MB)                            </a>
+                    </div>
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/953449439761154129/b85657e5ebc5337b03c7c4aca81a3770.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="curbshifter#0000" data-user-id="953449439761154129" style="color: rgb(241,196,15)">curbshifter</span>
+
+
+        <span class="chatlog__timestamp">28-Jan-24 04:12 PM</span>
+
+            <div class="chatlog__message " data-message-id="1201183091604062248" id="message-1201183091604062248">
+                <div class="chatlog__content">
+                    <div class="markdown"><div class="quote">The Siege of Paris
+French farmers are threatening to blockade Paris on the night of January 29 and advise city dwellers to work remotely the following week.
+</div>
+<div class="quote">The farmers&#39; union has stated their dissatisfaction with the rising diesel fuel prices, falling incomes, and complex bureaucracy.
+</div>
+<div class="quote">A union representative mentioned that the purpose of the action is to make Parisians understand their reliance on farmers and that the capital is not self-sufficient.
+</div><a href="https://t.me/multipolarmarket/7462">https://t.me/multipolarmarket/7462</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://t.me/multipolarmarket/7462">
+                                                    <div class="markdown">Multipolar Market</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">The Siege of Paris
+
+French farmers are threatening to blockade Paris on the night of January 29 and advise city dwellers to work remotely the following week.
+
+The farmers&#39; union has stated their dissatisfaction with the rising diesel fuel prices, falling incomes, and complex bureaucracy.
+
+A union representative mentioned that the purpose of the ...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://cdn4.cdn-telegram.org/file/gpa1oWesSyMMe-I2Y9tO8b5YBSnRar8XKpiL_LxMx0eSdMGaDP3KF8kovUa7Pi04UM3FBo1vIXX-GRpTQyd0QHxRVk3818yV6F-1k0l_I0v4s1aR6OuQWiqb5ht1Ia2MyHSUVvaMqoU-Y4UHCfs45dZO2In1UD2KvP9xGQ1jW8PJjBWBS4vBEHdV3diUR8CLLWsgg0GYjI3b-QecAhMN-ZkIaw2wZKyFCyqdexAI17VeQsqpWMMD2AqU5mNhvn9GGYD0eRjB3y46P-nNupIX_0n9x_xDRUBUzLmLcTYbwt8Mh-aOImkCIWbUah4etBmE_tkLI2Gq7m94_lBe8O7s9A.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="https://cdn4.cdn-telegram.org/file/gpa1oWesSyMMe-I2Y9tO8b5YBSnRar8XKpiL_LxMx0eSdMGaDP3KF8kovUa7Pi04UM3FBo1vIXX-GRpTQyd0QHxRVk3818yV6F-1k0l_I0v4s1aR6OuQWiqb5ht1Ia2MyHSUVvaMqoU-Y4UHCfs45dZO2In1UD2KvP9xGQ1jW8PJjBWBS4vBEHdV3diUR8CLLWsgg0GYjI3b-QecAhMN-ZkIaw2wZKyFCyqdexAI17VeQsqpWMMD2AqU5mNhvn9GGYD0eRjB3y46P-nNupIX_0n9x_xDRUBUzLmLcTYbwt8Mh-aOImkCIWbUah4etBmE_tkLI2Gq7m94_lBe8O7s9A.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/953449439761154129/b85657e5ebc5337b03c7c4aca81a3770.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="curbshifter#0000" data-user-id="953449439761154129" style="color: rgb(241,196,15)">curbshifter</span>
+
+
+        <span class="chatlog__timestamp">29-Jan-24 12:28 AM</span>
+
+            <div class="chatlog__message " data-message-id="1201307764853584012" id="message-1201307764853584012">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://youtu.be/vkcf6A9GezU">https://youtu.be/vkcf6A9GezU</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCVuKWQCfgN6fppni5xoAczQ">Revolution In The Streets</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=vkcf6A9GezU">
+                                                    <div class="markdown">We&#39;re being left to die: Belgian farmers join Europe-wide demos</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Following demonstrations in several other European countries, Belgian farmers take their first action to protest against a decline in standards of living. Faced with rising input costs, falling incomes, fear of competition from imported products, notably those from Ukraine, there are many fears over the future of farming, particularly from the y...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://i.ytimg.com/vi/vkcf6A9GezU/maxresdefault.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="https://i.ytimg.com/vi/vkcf6A9GezU/maxresdefault.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="1201308233097289768" id="message-1201308233097289768">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.youtube.com/watch?v=HqjEjISVU3E">https://www.youtube.com/watch?v=HqjEjISVU3E</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCVuKWQCfgN6fppni5xoAczQ">Revolution In The Streets</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=HqjEjISVU3E">
+                                                    <div class="markdown">French farmers vow to continue protests despite government concessions</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">French farmers vow to continue protests despite government concessions 
+French farmers vowed Saturday to continue protesting, maintaining traffic barricades on some of the country&#39;s major roads a day after the government announced a series of measures that they do not fully address their demands.
+Source:  FRANCE 24 English</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://i.ytimg.com/vi/HqjEjISVU3E/maxresdefault.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="https://i.ytimg.com/vi/HqjEjISVU3E/maxresdefault.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/953449439761154129/b85657e5ebc5337b03c7c4aca81a3770.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="curbshifter#0000" data-user-id="953449439761154129" style="color: rgb(241,196,15)">curbshifter</span>
+
+
+        <span class="chatlog__timestamp">29-Jan-24 04:01 PM</span>
+
+            <div class="chatlog__message " data-message-id="1201542657525174392" id="message-1201542657525174392">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://fxtwitter.com/i/status/1751945474246951105">https://fxtwitter.com/i/status/1751945474246951105</a>
+<div class="quote">The taxis also demonstrate with blockades and operations escargots. The A13 motorway towards Paris is blocked at Rocquencourt.</div> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(0,168,252,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/NiemandsKnegt/status/1751945474246951105">Rocquencourt &#127467;&#127479;, 29-1-2024 #AgriculteursEnColere
+
+Ook de taxi&#39;s demonstreren met blokkades en op&#233;rations escargots. De snelweg A13 richting Parijs is geblokkeerd bij Rocquencourt.
+
+&#128253;️ @AnonymeCitoyen</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://fxtwitter.com/i/status/1751945474246951105">
+                                                    <div class="markdown">Niemands Knegt (@NiemandsKnegt)</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Rocquencourt <img class="emoji " alt="🇫🇷" title="🇫🇷" src="https://twemoji.maxcdn.com/2/72x72/1f1eb-1f1f7.png">, 29-1-2024 #AgriculteursEnColere
+
+Ook de taxi&#39;s demonstreren met blokkades en op&#233;rations escargots. De snelweg A13 richting Parijs is geblokkeerd bij Rocquencourt.
+
+<img class="emoji " alt="📽" title="📽" src="https://twemoji.maxcdn.com/2/72x72/1f4fd.png">️ @AnonymeCitoyen</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://pbs.twimg.com/ext_tw_video_thumb/1751885831382376448/pu/img/2EfTBn9kPUcCr8uE.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="https://pbs.twimg.com/ext_tw_video_thumb/1751885831382376448/pu/img/2EfTBn9kPUcCr8uE.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+</div>
+
+<div class="postamble">
+    <div class="postamble__entry">Exported 16 message(s)</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,1724 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Rabbithole.help part 4 - &#128371;-memory-hole</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+
+    <style>
+        /* General */
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-300.woff);
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-400.woff);
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-500.woff);
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-600.woff);
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-700.woff);
+    font-weight: 700;
+}
+
+body {
+    font-family: "Whitney", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 17px;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+img {
+    object-fit: contain;
+}
+
+.markdown {
+    max-width: 100%;
+    white-space: pre-wrap;
+    line-height: 1.3;
+    overflow-wrap: break-word;
+}
+
+.spoiler {
+    width: fit-content;
+}
+
+.spoiler--hidden {
+    cursor: pointer;
+}
+
+.spoiler-text {
+    border-radius: 3px;
+}
+
+.spoiler--hidden .spoiler-text {
+    color: rgba(0, 0, 0, 0);
+}
+
+.spoiler--hidden .spoiler-text::selection {
+    color: rgba(0, 0, 0, 0);
+}
+
+.spoiler-image {
+    position: relative;
+    overflow: hidden;
+    border-radius: 3px;
+}
+
+.spoiler--hidden .spoiler-image {
+    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.spoiler--hidden .spoiler-image img {
+    filter: blur(44px);
+}
+
+.spoiler--hidden .spoiler-image:after {
+    content: "SPOILER";
+    color: #dcddde;
+    background-color: rgba(0, 0, 0, 0.6);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: 600;
+    padding: 0.5em 0.7em;
+    border-radius: 20px;
+    letter-spacing: 0.05em;
+    font-size: 0.9em;
+}
+
+.spoiler--hidden:hover .spoiler-image:after {
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.quote {
+    margin: 0.1em 0;
+    padding-left: 0.6em;
+    border-left: 4px solid;
+    border-radius: 3px;
+}
+
+.pre {
+    font-family: "Consolas", "Courier New", Courier, monospace;
+}
+
+.pre--multiline {
+    margin-top: 0.25em;
+    padding: 0.5em;
+    border: 2px solid;
+    border-radius: 5px;
+}
+
+.pre--inline {
+    padding: 2px;
+    border-radius: 3px;
+    font-size: 0.85em;
+}
+
+.mention {
+    border-radius: 3px;
+    padding: 0 2px;
+    color: #7289da;
+    background: rgba(114, 137, 218, .1);
+    font-weight: 500;
+}
+
+.emoji {
+    width: 1.25em;
+    height: 1.25em;
+    margin: 0 0.06em;
+    vertical-align: -0.4em;
+}
+
+.emoji--small {
+    width: 1em;
+    height: 1em;
+}
+
+.emoji--large {
+    width: 2.8em;
+    height: 2.8em;
+}
+
+/* Preamble */
+
+.preamble {
+    display: grid;
+    margin: 0 0.3em 0.6em 0.3em;
+    max-width: 100%;
+    grid-template-columns: auto 1fr;
+}
+
+.preamble__guild-icon-container {
+    grid-column: 1;
+}
+
+.preamble__guild-icon {
+    max-width: 88px;
+    max-height: 88px;
+}
+
+.preamble__entries-container {
+    grid-column: 2;
+    margin-left: 0.6em;
+}
+
+.preamble__entry {
+    font-size: 1.4em;
+}
+
+.preamble__entry--small {
+    font-size: 1em;
+}
+
+/* Chatlog */
+
+.chatlog {
+    max-width: 100%;
+}
+
+.chatlog__message-group {
+    display: grid;
+    margin: 0 0.6em;
+    padding: 0.9em 0;
+    border-top: 1px solid;
+    grid-template-columns: auto 1fr;
+}
+
+.chatlog__author-avatar-container {
+    grid-column: 1;
+    width: 40px;
+    height: 40px;
+}
+
+.chatlog__author-avatar {
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+}
+
+.chatlog__messages {
+    grid-column: 2;
+    margin-left: 1.2em;
+    min-width: 50%;
+}
+
+.chatlog__author-name {
+    font-weight: 500;
+}
+
+.chatlog__timestamp {
+    margin-left: 0.3em;
+    font-size: 0.75em;
+}
+
+.chatlog__message {
+    padding: 0.1em 0.3em;
+    margin: 0 -0.3em;
+    background-color: transparent;
+    transition: background-color 1s ease;
+}
+
+.chatlog__content {
+    font-size: 0.95em;
+    word-wrap: break-word;
+}
+
+.chatlog__edited-timestamp {
+    margin-left: 0.15em;
+    font-size: 0.8em;
+}
+
+.chatlog__attachment {
+    margin-top: 0.3em;
+}
+
+.chatlog__attachment-thumbnail {
+    vertical-align: top;
+    max-width: 45vw;
+    max-height: 500px;
+    border-radius: 3px;
+}
+
+.chatlog__embed {
+    display: flex;
+    margin-top: 0.3em;
+    max-width: 520px;
+}
+
+.chatlog__embed-color-pill {
+    flex-shrink: 0;
+    width: 0.25em;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
+.chatlog__embed-content-container {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5em 0.6em;
+    border: 1px solid;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+.chatlog__embed-content {
+    display: flex;
+    width: 100%;
+}
+
+.chatlog__embed-text {
+    flex: 1;
+}
+
+.chatlog__embed-author {
+    display: flex;
+    margin-bottom: 0.3em;
+    align-items: center;
+}
+
+.chatlog__embed-author-icon {
+    margin-right: 0.5em;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+.chatlog__embed-author-name {
+    font-size: 0.875em;
+    font-weight: 600;
+}
+
+.chatlog__embed-title {
+    margin-bottom: 0.2em;
+    font-size: 0.875em;
+    font-weight: 600;
+}
+
+.chatlog__embed-description {
+    font-weight: 500;
+    font-size: 0.85em;
+}
+
+.chatlog__embed-fields {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.chatlog__embed-field {
+    flex: 0;
+    min-width: 100%;
+    max-width: 506px;
+    padding-top: 0.6em;
+    font-size: 0.875em;
+}
+
+.chatlog__embed-field--inline {
+    flex: 1;
+    flex-basis: auto;
+    min-width: 150px;
+}
+
+.chatlog__embed-field-name {
+    margin-bottom: 0.2em;
+    font-weight: 600;
+}
+
+.chatlog__embed-field-value {
+    font-weight: 500;
+}
+
+.chatlog__embed-thumbnail {
+    flex: 0;
+    margin-left: 1.2em;
+    max-width: 80px;
+    max-height: 80px;
+    border-radius: 3px;
+}
+
+.chatlog__embed-image-container {
+    margin-top: 0.6em;
+}
+
+.chatlog__embed-image {
+    max-width: 500px;
+    max-height: 400px;
+    border-radius: 3px;
+}
+
+.chatlog__embed-footer {
+    margin-top: 0.6em;
+}
+
+.chatlog__embed-footer-icon {
+    margin-right: 0.2em;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+
+.chatlog__embed-footer-text {
+    font-size: 0.75em;
+    font-weight: 500;
+}
+
+.chatlog__reactions {
+    display: flex;
+}
+
+.chatlog__reaction {
+    display: flex;
+    align-items: center;
+    margin: 0.35em 0.1em 0.1em 0.1em;
+    padding: 0.2em 0.35em;
+    border-radius: 3px;
+}
+
+.chatlog__reaction-count {
+    min-width: 9px;
+    margin-left: 0.35em;
+    font-size: 0.875em;
+}
+
+.chatlog__bot-tag {
+    position: relative;
+    top: -.2em;
+    margin-left: 0.3em;
+    padding: 0.05em 0.3em;
+    border-radius: 3px;
+    vertical-align: middle;
+    line-height: 1.3;
+    background: #7289da;
+    color: #ffffff;
+    font-size: 0.625em;
+    font-weight: 500;
+}
+
+/* Postamble */
+
+.postamble {
+    margin: 1.4em 0.3em 0.6em 0.3em;
+    padding: 1em;
+    border-top: 1px solid;
+}
+    </style>
+    <style>
+        /* General */
+
+body {
+    background-color: #36393e;
+    color: #dcddde;
+}
+
+a {
+    color: #0096cf;
+}
+
+.spoiler-text {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.spoiler--hidden .spoiler-text {
+    background-color: #202225;
+}
+
+.spoiler--hidden:hover .spoiler-text {
+    background-color: rgba(32, 34, 37, 0.8);
+}
+
+.quote {
+    border-color: #4f545c;
+}
+
+.pre {
+    background-color: #2f3136 !important;
+}
+
+.pre--multiline {
+    border-color: #282b30 !important;
+    color: #b9bbbe !important;
+}
+
+/* === Preamble === */
+
+.preamble__entry {
+    color: #ffffff;
+}
+
+/* Chatlog */
+
+.chatlog__message-group {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.chatlog__author-name {
+    color: #ffffff;
+}
+
+.chatlog__timestamp {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.chatlog__message--highlighted {
+    background-color: rgba(114, 137, 218, 0.2) !important;
+}
+
+.chatlog__message--pinned {
+    background-color: rgba(249, 168, 37, 0.05);
+}
+
+.chatlog__edited-timestamp {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.chatlog__embed-color-pill--default {
+    background-color: rgba(79, 84, 92, 1);
+}
+
+.chatlog__embed-content-container {
+    background-color: rgba(46, 48, 54, 0.3);
+    border-color: rgba(46, 48, 54, 0.6);
+}
+
+.chatlog__embed-author-name {
+    color: #ffffff;
+}
+
+.chatlog__embed-author-name-link {
+    color: #ffffff;
+}
+
+.chatlog__embed-title {
+    color: #ffffff;
+}
+
+.chatlog__embed-description {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__embed-field-name {
+    color: #ffffff;
+}
+
+.chatlog__embed-field-value {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__embed-footer {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__reaction {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.chatlog__reaction-count {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+/* Postamble */
+
+.postamble {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.postamble__entry {
+    color: #ffffff;
+}
+    </style>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/solarized-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.pre--multiline').forEach(block => hljs.highlightBlock(block));
+        });
+    </script>
+
+    <script>
+        function scrollToMessage(event, id) {
+            var element = document.getElementById('message-' + id);
+
+            if (element) {
+                event.preventDefault();
+
+                element.classList.add('chatlog__message--highlighted');
+
+                window.scrollTo({
+                    top: element.getBoundingClientRect().top - document.body.getBoundingClientRect().top - (window.innerHeight / 2),
+                    behavior: 'smooth'
+                });
+
+                window.setTimeout(function() {
+                    element.classList.remove('chatlog__message--highlighted');
+                }, 2000);
+            }
+        }
+
+        function showSpoiler(event, element) {
+            if (element && element.classList.contains('spoiler--hidden')) {
+                event.preventDefault();
+                element.classList.remove('spoiler--hidden');
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="preamble">
+    <div class="preamble__guild-icon-container">
+        <img class="preamble__guild-icon" src="https://cdn.discordapp.com/icons/953452853031219252/89ccc9d466d4055c98a4af46f144e403.png" alt="Guild icon">
+    </div>
+    <div class="preamble__entries-container">
+        <div class="preamble__entry">Rabbithole.help part 4</div>
+        <div class="preamble__entry">Research / &#128371;-memory-hole</div>
+
+
+            <div class="preamble__entry preamble__entry--small">
+Between 01-Jan-24 12:00 AM and 01-Feb-24 12:00 AM            </div>
+    </div>
+</div>
+
+<div class="chatlog">
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/836911608978341928/e7002c802b142906dd8a8182e7b3fc3b.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="gooberiscool#0000" data-user-id="836911608978341928" style="color: rgb(52,152,219)">Goober</span>
+
+
+        <span class="chatlog__timestamp">04-Jan-24 03:40 AM</span>
+
+            <div class="chatlog__message " data-message-id="1192296451162787901" id="message-1192296451162787901">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://youtu.be/PYke_tywi3c?si=eelD8alJSqjQ3xvG">https://youtu.be/PYke_tywi3c?si=eelD8alJSqjQ3xvG</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCUZAUoL2_bd9cR8R5T_iSlQ">John Talks</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=PYke_tywi3c">
+                                                    <div class="markdown">THE GREATEST FREUDIAN SLIP IN THE HISTORY OF THE WORLD</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">T - S H I R T S  -  <a href="https://teespring.com/stores/trendy-tee-10">https://teespring.com/stores/trendy-tee-10</a>
+
+T W I T T E R - <a href="https://twitter.com/j_t_starwars">https://twitter.com/j_t_starwars</a>
+
+I N S T A G R A M - <a href="https://www.instagram.com/john_talks/">https://www.instagram.com/john_talks/</a>
+
+P A T R E O N - <a href="https://www.patreon.com/johnpomajr">https://www.patreon.com/johnpomajr</a>
+
+T H A N K S   F O R   W A T C H I N G !</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://i.ytimg.com/vi/PYke_tywi3c/maxresdefault.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="https://i.ytimg.com/vi/PYke_tywi3c/maxresdefault.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="ShutItDown" title="ShutItDown" src="https://cdn.discordapp.com/emojis/1054410377229774910.png">
+                                <span class="chatlog__reaction-count">3</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/956642831643070484/f94d348c5d977bbdac9b65f4fa9d4b9a.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon07#4571" data-user-id="956642831643070484" style="color: rgb(241,196,15)">mejon07</span>
+
+
+        <span class="chatlog__timestamp">06-Jan-24 05:33 PM</span>
+
+            <div class="chatlog__message " data-message-id="1193230897676288131" id="message-1193230897676288131">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://fxtwitter.com/CensoredMen/status/1743632519256240422">https://fxtwitter.com/CensoredMen/status/1743632519256240422</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(0,168,252,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/CensoredMen/status/1743632519256240422">&#128567;&#128137; Alan Dershowitz:
+
+&quot;You have no right not to be vaccinated.&quot;
+
+&quot;You have no right not to wear a mask.&quot;
+
+&quot;If you refuse to be vaccinated, the state should have the power to take you to a doctor&#39;s office and plunge a needle into your arm.”</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://fxtwitter.com/CensoredMen/status/1743632519256240422">
+                                                    <div class="markdown">Censored Men (@CensoredMen)</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown"><img class="emoji " alt="😷" title="😷" src="https://twemoji.maxcdn.com/2/72x72/1f637.png"><img class="emoji " alt="💉" title="💉" src="https://twemoji.maxcdn.com/2/72x72/1f489.png"> Alan Dershowitz:
+
+&quot;You have no right not to be vaccinated.&quot;
+
+&quot;You have no right not to wear a mask.&quot;
+
+&quot;If you refuse to be vaccinated, the state should have the power to take you to a doctor&#39;s office and plunge a needle into your arm.”</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://pbs.twimg.com/amplify_video_thumb/1743632466932379648/img/Uy-mXKVFiJ0pVDhR.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="https://pbs.twimg.com/amplify_video_thumb/1743632466932379648/img/Uy-mXKVFiJ0pVDhR.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="pewpew" title="pewpew" src="https://cdn.discordapp.com/emojis/956286777155530752.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/956642831643070484/f94d348c5d977bbdac9b65f4fa9d4b9a.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon07#4571" data-user-id="956642831643070484" style="color: rgb(241,196,15)">mejon07</span>
+
+
+        <span class="chatlog__timestamp">09-Jan-24 09:48 PM</span>
+
+            <div class="chatlog__message " data-message-id="1194382126674624515" id="message-1194382126674624515">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.jpost.com/israel-news/article-718741">https://www.jpost.com/israel-news/article-718741</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.jpost.com/israel-news/article-718741">
+                                                    <div class="markdown">Rate of sexual abuse of kids is highest among religious Zionist sector</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">A new study by the Ne&#39;emanei Torah Va&#39;avodah movement reveals dramatic data on sexual abuse victims from the religious Zionist (Tzioni Dati) sector.</div>
+                                        </div>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="ShutItDown" title="ShutItDown" src="https://cdn.discordapp.com/emojis/1054410377229774910.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/953449439761154129/b85657e5ebc5337b03c7c4aca81a3770.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="curbshifter#0000" data-user-id="953449439761154129" style="color: rgb(241,196,15)">curbshifter</span>
+
+
+        <span class="chatlog__timestamp">12-Jan-24 06:33 PM</span>
+
+            <div class="chatlog__message " data-message-id="1195420270949847071" id="message-1195420270949847071">
+                <div class="chatlog__content">
+                    <div class="markdown">came actross this screenshot i made of a DM i got as admin of this server (12 June 2021) <span class="chatlog__edited-timestamp" title="12-Jan-24 06:33 PM">(edited)</span></div>
+                </div>
+
+                    <div class="chatlog__attachment">
+                            <a href="https://cdn.discordapp.com/attachments/956277468715712522/1195420270735929374/botshill-rabbitholehelp.png?ex=65cf9c62&amp;is=65bd2762&amp;hm=a2cba8193d3cc0b5f6c72d722b85a6c02607b8270bd358d64b83a0184f3ce209&amp;">
+                                    <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/956277468715712522/1195420270735929374/botshill-rabbitholehelp.png?ex=65cf9c62&amp;is=65bd2762&amp;hm=a2cba8193d3cc0b5f6c72d722b85a6c02607b8270bd358d64b83a0184f3ce209&amp;" alt="Attachment">
+                            </a>
+                    </div>
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="ShutItDown" title="ShutItDown" src="https://cdn.discordapp.com/emojis/1054410377229774910.png">
+                                <span class="chatlog__reaction-count">3</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/836911608978341928/e7002c802b142906dd8a8182e7b3fc3b.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="gooberiscool#0000" data-user-id="836911608978341928" style="color: rgb(52,152,219)">Goober</span>
+
+
+        <span class="chatlog__timestamp">13-Jan-24 11:35 AM</span>
+
+            <div class="chatlog__message " data-message-id="1195677472704954398" id="message-1195677472704954398">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://media.discordapp.net/attachments/841813622258532372/841813675303108618/Screen_Shot_2021-05-11_at_5.06.13_PM.png?ex=65b04694&is=659dd194&hm=808bc74aba3c5b456078007cd508118e9d0dc273703185aa99210797b2f23699&=&format=webp&quality=lossless&width=1065&height=606">https://media.discordapp.net/attachments/841813622258532372/841813675303108618/Screen_Shot_2021-05-11_at_5.06.13_PM.png?ex=65b04694&amp;is=659dd194&amp;hm=808bc74aba3c5b456078007cd508118e9d0dc273703185aa99210797b2f23699&amp;=&amp;format=webp&amp;quality=lossless&amp;width=1065&amp;height=606</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://media.discordapp.net/attachments/841813622258532372/841813675303108618/Screen_Shot_2021-05-11_at_5.06.13_PM.png?ex=65d53094&amp;is=65c2bb94&amp;hm=e0e5d0347fd5a025dde4751017ac06a68d07e933e2fdcdbf852ee807da04b468&amp;format=webp&amp;quality=lossless&amp;width=1065&amp;height=606&amp;">
+                                            <img class="chatlog__embed-thumbnail" src="https://media.discordapp.net/attachments/841813622258532372/841813675303108618/Screen_Shot_2021-05-11_at_5.06.13_PM.png?ex=65d53094&amp;is=65c2bb94&amp;hm=e0e5d0347fd5a025dde4751017ac06a68d07e933e2fdcdbf852ee807da04b468&amp;format=webp&amp;quality=lossless&amp;width=1065&amp;height=606&amp;" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="1195678023085719562" id="message-1195678023085719562">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://cdn.discordapp.com/attachments/841813622258532372/842409045231009852/Screen_Shot_2021-05-13_at_8.32.25_AM.png?ex=65b2710f&is=659ffc0f&hm=0037268666d966f10a41e5a38791056fdd78ed64171bb264a4e4e1714fe93cb9&">https://cdn.discordapp.com/attachments/841813622258532372/842409045231009852/Screen_Shot_2021-05-13_at_8.32.25_AM.png?ex=65b2710f&amp;is=659ffc0f&amp;hm=0037268666d966f10a41e5a38791056fdd78ed64171bb264a4e4e1714fe93cb9&amp;</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://cdn.discordapp.com/attachments/841813622258532372/842409045231009852/Screen_Shot_2021-05-13_at_8.32.25_AM.png?ex=65d75b0f&amp;is=65c4e60f&amp;hm=caeff1b493473ef32c864e7805a6dbc0042b48392cb4cc755ab1f6f692fba8ad&amp;">
+                                            <img class="chatlog__embed-thumbnail" src="https://cdn.discordapp.com/attachments/841813622258532372/842409045231009852/Screen_Shot_2021-05-13_at_8.32.25_AM.png?ex=65d75b0f&amp;is=65c4e60f&amp;hm=caeff1b493473ef32c864e7805a6dbc0042b48392cb4cc755ab1f6f692fba8ad&amp;" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/953449439761154129/b85657e5ebc5337b03c7c4aca81a3770.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="curbshifter#0000" data-user-id="953449439761154129" style="color: rgb(241,196,15)">curbshifter</span>
+
+
+        <span class="chatlog__timestamp">13-Jan-24 11:50 AM</span>
+
+            <div class="chatlog__message " data-message-id="1195681181807693824" id="message-1195681181807693824">
+                <div class="chatlog__content">
+                    <div class="markdown">Yup so these bots were likely ppl that browsed servers like ours and got offers like these. Offer was 0.5x times the ppl in the server in dollars. At the time I could have gotten ~500$ to sell myself and this server out. (And out myself at the same time with bank details ofc) </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/953449439761154129/b85657e5ebc5337b03c7c4aca81a3770.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="curbshifter#0000" data-user-id="953449439761154129" style="color: rgb(241,196,15)">curbshifter</span>
+
+
+        <span class="chatlog__timestamp">13-Jan-24 11:57 AM</span>
+
+            <div class="chatlog__message " data-message-id="1195683069038964746" id="message-1195683069038964746">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://swprs.org/why-israel-created-hamas/">https://swprs.org/why-israel-created-hamas/</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://swprs.org/author/swprs/">Swiss Policy Research</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://swprs.org/why-israel-created-hamas/">
+                                                    <div class="markdown">Why Israel Created Hamas</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Insider insights into the creation of Hamas – and other designated terrorist groups.</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://swprs.org/wp-content/uploads/2023/10/hamas-israel-usa-revolver.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="https://swprs.org/wp-content/uploads/2023/10/hamas-israel-usa-revolver.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/836911608978341928/e7002c802b142906dd8a8182e7b3fc3b.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="gooberiscool#0000" data-user-id="836911608978341928" style="color: rgb(52,152,219)">Goober</span>
+
+
+        <span class="chatlog__timestamp">15-Jan-24 11:30 AM</span>
+
+            <div class="chatlog__message " data-message-id="1196401104599138414" id="message-1196401104599138414">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://gumshoenews.com/re-opening-martin-bryants-case-with-fresh-evidence/">https://gumshoenews.com/re-opening-martin-bryants-case-with-fresh-evidence/</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://gumshoenews.com/author/daliamae/">Dalia Mae</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://gumshoenews.com/re-opening-martin-bryants-case-with-fresh-evidence/">
+                                                    <div class="markdown">Re-opening Martin Bryant’s Case with Fresh Evidence - Gumshoe News</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Commonwealth coat of arms at the High Court by Mary W Maxwell, PhD, LLB Martin Bryant was convicted of the 1996 Port Arthur massacre, and given a life sentence. At age 48 he is still in prison. It is time to ask: was the conviction correct? Was Bryant the man who actually murdered 35 people […]</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://gumshoenews.com/wp-content/uploads/2016/04/law-books.jpg?w=460">
+                                            <img class="chatlog__embed-thumbnail" src="https://gumshoenews.com/wp-content/uploads/2016/04/law-books.jpg?w=460" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/836911608978341928/e7002c802b142906dd8a8182e7b3fc3b.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="gooberiscool#0000" data-user-id="836911608978341928" style="color: rgb(52,152,219)">Goober</span>
+
+
+        <span class="chatlog__timestamp">15-Jan-24 11:53 AM</span>
+
+            <div class="chatlog__message " data-message-id="1196406753378709594" id="message-1196406753378709594">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://cdn.discordapp.com/attachments/1179276199869034536/1196404839144505364/image.png?ex=65b781d5&is=65a50cd5&hm=d2970e1824d81273d07f40ec6a0194b9adbf3f1e732a8a801f61189bfaf61eba&">https://cdn.discordapp.com/attachments/1179276199869034536/1196404839144505364/image.png?ex=65b781d5&amp;is=65a50cd5&amp;hm=d2970e1824d81273d07f40ec6a0194b9adbf3f1e732a8a801f61189bfaf61eba&amp;</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://cdn.discordapp.com/attachments/1179276199869034536/1196404839144505364/image.png?ex=65d33155&amp;is=65c0bc55&amp;hm=8a0dbcb0381028b26e10371120ca5ed3f18fa5da5499f3905928f7a20d875c15&amp;">
+                                            <img class="chatlog__embed-thumbnail" src="https://cdn.discordapp.com/attachments/1179276199869034536/1196404839144505364/image.png?ex=65d33155&amp;is=65c0bc55&amp;hm=8a0dbcb0381028b26e10371120ca5ed3f18fa5da5499f3905928f7a20d875c15&amp;" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="1196406813218832444" id="message-1196406813218832444">
+                <div class="chatlog__content">
+                    <div class="markdown">my pick would be that he sat down for a meal before shooting people at the cafe, and they didn&#39;t lift prints off his tray or can of soda? or dna </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="1196407389419749487" id="message-1196407389419749487">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://cdn.discordapp.com/attachments/1179276199869034536/1196393856414003303/image.png?ex=65b7779b&is=65a5029b&hm=2b5faf00a4c4f8fbd129764fc23ec179e036ee49318ecc2060007d7e6a3448cd&">https://cdn.discordapp.com/attachments/1179276199869034536/1196393856414003303/image.png?ex=65b7779b&amp;is=65a5029b&amp;hm=2b5faf00a4c4f8fbd129764fc23ec179e036ee49318ecc2060007d7e6a3448cd&amp;</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://cdn.discordapp.com/attachments/1179276199869034536/1196393856414003303/image.png?ex=65d3271b&amp;is=65c0b21b&amp;hm=04971334d0c2ffeae5aab477be34b55279946f8b42e9080890821f393404ed76&amp;">
+                                            <img class="chatlog__embed-thumbnail" src="https://cdn.discordapp.com/attachments/1179276199869034536/1196393856414003303/image.png?ex=65d3271b&amp;is=65c0b21b&amp;hm=04971334d0c2ffeae5aab477be34b55279946f8b42e9080890821f393404ed76&amp;" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="1196407472076886066" id="message-1196407472076886066">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://cdn.discordapp.com/attachments/1179276199869034536/1196395194011103282/image.png?ex=65b778da&is=65a503da&hm=18171bcb98f227b1a942cbfe835c3c20338f566b2fabdc33c6c3109bb16ec48a&">https://cdn.discordapp.com/attachments/1179276199869034536/1196395194011103282/image.png?ex=65b778da&amp;is=65a503da&amp;hm=18171bcb98f227b1a942cbfe835c3c20338f566b2fabdc33c6c3109bb16ec48a&amp;</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://cdn.discordapp.com/attachments/1179276199869034536/1196395194011103282/image.png?ex=65d3285a&amp;is=65c0b35a&amp;hm=dcc453702ec6e0a2946cf0f50981373c6da00d1479b97b91b58f70d90e7d065a&amp;">
+                                            <img class="chatlog__embed-thumbnail" src="https://cdn.discordapp.com/attachments/1179276199869034536/1196395194011103282/image.png?ex=65d3285a&amp;is=65c0b35a&amp;hm=dcc453702ec6e0a2946cf0f50981373c6da00d1479b97b91b58f70d90e7d065a&amp;" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="honkler" title="honkler" src="https://cdn.discordapp.com/emojis/956286777293938698.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+            <div class="chatlog__message " data-message-id="1196407716080525413" id="message-1196407716080525413">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://youtu.be/DCyZbr-7SG0?t=2072">https://youtu.be/DCyZbr-7SG0?t=2072</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCSgeCjcPYYZXR62Cykv43sA">7NEWS Spotlight</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=DCyZbr-7SG0&amp;start=2072">
+                                                    <div class="markdown">Martin Bryant, Port Arthur shooter, the previously unseen police in...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Australia was scarred forever by the horrors at Port Arthur in 1996. 35 people died when Bryant ran amok with his arsenal of weapons at the busy tourist destination of Port Arthur in Tasmania. The appalling crime wounded many more, scarred the nation, shocked the world and changed us forever. For the first time, his lawyer, his psychiatrist and ...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://i.ytimg.com/vi/DCyZbr-7SG0/maxresdefault.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="https://i.ytimg.com/vi/DCyZbr-7SG0/maxresdefault.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="1196407782476365855" id="message-1196407782476365855">
+                <div class="chatlog__content">
+                    <div class="markdown">timestamped talking about his low IQ and his lawyer used it against him <span class="chatlog__edited-timestamp" title="15-Jan-24 11:57 AM">(edited)</span></div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/836911608978341928/e7002c802b142906dd8a8182e7b3fc3b.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="gooberiscool#0000" data-user-id="836911608978341928" style="color: rgb(52,152,219)">Goober</span>
+
+
+        <span class="chatlog__timestamp">15-Jan-24 03:07 PM</span>
+
+            <div class="chatlog__message " data-message-id="1196455536900722699" id="message-1196455536900722699">
+                <div class="chatlog__content">
+                    <div class="markdown">anyone who hunts for food or pest control is now a red flag? </div>
+                </div>
+
+                    <div class="chatlog__attachment">
+                            <a href="https://cdn.discordapp.com/attachments/956277468715712522/1196455537018150912/image.png?ex=65d3608d&amp;is=65c0eb8d&amp;hm=6924323c86a8a661cf92187c2e2ceedeab6edc5b6fd555b6891316b762ccf9e8&amp;">
+                                    <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/956277468715712522/1196455537018150912/image.png?ex=65d3608d&amp;is=65c0eb8d&amp;hm=6924323c86a8a661cf92187c2e2ceedeab6edc5b6fd555b6891316b762ccf9e8&amp;" alt="Attachment">
+                            </a>
+                    </div>
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/836911608978341928/e7002c802b142906dd8a8182e7b3fc3b.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="gooberiscool#0000" data-user-id="836911608978341928" style="color: rgb(52,152,219)">Goober</span>
+
+
+        <span class="chatlog__timestamp">16-Jan-24 06:10 AM</span>
+
+            <div class="chatlog__message " data-message-id="1196682977074229278" id="message-1196682977074229278">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.wikileaks.org/wiki/Martin_bryant">https://www.wikileaks.org/wiki/Martin_bryant</a> </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/953449439761154129/b85657e5ebc5337b03c7c4aca81a3770.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="curbshifter#0000" data-user-id="953449439761154129" style="color: rgb(241,196,15)">curbshifter</span>
+
+
+        <span class="chatlog__timestamp">20-Jan-24 06:06 PM</span>
+
+            <div class="chatlog__message " data-message-id="1198312521535336478" id="message-1198312521535336478">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://fxtwitter.com/i/status/1748650805622608242">https://fxtwitter.com/i/status/1748650805622608242</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(0,168,252,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://twitter.com/BGatesIsaPyscho/status/1748650805622608242">Watching Novak Djokovic serve an Ace after being heckled by the crowd “GET VACCINATED” is incredibly satisfying.
+
+Remember they wouldn’t let the GOAT &amp; one of the fittest persons on the planet play tennis because he refused several doses of an experimenta…</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://fxtwitter.com/i/status/1748650805622608242">
+                                                    <div class="markdown">Concerned Citizen (@BGatesIsaPyscho)</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Watching Novak Djokovic serve an Ace after being heckled by the crowd “GET VACCINATED” is incredibly satisfying.
+
+Remember they wouldn’t let the GOAT &amp; one of the fittest persons on the planet play tennis because he refused several doses of an experimental mRNA Gene Therapy for a virus that posed him ZERO threat - because <img class="emoji " alt="🤡" title="🤡" src="https://twemoji.maxcdn.com/2/72x72/1f921.png">SCiEnCE<img class="emoji " alt="🤡" title="🤡" src="https://twemoji.maxcdn.com/2/72x72/1f921.png"></div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://pbs.twimg.com/amplify_video_thumb/1748650738094329856/img/6VinIrS-JQv2kmQC.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="https://pbs.twimg.com/amplify_video_thumb/1748650738094329856/img/6VinIrS-JQv2kmQC.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/956642831643070484/f94d348c5d977bbdac9b65f4fa9d4b9a.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon07#4571" data-user-id="956642831643070484" style="color: rgb(241,196,15)">mejon07</span>
+
+
+        <span class="chatlog__timestamp">22-Jan-24 07:16 PM</span>
+
+            <div class="chatlog__message " data-message-id="1199055079802679296" id="message-1199055079802679296">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.theguardian.com/world/2009/dec/21/israeli-pathologists-harvested-organs">https://www.theguardian.com/world/2009/dec/21/israeli-pathologists-harvested-organs</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(5,41,98,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.theguardian.com/world/2009/dec/21/israeli-pathologists-harvested-organs">
+                                                    <div class="markdown">Doctor admits Israeli pathologists harvested organs without consent</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Interview in 2000 with former head of Abu Kabir forensic institute reveals pathologists engaged in practice during 1990s</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://assets.guim.co.uk/images/eada8aa27c12fe2d5afa3a89d3fbae0d/fallback-logo.png">
+                                            <img class="chatlog__embed-thumbnail" src="https://assets.guim.co.uk/images/eada8aa27c12fe2d5afa3a89d3fbae0d/fallback-logo.png" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/953449439761154129/b85657e5ebc5337b03c7c4aca81a3770.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="curbshifter#0000" data-user-id="953449439761154129" style="color: rgb(241,196,15)">curbshifter</span>
+
+
+        <span class="chatlog__timestamp">23-Jan-24 11:14 AM</span>
+
+            <div class="chatlog__message " data-message-id="1199296047554506773" id="message-1199296047554506773">
+                <div class="chatlog__content">
+                    <div class="markdown">Covid19 testing kits were being ordered in 2017.
+
+<a href="https://web.archive.org/web/20200905210427if_/https://wits.worldbank.org/trade/comtrade/en/country/ALL/year/2017/tradeflow/Imports/partner/WLD/nomen/h5/product/300215">https://web.archive.org/web/20200905210427if_/https://wits.worldbank.org/trade/comtrade/en/country/ALL/year/2017/tradeflow/Imports/partner/WLD/nomen/h5/product/300215</a> </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/836911608978341928/e7002c802b142906dd8a8182e7b3fc3b.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="gooberiscool#0000" data-user-id="836911608978341928" style="color: rgb(52,152,219)">Goober</span>
+
+
+        <span class="chatlog__timestamp">23-Jan-24 08:38 PM</span>
+
+            <div class="chatlog__message " data-message-id="1199438018910629938" id="message-1199438018910629938">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://cdn.discordapp.com/attachments/1106646862691303464/1199401724801191986/Screenshot_20240123-101350.png?ex=65c268e6&is=65aff3e6&hm=e04c696f23d277aa4702bdabac33da2c95b5254ef565aab69d065ceaf6837c9a&">https://cdn.discordapp.com/attachments/1106646862691303464/1199401724801191986/Screenshot_20240123-101350.png?ex=65c268e6&amp;is=65aff3e6&amp;hm=e04c696f23d277aa4702bdabac33da2c95b5254ef565aab69d065ceaf6837c9a&amp;</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://cdn.discordapp.com/attachments/1106646862691303464/1199401724801191986/Screenshot_20240123-101350.png?ex=65d4dde6&amp;is=65c268e6&amp;hm=263390d8b197119ebb4004376263e694406321a21bf9e98017e11fe9acb59fd5&amp;">
+                                            <img class="chatlog__embed-thumbnail" src="https://cdn.discordapp.com/attachments/1106646862691303464/1199401724801191986/Screenshot_20240123-101350.png?ex=65d4dde6&amp;is=65c268e6&amp;hm=263390d8b197119ebb4004376263e694406321a21bf9e98017e11fe9acb59fd5&amp;" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="killuminati_klaus" title="killuminati_klaus" src="https://cdn.discordapp.com/emojis/1054826385870438410.png">
+                                <span class="chatlog__reaction-count">3</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/956642831643070484/f94d348c5d977bbdac9b65f4fa9d4b9a.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon07#4571" data-user-id="956642831643070484" style="color: rgb(241,196,15)">mejon07</span>
+
+
+        <span class="chatlog__timestamp">24-Jan-24 05:52 PM</span>
+
+            <div class="chatlog__message " data-message-id="1199758555906060327" id="message-1199758555906060327">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://youtu.be/DPt-zXn05ac">https://youtu.be/DPt-zXn05ac</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCEXR8pRTkE2vFeJePNe9UcQ">The Grayzone</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=DPt-zXn05ac">
+                                                    <div class="markdown">Ex-CIA director Pompeo: &#39;We lied, we cheated, we stole&#39;</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">US Secretary of State Mike Pompeo: &quot;I was the CIA director. We lied, we cheated, we stole. We had entire training courses. It reminds you of the glory of the American experiment.&quot;
+
+Pompeo said this at an event at Texas A&amp;M University on April 15, 2019. Here is the official State Department transcript: <a href="https://www.state.gov/secretary/remarks/2019">https://www.state.gov/secretary/remarks/2019</a>...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://i.ytimg.com/vi/DPt-zXn05ac/maxresdefault.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="https://i.ytimg.com/vi/DPt-zXn05ac/maxresdefault.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/956642831643070484/f94d348c5d977bbdac9b65f4fa9d4b9a.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon07#4571" data-user-id="956642831643070484" style="color: rgb(241,196,15)">mejon07</span>
+
+
+        <span class="chatlog__timestamp">27-Jan-24 12:28 AM</span>
+
+            <div class="chatlog__message " data-message-id="1200583078830166027" id="message-1200583078830166027">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://pbs.twimg.com/media/GEygsQibIAEg7D3?format=jpg&name=medium">https://pbs.twimg.com/media/GEygsQibIAEg7D3?format=jpg&amp;name=medium</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://pbs.twimg.com/media/GEygsQibIAEg7D3?format=jpg&amp;name=medium">
+                                            <img class="chatlog__embed-thumbnail" src="https://pbs.twimg.com/media/GEygsQibIAEg7D3?format=jpg&amp;name=medium" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="honkler" title="honkler" src="https://cdn.discordapp.com/emojis/956286777293938698.png">
+                                <span class="chatlog__reaction-count">2</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/956642831643070484/f94d348c5d977bbdac9b65f4fa9d4b9a.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon07#4571" data-user-id="956642831643070484" style="color: rgb(241,196,15)">mejon07</span>
+
+
+        <span class="chatlog__timestamp">27-Jan-24 07:56 PM</span>
+
+            <div class="chatlog__message " data-message-id="1200876914705961191" id="message-1200876914705961191">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.nytimes.com/1997/12/19/us/cia-says-it-has-found-no-link-between-itself-and-crack-trade.html">https://www.nytimes.com/1997/12/19/us/cia-says-it-has-found-no-link-between-itself-and-crack-trade.html</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+By Tim Weiner                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.nytimes.com/1997/12/19/us/cia-says-it-has-found-no-link-between-itself-and-crack-trade.html">
+                                                    <div class="markdown">C.I.A. Says It Has Found No Link Between Itself and Crack Trade (Pu...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">CIA concludes, after interviewing nearly 400 people on four continents, that its officers had nothing to do with explosion of crack cocaine in US, as charged by some blacks; secret report finds no evidence that CIA coordinated or condoned drug trafficking, although separate probe continues into drug trafficking by CIA-backed rebels in Central Am...</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://static01.nyt.com/newsgraphics/images/icons/defaultPromoCrop.png?year=1997">
+                                            <img class="chatlog__embed-thumbnail" src="https://static01.nyt.com/newsgraphics/images/icons/defaultPromoCrop.png?year=1997" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="glowie" title="glowie" src="https://cdn.discordapp.com/emojis/1120832274045358132.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/956642831643070484/f94d348c5d977bbdac9b65f4fa9d4b9a.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="mejon07#4571" data-user-id="956642831643070484" style="color: rgb(241,196,15)">mejon07</span>
+
+
+        <span class="chatlog__timestamp">29-Jan-24 06:02 PM</span>
+
+            <div class="chatlog__message " data-message-id="1201573211129790527" id="message-1201573211129790527">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.youtube.com/watch?v=bIiCjhCBDaM">https://www.youtube.com/watch?v=bIiCjhCBDaM</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCSuIscl1vCYe8oTjAyEdzQw">egelston</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=bIiCjhCBDaM">
+                                                    <div class="markdown">Bill Hicks describes what happens after an election</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Bill Hicks describes what happens after an election</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://i.ytimg.com/vi/bIiCjhCBDaM/sddefault.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="https://i.ytimg.com/vi/bIiCjhCBDaM/sddefault.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="popcorn" title="popcorn" src="https://cdn.discordapp.com/emojis/1054409989365702656.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/953449439761154129/b85657e5ebc5337b03c7c4aca81a3770.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="curbshifter#0000" data-user-id="953449439761154129" style="color: rgb(241,196,15)">curbshifter</span>
+
+
+        <span class="chatlog__timestamp">30-Jan-24 11:47 PM</span>
+
+            <div class="chatlog__message " data-message-id="1202022236085817434" id="message-1202022236085817434">
+                <div class="chatlog__content">
+                    <div class="markdown"> </div>
+                </div>
+
+                    <div class="chatlog__attachment">
+                            <a href="https://cdn.discordapp.com/attachments/956277468715712522/1202022235720917062/AUS_propaganda_Covid_vaccines.mp4?ex=65d52bf1&amp;is=65c2b6f1&amp;hm=75f7b2a8f65fce3a4db1a63f5995db4eadc4a19b97d7147c64efe221017856c9&amp;">
+Attachment: AUS_propaganda_Covid_vaccines.mp4 (1,37 MB)                            </a>
+                    </div>
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="pewpew" title="pewpew" src="https://cdn.discordapp.com/emojis/956286777155530752.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+</div>
+
+<div class="postamble">
+    <div class="postamble__entry">Exported 26 message(s)</div>
+</div>
+
+</body>
+</html>
